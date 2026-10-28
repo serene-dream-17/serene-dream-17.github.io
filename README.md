@@ -1,16 +1,168 @@
-## Hi there 👋
+# 语言的产物链
 
-<!--
-**serene-dream-17/serene-dream-17** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
+**78 个条目 · 78 个框架页 · 142 张决策卡 · 320 个产物阶段 · 164 个页面 · 483 条搜索索引 · 16 门实测。**
 
-Here are some ideas to get you started:
+从 1949 年的汇编到 2023 年的 Mojo；另加 HTML、CSS、XML、SVG、YAML、Markdown、Sass、Less 八个标记与配置条目。每个条目都有产物链与语言深读，每门主流语言都有「语言 + 框架 → 使用场景」的选型页。
 
-- 🔭 I’m currently working on ...
-- 🌱 I’m currently learning ...
-- 👯 I’m looking to collaborate on ...
-- 🤔 I’m looking for help with ...
-- 💬 Ask me about ...
-- 📫 How to reach me: ...
-- 😄 Pronouns: ...
-- ⚡ Fun fact: ...
--->
+## 打开
+
+双击 `index.html` 即可离线阅读，无需服务器、无外部依赖。
+
+- 左侧目录：78 个条目，按年代与类别分组
+- 按 `/` 聚焦搜索，`←` / `→` 切换上一条 / 下一条，`Esc` 清空搜索或关闭抽屉
+- **⌘K / Ctrl+K**：全站搜索，覆盖 483 条索引
+- 搜索、筛选、对比与谱系选择会写进 URL，复制地址即可复现同一视图
+- 打印时自动隐藏侧栏/浮动按钮，对比表与覆盖表不再横向裁切，谱系图提示在线查看
+- 右下角 **Aa**：切换字体（思源黑体 / 思源宋体 / 系统）、字号（小/标准/大/特大）、行距（紧凑/标准/宽松），设置保存在本机
+- 每门语言页：产物链 → 语言深读 → 框架与场景
+- 侧栏底部与首页都有「框架场景矩阵」入口
+
+## 四种入口
+
+| 入口 | 内容 |
+|---|---|
+| 语言页 | 语言档案、产物链、工具链、Hello World、**语言深读**、框架入口 |
+| 框架页（78 个） | 48 门主流语言/标记的详细决策卡；30 门短页说明「无成熟应用框架」与生态工具 |
+| 场景矩阵 | 13 个使用场景 × 154 组跨语言推荐；可按场景和关键词筛选 |
+| 阅读设置 | 字体族、字号、行距，全站持久化 |
+| 产物格式索引 | 42 种格式 → 产生它们的语言与阶段，可反查 |
+| 来源索引 | 220 条来源按语言/框架列出，可跳回页面 |
+| 全局搜索 | `⌘K` / `Ctrl+K`，桌面右下角与移动端左下角都有按钮 |
+| 语言谱系图 | 78 节点 / 172 条影响边，按年代与家族排布，可筛选、悬停高亮、点击进入 |
+| 对比器 | 2–3 门语言或 2–3 个框架并排对比；Web / 前端 / 移动 / 数据 / 系统 / 科学计算 一键预设 |
+| 实测记录 | 16 门语言的本机 Hello 复现；78 项覆盖表分四级状态，未实测条目链接官方文档 |
+| 内容等级 | 语言页标「已实测 / 文档重构」，深读标「编者整理」，框架标「编者判断」 |
+| 页面级引用 | 深读字段与框架许可旁有编号引用，点击后来源条目高亮 |
+| URL 状态 | 搜索 / 筛选 / 场景 / 对比 / 谱系选择写入 URL，可分享、可后退 |
+
+## 语言深读
+
+每个语言页新增第 05 板块：
+
+- **设计目标** 与 **关键取舍**
+- **语言特性**：类型、内存、并发、元编程
+- **版本里程碑**：从诞生到当前的重要版本
+- **生态与采用**：代表项目、包管理、现状
+- **与邻近语言对比**：2 门邻近语言的差异
+
+## 框架页深度
+
+每张框架卡在原有字段上增加：
+
+- **学习曲线**、**生态成熟度**、**许可证**徽章
+- 页面级 **选型结论**（按需求给出默认选择）
+- **同语言框架对比表**：类型、学习、生态、许可、最小产物链
+
+## 全部条目
+
+| 分组 | 条目 |
+|---|---|
+| 1950s–1960s | FORTRAN、LISP、ALGOL 60、COBOL、BASIC、Simula 67、PL/I、APL、SNOBOL、B |
+| 1970s | C、Pascal、Smalltalk、Prolog、ML、Scheme、Forth、Modula-2 |
+| 1980s | C++、Objective-C、Perl、Erlang、Ada、Eiffel、MATLAB、Common Lisp、Tcl |
+| 1990s | Python、Java、JavaScript、PHP、Ruby、Haskell、Lua、R、Delphi、Visual Basic、OCaml |
+| 2000s | C#、Scala、F#、Clojure、Groovy、Go、D、ActionScript |
+| 2010s | Rust、TypeScript、Swift、Kotlin、Elixir、Julia、Dart、Zig、Nim、Crystal、Elm、Solidity |
+| 2020s | Mojo、Gleam、Carbon、Odin、Roc、V |
+| 领域专用 | SQL、Assembly、Shell、Verilog、CUDA、GLSL |
+| 标记与配置 | HTML、CSS、XML、SVG、YAML、Markdown、Sass、Less |
+
+## 字体与移动端
+
+- 默认 **Noto Sans SC（思源黑体）**，正文 17px / 1.82，标题 600 字重。
+- 阅读设置可切换思源宋体或系统字体，字号四档、行距三档；`localStorage` 持久化，切换页面不丢。
+- 移动端：Aa 变为底部面板，菜单为抽屉；筛选/按钮增大点按区域，表格有横向滑动提示，时间轴与阶段条支持滚动吸附，适配安全区。
+
+## 目录结构
+
+```
+index.html              总目录 + 时间轴
+frameworks.html         场景 → 技术栈 矩阵
+formats.html            产物格式索引（格式 → 语言 → 阶段）
+sources.html            来源索引（220 条）
+lineage.html            语言谱系图
+compare.html            跨语言 / 跨框架对比器
+verified.html           本机实测记录
+langs/*.html            78 个条目页（含语言深读）
+langs/*-frameworks.html 78 个框架页
+assets/style.css        设计系统 + 字体/响应式
+assets/app.js           菜单、搜索、筛选、矩阵筛选、键盘导航
+assets/font.js          阅读设置
+assets/data.js          78 个条目的索引数据
+tools/build.py          生成器
+tools/fw_site.py        框架页 / 矩阵模板
+tools/depth_site.py     语言深读模板
+tools/ui.py             阅读设置 UI
+tools/sources_site.py   来源区块
+tools/src_index.py      来源索引页
+tools/fmt_index.py      产物格式索引页
+tools/formats.py        格式匹配与策展
+tools/lineage.py        谱系图布局与 SVG
+tools/compare_index.py  对比器页面
+tools/verified_site.py  实测记录
+tools/verify.py         本机实测脚本
+tools/data/verified.py  实测数据（生成）
+assets/search.js        ⌘K 全局搜索
+assets/search-index.js  搜索索引（生成）
+assets/compare-data.js  对比数据（生成）
+assets/lineage.js       谱系图交互
+assets/compare.js       对比器交互
+tools/audit.py          全站审计
+tools/check_sources.py  外部来源可达性检查（可选）
+tests/smoke.py          全站冒烟测试（结构/交互/移动端/打印）
+tools/registry.py       展签登记表（78 条）
+tools/data/*.py         产物链、语言深读、框架决策卡
+```
+
+## 重新生成
+
+```bash
+python tools/build.py
+```
+
+生成器会校验：条目数据完整、产物链 ≥ 3 阶段、深读字段完整、框架卡与元信息完整、矩阵引用有效、所有相对链接可解析。
+
+## 参考来源与审计
+
+- 每个语言页底部有「参考来源」：官方文档 / 规范 / 权威资料，并标注最后核对日期。
+- 不安装额外工具链；未实测条目以官方文档为准，覆盖表逐项给出官方来源。
+- 每张框架卡有「来源：官方文档」。
+- 全站 **220 条来源**（78 语言 + 142 框架），生成器会校验覆盖率。
+- 审计结果见 `AUDIT.md`；可运行：
+
+```bash
+python tools/build.py
+python tools/audit.py
+python tools/check_sources.py   # 可选，需要网络
+python tests/smoke.py           # 全站冒烟测试，约 1 分钟
+python tests/smoke.py --quick   # 跳过 164 页扫描，只跑交互
+```
+
+审计覆盖：页面结构、h1、重复 id、内部链接/锚点、来源覆盖、框架元信息、深读完整性、对比度、移动端与字体控制器。
+
+## 内容口径
+
+所有代码、文件与框架样例均为**依据公开规范与文档重构的示意内容**，用于展示格式、阶段与选型关系；具体地址、偏移、字节数、版本年份不承诺与任何特定版本一致。页面底部有统一标注。
+
+## 批次
+
+| 批次 | 内容 | 状态 |
+|---|---|---|
+| 1 | 1950s–1970s，18 条 | 已完成 |
+| 2 | 1980s–1990s，20 条 | 已完成 |
+| 3 | 2000s–2010s，20 条 | 已完成 |
+| 4 | 2020s + 领域专用，12 条 | 已完成 |
+| 5 | 字体重构 + 标记与配置，8 条 | 已完成 |
+| 6 | 78 个框架页 + 场景矩阵 | 已完成 |
+| 7 | 语言深读 + 框架深度 + 字体控制器 + 移动端 | 已完成 |
+| 8 | 全站审计 + 引用来源 + 修正 | 已完成 |
+| 9 | 页面级引用 + 来源索引 + ⌘K 搜索 + 产物格式索引 | 已完成 |
+| 10 | 语言谱系图 + 对比器 + 本机实测徽章 | 已完成 |
+| 11 | 页面级引用编号 + URL 状态 + 格式搜索 | 已完成 |
+| 12 | 对比预设 + 引用目标高亮 | 已完成 |
+| 13 | 实测扩展到 16 门 + 78 项覆盖表 | 已完成 |
+| 14 | 内容等级标签 + 覆盖状态细化 | 已完成 |
+| 15 | 移动端搜索入口 + 焦点管理 + 打印布局 + verify --merge | 已完成 |
+| 16 | 可复用 tests/smoke.py 测试套件 | 已完成 |
+| 17 | favicon/OG + 404 + 矩阵补齐 123 卡 | 已完成 |
+| 18 | 8 门短页升级为详页（+19 卡） | 已完成 |
