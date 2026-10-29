@@ -11,7 +11,7 @@ sys.path.insert(0, str(ROOT / "tools"))
 
 from registry import LANGUAGES, BUILT_SLUGS  # noqa: E402
 from data import sources, fw_a, fw_b, fw_c, fw_d, fw_e, depth_1, depth_2, depth_3  # noqa: E402
-from data import verified  # noqa: E402
+from data import verified, security, dev_scenarios  # noqa: E402
 
 FW = {}
 for _m in (fw_a, fw_b, fw_c, fw_d, fw_e):
@@ -36,13 +36,14 @@ def main():
     pages = [ROOT / "index.html", ROOT / "frameworks.html",
              ROOT / "sources.html", ROOT / "formats.html",
              ROOT / "lineage.html", ROOT / "compare.html", ROOT / "verified.html",
+             ROOT / "security.html", ROOT / "scenarios.html",
              ROOT / "404.html"]
     pages += sorted((ROOT / "langs").glob("*.html"))
     failures = []
     warnings = []
     stats = {
         "pages": len(pages),
-        "index_pages": 8,
+        "index_pages": 10,
         "language_pages": 0,
         "framework_pages": 0,
         "h1_ok": 0,
@@ -59,7 +60,8 @@ def main():
         is_lang = page.parent.name == "langs" and not is_framework
 
         if page.name in ("index.html", "frameworks.html", "sources.html", "formats.html",
-                         "lineage.html", "compare.html", "verified.html", "404.html"):
+                         "lineage.html", "compare.html", "verified.html",
+                         "security.html", "scenarios.html", "404.html"):
             pass
         elif is_framework:
             stats["framework_pages"] += 1
@@ -135,6 +137,29 @@ def main():
                 badges = s.count('class="fw-badge"')
                 if badges != cards * 3:
                     failures.append(f"{rel}: 徽章 {badges}，预期 {cards * 3}")
+
+    # 安全专题 / 开发场景
+    sec_page = ROOT / "security.html"
+    if not sec_page.exists():
+        failures.append("缺少 security.html")
+    else:
+        txt = sec_page.read_text(encoding="utf-8")
+        if txt.count('class="stack-card sec-tool"') != len(security.TOOLS):
+            failures.append("安全工具卡数量与数据不一致")
+        for topic in security.TOPICS:
+            if f'id="{topic["key"]}"' not in txt:
+                failures.append(f"安全专题缺少板块 {topic['key']}")
+    sc_page = ROOT / "scenarios.html"
+    if not sc_page.exists():
+        failures.append("缺少 scenarios.html")
+    else:
+        txt = sc_page.read_text(encoding="utf-8")
+        expect = sum(len(a["entries"]) for s in dev_scenarios.SCENARIOS for a in s["architectures"])
+        if txt.count('class="stack-card dev-card"') != expect:
+            failures.append("开发场景卡片数量与数据不一致")
+        for sc in dev_scenarios.SCENARIOS:
+            if f'id="dev-{sc["key"]}"' not in txt:
+                failures.append(f"开发场景缺少 {sc['key']}")
 
     # 数据覆盖
     if len(sources.LANG) != 78:

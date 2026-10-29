@@ -242,6 +242,101 @@
     applyMatrixFilter();
   }
 
+  /* ---------------- 开发场景 ---------------- */
+  var devSearch = document.getElementById("devSearch");
+  var devScenario = document.getElementById("devScenario");
+  var devArch = document.getElementById("devArch");
+  var devCount = document.getElementById("devCount");
+  var devEmpty = document.getElementById("devEmpty");
+
+  function applyDevFilter() {
+    if (!devSearch) return;
+    var q = normalize(devSearch.value.trim());
+    var sc = devScenario ? devScenario.value : "all";
+    var ar = devArch ? devArch.value : "all";
+    var cards = document.querySelectorAll(".dev-card");
+    var total = cards.length;
+    var shown = 0;
+
+    cards.forEach(function (card) {
+      var hay = normalize(card.dataset.search || card.textContent);
+      var okQ = !q || hay.indexOf(q) !== -1;
+      var okS = sc === "all" || card.dataset.scenario === sc;
+      var okA = ar === "all" || card.dataset.arch === ar;
+      var show = okQ && okS && okA;
+      card.hidden = !show;
+      if (show) shown++;
+    });
+
+    document.querySelectorAll(".dev-arch").forEach(function (arch) {
+      var any = arch.querySelector(".dev-card:not([hidden])");
+      arch.hidden = !any;
+    });
+    document.querySelectorAll(".dev-section").forEach(function (sec) {
+      var any = sec.querySelector(".dev-card:not([hidden])");
+      sec.hidden = !any;
+    });
+
+    if (devCount) {
+      devCount.textContent = shown === total
+        ? total + " 组"
+        : shown + " / " + total + " 组";
+    }
+    if (devEmpty) devEmpty.classList.toggle("is-visible", shown === 0);
+  }
+
+  if (devSearch) {
+    var td;
+    devSearch.addEventListener("input", function () {
+      clearTimeout(td);
+      td = setTimeout(applyDevFilter, 70);
+    });
+    if (devScenario) devScenario.addEventListener("change", applyDevFilter);
+    if (devArch) devArch.addEventListener("change", applyDevFilter);
+    applyDevFilter();
+  }
+
+  /* ---------------- 安全工具 ---------------- */
+  var secSearch = document.getElementById("secSearch");
+  var secCategory = document.getElementById("secCategory");
+  var secCount = document.getElementById("secCount");
+  var secEmpty = document.getElementById("secEmpty");
+
+  function applySecFilter() {
+    if (!secSearch) return;
+    var q = normalize(secSearch.value.trim());
+    var cat = secCategory ? secCategory.value : "all";
+    var cards = document.querySelectorAll(".sec-tool");
+    var total = cards.length;
+    var shown = 0;
+
+    cards.forEach(function (card) {
+      var hay = normalize(card.dataset.search || card.textContent);
+      var okQ = !q || hay.indexOf(q) !== -1;
+      var okC = cat === "all" || card.dataset.cat === cat;
+      var show = okQ && okC;
+      card.hidden = !show;
+      if (show) shown++;
+    });
+
+    if (secCount) {
+      secCount.textContent = shown === total
+        ? total + " 个工具"
+        : shown + " / " + total + " 个工具";
+    }
+    if (secEmpty) secEmpty.classList.toggle("is-visible", shown === 0);
+  }
+
+  if (secSearch) {
+    var ts;
+    secSearch.addEventListener("input", function () {
+      clearTimeout(ts);
+      ts = setTimeout(applySecFilter, 70);
+    });
+    if (secCategory) secCategory.addEventListener("change", applySecFilter);
+    applySecFilter();
+  }
+
   /* ---------------- 来源索引 ---------------- */
   var srcSearch = document.getElementById("srcSearch");
   var srcCount = document.getElementById("srcCount");
@@ -383,6 +478,41 @@
     if (matrixScenario) {
       matrixScenario.addEventListener("change", function () { syncParam("s", matrixScenario.value, true); });
     }
+  } else if (page === "scenarios") {
+    setSearchValue(devSearch, "q", params.get("q"));
+    if (params.get("s") && devScenario) {
+      devScenario.value = params.get("s");
+      devScenario.dispatchEvent(new Event("change"));
+    }
+    if (params.get("a") && devArch) {
+      devArch.value = params.get("a");
+      devArch.dispatchEvent(new Event("change"));
+    }
+    if (devSearch) {
+      devSearch.addEventListener("input", function () {
+        syncParam("q", devSearch.value.trim(), false);
+      });
+    }
+    if (devScenario) {
+      devScenario.addEventListener("change", function () { syncParam("s", devScenario.value, true); });
+    }
+    if (devArch) {
+      devArch.addEventListener("change", function () { syncParam("a", devArch.value, true); });
+    }
+  } else if (page === "security") {
+    setSearchValue(secSearch, "q", params.get("q"));
+    if (params.get("c") && secCategory) {
+      secCategory.value = params.get("c");
+      secCategory.dispatchEvent(new Event("change"));
+    }
+    if (secSearch) {
+      secSearch.addEventListener("input", function () {
+        syncParam("q", secSearch.value.trim(), false);
+      });
+    }
+    if (secCategory) {
+      secCategory.addEventListener("change", function () { syncParam("c", secCategory.value, true); });
+    }
   } else if (page === "sources") {
     setSearchValue(srcSearch, "q", params.get("q"));
     if (srcSearch) {
@@ -419,6 +549,12 @@
                       document.getElementById("catalogSearch");
       } else if (page === "matrix") {
         focusTarget = document.getElementById("matrixSearch") ||
+                      document.getElementById("catalogSearch");
+      } else if (page === "scenarios") {
+        focusTarget = document.getElementById("devSearch") ||
+                      document.getElementById("catalogSearch");
+      } else if (page === "security") {
+        focusTarget = document.getElementById("secSearch") ||
                       document.getElementById("catalogSearch");
       } else if (page === "sources") {
         focusTarget = document.getElementById("srcSearch") ||

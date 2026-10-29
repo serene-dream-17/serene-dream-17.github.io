@@ -20,6 +20,7 @@ from registry import (  # noqa: E402
 )
 from data import era_1950, era_1970, era_1980, era_1990, era_2000, era_2010, era_2020, era_markup  # noqa: E402
 from data import fw_a, fw_b, fw_c, fw_d, fw_e, fw_meta  # noqa: E402
+from data import security, dev_scenarios  # noqa: E402
 import fw_site  # noqa: E402
 import ui  # noqa: E402
 import depth_site  # noqa: E402
@@ -29,6 +30,8 @@ import fmt_index  # noqa: E402
 import lineage  # noqa: E402
 import compare_index  # noqa: E402
 import verified_site  # noqa: E402
+import security_site  # noqa: E402
+import scenario_site  # noqa: E402
 from data import verified  # noqa: E402
 import formats  # noqa: E402
 from data import sources  # noqa: E402
@@ -53,6 +56,7 @@ for _upgraded in list(FRAMEWORKS):
 SCENARIOS = fw_d.SCENARIOS
 FRAMEWORK_CARDS = sum(len(d["cards"]) for d in FRAMEWORKS.values())
 fw_site.ALL_LANGS = LANGUAGES
+scenario_site.ALL_LANGS = LANGUAGES
 
 DEEP = {}
 for _mod in (depth_1, depth_2, depth_3):
@@ -350,6 +354,8 @@ def render_catalog(active_slug, root):
     {BATCH_LABEL} · {BATCH_RANGE}<br>
     <a href="{root}index.html">← 馆藏总览</a><br>
     <a href="{root}frameworks.html">框架场景矩阵 →</a><br>
+    <a href="{root}scenarios.html">开发场景 →</a><br>
+    <a href="{root}security.html">安全专题 →</a><br>
     <a href="{root}sources.html">来源索引 →</a><br>
     <a href="{root}formats.html">产物格式索引 →</a><br>
     <a href="{root}lineage.html">语言谱系图 →</a><br>
@@ -760,6 +766,8 @@ def render_index():
       </label>
       <div class="index-filters" role="group" aria-label="按实现方式筛选">{filter_html}</div>
       <a class="matrix-link" href="frameworks.html">框架场景矩阵 →</a>
+      <a class="matrix-link" href="scenarios.html">开发场景 →</a>
+      <a class="matrix-link matrix-link--ghost" href="security.html">安全专题</a>
       <a class="matrix-link matrix-link--ghost" href="sources.html">来源索引</a>
       <span class="era-head__count" id="indexCount">{OPEN} / {TOTAL} 门</span>
     </div>
@@ -828,7 +836,9 @@ def render_404():
       </div>
       <div class="fw-grid">
         <a class="stack-card" href="index.html"><span class="stack-top"><span class="stack-lang">INDEX</span><span class="stack-type">目录</span></span><span class="stack-fw">语言的产物链</span><span class="stack-why">78 个条目，按年代与家族浏览。</span></a>
-        <a class="stack-card" href="frameworks.html"><span class="stack-top"><span class="stack-lang">MATRIX</span><span class="stack-type">选型</span></span><span class="stack-fw">框架场景矩阵</span><span class="stack-why">13 个场景，154 组推荐。</span></a>
+        <a class="stack-card" href="frameworks.html"><span class="stack-top"><span class="stack-lang">MATRIX</span><span class="stack-type">选型</span></span><span class="stack-fw">框架场景矩阵</span><span class="stack-why">{len(SCENARIOS)} 个场景，{sum(len(sc["entries"]) for sc in SCENARIOS)} 组推荐。</span></a>
+        <a class="stack-card" href="scenarios.html"><span class="stack-top"><span class="stack-lang">SCENARIOS</span><span class="stack-type">分类</span></span><span class="stack-fw">开发场景</span><span class="stack-why">{len(dev_scenarios.SCENARIOS)} 个开发场景 × {sum(len(s["architectures"]) for s in dev_scenarios.SCENARIOS)} 个架构组合。</span></a>
+        <a class="stack-card" href="security.html"><span class="stack-top"><span class="stack-lang">SECURITY</span><span class="stack-type">专题</span></span><span class="stack-fw">安全专题</span><span class="stack-why">{len(security.TOOLS)} 个工具，从编码到审计。</span></a>
         <a class="stack-card" href="formats.html"><span class="stack-top"><span class="stack-lang">FORMATS</span><span class="stack-type">索引</span></span><span class="stack-fw">产物格式索引</span><span class="stack-why">42 种格式反查语言与阶段。</span></a>
         <a class="stack-card" href="sources.html"><span class="stack-top"><span class="stack-lang">SOURCES</span><span class="stack-type">引用</span></span><span class="stack-fw">来源索引</span><span class="stack-why">220 条官方来源，可搜索。</span></a>
       </div>
@@ -947,22 +957,56 @@ def write_search_js():
         })
 
     for sc in SCENARIOS:
+        page = sc.get("page", "frameworks.html")
         items.append({
             "title": sc["title"], "group": "场景",
             "desc": sc["desc"],
-            "href": f"frameworks.html#{sc['key']}", "kind": "场景",
+            "href": f"{page}#{sc['key']}", "kind": "场景",
             "keywords": [entry[1] for entry in sc["entries"]] + [entry[2] for entry in sc["entries"]],
         })
         for slug, fw, why in sc["entries"]:
+            if sc.get("page"):
+                tool = next((t for t in security.TOOLS if t["name"] == fw), None)
+                href = f"{page}#{tool['slug'] if tool else _slugify(fw)}"
+            else:
+                href = f"langs/{slug}-frameworks.html"
             items.append({
                 "title": f"{sc['title']} · {fw}", "group": "场景",
                 "desc": f"{why}",
-                "href": f"langs/{slug}-frameworks.html", "kind": "场景推荐",
+                "href": href, "kind": "场景推荐",
                 "keywords": [sc["title"], fw, slug, why],
+            })
+
+    for tool in security.TOOLS:
+        items.append({
+            "title": tool["name"], "group": "安全",
+            "desc": f"{tool['category']} · {tool['lang']} · {tool['summary']}",
+            "href": f"security.html#{tool['slug']}", "kind": "安全工具",
+            "keywords": [tool["lang"], tool["category"], tool["license"], tool["summary"]]
+                        + tool["fit"],
+        })
+
+    for sc in dev_scenarios.SCENARIOS:
+        items.append({
+            "title": f"开发场景 · {sc['title']}", "group": "开发场景",
+            "desc": sc["desc"],
+            "href": f"scenarios.html#dev-{sc['key']}", "kind": "开发场景",
+            "keywords": [sc["title"], sc["en"]]
+                        + [a["title"] for a in sc["architectures"]],
+        })
+        for arch in sc["architectures"]:
+            items.append({
+                "title": f"{sc['title']} · {arch['title']}", "group": "开发场景",
+                "desc": arch["desc"],
+                "href": f"scenarios.html#dev-{sc['key']}", "kind": "架构组合",
+                "keywords": [sc["title"], arch["title"]]
+                            + [entry[1] for entry in arch["entries"]],
             })
 
     for title, href, desc in (
         ("框架场景矩阵", "frameworks.html", "按场景反查语言与框架"),
+        ("开发场景", "scenarios.html", "按开发场景 × 架构模式浏览语言与框架"),
+        ("安全专题", "security.html", "应用安全、密码学、供应链与审计"),
         ("来源索引", "sources.html", "220 条官方来源"),
         ("产物格式索引", "formats.html", "按格式反查语言与阶段"),
         ("语言谱系图", "lineage.html", "影响关系与时间轴"),
@@ -981,10 +1025,7 @@ def write_search_js():
 
 
 def _slugify(value):
-    out = []
-    for ch in str(value).lower():
-        out.append(ch if ch.isalnum() else "-")
-    return "".join(out).strip("-")
+    return re.sub(r"[^a-z0-9]+", "-", str(value).lower()).strip("-") or "item"
 
 
 def write_compare_js():
@@ -1024,6 +1065,8 @@ def write_data_js():
         "batch": BATCH_DONE,
         "frameworks": FRAMEWORK_CARDS,
         "scenarios": len(SCENARIOS),
+        "dev_scenarios": len(dev_scenarios.SCENARIOS),
+        "security_tools": len(security.TOOLS),
         "languages": [
             {
                 "plate": l["plate"],
@@ -1119,14 +1162,47 @@ def validate():
         if len(deep.get("features", {})) != 4:
             errors.append(f"{slug} 深读: features 不是 4 项")
 
+    security_names = {t["name"] for t in security.TOOLS}
     for sc in SCENARIOS:
         for slug, fw_name, _why in sc["entries"]:
             if slug not in BUILT_SLUGS:
                 errors.append(f"矩阵场景 {sc['key']} 引用未知语言 {slug}")
+            elif sc.get("page"):
+                if fw_name not in security_names:
+                    errors.append(f"矩阵场景 {sc['key']} 引用未知安全工具 {fw_name}")
             elif slug in FRAMEWORKS:
                 names = [c["name"] for c in FRAMEWORKS[slug]["cards"]]
                 if fw_name not in names:
                     errors.append(f"矩阵场景 {sc['key']} 引用未知框架 {slug}/{fw_name}")
+
+    for sc in dev_scenarios.SCENARIOS:
+        if not sc.get("architectures"):
+            errors.append(f"开发场景 {sc['key']} 缺少架构模式")
+        for arch in sc["architectures"]:
+            if not arch.get("entries"):
+                errors.append(f"开发场景 {sc['key']}/{arch['key']} 缺少条目")
+            for entry in arch["entries"]:
+                slug, fw_name = entry[0], entry[1]
+                explicit = entry[3] if len(entry) > 3 else ""
+                if slug not in BUILT_SLUGS:
+                    errors.append(f"开发场景 {sc['key']}/{arch['key']} 引用未知语言 {slug}")
+                elif explicit:
+                    target, _, frag = explicit.partition("#")
+                    if target != "security.html":
+                        errors.append(f"开发场景 {sc['key']} 引用未知目标 {explicit}")
+                    elif frag not in {t["slug"] for t in security.TOOLS}:
+                        errors.append(f"开发场景 {sc['key']} 引用未知安全锚点 {frag}")
+                elif slug in FRAMEWORKS:
+                    names = [c["name"] for c in FRAMEWORKS[slug]["cards"]]
+                    if fw_name not in names:
+                        errors.append(
+                            f"开发场景 {sc['key']}/{arch['key']} 引用未知框架 {slug}/{fw_name}"
+                        )
+                elif slug in SHORT:
+                    if fw_name not in SHORT[slug]["tools"]:
+                        errors.append(
+                            f"开发场景 {sc['key']}/{arch['key']} 引用未知短页工具 {slug}/{fw_name}"
+                        )
 
     return errors
 
@@ -1137,7 +1213,8 @@ def link_check():
     pages = list((ROOT / "langs").glob("*.html")) + [
         ROOT / "index.html", ROOT / "frameworks.html", ROOT / "sources.html",
         ROOT / "formats.html", ROOT / "lineage.html", ROOT / "compare.html",
-        ROOT / "verified.html", ROOT / "404.html",
+        ROOT / "verified.html", ROOT / "security.html", ROOT / "scenarios.html",
+        ROOT / "404.html",
     ]
     for page in pages:
         text = page.read_text(encoding="utf-8")
@@ -1228,6 +1305,14 @@ def main():
         ),
         encoding="utf-8",
     )
+    (ROOT / "security.html").write_text(
+        security_site.render_security(render_catalog(None, ""), BATCH_LABEL),
+        encoding="utf-8",
+    )
+    (ROOT / "scenarios.html").write_text(
+        scenario_site.render_scenarios(render_catalog(None, ""), FRAMEWORKS, BATCH_LABEL),
+        encoding="utf-8",
+    )
     write_data_js()
     cmp_langs, cmp_cards = write_compare_js()
     search_count = write_search_js()
@@ -1235,7 +1320,8 @@ def main():
     all_pages = [ROOT / "index.html", ROOT / "frameworks.html",
                  ROOT / "sources.html", ROOT / "formats.html",
                  ROOT / "lineage.html", ROOT / "compare.html",
-                 ROOT / "verified.html", ROOT / "404.html"]
+                 ROOT / "verified.html", ROOT / "security.html",
+                 ROOT / "scenarios.html", ROOT / "404.html"]
     all_pages += sorted((ROOT / "langs").glob("*.html"))
     for page in all_pages:
         inject_meta(page)

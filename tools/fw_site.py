@@ -6,7 +6,7 @@ import re
 
 import ui
 import sources_site
-from data import fw_meta, sources
+from data import fw_meta, sources, security
 
 
 def e(value):
@@ -261,11 +261,16 @@ def render_matrix(detailed, short, scenarios, catalog_html, total, card_count, b
             lang = next((l for l in ALL_LANGS if l["slug"] == slug), None)
             if not lang:
                 continue
-            detail = detailed.get(slug)
-            card = _card_by_name(detail["cards"], fw) if detail else None
-            anchor = slugify(fw) if card else ""
-            href = f"langs/{slug}-frameworks.html" + (f"#{anchor}" if anchor else "")
-            ftype = card["type"] if card else "生态 / 工具"
+            if sc.get("page"):
+                tool = next((t for t in security.TOOLS if t["name"] == fw), None)
+                href = f"{sc['page']}#{slugify(tool['slug'] if tool else fw)}"
+                ftype = tool["category"] if tool else "安全 / 工具"
+            else:
+                detail = detailed.get(slug)
+                card = _card_by_name(detail["cards"], fw) if detail else None
+                anchor = slugify(fw) if card else ""
+                href = f"langs/{slug}-frameworks.html" + (f"#{anchor}" if anchor else "")
+                ftype = card["type"] if card else "生态 / 工具"
             search = " ".join([lang["name"], lang["cn"], fw, why, ftype, sc["title"]]).lower()
             cards.append(f"""<a class="stack-card" href="{href}" data-search="{e(search)}" data-scenario="{sc["key"]}">
         <span class="stack-top"><span class="stack-lang">{e(lang["name"])}</span><span class="stack-type">{e(ftype)}</span></span>
@@ -294,7 +299,7 @@ def render_matrix(detailed, short, scenarios, catalog_html, total, card_count, b
 <meta name="viewport" content="width=device-width, initial-scale=1">
 {ui.head_snippet()}
 <title>框架场景矩阵 — 语言 × 场景 × 技术栈</title>
-<meta name="description" content="按使用场景反查语言与框架：Web、移动、桌面、数据、AI、游戏、嵌入式、硬件与文档。">
+<meta name="description" content="按使用场景反查语言与框架：Web、移动、桌面、数据、AI、游戏、嵌入式、安全、硬件与文档。">
 <link rel="stylesheet" href="assets/style.css">
 </head>
 <body data-page="matrix">

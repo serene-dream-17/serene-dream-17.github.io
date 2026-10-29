@@ -1,0 +1,223 @@
+# -*- coding: utf-8 -*-
+"""安全专题：板块、工具与来源。
+
+所有工具条目均为策展信息；许可证与事实以官方文档为准。
+"""
+
+LAST_VERIFIED = "2026-10-29"
+
+TOPICS = [
+    {
+        "key": "appsec",
+        "title": "应用安全",
+        "en": "Application Security",
+        "desc": "应用安全的目标不是「没有漏洞」，而是把攻击面、信任边界与失败方式讲清楚。",
+        "points": [
+            "注入：SQL / 命令 / 模板注入的根因是「把数据当代码」，参数化查询与白名单是默认解。",
+            "XSS：输出编码要按上下文（HTML / 属性 / URL / JS）分别处理，CSP 是第二道防线。",
+            "CSRF / SSRF：校验来源与目标地址，服务端不要信任客户端传来的 URL。",
+            "反序列化：只反序列化可信结构，优先使用 JSON 等无执行语义的格式。",
+            "访问控制：每个请求都要在服务端重新判定权限，不能依赖前端隐藏。",
+        ],
+    },
+    {
+        "key": "coding",
+        "title": "安全编码规范",
+        "en": "Secure Coding",
+        "desc": "安全编码把「默认安全」写进团队习惯，而不是依赖上线前的最后一次扫描。",
+        "points": [
+            "输入校验：长度、类型、范围、编码四件事在边界处一次做完。",
+            "输出编码：模板引擎默认转义，手写拼接必须走统一的编码函数。",
+            "最小权限：数据库账号、容器权限、云 IAM 都按最小集合授予。",
+            "密钥管理：密钥不落代码库、不落日志，使用 KMS / Vault 并定期轮换。",
+            "错误处理：对外返回通用错误，对内保留可审计的上下文。",
+        ],
+    },
+    {
+        "key": "crypto",
+        "title": "密码学与密钥管理",
+        "en": "Cryptography",
+        "desc": "不要自己发明密码学；选成熟库、用 AEAD、把密钥生命周期当成一等公民。",
+        "points": [
+            "对称加密优先 AES-GCM / ChaCha20-Poly1305 等 AEAD 模式。",
+            "非对称加密用于密钥交换与签名，不用于加密大块数据。",
+            "哈希用于完整性，口令存储用 Argon2 / scrypt / bcrypt 等慢哈希。",
+            "密钥轮换、吊销与备份要和业务发布流程一起设计。",
+            "随机数必须来自操作系统 CSPRNG，禁止使用时间戳或语言默认随机。",
+        ],
+    },
+    {
+        "key": "identity",
+        "title": "身份与访问",
+        "en": "Identity & Access",
+        "desc": "认证回答「你是谁」，授权回答「你能做什么」；两者要有清晰的边界。",
+        "points": [
+            "OAuth2 负责授权委托，OIDC 在其上补充身份层；不要把 OAuth2 当成认证协议。",
+            "SAML 仍常见于企业 SSO；新系统优先 OIDC。",
+            "RBAC 适合角色稳定的系统，ABAC / 策略引擎适合细粒度与动态条件。",
+            "会话令牌要短生命周期、可吊销，并绑定设备或来源风险。",
+            "多因素认证对管理后台、支付与高危操作应默认开启。",
+        ],
+    },
+    {
+        "key": "supply-chain",
+        "title": "供应链与依赖安全",
+        "en": "Supply Chain",
+        "desc": "现代应用的代码大部分来自依赖；供应链安全的核心是「知道用了什么、能否追溯」。",
+        "points": [
+            "生成 SBOM，记录直接与传递依赖的版本、许可证与来源。",
+            "锁定依赖版本与校验和，构建过程可复现。",
+            "镜像与制品签名，部署前验证签名与来源。",
+            "持续扫描已知漏洞，但要以可达性与实际暴露面排序。",
+            "内部包仓库与代理缓存降低上游被投毒的风险。",
+        ],
+    },
+    {
+        "key": "testing",
+        "title": "安全测试工具链",
+        "en": "Security Testing",
+        "desc": "把安全测试左移：提交时静态检查，构建时依赖扫描，发布前动态扫描与渗透测试。",
+        "points": [
+            "SAST：在源码层找模式化缺陷，适合放进 CI 的快速关卡。",
+            "DAST：从外部请求面找运行时问题，覆盖配置与认证流程。",
+            "SCA：依赖与容器镜像的已知漏洞扫描。",
+            "模糊测试：对解析器、协议与文件格式特别有效。",
+            "渗透测试：验证真实攻击链，不能替代日常自动化。",
+        ],
+    },
+    {
+        "key": "audit",
+        "title": "审计与合规",
+        "en": "Audit & Compliance",
+        "desc": "审计日志要能回答「谁在什么时候对什么做了什么」，合规则是把这件事制度化。",
+        "points": [
+            "审计日志只追加、不可篡改，并与业务日志分开存储。",
+            "记录身份、时间、来源、对象、动作与结果，避免记录敏感明文。",
+            "等保 2.0 关注身份鉴别、访问控制、安全审计与入侵防范等控制项。",
+            "GDPR / 个人信息保护法要求最小收集、目的限定、可删除与可导出。",
+            "保留期限、访问审批与审计复核要有明确责任人。",
+        ],
+    },
+    {
+        "key": "by-language",
+        "title": "按语言的安全选型",
+        "en": "Security by Language",
+        "desc": "语言本身不保证安全；选型时看官方安全指南、成熟密码学库与生态工具链。",
+        "points": [],
+    },
+]
+
+TOOLS = [
+    {
+        "name": "OpenSSL", "slug": "openssl", "lang": "C", "lang_slug": "c",
+        "category": "密码学 / TLS", "license": "Apache-2.0",
+        "summary": "最广泛部署的 TLS 与密码学工具库，提供协议实现、证书与命令行工具。",
+        "fit": ["需要 TLS / 证书处理", "系统级密码学基础", "与 C/C++ 服务集成"],
+        "avoid": ["只想调用高层 API", "无法承担 C 接口的内存管理成本"],
+        "chain": ["C 调用", "libssl / libcrypto", "动态库", "服务或工具"],
+        "source": ("OpenSSL 官方文档", "https://docs.openssl.org/"),
+    },
+    {
+        "name": "libsodium", "slug": "libsodium", "lang": "C", "lang_slug": "c",
+        "category": "现代密码学", "license": "ISC",
+        "summary": "以易用与防误用为目标的现代密码学库，默认提供 AEAD、签名与口令哈希。",
+        "fit": ["应用层加密", "需要安全默认值", "跨语言绑定"],
+        "avoid": ["需要完整 TLS 栈", "必须兼容旧密码学接口"],
+        "chain": ["C / 绑定调用", "libsodium", "静态或动态库", "应用"],
+        "source": ("libsodium 文档", "https://doc.libsodium.org/"),
+    },
+    {
+        "name": "rustls", "slug": "rustls", "lang": "Rust", "lang_slug": "rust",
+        "category": "内存安全 TLS", "license": "Apache-2.0 / MIT",
+        "summary": "用 Rust 实现的 TLS 库，强调内存安全与现代协议默认值，广泛用于 Rust 服务端。",
+        "fit": ["Rust 服务端 TLS", "希望减少 C 依赖", "现代 TLS 配置"],
+        "avoid": ["需要极老协议兼容", "必须复用 OpenSSL 引擎"],
+        "chain": ["Rust 源码", "cargo build", "静态链接", "服务"],
+        "source": ("rustls 文档", "https://docs.rs/rustls/latest/rustls/"),
+    },
+    {
+        "name": "Spring Security", "slug": "spring-security", "lang": "Java", "lang_slug": "java",
+        "category": "认证授权", "license": "Apache-2.0",
+        "summary": "Spring 生态的认证与授权框架，覆盖过滤器链、方法级权限、OAuth2 与 OIDC 集成。",
+        "fit": ["Spring Boot 应用", "需要细粒度授权", "企业 SSO 集成"],
+        "avoid": ["非 JVM 技术栈", "只需要最简登录"],
+        "chain": ["Java 配置", "Spring Boot", "过滤器链", "受保护服务"],
+        "source": ("Spring Security 参考文档", "https://docs.spring.io/spring-security/reference/"),
+    },
+    {
+        "name": "Keycloak", "slug": "keycloak", "lang": "Java", "lang_slug": "java",
+        "category": "身份与访问管理", "license": "Apache-2.0",
+        "summary": "开源 IAM 平台，提供 OIDC / SAML、用户联邦、RBAC 与单点登录。",
+        "fit": ["多应用统一登录", "企业 SSO", "需要自托管 IAM"],
+        "avoid": ["只需要单应用登录", "没有运维 IAM 的预算"],
+        "chain": ["Realm 配置", "Keycloak 服务", "OIDC / SAML", "业务应用"],
+        "source": ("Keycloak 文档", "https://www.keycloak.org/documentation"),
+    },
+    {
+        "name": "OWASP ZAP", "slug": "owasp-zap", "lang": "Java", "lang_slug": "java",
+        "category": "DAST 动态扫描", "license": "Apache-2.0",
+        "summary": "OWASP 的动态应用安全测试工具，通过代理与主动扫描发现 Web 运行时问题。",
+        "fit": ["Web 应用发布前扫描", "CI 中的动态检查", "手工渗透辅助"],
+        "avoid": ["只做源码审计", "需要覆盖非 HTTP 协议"],
+        "chain": ["目标 URL", "ZAP 代理 / 扫描", "告警报告", "修复与复测"],
+        "source": ("OWASP ZAP 文档", "https://www.zaproxy.org/docs/"),
+    },
+    {
+        "name": "Semgrep", "slug": "semgrep", "lang": "Python", "lang_slug": "python",
+        "category": "SAST 静态审计", "license": "LGPL-2.1",
+        "summary": "基于模式匹配的多语言静态分析工具，规则可读、易接入 CI，适合团队自定义检查。",
+        "fit": ["多语言代码库", "自定义安全规则", "PR 级快速检查"],
+        "avoid": ["需要深度数据流证明", "完全依赖商业规则库"],
+        "chain": ["源码", "Semgrep 规则", "扫描结果", "CI 门禁"],
+        "source": ("Semgrep 文档", "https://semgrep.dev/docs/"),
+    },
+    {
+        "name": "Bandit", "slug": "bandit", "lang": "Python", "lang_slug": "python",
+        "category": "Python 安全检查", "license": "Apache-2.0",
+        "summary": "Python 官方生态常用的静态安全检查工具，覆盖常见危险调用与配置问题。",
+        "fit": ["Python 项目", "CI 快速接入", "教学与基线检查"],
+        "avoid": ["非 Python 代码", "需要跨语言统一规则"],
+        "chain": ["Python 源码", "bandit", "JSON / 文本报告", "CI"],
+        "source": ("Bandit 文档", "https://bandit.readthedocs.io/"),
+    },
+    {
+        "name": "Open Policy Agent", "slug": "opa", "lang": "Go", "lang_slug": "go",
+        "category": "策略即代码", "license": "Apache-2.0",
+        "summary": "通用策略引擎，用 Rego 描述访问控制、准入与合规规则，可跨服务统一执行。",
+        "fit": ["Kubernetes 准入控制", "微服务统一授权", "合规策略集中管理"],
+        "avoid": ["单应用简单权限", "团队不愿维护策略语言"],
+        "chain": ["Rego 策略", "OPA 服务 / 库", "决策结果", "业务或集群"],
+        "source": ("OPA 文档", "https://www.openpolicyagent.org/docs/latest/"),
+    },
+    {
+        "name": "Trivy", "slug": "trivy", "lang": "Go", "lang_slug": "go",
+        "category": "供应链 / 镜像扫描", "license": "Apache-2.0",
+        "summary": "覆盖容器镜像、文件系统、依赖与 IaC 的漏洞与配置扫描工具。",
+        "fit": ["容器镜像扫描", "CI 供应链检查", "IaC 配置审计"],
+        "avoid": ["运行时行为检测", "需要完整 ASM 平台"],
+        "chain": ["镜像 / 仓库", "Trivy 扫描", "SBOM / 报告", "门禁或工单"],
+        "source": ("Trivy 文档", "https://trivy.dev/latest/docs/"),
+    },
+    {
+        "name": "Nuclei", "slug": "nuclei", "lang": "Go", "lang_slug": "go",
+        "category": "漏洞扫描模板", "license": "MIT",
+        "summary": "基于 YAML 模板的漏洞与暴露面扫描器，模板可审计、可定制，适合授权测试。",
+        "fit": ["授权渗透测试", "资产暴露面检查", "自定义检测模板"],
+        "avoid": ["未授权扫描", "需要深度利用链编排"],
+        "chain": ["目标清单", "Nuclei 模板", "扫描结果", "复核与修复"],
+        "source": ("Nuclei 文档", "https://docs.projectdiscovery.io/tools/nuclei/overview"),
+    },
+    {
+        "name": "Helmet", "slug": "helmet", "lang": "JavaScript", "lang_slug": "javascript",
+        "category": "HTTP 安全头", "license": "MIT",
+        "summary": "Express / Node 中间件，集中设置 CSP、HSTS、X-Frame-Options 等安全响应头。",
+        "fit": ["Node Web 服务", "快速补齐安全响应头", "中小团队基线"],
+        "avoid": ["非 Node 服务", "需要完整的 WAF 能力"],
+        "chain": ["Express 应用", "Helmet 中间件", "响应头", "浏览器"],
+        "source": ("Helmet 文档", "https://helmetjs.github.io/"),
+    },
+]
+
+BY_LANG = {}
+for _tool in TOOLS:
+    BY_LANG.setdefault(_tool["lang"], []).append(_tool)

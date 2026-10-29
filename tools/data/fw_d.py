@@ -534,6 +534,25 @@ SCENARIOS.extend([
         "desc": "Solidity 合约库、开发环境与测试工具；与 Web 框架的选型逻辑不同，安全与审计优先。",
         "entries": _EXTRA["blockchain"],
     },
+    {
+        "key": "security", "title": "安全 / 网络安全", "range": "密码学 / 审计 / 攻防",
+        "desc": "从 TLS 与密码学库，到认证授权、静态与动态扫描、供应链审计；安全工具的选型逻辑与业务框架不同，优先看默认安全、维护状态与合规要求。条目链接到安全专题页。",
+        "page": "security.html",
+        "entries": [
+            ("c", "OpenSSL", "TLS 与密码学基础库、生态最广"),
+            ("c", "libsodium", "易用、默认安全的现代密码学库"),
+            ("rust", "rustls", "内存安全的 TLS 实现"),
+            ("java", "Spring Security", "Spring 应用的认证与授权基线"),
+            ("java", "Keycloak", "自托管 IAM、OIDC / SAML 单点登录"),
+            ("java", "OWASP ZAP", "Web 动态扫描与渗透辅助"),
+            ("python", "Semgrep", "多语言静态审计、规则可读"),
+            ("python", "Bandit", "Python 项目静态安全检查"),
+            ("go", "Open Policy Agent", "策略即代码、统一授权"),
+            ("go", "Trivy", "镜像、依赖与 IaC 漏洞扫描"),
+            ("go", "Nuclei", "模板化暴露面与漏洞扫描"),
+            ("javascript", "Helmet", "Node 服务安全响应头基线"),
+        ],
+    },
 ])
 
 # 短页升级后的补充条目
