@@ -55,6 +55,7 @@ def main():
     pages = [ROOT / "index.html", ROOT / "frameworks.html",
              ROOT / "sources.html", ROOT / "formats.html",
              ROOT / "lineage.html", ROOT / "compare.html", ROOT / "verified.html",
+             ROOT / "security.html", ROOT / "scenarios.html",
              ROOT / "404.html"]
     pages += sorted((ROOT / "langs").glob("*.html"))
 
@@ -71,6 +72,8 @@ def main():
             check("页面扫描（%d 页）" % len(pages), lambda: sweep(page, pages, errors))
         check("首页搜索与 URL", lambda: index_test(page))
         check("矩阵筛选与 URL", lambda: matrix_test(page))
+        check("开发场景筛选与 URL", lambda: scenarios_test(page))
+        check("安全工具筛选与 URL", lambda: security_test(page))
         check("来源搜索", lambda: sources_test(page))
         check("格式搜索", lambda: formats_test(page))
         check("对比器预设与恢复", lambda: compare_test(page))
@@ -156,6 +159,46 @@ def matrix_test(page):
     assert_("q=rust" in page.url and "s=game" in page.url, "矩阵 URL 状态缺失")
     shown = page.locator(".stack-card:not([hidden])").count()
     assert_(shown >= 1, "矩阵未显示结果")
+    page.fill("#matrixSearch", "")
+    page.select_option("#matrixScenario", "security")
+    page.wait_for_timeout(120)
+    sec_cards = page.locator('#security .stack-card:not([hidden])').count()
+    assert_(sec_cards >= 10, f"安全场景条目不足 {sec_cards}")
+    href = page.get_attribute('#security .stack-card', "href")
+    assert_(href.startswith("security.html#"), f"安全场景链接异常 {href}")
+
+
+def scenarios_test(page):
+    page.goto((ROOT / "scenarios.html").as_uri())
+    page.wait_for_timeout(150)
+    assert_(page.locator(".dev-section").count() == 12, "开发场景不是 12 个")
+    assert_(page.locator(".dev-card").count() >= 100, "开发场景推荐组不足")
+    page.fill("#devSearch", "微服务")
+    page.select_option("#devScenario", "backend")
+    page.wait_for_timeout(150)
+    assert_("q=" in page.url and "s=backend" in page.url, "开发场景 URL 状态缺失")
+    assert_(page.locator(".dev-card:not([hidden])").count() >= 1, "开发场景未显示结果")
+    page.fill("#devSearch", "")
+    page.wait_for_timeout(120)
+    page.select_option("#devArch", "event-driven")
+    page.wait_for_timeout(150)
+    assert_("a=event-driven" in page.url, "架构筛选未写入 URL")
+    assert_(page.locator(".dev-card:not([hidden])").count() >= 1, "架构筛选结果为空")
+
+
+def security_test(page):
+    page.goto((ROOT / "security.html").as_uri())
+    page.wait_for_timeout(150)
+    assert_(page.locator(".sec-tool").count() == 12, "安全工具不是 12 个")
+    page.fill("#secSearch", "tls")
+    page.wait_for_timeout(150)
+    assert_("q=tls" in page.url, "安全搜索未写入 URL")
+    assert_(page.locator(".sec-tool:not([hidden])").count() >= 1, "安全搜索无结果")
+    page.fill("#secSearch", "")
+    page.select_option("#secCategory", "供应链 / 镜像扫描")
+    page.wait_for_timeout(150)
+    assert_("c=" in page.url, "安全类别未写入 URL")
+    assert_(page.locator(".sec-tool:not([hidden])").count() == 1, "安全类别过滤异常")
 
 
 def sources_test(page):
