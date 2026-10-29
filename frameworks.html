@@ -13,7 +13,7 @@ try {
 } catch (e) {}
 </script>
 <title>框架场景矩阵 — 语言 × 场景 × 技术栈</title>
-<meta name="description" content="按使用场景反查语言与框架：Web、移动、桌面、数据、AI、游戏、嵌入式、硬件与文档。">
+<meta name="description" content="按使用场景反查语言与框架：Web、移动、桌面、数据、AI、游戏、嵌入式、安全、硬件与文档。">
 <link rel="stylesheet" href="assets/style.css">
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
 <meta name="theme-color" content="#f3ede1">
@@ -21,11 +21,11 @@ try {
 <meta property="og:locale" content="zh_CN">
 <meta property="og:site_name" content="语言的产物链">
 <meta property="og:title" content="框架场景矩阵 — 语言 × 场景 × 技术栈">
-<meta property="og:description" content="按使用场景反查语言与框架：Web、移动、桌面、数据、AI、游戏、嵌入式、硬件与文档。">
+<meta property="og:description" content="按使用场景反查语言与框架：Web、移动、桌面、数据、AI、游戏、嵌入式、安全、硬件与文档。">
 <meta property="og:image" content="assets/og.png">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="框架场景矩阵 — 语言 × 场景 × 技术栈">
-<meta name="twitter:description" content="按使用场景反查语言与框架：Web、移动、桌面、数据、AI、游戏、嵌入式、硬件与文档。">
+<meta name="twitter:description" content="按使用场景反查语言与框架：Web、移动、桌面、数据、AI、游戏、嵌入式、安全、硬件与文档。">
 <meta name="twitter:image" content="assets/og.png">
 </head>
 <body data-page="matrix">
@@ -90,6 +90,8 @@ try {
     第 1–18 批 · 1950s–2020s<br>
     <a href="index.html">← 馆藏总览</a><br>
     <a href="frameworks.html">框架场景矩阵 →</a><br>
+    <a href="scenarios.html">开发场景 →</a><br>
+    <a href="security.html">安全专题 →</a><br>
     <a href="sources.html">来源索引 →</a><br>
     <a href="formats.html">产物格式索引 →</a><br>
     <a href="lineage.html">语言谱系图 →</a><br>
@@ -106,8 +108,8 @@ try {
       <div class="hero__meta">
         <div class="stat"><span class="stat__num">78</span><span class="stat__label">个条目</span></div>
         <div class="stat"><span class="stat__num">142</span><span class="stat__label">张决策卡</span></div>
-        <div class="stat"><span class="stat__num">13</span><span class="stat__label">个场景</span></div>
-        <div class="stat"><span class="stat__num">154</span><span class="stat__label">组矩阵推荐</span></div>
+        <div class="stat"><span class="stat__num">14</span><span class="stat__label">个场景</span></div>
+        <div class="stat"><span class="stat__num">166</span><span class="stat__label">组矩阵推荐</span></div>
       </div>
     </header>
 
@@ -118,7 +120,7 @@ try {
       </label>
       <label class="matrix-select" for="matrixScenario">
         <span>场景</span>
-        <select id="matrixScenario"><option value="all">全部场景</option><option value="web-backend">Web 后端</option><option value="web-frontend">Web 前端</option><option value="mobile">移动</option><option value="desktop">桌面</option><option value="data-ai">数据 / AI</option><option value="game">游戏</option><option value="embedded">嵌入式 / 系统</option><option value="enterprise">企业 / 分布式</option><option value="hardware-gpu">硬件 / GPU</option><option value="science">科学计算</option><option value="docs-config">文档 / 配置</option><option value="tools">工具与生态</option><option value="blockchain">区块链 / 合约</option></select>
+        <select id="matrixScenario"><option value="all">全部场景</option><option value="web-backend">Web 后端</option><option value="web-frontend">Web 前端</option><option value="mobile">移动</option><option value="desktop">桌面</option><option value="data-ai">数据 / AI</option><option value="game">游戏</option><option value="embedded">嵌入式 / 系统</option><option value="enterprise">企业 / 分布式</option><option value="hardware-gpu">硬件 / GPU</option><option value="science">科学计算</option><option value="docs-config">文档 / 配置</option><option value="tools">工具与生态</option><option value="blockchain">区块链 / 合约</option><option value="security">安全 / 网络安全</option></select>
       </label>
       <span class="era-head__count" id="matrixCount">142 组</span>
     </div>
@@ -855,6 +857,63 @@ try {
         <span class="stack-top"><span class="stack-lang">Solidity</span><span class="stack-type">测试 / 部署</span></span>
         <span class="stack-fw">Foundry</span>
         <span class="stack-why">Solidity 原生测试与部署</span>
+      </a></div>
+    </section><section class="matrix-section" id="security" data-scenario="security">
+      <div class="era-head">
+        <span class="era-head__num">14</span>
+        <h2 class="era-head__title">安全 / 网络安全</h2>
+        <span class="era-head__range">密码学 / 审计 / 攻防</span>
+        <span class="era-head__count">12 组</span>
+      </div>
+      <p class="matrix-desc">从 TLS 与密码学库，到认证授权、静态与动态扫描、供应链审计；安全工具的选型逻辑与业务框架不同，优先看默认安全、维护状态与合规要求。条目链接到安全专题页。</p>
+      <div class="stack-grid"><a class="stack-card" href="security.html#openssl" data-search="c c 语言 openssl tls 与密码学基础库、生态最广 密码学 / tls 安全 / 网络安全" data-scenario="security">
+        <span class="stack-top"><span class="stack-lang">C</span><span class="stack-type">密码学 / TLS</span></span>
+        <span class="stack-fw">OpenSSL</span>
+        <span class="stack-why">TLS 与密码学基础库、生态最广</span>
+      </a><a class="stack-card" href="security.html#libsodium" data-search="c c 语言 libsodium 易用、默认安全的现代密码学库 现代密码学 安全 / 网络安全" data-scenario="security">
+        <span class="stack-top"><span class="stack-lang">C</span><span class="stack-type">现代密码学</span></span>
+        <span class="stack-fw">libsodium</span>
+        <span class="stack-why">易用、默认安全的现代密码学库</span>
+      </a><a class="stack-card" href="security.html#rustls" data-search="rust rust rustls 内存安全的 tls 实现 内存安全 tls 安全 / 网络安全" data-scenario="security">
+        <span class="stack-top"><span class="stack-lang">Rust</span><span class="stack-type">内存安全 TLS</span></span>
+        <span class="stack-fw">rustls</span>
+        <span class="stack-why">内存安全的 TLS 实现</span>
+      </a><a class="stack-card" href="security.html#spring-security" data-search="java java spring security spring 应用的认证与授权基线 认证授权 安全 / 网络安全" data-scenario="security">
+        <span class="stack-top"><span class="stack-lang">Java</span><span class="stack-type">认证授权</span></span>
+        <span class="stack-fw">Spring Security</span>
+        <span class="stack-why">Spring 应用的认证与授权基线</span>
+      </a><a class="stack-card" href="security.html#keycloak" data-search="java java keycloak 自托管 iam、oidc / saml 单点登录 身份与访问管理 安全 / 网络安全" data-scenario="security">
+        <span class="stack-top"><span class="stack-lang">Java</span><span class="stack-type">身份与访问管理</span></span>
+        <span class="stack-fw">Keycloak</span>
+        <span class="stack-why">自托管 IAM、OIDC / SAML 单点登录</span>
+      </a><a class="stack-card" href="security.html#owasp-zap" data-search="java java owasp zap web 动态扫描与渗透辅助 dast 动态扫描 安全 / 网络安全" data-scenario="security">
+        <span class="stack-top"><span class="stack-lang">Java</span><span class="stack-type">DAST 动态扫描</span></span>
+        <span class="stack-fw">OWASP ZAP</span>
+        <span class="stack-why">Web 动态扫描与渗透辅助</span>
+      </a><a class="stack-card" href="security.html#semgrep" data-search="python python semgrep 多语言静态审计、规则可读 sast 静态审计 安全 / 网络安全" data-scenario="security">
+        <span class="stack-top"><span class="stack-lang">Python</span><span class="stack-type">SAST 静态审计</span></span>
+        <span class="stack-fw">Semgrep</span>
+        <span class="stack-why">多语言静态审计、规则可读</span>
+      </a><a class="stack-card" href="security.html#bandit" data-search="python python bandit python 项目静态安全检查 python 安全检查 安全 / 网络安全" data-scenario="security">
+        <span class="stack-top"><span class="stack-lang">Python</span><span class="stack-type">Python 安全检查</span></span>
+        <span class="stack-fw">Bandit</span>
+        <span class="stack-why">Python 项目静态安全检查</span>
+      </a><a class="stack-card" href="security.html#opa" data-search="go go open policy agent 策略即代码、统一授权 策略即代码 安全 / 网络安全" data-scenario="security">
+        <span class="stack-top"><span class="stack-lang">Go</span><span class="stack-type">策略即代码</span></span>
+        <span class="stack-fw">Open Policy Agent</span>
+        <span class="stack-why">策略即代码、统一授权</span>
+      </a><a class="stack-card" href="security.html#trivy" data-search="go go trivy 镜像、依赖与 iac 漏洞扫描 供应链 / 镜像扫描 安全 / 网络安全" data-scenario="security">
+        <span class="stack-top"><span class="stack-lang">Go</span><span class="stack-type">供应链 / 镜像扫描</span></span>
+        <span class="stack-fw">Trivy</span>
+        <span class="stack-why">镜像、依赖与 IaC 漏洞扫描</span>
+      </a><a class="stack-card" href="security.html#nuclei" data-search="go go nuclei 模板化暴露面与漏洞扫描 漏洞扫描模板 安全 / 网络安全" data-scenario="security">
+        <span class="stack-top"><span class="stack-lang">Go</span><span class="stack-type">漏洞扫描模板</span></span>
+        <span class="stack-fw">Nuclei</span>
+        <span class="stack-why">模板化暴露面与漏洞扫描</span>
+      </a><a class="stack-card" href="security.html#helmet" data-search="javascript javascript helmet node 服务安全响应头基线 http 安全头 安全 / 网络安全" data-scenario="security">
+        <span class="stack-top"><span class="stack-lang">JavaScript</span><span class="stack-type">HTTP 安全头</span></span>
+        <span class="stack-fw">Helmet</span>
+        <span class="stack-why">Node 服务安全响应头基线</span>
       </a></div>
     </section></div>
     <p class="index-empty" id="matrixEmpty">没有匹配的框架。试试「Web」「Rust」「游戏」，或把场景切回全部。</p>

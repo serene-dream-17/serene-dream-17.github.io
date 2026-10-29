@@ -3,7 +3,9 @@ window.ARCHIVE = {
   "open": 78,
   "batch": 18,
   "frameworks": 142,
-  "scenarios": 13,
+  "scenarios": 14,
+  "dev_scenarios": 12,
+  "security_tools": 12,
   "languages": [
     {
       "plate": 1,
