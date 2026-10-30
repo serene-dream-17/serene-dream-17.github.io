@@ -20,18 +20,17 @@ from registry import (  # noqa: E402
 )
 from data import era_1950, era_1970, era_1980, era_1990, era_2000, era_2010, era_2020, era_markup  # noqa: E402
 from data import fw_a, fw_b, fw_c, fw_d, fw_e, fw_meta  # noqa: E402
-from data import security, dev_scenarios  # noqa: E402
+from data import dev_scenarios, stacks  # noqa: E402
 import fw_site  # noqa: E402
 import ui  # noqa: E402
 import depth_site  # noqa: E402
 import sources_site  # noqa: E402
 import src_index  # noqa: E402
 import fmt_index  # noqa: E402
-import lineage  # noqa: E402
-import compare_index  # noqa: E402
 import verified_site  # noqa: E402
-import security_site  # noqa: E402
 import scenario_site  # noqa: E402
+import stack_site  # noqa: E402
+import frameworks_index  # noqa: E402
 from data import verified  # noqa: E402
 import formats  # noqa: E402
 from data import sources  # noqa: E402
@@ -53,17 +52,22 @@ for _mod in (fw_a, fw_b, fw_c, fw_d, fw_e):
 SHORT = fw_d.SHORT
 for _upgraded in list(FRAMEWORKS):
     SHORT.pop(_upgraded, None)
-SCENARIOS = fw_d.SCENARIOS
 FRAMEWORK_CARDS = sum(len(d["cards"]) for d in FRAMEWORKS.values())
-fw_site.ALL_LANGS = LANGUAGES
 scenario_site.ALL_LANGS = LANGUAGES
+stack_site.ALL_LANGS = LANGUAGES
+stack_site.FRAMEWORKS = FRAMEWORKS
+
+# 三级目录
+LANG_DIR = "languages"
+FW_DIR = "frameworks"
+STACK_DIR = "stacks"
 
 DEEP = {}
 for _mod in (depth_1, depth_2, depth_3):
     DEEP.update(_mod.DEEP)
 
-BATCH_DONE = 18
-BATCH_LABEL = "第 1–18 批"
+BATCH_DONE = 23
+BATCH_LABEL = "第 1–23 批"
 BATCH_RANGE = "1950s–2020s"
 TOTAL = len(LANGUAGES)
 OPEN = len(BUILT)
@@ -282,7 +286,9 @@ SEARCH_ICON = (
 )
 
 
-def render_catalog(active_slug, root):
+def render_catalog(active_slug, root, lang_index=None):
+    """侧栏目录。lang_index 用于语言目录自身页面（同目录跳转）。"""
+    lang_href = lang_index or f"{root}{LANG_DIR}/index.html"
     groups = []
     for era in ERAS:
         items = [l for l in LANGUAGES if l["era"] == era["key"]]
@@ -300,7 +306,7 @@ def render_catalog(active_slug, root):
             if lang["built"]:
                 aria = ' aria-current="page"' if active else ""
                 lis.append(
-                    f'<li><a class="catalog__link {status}" href="{root}langs/'
+                    f'<li><a class="catalog__link {status}" href="{root}{LANG_DIR}/'
                     f'{lang["slug"]}.html" {common}{aria}>'
                     f'{num}<span class="catalog__name">{e(lang["name"])}</span>'
                     f'<span class="catalog__year">{lang["year"]}</span></a></li>'
@@ -337,6 +343,11 @@ def render_catalog(active_slug, root):
     <h2 class="catalog__title">语言产物链<span>Languages &amp; Their Artifacts</span></h2>
     <p class="catalog__meta"><b>{OPEN}</b> / {TOTAL} 已开放 · 第 {BATCH_DONE} 批</p>
   </div>
+  <nav class="catalog__levels" aria-label="层级导航">
+    <a href="{lang_href}">编程语言</a>
+    <a href="{root}{FW_DIR}/index.html">框架</a>
+    <a href="{root}{STACK_DIR}/index.html">技术栈</a>
+  </nav>
   <div class="catalog__tools">
     <label class="search" for="catalogSearch">
       {SEARCH_ICON}
@@ -352,14 +363,13 @@ def render_catalog(active_slug, root):
   </div>
   <div class="catalog__foot">
     {BATCH_LABEL} · {BATCH_RANGE}<br>
-    <a href="{root}index.html">← 馆藏总览</a><br>
-    <a href="{root}frameworks.html">框架场景矩阵 →</a><br>
+    <a href="{root}index.html">← 首页</a><br>
+    <a href="{lang_href}">编程语言 →</a><br>
+    <a href="{root}{FW_DIR}/index.html">框架 →</a><br>
+    <a href="{root}{STACK_DIR}/index.html">技术栈 →</a><br>
     <a href="{root}scenarios.html">开发场景 →</a><br>
-    <a href="{root}security.html">安全专题 →</a><br>
+    <a href="{root}{LANG_DIR}/formats.html">产物索引 →</a><br>
     <a href="{root}sources.html">来源索引 →</a><br>
-    <a href="{root}formats.html">产物格式索引 →</a><br>
-    <a href="{root}lineage.html">语言谱系图 →</a><br>
-    <a href="{root}compare.html">对比器 →</a><br>
     <a href="{root}verified.html">实测记录 →</a>
   </div>
 </aside>"""
@@ -370,15 +380,15 @@ def render_page_nav(lang, prev_lang, next_lang):
         prev_href = f"{prev_lang['slug']}.html"
         prev_text = f'<a class="plate-nav__link" href="{prev_href}">← <span>{e(prev_lang["name"])}</span></a>'
     else:
-        prev_href = "../index.html"
-        prev_text = f'<a class="plate-nav__link" href="{prev_href}">← <span>馆藏目录</span></a>'
+        prev_href = "index.html"
+        prev_text = f'<a class="plate-nav__link" href="{prev_href}">← <span>语言总览</span></a>'
 
     if next_lang:
         next_href = f"{next_lang['slug']}.html"
         next_text = f'<a class="plate-nav__link" href="{next_href}"><span>{e(next_lang["name"])}</span> →</a>'
     else:
-        next_href = "../index.html"
-        next_text = f'<a class="plate-nav__link" href="{next_href}"><span>馆藏目录</span> →</a>'
+        next_href = "index.html"
+        next_text = f'<a class="plate-nav__link" href="{next_href}"><span>语言总览</span> →</a>'
 
     return (
         f'<nav class="plate-nav" aria-label="翻页">'
@@ -427,7 +437,7 @@ def render_dossier(lang, data):
       <div class="meta-item"><span class="meta-label">类型</span><span class="meta-value">{e(lang["family_label"])}</span></div>
     </div>
     <div class="tags">{tag_html}{level_tag}</div>
-    <a class="dossier__fwlink" href="{lang["slug"]}-frameworks.html">框架与场景 →</a>
+    <a class="dossier__fwlink" href="../frameworks/{lang["slug"]}.html">框架与场景 →</a>
     <div class="lineage">
       <div><div class="lineage__label">源自 / From</div><p class="lineage__list">{froms}</p></div>
       <div><div class="lineage__label">影响 / To</div><p class="lineage__list">{tos}</p></div>
@@ -589,9 +599,9 @@ def render_next_card(lang, next_lang):
         label = "下一门 / Next"
         title = f"{next_lang['name']} · {next_lang['year']}"
     else:
-        href = "../index.html"
-        label = "馆藏 / Index"
-        title = "返回总目录"
+        href = "index.html"
+        label = "语言总览 / Index"
+        title = "返回语言总览"
     return f"""<a class="next-card" href="{href}">
     <span><span class="next-card__label">{label}</span>
       <span class="next-card__title">{e(title)}</span></span>
@@ -602,6 +612,44 @@ def render_next_card(lang, next_lang):
 # ------------------------------------------------------------------
 # 语言页
 # ------------------------------------------------------------------
+def stacks_for(slug, name=None):
+    """引用某语言（或某框架卡）的技术栈。"""
+    hits = []
+    for st in stacks.STACKS:
+        for layer in st["layers"]:
+            for item in layer["items"]:
+                if not isinstance(item, tuple) or item[0] != slug:
+                    continue
+                if name is None or item[1] == name:
+                    hits.append(st)
+                    break
+            else:
+                continue
+            break
+    return hits
+
+
+def render_stack_links(items, root="../"):
+    if not items:
+        return ""
+    cards = "".join(
+        f'<a class="stack-card" href="{root}{STACK_DIR}/{e(st["key"])}.html">'
+        f'<span class="stack-top"><span class="stack-lang">{e(next(d["title"] for d in stacks.DOMAINS if d["key"] == st["domain"]))}</span>'
+        f'<span class="stack-type">技术栈</span></span>'
+        f'<span class="stack-fw">{e(st["title"])}</span>'
+        f'<span class="stack-why">{e(st["summary"])}</span></a>'
+        for st in items
+    )
+    return f"""<section class="block reveal" id="stacks">
+    <div class="block__head">
+      <span class="block__num">07</span>
+      <h2 class="block__title">用到它的技术栈<em>Stacks</em></h2>
+      <span class="block__rule"></span>
+    </div>
+    <div class="stack-grid">{cards}</div>
+  </section>"""
+
+
 def render_language_page(lang):
     slug = lang["slug"]
     data = DATA[slug]
@@ -622,14 +670,14 @@ def render_language_page(lang):
 <meta name="description" content="{e(lang["name"])}（{lang["year"]}）的产物链档案：从源码、中间表示到最终产物，逐阶段给出文件内容与格式说明。">
 <link rel="stylesheet" href="../assets/style.css">
 </head>
-<body data-page="lang" data-prev="{prev_href}" data-next="{next_href}">
+<body data-page="lang" data-root="../" data-prev="{prev_href}" data-next="{next_href}">
 <a class="skip-link" href="#main">跳到正文</a>
 <div class="progress" aria-hidden="true"><span></span></div>
 <button class="menu-toggle" type="button" aria-label="打开目录" aria-expanded="false" aria-controls="catalog"><span></span></button>
 <div class="scrim"></div>
 {ui.font_ui()}
 <button class="cmdk-btn" type="button" data-cmdk aria-label="全站搜索">搜索全站 <kbd>⌘K</kbd></button>
-{render_catalog(slug, "../")}
+{render_catalog(slug, "../", "index.html")}
 <main class="page" id="main">
   <div class="page__inner">
     {render_page_nav(lang, prev_lang, next_lang)}
@@ -640,6 +688,7 @@ def render_language_page(lang):
     {render_hello(data, slug)}
     {deep_html}
     {fw_teaser}
+    {render_stack_links(stacks_for(slug))}
     {sources_site.lang_sources(slug)}
     {render_next_card(lang, next_lang)}
     <footer class="pagefoot">
@@ -661,7 +710,76 @@ def render_language_page(lang):
 # ------------------------------------------------------------------
 # 首页
 # ------------------------------------------------------------------
-def render_index():
+PIPELINE = [
+    {
+        "num": "01", "title": "源码", "en": "Source",
+        "desc": "源文件、编码与入口约定。语言在这里只决定了语法与文件后缀，真正的产物链从下一步开始。",
+        "formats": [],
+        "langs": ["c", "python", "javascript", "java", "rust"],
+    },
+    {
+        "num": "02", "title": "前端分析", "en": "Parse & Check",
+        "desc": "词法、语法与语义分析生成抽象语法树；类型检查与宏展开通常也在这一层完成。",
+        "formats": [],
+        "langs": ["rust", "typescript", "haskell", "swift"],
+    },
+    {
+        "num": "03", "title": "中间表示", "en": "Intermediate",
+        "desc": "IR 是优化与跨平台的分界线：LLVM IR、CIL、SIL / MIR、字节码与 WASM 都在这一层。",
+        "formats": ["llvm", "cil", "mir", "class", "pyc", "beam", "wasm"],
+        "langs": ["rust", "csharp", "swift", "java", "python", "elixir"],
+    },
+    {
+        "num": "04", "title": "目标文件", "en": "Object",
+        "desc": "面向具体平台的目标文件：ELF、PE / COFF、.o、a.out，以及 Android 的 DEX。",
+        "formats": ["elf", "exe-pe", "aout", "dex"],
+        "langs": ["c", "cpp", "zig", "go", "kotlin"],
+    },
+    {
+        "num": "05", "title": "链接与打包", "en": "Link & Package",
+        "desc": "链接器与打包器把目标文件组合成可发布单位：可执行、静态库、JAR、APK / IPA、镜像。",
+        "formats": ["static", "jar", "apk", "ipa", "image", "langpkg"],
+        "langs": ["go", "java", "dart", "swift", "smalltalk"],
+    },
+    {
+        "num": "06", "title": "运行时与加载", "en": "Runtime",
+        "desc": "加载器、虚拟机与运行时决定产物如何被执行：JVM、CLR、BEAM、CPython、WASM runtime。",
+        "formats": ["wasm"],
+        "langs": ["java", "csharp", "erlang", "python", "rust"],
+    },
+]
+
+
+def _pipeline_html():
+    lang_by_slug = {l["slug"]: l for l in LANGUAGES}
+    stages = []
+    for stage in PIPELINE:
+        fmt = " · ".join(
+            f'<a href="formats.html#{key}">{key}</a>' for key in stage["formats"]
+        ) or "—"
+        langs = " · ".join(
+            f'<a href="{slug}.html">{e(lang_by_slug[slug]["name"])}</a>'
+            for slug in stage["langs"] if slug in lang_by_slug
+        )
+        stages.append(f"""<article class="pipe-stage">
+        <div class="pipe-stage__head"><span class="pipe-stage__num">{stage["num"]}</span>
+          <h3 class="pipe-stage__title">{e(stage["title"])}<em>{e(stage["en"])}</em></h3></div>
+        <p class="pipe-stage__desc">{e(stage["desc"])}</p>
+        <p class="pipe-stage__links"><b>产物格式</b> {fmt}</p>
+        <p class="pipe-stage__links"><b>代表语言</b> {langs}</p>
+      </article>""")
+    return f"""<section class="block reveal" id="pipeline">
+      <div class="block__head">
+        <span class="block__num">00</span>
+        <h2 class="block__title">编译管线与产物<em>Pipeline</em></h2>
+        <span class="block__rule"></span>
+      </div>
+      <p class="prose">同一段代码在不同语言里会走出不同的路径：有的停在字节码，有的直接生成机器码。下面六段是共同的骨架，每段给出典型产物格式与代表语言。</p>
+      <div class="pipeline">{"".join(stages)}</div>
+    </section>"""
+
+
+def render_language_index():
     by_era = {era["key"]: [] for era in ERAS}
     for lang in LANGUAGES:
         by_era[lang["era"]].append(lang)
@@ -675,7 +793,7 @@ def render_index():
             search = search_blob(lang)
             if lang["built"]:
                 cards.append(
-                    f'<a class="lang-card is-open" href="langs/{lang["slug"]}.html" '
+                    f'<a class="lang-card is-open" href="{lang["slug"]}.html" '
                     f'data-search="{search}" data-family="{lang["family"]}">'
                     f'<span class="lang-card__top"><span class="lang-card__name">'
                     f'{e(lang["name"])}</span><span class="lang-card__year">{lang["year"]}</span></span>'
@@ -732,32 +850,39 @@ def render_index():
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 {ui.head_snippet()}
-<title>语言产物链 — {TOTAL} 个条目 · {FRAMEWORK_CARDS} 个框架</title>
-<meta name="description" content="从穿孔卡到 ELF，从 P-code 到 EVM 字节码：{TOTAL} 个语言与标记条目的产物链、文件格式、工具，以及 {FRAMEWORK_CARDS} 个框架的选型地图。">
-<link rel="stylesheet" href="assets/style.css">
+<title>编程语言 — 编译管线与产物链 · {TOTAL} 个条目</title>
+<meta name="description" content="从源码到中间表示、目标文件与运行时：{TOTAL} 个语言与标记条目的编译产物链，以及 {FRAMEWORK_CARDS} 个框架的入口。">
+<link rel="stylesheet" href="../assets/style.css">
 </head>
-<body data-page="index">
+<body data-page="index" data-root="../">
 <a class="skip-link" href="#main">跳到正文</a>
 <div class="progress" aria-hidden="true"><span></span></div>
 <button class="menu-toggle" type="button" aria-label="打开目录" aria-expanded="false" aria-controls="catalog"><span></span></button>
 <div class="scrim"></div>
 {ui.font_ui()}
 <button class="cmdk-btn" type="button" data-cmdk aria-label="全站搜索">搜索全站 <kbd>⌘K</kbd></button>
-{render_catalog(None, "")}
+{render_catalog(None, "../", "index.html")}
 <main class="page" id="main">
   <div class="page__inner">
+    <nav class="plate-nav" aria-label="层级导航">
+      <a class="plate-nav__link" href="../index.html">← <span>首页</span></a>
+      <span class="plate-nav__counter">LANGUAGES · {TOTAL}</span>
+      <a class="plate-nav__link" href="../frameworks/index.html"><span>框架总览</span> →</a>
+    </nav>
     <header class="hero">
-      <p class="hero__kicker">An Archive of Programming Languages · 1950s — 2020s</p>
-      <h1 class="hero__title">语言的<br><em>产物链</em></h1>
+      <p class="hero__kicker">Programming Languages · Compilation Pipeline</p>
+      <h1 class="hero__title">语言与<br><em>产物链</em></h1>
       <p class="hero__sub">从一张 80 列穿孔卡，到 ELF 的一个段；从 P-code 到 EVM 字节码。七十八门语言与标记，每一种都有一条可以逐阶段打开的产物链——源码、中间表示、目标文件、最终产物，以及它们身边的工具。</p>
       <div class="hero__meta">
         <div class="stat"><span class="stat__num">{TOTAL}</span><span class="stat__label">个条目</span></div>
         <div class="stat"><span class="stat__num">{FRAMEWORK_CARDS}</span><span class="stat__label">张决策卡</span></div>
-        <div class="stat"><span class="stat__num">{len(SCENARIOS)}</span><span class="stat__label">个场景</span></div>
+        <div class="stat"><span class="stat__num">{len(stacks.STACKS)}</span><span class="stat__label">个技术栈</span></div>
         <div class="stat"><span class="stat__num">{OPEN}</span><span class="stat__label">已开放</span></div>
         <div class="stat"><span class="stat__num">{BATCH_DONE}</span><span class="stat__label">当前批次</span></div>
       </div>
     </header>
+
+    {_pipeline_html()}
 
     <div class="index-tools">
       <label class="index-search" for="indexSearch">
@@ -765,10 +890,9 @@ def render_index():
         <input id="indexSearch" type="search" placeholder="搜索：语言名、年代、关键词（按 / 聚焦）" autocomplete="off" spellcheck="false" aria-label="搜索语言">
       </label>
       <div class="index-filters" role="group" aria-label="按实现方式筛选">{filter_html}</div>
-      <a class="matrix-link" href="frameworks.html">框架场景矩阵 →</a>
-      <a class="matrix-link" href="scenarios.html">开发场景 →</a>
-      <a class="matrix-link matrix-link--ghost" href="security.html">安全专题</a>
-      <a class="matrix-link matrix-link--ghost" href="sources.html">来源索引</a>
+      <a class="matrix-link" href="../frameworks/index.html">框架总览 →</a>
+      <a class="matrix-link" href="../stacks/index.html">技术栈 →</a>
+      <a class="matrix-link matrix-link--ghost" href="../scenarios.html">开发场景</a>
       <span class="era-head__count" id="indexCount">{OPEN} / {TOTAL} 门</span>
     </div>
 
@@ -789,6 +913,86 @@ def render_index():
     <footer class="pagefoot">
       <p class="stamp">全站样例为依据公开规范与文档重构的示意内容；具体地址、偏移与字节数为示例值。全站 {OPEN} 个条目已全部开放。</p>
       <p>语言产物链档案 · {BATCH_LABEL}</p>
+    </footer>
+  </div>
+</main>
+<script src="../assets/font.js"></script>
+<script src="../assets/data.js"></script>
+<script src="../assets/search-index.js"></script>
+<script src="../assets/app.js"></script>
+<script src="../assets/search.js"></script>
+</body>
+</html>
+"""
+
+
+def render_home():
+    cards = [
+        ("LANGUAGES", "编程语言", f"{TOTAL} 个条目", "编译管线、产物链与年代谱系。", f"{LANG_DIR}/index.html"),
+        ("FRAMEWORKS", "框架", f"{FRAMEWORK_CARDS} 张决策卡", "按语言与类型浏览，含适用与最小产物链。", f"{FW_DIR}/index.html"),
+        ("STACKS", "技术栈", f"{len(stacks.STACKS)} 个组合", "语言 + 框架 + 数据与部署的落地搭配。", f"{STACK_DIR}/index.html"),
+    ]
+    card_html = "".join(
+        f'<a class="home-door" href="{href}"><span class="home-door__kicker">{kicker}</span>'
+        f'<span class="home-door__title">{title}</span>'
+        f'<span class="home-door__num">{num}</span>'
+        f'<span class="home-door__desc">{desc}</span>'
+        f'<span class="home-door__arrow" aria-hidden="true">→</span></a>'
+        for kicker, title, num, desc, href in cards
+    )
+    topics = [
+        ("SCENARIOS", "开发场景", f"{len(dev_scenarios.SCENARIOS)} 个场景 · {sum(len(s['architectures']) for s in dev_scenarios.SCENARIOS)} 个架构分组", "scenarios.html"),
+        ("FORMATS", "产物索引", "42 种格式反查 + 320 个阶段产物总表", f"{LANG_DIR}/formats.html"),
+        ("VERIFIED", "实测记录", f"{len(verified.VERIFIED)} 门语言的本机复现", "verified.html"),
+        ("SOURCES", "来源索引", "220 条官方来源", "sources.html"),
+    ]
+    topic_html = "".join(
+        f'<a class="topic-link" href="{href}"><span class="topic-link__kicker">{kicker}</span>'
+        f'<span class="topic-link__title">{title}</span>'
+        f'<span class="topic-link__desc">{desc}</span></a>'
+        for kicker, title, desc, href in topics
+    )
+
+    return f"""<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+{ui.head_snippet()}
+<title>语言的产物链 — 语言 / 框架 / 技术栈</title>
+<meta name="description" content="编程语言、框架与技术栈的三级索引：{TOTAL} 个语言条目、{FRAMEWORK_CARDS} 张框架决策卡、{len(stacks.STACKS)} 个组合栈，以及场景、安全与格式专题。">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body data-page="home">
+<a class="skip-link" href="#main">跳到正文</a>
+<div class="progress" aria-hidden="true"><span></span></div>
+<button class="menu-toggle" type="button" aria-label="打开目录" aria-expanded="false" aria-controls="catalog"><span></span></button>
+<div class="scrim"></div>
+{ui.font_ui()}
+<button class="cmdk-btn" type="button" data-cmdk aria-label="全站搜索">搜索全站 <kbd>⌘K</kbd></button>
+{render_catalog(None, "")}
+<main class="page" id="main">
+  <div class="page__inner">
+    <header class="hero home-hero">
+      <p class="hero__kicker">An Archive of Languages, Frameworks &amp; Stacks</p>
+      <h1 class="hero__title">语言、框架与<br><em>技术栈</em></h1>
+      <p class="hero__sub">先看语言能做什么，再看框架怎么搭，最后落到一套能开工的组合栈。专题页负责横向问题：场景怎么选、安全怎么做、产物长什么样。</p>
+    </header>
+
+    <section class="home-doors" aria-label="三级入口">{card_html}</section>
+
+    <section class="block reveal" id="topics">
+      <div class="block__head">
+        <span class="block__num">00</span>
+        <h2 class="block__title">专题<em>Topics</em></h2>
+        <span class="block__rule"></span>
+      </div>
+      <div class="topic-grid">{topic_html}</div>
+    </section>
+
+    <footer class="pagefoot">
+      <p class="stamp">全站样例为依据公开规范与文档重构的示意内容；具体地址、偏移与字节数为示例值。</p>
+      <p>{BATCH_LABEL} · 首页</p>
     </footer>
   </div>
 </main>
@@ -835,12 +1039,13 @@ def render_404():
         <span class="block__rule"></span>
       </div>
       <div class="fw-grid">
-        <a class="stack-card" href="index.html"><span class="stack-top"><span class="stack-lang">INDEX</span><span class="stack-type">目录</span></span><span class="stack-fw">语言的产物链</span><span class="stack-why">78 个条目，按年代与家族浏览。</span></a>
-        <a class="stack-card" href="frameworks.html"><span class="stack-top"><span class="stack-lang">MATRIX</span><span class="stack-type">选型</span></span><span class="stack-fw">框架场景矩阵</span><span class="stack-why">{len(SCENARIOS)} 个场景，{sum(len(sc["entries"]) for sc in SCENARIOS)} 组推荐。</span></a>
-        <a class="stack-card" href="scenarios.html"><span class="stack-top"><span class="stack-lang">SCENARIOS</span><span class="stack-type">分类</span></span><span class="stack-fw">开发场景</span><span class="stack-why">{len(dev_scenarios.SCENARIOS)} 个开发场景 × {sum(len(s["architectures"]) for s in dev_scenarios.SCENARIOS)} 个架构组合。</span></a>
-        <a class="stack-card" href="security.html"><span class="stack-top"><span class="stack-lang">SECURITY</span><span class="stack-type">专题</span></span><span class="stack-fw">安全专题</span><span class="stack-why">{len(security.TOOLS)} 个工具，从编码到审计。</span></a>
-        <a class="stack-card" href="formats.html"><span class="stack-top"><span class="stack-lang">FORMATS</span><span class="stack-type">索引</span></span><span class="stack-fw">产物格式索引</span><span class="stack-why">42 种格式反查语言与阶段。</span></a>
-        <a class="stack-card" href="sources.html"><span class="stack-top"><span class="stack-lang">SOURCES</span><span class="stack-type">引用</span></span><span class="stack-fw">来源索引</span><span class="stack-why">220 条官方来源，可搜索。</span></a>
+        <a class="stack-card" href="index.html"><span class="stack-top"><span class="stack-lang">HOME</span><span class="stack-type">入口</span></span><span class="stack-fw">首页</span><span class="stack-why">语言 / 框架 / 技术栈三个入口。</span></a>
+        <a class="stack-card" href="{LANG_DIR}/index.html"><span class="stack-top"><span class="stack-lang">LANGUAGES</span><span class="stack-type">一级</span></span><span class="stack-fw">编程语言</span><span class="stack-why">{TOTAL} 个条目，按年代与家族浏览。</span></a>
+        <a class="stack-card" href="{FW_DIR}/index.html"><span class="stack-top"><span class="stack-lang">FRAMEWORKS</span><span class="stack-type">二级</span></span><span class="stack-fw">框架总览</span><span class="stack-why">{FRAMEWORK_CARDS} 张决策卡，按语言与类型筛选。</span></a>
+        <a class="stack-card" href="{STACK_DIR}/index.html"><span class="stack-top"><span class="stack-lang">STACKS</span><span class="stack-type">三级</span></span><span class="stack-fw">技术栈</span><span class="stack-why">{len(stacks.STACKS)} 个组合栈，按领域浏览。</span></a>
+        <a class="stack-card" href="scenarios.html"><span class="stack-top"><span class="stack-lang">SCENARIOS</span><span class="stack-type">专题</span></span><span class="stack-fw">开发场景</span><span class="stack-why">{len(dev_scenarios.SCENARIOS)} 个开发场景 × {sum(len(s["architectures"]) for s in dev_scenarios.SCENARIOS)} 个架构分组。</span></a>
+        <a class="stack-card" href="{LANG_DIR}/formats.html"><span class="stack-top"><span class="stack-lang">FORMATS</span><span class="stack-type">专题</span></span><span class="stack-fw">产物索引</span><span class="stack-why">42 种格式 + 320 个阶段产物。</span></a>
+        <a class="stack-card" href="sources.html"><span class="stack-top"><span class="stack-lang">SOURCES</span><span class="stack-type">专题</span></span><span class="stack-fw">来源索引</span><span class="stack-why">220 条官方来源，可搜索。</span></a>
       </div>
     </section>
     <footer class="pagefoot">
@@ -868,7 +1073,7 @@ def inject_meta(path):
     title = m.group(1).strip() if m else "语言的产物链"
     m = re.search(r'<meta name="description" content="([^"]*)"', s)
     desc = m.group(1) if m else "编程语言与框架的产物链档案"
-    root = "../" if path.parent.name == "langs" else ""
+    root = "" if path.parent == ROOT else "../"
     tags = f"""<link rel="icon" href="{root}assets/favicon.svg" type="image/svg+xml">
 <meta name="theme-color" content="#f3ede1">
 <meta property="og:type" content="website">
@@ -926,7 +1131,7 @@ def write_search_js():
         items.append({
             "title": l["name"], "group": l["cn"] or "语言",
             "desc": f"{l['cn']} · {l['year']} · 语言档案与产物链",
-            "href": f"langs/{slug}.html", "kind": "语言",
+            "href": f"{LANG_DIR}/{slug}.html", "kind": "语言",
             "keywords": [l["cn"], str(l["year"]), l["desc"], l["family_label"], slug]
                         + ALIASES.get(slug, []),
         })
@@ -935,14 +1140,14 @@ def write_search_js():
             items.append({
                 "title": f"{l['name']} · 框架与场景", "group": "框架",
                 "desc": detail["summary"],
-                "href": f"langs/{slug}-frameworks.html", "kind": "框架页",
+                "href": f"{FW_DIR}/{slug}.html", "kind": "框架页",
                 "keywords": fw_names.get(slug, []) + detail["scenarios"] + [l["name"]],
             })
             for card in detail["cards"]:
                 items.append({
                     "title": card["name"], "group": "框架",
                     "desc": f"{card['type']} · {l['name']} · {card['tagline']}",
-                    "href": f"langs/{slug}-frameworks.html#{_slugify(card['name'])}",
+                    "href": f"{FW_DIR}/{slug}.html#{_slugify(card['name'])}",
                     "kind": "决策卡",
                     "keywords": [l["name"], l["cn"], card["type"], card["maintainer"], card["tagline"]],
                 })
@@ -952,41 +1157,8 @@ def write_search_js():
         items.append({
             "title": f["name"], "group": "产物格式",
             "desc": f["desc"] + f"（{len(f['langs'])} 门语言）",
-            "href": f"formats.html#{f['key']}", "kind": "格式",
+            "href": f"{LANG_DIR}/formats.html#{f['key']}", "kind": "格式",
             "keywords": f["langs"] + [f["desc"], "格式", "artifact"],
-        })
-
-    for sc in SCENARIOS:
-        page = sc.get("page", "frameworks.html")
-        items.append({
-            "title": sc["title"], "group": "场景",
-            "desc": sc["desc"],
-            "href": f"{page}#{sc['key']}", "kind": "场景",
-            "keywords": [entry[1] for entry in sc["entries"]] + [entry[2] for entry in sc["entries"]],
-        })
-        for slug, fw, why in sc["entries"]:
-            if sc.get("page"):
-                tool = next((t for t in security.TOOLS if t["name"] == fw), None)
-                href = f"{page}#{tool['slug'] if tool else _slugify(fw)}"
-            else:
-                href = f"langs/{slug}-frameworks.html"
-            items.append({
-                "title": f"{sc['title']} · {fw}", "group": "场景",
-                "desc": f"{why}",
-                "href": href, "kind": "场景推荐",
-                "keywords": [sc["title"], fw, slug, why],
-            })
-
-    sec_dirs = {t["key"]: t["title"] for t in security.TOPICS}
-    for tool in security.TOOLS:
-        direction = sec_dirs.get(tool["direction"], "")
-        items.append({
-            "title": tool["name"], "group": "安全",
-            "desc": f"{direction} · {tool['category']} · {tool['lang']} · {tool['summary']}",
-            "href": f"security.html#{tool['slug']}", "kind": "安全工具",
-            "keywords": [tool["lang"], tool["category"], tool["license"],
-                         tool["summary"], direction]
-                        + tool["fit"],
         })
 
     for sc in dev_scenarios.SCENARIOS:
@@ -1009,14 +1181,24 @@ def write_search_js():
                             + [entry[1] for entry in arch["entries"]],
             })
 
+    domain_titles = {d["key"]: d["title"] for d in stacks.DOMAINS}
+    for st in stacks.STACKS:
+        items.append({
+            "title": st["title"], "group": "技术栈",
+            "desc": f"{domain_titles.get(st['domain'], '')} · {st['summary']}",
+            "href": f"{STACK_DIR}/{st['key']}.html", "kind": "技术栈",
+            "keywords": [domain_titles.get(st["domain"], ""), st["summary"]]
+                        + st["fit"] + st["avoid"]
+                        + [i[1] for l in st["layers"] for i in l["items"] if isinstance(i, tuple)],
+        })
+
     for title, href, desc in (
-        ("框架场景矩阵", "frameworks.html", "按场景反查语言与框架"),
+        ("编程语言", f"{LANG_DIR}/index.html", "编译管线、产物链与语言列表"),
+        ("框架总览", f"{FW_DIR}/index.html", "142 张决策卡，按语言与类型筛选"),
+        ("技术栈", f"{STACK_DIR}/index.html", "语言 + 框架 + 数据与部署的组合栈"),
         ("开发场景", "scenarios.html", "按开发场景 × 架构模式浏览语言与框架"),
-        ("安全专题", "security.html", "应用安全、密码学、供应链与审计"),
         ("来源索引", "sources.html", "220 条官方来源"),
-        ("产物格式索引", "formats.html", "按格式反查语言与阶段"),
-        ("语言谱系图", "lineage.html", "影响关系与时间轴"),
-        ("对比器", "compare.html", "并排对比语言与框架"),
+        ("产物索引", f"{LANG_DIR}/formats.html", "按格式反查语言与阶段，含全部阶段产物"),
         ("实测记录", "verified.html", "本机真正跑通的 Hello 产物链"),
     ):
         items.append({
@@ -1034,45 +1216,14 @@ def _slugify(value):
     return re.sub(r"[^a-z0-9]+", "-", str(value).lower()).strip("-") or "item"
 
 
-def write_compare_js():
-    langs = []
-    for l in BUILT:
-        deep = DEEP[l["slug"]]
-        langs.append({
-            "slug": l["slug"], "name": l["name"], "cn": l["cn"],
-            "year": l["year"], "family_label": l["family_label"],
-            "deep": deep,
-        })
-    cards = []
-    for slug, detail in FRAMEWORKS.items():
-        lang = language_by_slug(slug)
-        for card in detail["cards"]:
-            m = fw_meta.META.get((slug, card["name"]), {})
-            cards.append({
-                "slug": slug, "lang": lang["name"], "name": card["name"],
-                "anchor": _slugify(card["name"]), "year": card["year"],
-                "type": card["type"], "tagline": card["tagline"],
-                "fit": card["fit"], "avoid": card["avoid"], "chain": card["chain"],
-                "projects": card["projects"], "alternatives": card["alternatives"],
-                "division": card["division"],
-                "learn": m.get("learn", "—"), "eco": m.get("eco", "—"),
-                "license": m.get("license", "—"),
-            })
-    payload = {"languages": langs, "frameworks": cards}
-    text = "window.ARCHIVE_COMPARE = " + json.dumps(payload, ensure_ascii=False) + ";\n"
-    (ROOT / "assets" / "compare-data.js").write_text(text, encoding="utf-8")
-    return len(langs), len(cards)
-
-
 def write_data_js():
     payload = {
         "total": TOTAL,
         "open": OPEN,
         "batch": BATCH_DONE,
         "frameworks": FRAMEWORK_CARDS,
-        "scenarios": len(SCENARIOS),
         "dev_scenarios": len(dev_scenarios.SCENARIOS),
-        "security_tools": len(security.TOOLS),
+        "stacks": len(stacks.STACKS),
         "languages": [
             {
                 "plate": l["plate"],
@@ -1168,25 +1319,6 @@ def validate():
         if len(deep.get("features", {})) != 4:
             errors.append(f"{slug} 深读: features 不是 4 项")
 
-    security_names = {t["name"] for t in security.TOOLS}
-    security_dirs = {t["key"] for t in security.TOPICS if t["key"] != "by-language"}
-    for tool in security.TOOLS:
-        if tool.get("direction") not in security_dirs:
-            errors.append(f"安全工具 {tool['name']} 的方向未知：{tool.get('direction')}")
-        if not tool.get("source"):
-            errors.append(f"安全工具 {tool['name']} 缺少官方来源")
-    for sc in SCENARIOS:
-        for slug, fw_name, _why in sc["entries"]:
-            if slug not in BUILT_SLUGS:
-                errors.append(f"矩阵场景 {sc['key']} 引用未知语言 {slug}")
-            elif sc.get("page"):
-                if fw_name not in security_names:
-                    errors.append(f"矩阵场景 {sc['key']} 引用未知安全工具 {fw_name}")
-            elif slug in FRAMEWORKS:
-                names = [c["name"] for c in FRAMEWORKS[slug]["cards"]]
-                if fw_name not in names:
-                    errors.append(f"矩阵场景 {sc['key']} 引用未知框架 {slug}/{fw_name}")
-
     patterns = {p["key"]: p for p in dev_scenarios.PATTERNS}
     if len(dev_scenarios.PATTERNS) != 12:
         errors.append(f"统一架构模式不是 12 种：{len(dev_scenarios.PATTERNS)}")
@@ -1204,15 +1336,8 @@ def validate():
                 errors.append(f"开发场景 {sc['key']}/{arch['key']} 缺少条目")
             for entry in arch["entries"]:
                 slug, fw_name = entry[0], entry[1]
-                explicit = entry[3] if len(entry) > 3 else ""
                 if slug not in BUILT_SLUGS:
                     errors.append(f"开发场景 {sc['key']}/{arch['key']} 引用未知语言 {slug}")
-                elif explicit:
-                    target, _, frag = explicit.partition("#")
-                    if target != "security.html":
-                        errors.append(f"开发场景 {sc['key']} 引用未知目标 {explicit}")
-                    elif frag not in {t["slug"] for t in security.TOOLS}:
-                        errors.append(f"开发场景 {sc['key']} 引用未知安全锚点 {frag}")
                 elif slug in FRAMEWORKS:
                     names = [c["name"] for c in FRAMEWORKS[slug]["cards"]]
                     if fw_name not in names:
@@ -1229,18 +1354,63 @@ def validate():
     if unused:
         errors.append("统一架构模式未被使用：" + ", ".join(sorted(unused)))
 
+    domain_keys = {d["key"] for d in stacks.DOMAINS}
+    stack_keys = {s["key"] for s in stacks.STACKS}
+    for st in stacks.STACKS:
+        if st["domain"] not in domain_keys:
+            errors.append(f"技术栈 {st['key']} 引用未知领域 {st['domain']}")
+        for layer in st["layers"]:
+            for item in layer["items"]:
+                if not isinstance(item, tuple):
+                    continue
+                slug, name = item
+                if slug not in BUILT_SLUGS:
+                    errors.append(f"技术栈 {st['key']} 引用未知语言 {slug}")
+                    continue
+                card_names = [c["name"] for c in FRAMEWORKS.get(slug, {}).get("cards", [])]
+                lang_name = language_by_slug(slug)["name"]
+                if name not in card_names and name != lang_name:
+                    errors.append(f"技术栈 {st['key']} 引用未知组件 {slug}/{name}")
+        for alt in st["alternatives"]:
+            if alt not in stack_keys:
+                errors.append(f"技术栈 {st['key']} 引用未知替代栈 {alt}")
+
     return errors
+
+
+def canonical_pages():
+    pages = [
+        ROOT / "index.html", ROOT / "sources.html", ROOT / "verified.html",
+        ROOT / "scenarios.html", ROOT / "404.html",
+    ]
+    for name in (LANG_DIR, FW_DIR, STACK_DIR):
+        pages += sorted((ROOT / name).glob("*.html"))
+    return pages
+
+
+def write_redirect(path, target):
+    """旧地址的跳转桩：不带脚本与样式，不进入审计与冒烟扫描。"""
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_text(f"""<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<title>页面已迁移</title>
+<meta http-equiv="refresh" content="0; url={target}">
+<link rel="canonical" href="{target}">
+<meta name="robots" content="noindex">
+</head>
+<body>
+<p><a href="{target}">页面已迁移，点击继续 →</a></p>
+</body>
+</html>
+""", encoding="utf-8")
 
 
 def link_check():
     """检查生成页面中的相对链接是否都指向实际文件。"""
     problems = []
-    pages = list((ROOT / "langs").glob("*.html")) + [
-        ROOT / "index.html", ROOT / "frameworks.html", ROOT / "sources.html",
-        ROOT / "formats.html", ROOT / "lineage.html", ROOT / "compare.html",
-        ROOT / "verified.html", ROOT / "security.html", ROOT / "scenarios.html",
-        ROOT / "404.html",
-    ]
+    pages = canonical_pages()
     for page in pages:
         text = page.read_text(encoding="utf-8")
         for href in re.findall(r'href="([^"#]+)"', text):
@@ -1260,57 +1430,65 @@ def main():
             print("  -", err)
         sys.exit(1)
 
-    (ROOT / "langs").mkdir(exist_ok=True)
+    for name in (LANG_DIR, FW_DIR, STACK_DIR, "langs"):
+        (ROOT / name).mkdir(exist_ok=True)
     (ROOT / "assets").mkdir(exist_ok=True)
 
+    # 旧的框架页直接删除，不保留跳转（按用户选择）
+    for stale in (ROOT / "langs").glob("*-frameworks.html"):
+        stale.unlink()
+
     for lang in BUILT:
-        out = ROOT / "langs" / f"{lang['slug']}.html"
-        out.write_text(render_language_page(lang), encoding="utf-8")
-        fw_out = ROOT / "langs" / f"{lang['slug']}-frameworks.html"
-        fw_out.write_text(
+        slug = lang["slug"]
+        (ROOT / LANG_DIR / f"{slug}.html").write_text(
+            render_language_page(lang), encoding="utf-8",
+        )
+        (ROOT / FW_DIR / f"{slug}.html").write_text(
             fw_site.render_page(
                 lang,
-                FRAMEWORKS.get(lang["slug"]),
-                SHORT.get(lang["slug"]),
-                render_catalog(lang["slug"], "../"),
+                FRAMEWORKS.get(slug),
+                SHORT.get(slug),
+                render_catalog(slug, "../"),
                 TOTAL,
                 BATCH_LABEL,
             ),
             encoding="utf-8",
         )
+        # 旧语言页保留跳转
+        write_redirect(ROOT / "langs" / f"{slug}.html", f"../{LANG_DIR}/{slug}.html")
 
-    (ROOT / "index.html").write_text(render_index(), encoding="utf-8")
-    lineage_map = {}
-    for lang in BUILT:
-        lineage_map[lang["slug"]] = {
-            "from": DATA[lang["slug"]]["lineage"]["from"],
-            "to": DATA[lang["slug"]]["lineage"]["to"],
-        }
-    (ROOT / "lineage.html").write_text(
-        lineage.render_page(
-            BUILT, ERAS, lineage_map, render_catalog(None, ""), BATCH_LABEL, BATCH_DONE, TOTAL,
+    (ROOT / LANG_DIR / "index.html").write_text(render_language_index(), encoding="utf-8")
+    (ROOT / FW_DIR / "index.html").write_text(
+        frameworks_index.render_frameworks_index(
+            FRAMEWORKS, LANGUAGES, render_catalog(None, "../"), BATCH_LABEL,
         ),
         encoding="utf-8",
     )
+    (ROOT / STACK_DIR / "index.html").write_text(
+        stack_site.render_stacks_index(render_catalog(None, "../"), BATCH_LABEL),
+        encoding="utf-8",
+    )
+    for st in stacks.STACKS:
+        (ROOT / STACK_DIR / f"{st['key']}.html").write_text(
+            stack_site.render_stack(st, render_catalog(None, "../"), BATCH_LABEL),
+            encoding="utf-8",
+        )
+
+    (ROOT / "index.html").write_text(render_home(), encoding="utf-8")
     (ROOT / "verified.html").write_text(
         verified_site.render_verified_page(
             {l["slug"]: l for l in BUILT}, render_catalog(None, ""), BATCH_LABEL, BATCH_DONE,
         ),
         encoding="utf-8",
     )
-    (ROOT / "compare.html").write_text(
-        compare_index.render_compare(
-            render_catalog(None, ""), BATCH_LABEL, BATCH_DONE, len(BUILT), FRAMEWORK_CARDS,
-        ),
-        encoding="utf-8",
-    )
-    (ROOT / "formats.html").write_text(
+    (ROOT / LANG_DIR / "formats.html").write_text(
         fmt_index.render_formats(
-            DATA, {l["slug"]: l for l in BUILT}, render_catalog(None, ""),
+            DATA, {l["slug"]: l for l in BUILT}, render_catalog(None, "../", "index.html"),
             BATCH_LABEL, BATCH_DONE, len(BUILT),
         ),
         encoding="utf-8",
     )
+    write_redirect(ROOT / "formats.html", f"{LANG_DIR}/formats.html")
     (ROOT / "sources.html").write_text(
         src_index.render_sources_index(
             BUILT, render_catalog(None, ""), BATCH_LABEL,
@@ -1318,45 +1496,22 @@ def main():
         encoding="utf-8",
     )
     (ROOT / "404.html").write_text(render_404(), encoding="utf-8")
-    (ROOT / "frameworks.html").write_text(
-        fw_site.render_matrix(
-            FRAMEWORKS,
-            SHORT,
-            SCENARIOS,
-            render_catalog(None, ""),
-            TOTAL,
-            FRAMEWORK_CARDS,
-            BATCH_LABEL,
-        ),
-        encoding="utf-8",
-    )
-    (ROOT / "security.html").write_text(
-        security_site.render_security(render_catalog(None, ""), BATCH_LABEL),
-        encoding="utf-8",
-    )
     (ROOT / "scenarios.html").write_text(
         scenario_site.render_scenarios(render_catalog(None, ""), FRAMEWORKS, BATCH_LABEL),
         encoding="utf-8",
     )
     write_data_js()
-    cmp_langs, cmp_cards = write_compare_js()
     search_count = write_search_js()
 
-    all_pages = [ROOT / "index.html", ROOT / "frameworks.html",
-                 ROOT / "sources.html", ROOT / "formats.html",
-                 ROOT / "lineage.html", ROOT / "compare.html",
-                 ROOT / "verified.html", ROOT / "security.html",
-                 ROOT / "scenarios.html", ROOT / "404.html"]
-    all_pages += sorted((ROOT / "langs").glob("*.html"))
-    for page in all_pages:
+    for page in canonical_pages():
         inject_meta(page)
 
     problems = link_check()
-    print(f"已生成：{len(BUILT)} 个语言页 + {len(BUILT)} 个框架页 + 矩阵 + 来源索引 + 格式索引 + 谱系图 + 首页")
+    print(f"已生成：{len(BUILT)} 个语言页 + {len(BUILT)} 个框架页 + {len(stacks.STACKS)} 个技术栈页 + 索引 + 专题")
+    print(f"页面总数：{len(canonical_pages())}（另有 {len(BUILT) + 1} 个旧链接跳转）")
     print(f"产物阶段总数：{sum(stage_count(l['slug']) for l in BUILT)}")
-    print(f"框架决策卡：{FRAMEWORK_CARDS} · 场景：{len(SCENARIOS)}")
+    print(f"框架决策卡：{FRAMEWORK_CARDS} · 开发场景：{len(dev_scenarios.SCENARIOS)}")
     print(f"全局搜索索引：{search_count} 条 · 产物格式：{len(formats.build(DATA))} 种")
-    print(f"对比数据：{cmp_langs} 语言 · {cmp_cards} 框架")
     print(f"实测记录：{len(verified.VERIFIED)} 门语言")
     if problems:
         print("链接问题：")

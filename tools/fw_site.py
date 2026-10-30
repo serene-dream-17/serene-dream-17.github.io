@@ -6,7 +6,7 @@ import re
 
 import ui
 import sources_site
-from data import fw_meta, sources, security
+from data import fw_meta, sources, stacks
 
 
 def e(value):
@@ -25,9 +25,32 @@ def _card_by_name(cards, name):
     return None
 
 
+def _stacks_section(slug):
+    hits = []
+    for st in stacks.STACKS:
+        for layer in st["layers"]:
+            if any(isinstance(i, tuple) and i[0] == slug for i in layer["items"]):
+                hits.append(st)
+                break
+    if not hits:
+        return ""
+    chips = "".join(
+        f'<a class="fw-chip" href="../stacks/{e(st["key"])}.html">{e(st["title"])}</a>'
+        for st in hits
+    )
+    return f"""<section class="block reveal" id="stacks">
+    <div class="block__head">
+      <span class="block__num">03</span>
+      <h2 class="block__title">用到它的技术栈<em>Stacks</em></h2>
+      <span class="block__rule"></span>
+    </div>
+    <div class="fw-chips fw-chips--large">{chips}</div>
+  </section>"""
+
+
 def render_teaser(lang, detail, short):
     slug = lang["slug"]
-    href = f"{slug}-frameworks.html"
+    href = f"../frameworks/{slug}.html"
     if detail:
         cards = detail["cards"]
         chips = "".join(f'<span class="fw-chip">{e(c["name"])}</span>' for c in cards[:4])
@@ -202,7 +225,7 @@ def render_page(lang, detail, short, catalog_html, total, batch_label):
 <meta name="description" content="{e(name)} 的框架与使用场景：{e(summary)}">
 <link rel="stylesheet" href="../assets/style.css">
 </head>
-<body data-page="framework">
+<body data-page="framework" data-root="../">
 <a class="skip-link" href="#main">跳到正文</a>
 <div class="progress" aria-hidden="true"><span></span></div>
 <button class="menu-toggle" type="button" aria-label="打开目录" aria-expanded="false" aria-controls="catalog"><span></span></button>
@@ -213,9 +236,9 @@ def render_page(lang, detail, short, catalog_html, total, batch_label):
 <main class="page" id="main">
   <div class="page__inner">
     <nav class="plate-nav" aria-label="框架页导航">
-      <a class="plate-nav__link" href="{slug}.html">← <span>{e(name)} 档案</span></a>
+      <a class="plate-nav__link" href="../languages/{slug}.html">← <span>{e(name)} 档案</span></a>
       <span class="plate-nav__counter">FRAMEWORKS · {lang["plate"]:02d} / {total}</span>
-      <a class="plate-nav__link" href="../frameworks.html"><span>场景矩阵</span> →</a>
+      <a class="plate-nav__link" href="../scenarios.html"><span>开发场景</span> →</a>
     </nav>
     <header class="dossier fw-dossier">
       <div class="dossier__eyebrow">
@@ -232,10 +255,11 @@ def render_page(lang, detail, short, catalog_html, total, batch_label):
         <div class="meta-item"><span class="meta-label">语言</span><span class="meta-value">{e(name)}</span></div>
         <div class="meta-item"><span class="meta-label">类型</span><span class="meta-value">{e(lang["family_label"])}</span></div>
         <div class="meta-item"><span class="meta-label">框架</span><span class="meta-value">{e(meta_value)}</span></div>
-        <div class="meta-item"><span class="meta-label">入口</span><span class="meta-value"><a href="{slug}.html">语言档案 →</a></span></div>
+        <div class="meta-item"><span class="meta-label">入口</span><span class="meta-value"><a href="../languages/{slug}.html">语言档案 →</a></span></div>
       </div>
     </header>
     {body}
+    {_stacks_section(slug)}
     <footer class="pagefoot">
       <p class="stamp">框架与生态会随时间变化；学习/生态为编者判断，许可与事实以官方文档为准。最后核对 {sources.LAST_VERIFIED}。</p>
       <p>{batch_label} · {e(name)} 框架页</p>
@@ -250,110 +274,3 @@ def render_page(lang, detail, short, catalog_html, total, batch_label):
 </body>
 </html>
 """
-
-
-def render_matrix(detailed, short, scenarios, catalog_html, total, card_count, batch_label):
-    entry_count = sum(len(sc["entries"]) for sc in scenarios)
-    sections = []
-    for idx, sc in enumerate(scenarios, start=1):
-        cards = []
-        for slug, fw, why in sc["entries"]:
-            lang = next((l for l in ALL_LANGS if l["slug"] == slug), None)
-            if not lang:
-                continue
-            if sc.get("page"):
-                tool = next((t for t in security.TOOLS if t["name"] == fw), None)
-                href = f"{sc['page']}#{slugify(tool['slug'] if tool else fw)}"
-                ftype = tool["category"] if tool else "安全 / 工具"
-            else:
-                detail = detailed.get(slug)
-                card = _card_by_name(detail["cards"], fw) if detail else None
-                anchor = slugify(fw) if card else ""
-                href = f"langs/{slug}-frameworks.html" + (f"#{anchor}" if anchor else "")
-                ftype = card["type"] if card else "生态 / 工具"
-            search = " ".join([lang["name"], lang["cn"], fw, why, ftype, sc["title"]]).lower()
-            cards.append(f"""<a class="stack-card" href="{href}" data-search="{e(search)}" data-scenario="{sc["key"]}">
-        <span class="stack-top"><span class="stack-lang">{e(lang["name"])}</span><span class="stack-type">{e(ftype)}</span></span>
-        <span class="stack-fw">{e(fw)}</span>
-        <span class="stack-why">{e(why)}</span>
-      </a>""")
-        sections.append(f"""<section class="matrix-section" id="{sc["key"]}" data-scenario="{sc["key"]}">
-      <div class="era-head">
-        <span class="era-head__num">{idx:02d}</span>
-        <h2 class="era-head__title">{e(sc["title"])}</h2>
-        <span class="era-head__range">{e(sc["range"])}</span>
-        <span class="era-head__count">{len(cards)} 组</span>
-      </div>
-      <p class="matrix-desc">{e(sc["desc"])}</p>
-      <div class="stack-grid">{"".join(cards)}</div>
-    </section>""")
-
-    options = "".join(
-        f'<option value="{sc["key"]}">{e(sc["title"])}</option>' for sc in scenarios
-    )
-
-    return f"""<!doctype html>
-<html lang="zh-CN">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-{ui.head_snippet()}
-<title>框架场景矩阵 — 语言 × 场景 × 技术栈</title>
-<meta name="description" content="按使用场景反查语言与框架：Web、移动、桌面、数据、AI、游戏、嵌入式、安全、硬件与文档。">
-<link rel="stylesheet" href="assets/style.css">
-</head>
-<body data-page="matrix">
-<a class="skip-link" href="#main">跳到正文</a>
-<div class="progress" aria-hidden="true"><span></span></div>
-<button class="menu-toggle" type="button" aria-label="打开目录" aria-expanded="false" aria-controls="catalog"><span></span></button>
-<div class="scrim"></div>
-{ui.font_ui()}
-<button class="cmdk-btn" type="button" data-cmdk aria-label="全站搜索">搜索全站 <kbd>⌘K</kbd></button>
-{catalog_html}
-<main class="page" id="main">
-  <div class="page__inner">
-    <header class="hero matrix-hero">
-      <p class="hero__kicker">FRAMEWORK MAP · 场景 → 技术栈</p>
-      <h1 class="hero__title">选型<br><em>地图</em></h1>
-      <p class="hero__sub">从场景反查语言与框架，而不是从语言硬套场景。每一组都标注取舍；点进去看完整决策卡与最小产物链。</p>
-      <div class="hero__meta">
-        <div class="stat"><span class="stat__num">{total}</span><span class="stat__label">个条目</span></div>
-        <div class="stat"><span class="stat__num">{card_count}</span><span class="stat__label">张决策卡</span></div>
-        <div class="stat"><span class="stat__num">{len(scenarios)}</span><span class="stat__label">个场景</span></div>
-        <div class="stat"><span class="stat__num">{entry_count}</span><span class="stat__label">组矩阵推荐</span></div>
-      </div>
-    </header>
-
-    <div class="index-tools matrix-tools">
-      <label class="index-search" for="matrixSearch">
-        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><circle cx="7" cy="7" r="4.5"></circle><path d="M10.5 10.5 14 14"></path></svg>
-        <input id="matrixSearch" type="search" placeholder="搜索语言、框架、场景（按 / 聚焦）" autocomplete="off" spellcheck="false" aria-label="搜索框架">
-      </label>
-      <label class="matrix-select" for="matrixScenario">
-        <span>场景</span>
-        <select id="matrixScenario"><option value="all">全部场景</option>{options}</select>
-      </label>
-      <span class="era-head__count" id="matrixCount">{card_count} 组</span>
-    </div>
-
-    <div class="matrix-grid" id="matrixSections">{"".join(sections)}</div>
-    <p class="index-empty" id="matrixEmpty">没有匹配的框架。试试「Web」「Rust」「游戏」，或把场景切回全部。</p>
-
-    <footer class="pagefoot">
-      <p class="stamp">矩阵是策展推荐，不是官方排名；学习/生态为编者判断。最后核对 {sources.LAST_VERIFIED}。</p>
-      <p>{batch_label} · 框架场景矩阵</p>
-    </footer>
-  </div>
-</main>
-<script src="assets/font.js"></script>
-<script src="assets/data.js"></script>
-<script src="assets/search-index.js"></script>
-<script src="assets/app.js"></script>
-<script src="assets/search.js"></script>
-</body>
-</html>
-"""
-
-
-# 由 build.py 注入
-ALL_LANGS = []

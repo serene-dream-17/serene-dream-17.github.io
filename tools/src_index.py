@@ -27,7 +27,7 @@ def render_sources_index(langs, catalog_html, batch_label):
             rows.append(
                 f'<li data-search="{e(hay)}"><span class="src-kind">语言</span>'
                 f'<a href="{e(src[1])}" target="_blank" rel="noopener noreferrer">{e(src[0])} ↗</a>'
-                f'<a class="src-page" href="langs/{slug}.html#sources">查看页面</a></li>'
+                f'<a class="src-page" href="languages/{slug}.html#sources">查看页面</a></li>'
             )
         detail = FW.get(slug)
         if detail:
@@ -40,7 +40,7 @@ def render_sources_index(langs, catalog_html, batch_label):
                 rows.append(
                     f'<li data-search="{e(hay)}"><span class="src-kind">框架</span>'
                     f'<a href="{e(item[1])}" target="_blank" rel="noopener noreferrer">{e(item[0])} ↗</a>'
-                    f'<a class="src-page" href="langs/{slug}-frameworks.html#{anchor}">{e(card["name"])} 决策卡</a></li>'
+                    f'<a class="src-page" href="frameworks/{slug}.html#{anchor}">{e(card["name"])} 决策卡</a></li>'
                 )
         if not rows:
             continue

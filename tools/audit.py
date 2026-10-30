@@ -11,7 +11,7 @@ sys.path.insert(0, str(ROOT / "tools"))
 
 from registry import LANGUAGES, BUILT_SLUGS  # noqa: E402
 from data import sources, fw_a, fw_b, fw_c, fw_d, fw_e, depth_1, depth_2, depth_3  # noqa: E402
-from data import verified, security, dev_scenarios  # noqa: E402
+from data import verified, dev_scenarios, stacks  # noqa: E402
 
 FW = {}
 for _m in (fw_a, fw_b, fw_c, fw_d, fw_e):
@@ -33,17 +33,15 @@ def contrast(fg, bg):
 
 
 def main():
-    pages = [ROOT / "index.html", ROOT / "frameworks.html",
-             ROOT / "sources.html", ROOT / "formats.html",
-             ROOT / "lineage.html", ROOT / "compare.html", ROOT / "verified.html",
-             ROOT / "security.html", ROOT / "scenarios.html",
-             ROOT / "404.html"]
-    pages += sorted((ROOT / "langs").glob("*.html"))
+    pages = [ROOT / "index.html", ROOT / "sources.html", ROOT / "verified.html",
+             ROOT / "scenarios.html", ROOT / "404.html"]
+    for name in ("languages", "frameworks", "stacks"):
+        pages += sorted((ROOT / name).glob("*.html"))
     failures = []
     warnings = []
     stats = {
         "pages": len(pages),
-        "index_pages": 10,
+        "index_pages": 9,
         "language_pages": 0,
         "framework_pages": 0,
         "h1_ok": 0,
@@ -56,16 +54,13 @@ def main():
     for page in pages:
         rel = page.relative_to(ROOT).as_posix()
         s = page.read_text(encoding="utf-8")
-        is_framework = "-frameworks.html" in page.name
-        is_lang = page.parent.name == "langs" and not is_framework
+        is_framework = page.parent.name == "frameworks" and page.name != "index.html"
+        is_lang = (page.parent.name == "languages"
+                   and page.name not in ("index.html", "formats.html"))
 
-        if page.name in ("index.html", "frameworks.html", "sources.html", "formats.html",
-                         "lineage.html", "compare.html", "verified.html",
-                         "security.html", "scenarios.html", "404.html"):
-            pass
-        elif is_framework:
+        if is_framework:
             stats["framework_pages"] += 1
-        else:
+        elif is_lang:
             stats["language_pages"] += 1
 
         if '<html lang="zh-CN">' not in s:
@@ -138,17 +133,7 @@ def main():
                 if badges != cards * 3:
                     failures.append(f"{rel}: 徽章 {badges}，预期 {cards * 3}")
 
-    # 安全专题 / 开发场景
-    sec_page = ROOT / "security.html"
-    if not sec_page.exists():
-        failures.append("缺少 security.html")
-    else:
-        txt = sec_page.read_text(encoding="utf-8")
-        if txt.count('class="stack-card sec-tool"') != len(security.TOOLS):
-            failures.append("安全工具卡数量与数据不一致")
-        for topic in security.TOPICS:
-            if f'id="{topic["key"]}"' not in txt:
-                failures.append(f"安全专题缺少板块 {topic['key']}")
+    # 开发场景
     sc_page = ROOT / "scenarios.html"
     if not sc_page.exists():
         failures.append("缺少 scenarios.html")
@@ -160,6 +145,55 @@ def main():
         for sc in dev_scenarios.SCENARIOS:
             if f'id="dev-{sc["key"]}"' not in txt:
                 failures.append(f"开发场景缺少 {sc['key']}")
+
+    # 三级结构
+    lang_idx = ROOT / "languages" / "index.html"
+    if not lang_idx.exists():
+        failures.append("缺少 languages/index.html")
+    else:
+        txt = lang_idx.read_text(encoding="utf-8")
+        lang_cards = (txt.count('class="lang-card is-open"')
+                      + txt.count('class="lang-card is-pending"'))
+        if lang_cards != len(LANGUAGES):
+            failures.append("语言总览卡片数与数据不一致")
+        if 'class="pipeline"' not in txt:
+            failures.append("语言总览缺少编译管线")
+    fw_idx = ROOT / "frameworks" / "index.html"
+    if not fw_idx.exists():
+        failures.append("缺少 frameworks/index.html")
+    else:
+        txt = fw_idx.read_text(encoding="utf-8")
+        if txt.count('class="fw-index-card"') != sum(len(d["cards"]) for d in FW.values()):
+            failures.append("框架总览卡片数与数据不一致")
+    stack_idx = ROOT / "stacks" / "index.html"
+    if not stack_idx.exists():
+        failures.append("缺少 stacks/index.html")
+    else:
+        txt = stack_idx.read_text(encoding="utf-8")
+        if txt.count('class="stack-card stack-entry"') != len(stacks.STACKS):
+            failures.append("技术栈总览卡片数与数据不一致")
+    for st in stacks.STACKS:
+        page = ROOT / "stacks" / f"{st['key']}.html"
+        if not page.exists():
+            failures.append(f"缺少技术栈页 {st['key']}")
+            continue
+        text = page.read_text(encoding="utf-8")
+        if 'class="pick-table stack-table"' not in text:
+            failures.append(f"技术栈 {st['key']} 缺少构成表")
+        if text.count('class="depth-block"') != 4:
+            failures.append(f"技术栈 {st['key']} 深度段不是 4 个")
+        if st["source"][1] not in text:
+            failures.append(f"技术栈 {st['key']} 缺少官方来源")
+
+    fmt_page = ROOT / "languages" / "formats.html"
+    if not fmt_page.exists():
+        failures.append("缺少 languages/formats.html")
+    else:
+        txt = fmt_page.read_text(encoding="utf-8")
+        if txt.count('class="stage-details"') != len(LANGUAGES):
+            failures.append("产物索引阶段总表不是 78 组")
+        if 'id="unclassified"' not in txt:
+            failures.append("产物索引缺少未归类阶段")
 
     # 数据覆盖
     if len(sources.LANG) != 78:

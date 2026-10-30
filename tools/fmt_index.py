@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""产物格式索引页。"""
+"""产物格式索引页（位于 languages/ 下，与语言页同目录）。"""
 
 import html
 
@@ -10,10 +10,44 @@ def e(value):
     return html.escape(str(value), quote=True)
 
 
+def _fmt_text(value):
+    if isinstance(value, list):
+        return " · ".join(str(x) for x in value)
+    return str(value)
+
+
+def _all_stages(data, langs_by_slug):
+    """78 门语言 × 全部阶段，按 BUILT 顺序列出。"""
+    blocks = []
+    rows_total = 0
+    for slug, lang in langs_by_slug.items():
+        chain = data[slug]["chain"]
+        rows = []
+        for no, stage in enumerate(chain, start=1):
+            rows_total += 1
+            rows.append(
+                f'<tr><td><a href="{e(slug)}.html#stage-{no}">{no:02d}</a></td>'
+                f"<td>{e(stage['label'])}</td>"
+                f"<td><code>{e(stage['file'])}</code></td>"
+                f"<td>{e(_fmt_text(stage['format']))}</td></tr>"
+            )
+        blocks.append(f"""<details class="stage-details">
+        <summary><b>{e(lang["name"])}</b><span>{len(chain)} 个阶段</span></summary>
+        <div class="table-wrap">
+          <table class="pick-table stage-table">
+            <thead><tr><th scope="col">阶段</th><th scope="col">名称</th><th scope="col">文件</th><th scope="col">格式</th></tr></thead>
+            <tbody>{''.join(rows)}</tbody>
+          </table>
+        </div>
+      </details>""")
+    return "".join(blocks), rows_total
+
+
 def render_formats(data, langs_by_slug, catalog_html, batch_label, batch_no, total_langs):
     index = formats.build(data)
     total = len(index)
     sections = []
+    covered = set()
     for key, title, desc in formats.GROUPS:
         items = [f for f in index if f["group"] == key]
         if not items:
@@ -22,7 +56,8 @@ def render_formats(data, langs_by_slug, catalog_html, batch_label, batch_no, tot
         for f in items:
             chips = []
             for slug, no, stage_label, _file in f["hits"][:10]:
-                href = (f"langs/{slug}.html#stage-{no}" if no else f"langs/{slug}.html")
+                covered.add((slug, no))
+                href = (f"{slug}.html#stage-{no}" if no else f"{slug}.html")
                 chips.append(
                     f'<a class="fmt-chip" href="{href}">'
                     f'<b>{e(langs_by_slug[slug]["name"])}</b>'
@@ -50,6 +85,16 @@ def render_formats(data, langs_by_slug, catalog_html, batch_label, batch_no, tot
       <div class="fmt-grid">{"".join(cards)}</div>
     </section>""")
 
+    stages_html, stage_total = _all_stages(data, langs_by_slug)
+    unclassified = []
+    for slug, lang in langs_by_slug.items():
+        for no, stage in enumerate(data[slug]["chain"], start=1):
+            if (slug, no) not in covered:
+                unclassified.append(
+                    f'<li><a href="{e(slug)}.html#stage-{no}">{e(lang["name"])} · {no:02d} {e(stage["label"])}</a>'
+                    f"<span><code>{e(_fmt_text(stage['format']))}</code></span></li>"
+                )
+
     return f"""<!doctype html>
 <html lang="zh-CN">
 <head>
@@ -64,11 +109,11 @@ try {{
   if (r.line) h.dataset.line = r.line;
 }} catch (e) {{}}
 </script>
-<title>产物格式索引 — {total} 种格式的反向索引</title>
-<meta name="description" content="按产物格式反查语言与阶段：ELF、PE、Mach-O、.class、.beam、wasm、LLVM IR、SPIR-V、EVM 字节码、PTX 等。">
-<link rel="stylesheet" href="assets/style.css">
+<title>产物索引 — 格式 × 阶段 × 语言</title>
+<meta name="description" content="产物索引：按格式反查语言与阶段，并提供 78 门语言全部 {stage_total} 个阶段产物的完整总表。">
+<link rel="stylesheet" href="../assets/style.css">
 </head>
-<body data-page="formats">
+<body data-page="formats" data-root="../">
 <a class="skip-link" href="#main">跳到正文</a>
 <div class="progress" aria-hidden="true"><span></span></div>
 <button class="menu-toggle" type="button" aria-label="打开目录" aria-expanded="false" aria-controls="catalog"><span></span></button>
@@ -102,15 +147,20 @@ try {{
 {catalog_html}
 <main class="page" id="main">
   <div class="page__inner">
+    <nav class="plate-nav" aria-label="产物索引导航">
+      <a class="plate-nav__link" href="index.html">← <span>语言总览</span></a>
+      <span class="plate-nav__counter">ARTIFACTS · {total} 种格式</span>
+      <a class="plate-nav__link" href="../index.html"><span>首页</span> →</a>
+    </nav>
     <header class="hero">
-      <p class="hero__kicker">ARTIFACT INDEX · 格式 → 语言 → 阶段</p>
+      <p class="hero__kicker">ARTIFACT INDEX · 格式 → 阶段 → 语言</p>
       <h1 class="hero__title">产物<br><em>索引</em></h1>
-      <p class="hero__sub">按产物反查：哪些语言、在哪个阶段，产生了这种格式。点任意语言标签，直接跳到对应的阶段卡。</p>
+      <p class="hero__sub">先按格式反查语言与阶段；下面是 78 门语言全部 {stage_total} 个阶段产物的完整总表，未归入格式分组的阶段单独列出，保证没有遗漏。</p>
       <div class="hero__meta">
         <div class="stat"><span class="stat__num">{total}</span><span class="stat__label">种格式</span></div>
-        <div class="stat"><span class="stat__num">{len(formats.GROUPS)}</span><span class="stat__label">个分组</span></div>
+        <div class="stat"><span class="stat__num">{stage_total}</span><span class="stat__label">个阶段产物</span></div>
         <div class="stat"><span class="stat__num">{total_langs}</span><span class="stat__label">门语言</span></div>
-        <div class="stat"><span class="stat__num">{batch_no}</span><span class="stat__label">当前批次</span></div>
+        <div class="stat"><span class="stat__num">{len(unclassified)}</span><span class="stat__label">未归类阶段</span></div>
       </div>
     </header>
 
@@ -125,17 +175,40 @@ try {{
     {"".join(sections)}
     <p class="index-empty" id="fmtEmpty">没有匹配的格式。试试「ELF」「class」「GPU」。</p>
 
+    <section class="block reveal" id="stages">
+      <div class="block__head">
+        <span class="block__num">{len(formats.GROUPS) + 1:02d}</span>
+        <h2 class="block__title">全部阶段产物<em>All stages</em></h2>
+        <span class="block__rule"></span>
+      </div>
+      <p class="prose">按语言展开，每个阶段给出文件、格式与语言页锚点；共 {stage_total} 个阶段。</p>
+      <div class="stage-details-list">{stages_html}</div>
+    </section>
+
+    <section class="block reveal" id="unclassified">
+      <div class="block__head">
+        <span class="block__num">{len(formats.GROUPS) + 2:02d}</span>
+        <h2 class="block__title">未归入格式分组<em>Other stages</em></h2>
+        <span class="block__rule"></span>
+      </div>
+      <p class="prose">这些阶段没有匹配到上面的 {total} 种格式，可能是语言专有的描述或构建中间态；完整列在这里，不计入反查卡。</p>
+      <details class="stage-other-wrap">
+        <summary>展开 {len(unclassified)} 个未归类阶段</summary>
+        <ul class="stage-other">{''.join(unclassified) or '<li>无</li>'}</ul>
+      </details>
+    </section>
+
     <footer class="pagefoot">
       <p class="stamp">格式与语言的对应关系基于本档案的阶段样例与策展；同一种格式可能还有其它产生者，此处只收录站内条目。</p>
-      <p>{batch_label} · 产物格式索引</p>
+      <p>{batch_label} · 产物索引</p>
     </footer>
   </div>
 </main>
-<script src="assets/font.js"></script>
-<script src="assets/data.js"></script>
-<script src="assets/search-index.js"></script>
-<script src="assets/app.js"></script>
-<script src="assets/search.js"></script>
+<script src="../assets/font.js"></script>
+<script src="../assets/data.js"></script>
+<script src="../assets/search-index.js"></script>
+<script src="../assets/app.js"></script>
+<script src="../assets/search.js"></script>
 </body>
 </html>
 """

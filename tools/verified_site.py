@@ -85,7 +85,7 @@ def render_verified_page(langs, catalog_html, batch_label, batch_no):
         )
         coverage_rows.append(
             f'<tr><td>{lang["plate"]:02d}</td>'
-            f'<td><a href="langs/{lang["slug"]}.html">{e(lang["name"])}</a></td>'
+            f'<td><a href="languages/{lang["slug"]}.html">{e(lang["name"])}</a></td>'
             f'<td>{lang["year"]}</td>'
             f'<td><span class="cov cov--{cls}">{status}</span></td>'
             f'<td>{e(reason)}</td>'
@@ -121,7 +121,7 @@ def render_verified_page(langs, catalog_html, batch_label, batch_no):
         artifacts = "".join(f"<li>{e(a)}</li>" for a in v.get("artifacts", []))
         cards.append(f"""<article class="verify-card">
       <header class="verify-card__head">
-        <h2><a href="langs/{slug}.html">{e(lang["name"])}</a></h2>
+        <h2><a href="languages/{slug}.html">{e(lang["name"])}</a></h2>
         <span class="verify__badge">已实测</span>
       </header>
       <p class="verify-card__tool">{e(v["tool"])} · {e(v["date"])}</p>
@@ -131,7 +131,7 @@ def render_verified_page(langs, catalog_html, batch_label, batch_no):
         <dt>产物 / 观察</dt><dd><ul class="verify__list">{artifacts}</ul></dd>
         <dt>说明</dt><dd>{e(v.get("note", ""))}</dd>
       </dl>
-      <a class="verify-card__link" href="langs/{slug}.html#verify">查看语言页的完整产物链 →</a>
+      <a class="verify-card__link" href="languages/{slug}.html#verify">查看语言页的完整产物链 →</a>
     </article>""")
 
     return f"""<!doctype html>

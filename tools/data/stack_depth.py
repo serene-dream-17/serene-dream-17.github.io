@@ -1,0 +1,248 @@
+# -*- coding: utf-8 -*-
+"""技术栈的工程化深度：版本基线 / 测试与 CI / 部署运维 / 团队与成本。
+
+版本是策展建议线（LTS 或当前稳定线），不承诺具体小版本可用性。
+"""
+
+DEPTH = {
+    "nextjs-fullstack": {
+        "baseline": ["TypeScript 5.x", "Node.js 22 LTS", "Next.js 15 稳定线", "PostgreSQL 16"],
+        "testing": ["单元：Vitest", "端到端：Playwright", "CI：构建 + 类型检查 + 预览部署"],
+        "ops": ["构建：standalone 输出", "部署：Vercel 或容器", "监控：OpenTelemetry + 日志"],
+        "team": ["2–5 人全栈", "TS + SQL + 基础运维", "成本：中低（托管平台）"],
+    },
+    "react-spa": {
+        "baseline": ["TypeScript 5.x", "React 19 稳定线", "Vite 6", "Node.js 22 LTS（构建期）"],
+        "testing": ["单元：Vitest + Testing Library", "端到端：Playwright", "CI：lint + 单测 + 构建"],
+        "ops": ["构建：静态资源", "部署：对象存储 + CDN", "监控：前端错误上报 + Web Vitals"],
+        "team": ["2–4 人前端", "TS + CSS + 构建工具", "成本：低（静态托管）"],
+    },
+    "vue-app": {
+        "baseline": ["Vue 3.5 稳定线", "Vite 6", "TypeScript 5.x", "Pinia 2"],
+        "testing": ["单元：Vitest", "端到端：Playwright", "CI：类型检查 + 单测 + 构建"],
+        "ops": ["构建：静态资源", "部署：CDN / 静态托管", "监控：错误上报 + 性能采样"],
+        "team": ["1–4 人", "JS/TS + 模板语法", "成本：低"],
+    },
+    "django-web": {
+        "baseline": ["Python 3.12", "Django 5 LTS", "PostgreSQL 16", "Gunicorn + Nginx"],
+        "testing": ["单元：pytest-django", "端到端：Playwright", "CI：迁移检查 + 测试 + 静态检查"],
+        "ops": ["构建：wheel + 容器镜像", "部署：容器或虚拟机", "监控：日志 + Sentry + 慢查询"],
+        "team": ["2–5 人", "Python + SQL + 部署基础", "成本：中低"],
+    },
+    "spring-enterprise": {
+        "baseline": ["Java 21 LTS / Kotlin 2.x", "Spring Boot 3.4 稳定线", "PostgreSQL 16 / MySQL 8", "Redis 7"],
+        "testing": ["单元：JUnit 5", "集成：Testcontainers", "CI：构建 + 测试 + 依赖扫描"],
+        "ops": ["构建：JAR + 容器镜像", "部署：Kubernetes / 虚拟机", "监控：Micrometer + Prometheus"],
+        "team": ["5–15 人", "Java/Kotlin + SQL + K8s", "成本：中高"],
+    },
+    "aspnet-enterprise": {
+        "baseline": [".NET 8 LTS", "ASP.NET Core 8", "SQL Server 2022 / PostgreSQL 16", "IIS 或容器"],
+        "testing": ["单元：xUnit", "集成：WebApplicationFactory", "CI：dotnet test + 安全扫描"],
+        "ops": ["构建：自包含发布", "部署：IIS / 容器 / Azure", "监控：OpenTelemetry + App Insights"],
+        "team": ["3–10 人", "C# + SQL + Windows/Linux 运维", "成本：中"],
+    },
+    "rails-mvp": {
+        "baseline": ["Ruby 3.3", "Rails 7.2 稳定线", "PostgreSQL 16", "Sidekiq + Redis"],
+        "testing": ["单元：Minitest / RSpec", "系统测试：Capybara", "CI：测试 + 迁移检查 + Brakeman"],
+        "ops": ["构建：容器镜像", "部署：容器或 PaaS", "监控：日志 + 队列积压 + APM"],
+        "team": ["1–5 人", "Ruby + SQL + 基础运维", "成本：低中"],
+    },
+    "nestjs-bff": {
+        "baseline": ["Node.js 22 LTS", "NestJS 11 稳定线", "TypeScript 5.x", "PostgreSQL 16 + Redis 7"],
+        "testing": ["单元：Jest", "端到端：Supertest", "CI：类型检查 + 测试 + 构建"],
+        "ops": ["构建：容器镜像", "部署：Kubernetes / 容器平台", "监控：OpenTelemetry + 日志"],
+        "team": ["2–6 人", "TS + SQL + API 设计", "成本：中低"],
+    },
+    "go-microservices": {
+        "baseline": ["Go 1.23 稳定线", "Gin 1.10", "gRPC-Go 1.6x", "PostgreSQL 16 + Redis 7"],
+        "testing": ["单元：go test", "集成：testcontainers-go", "CI：vet + 测试 + 镜像扫描"],
+        "ops": ["构建：静态二进制 + distroless 镜像", "部署：Kubernetes", "监控：Prometheus + trace"],
+        "team": ["3–10 人", "Go + SQL + K8s", "成本：中"],
+    },
+    "quarkus-native": {
+        "baseline": ["Java 21 LTS", "Quarkus 3.x 稳定线", "GraalVM 原生镜像", "PostgreSQL 16"],
+        "testing": ["单元：JUnit 5", "集成：QuarkusTest", "CI：JVM 测试 + 原生镜像构建"],
+        "ops": ["构建：原生可执行 / 容器", "部署：Kubernetes / Serverless", "监控：Micrometer"],
+        "team": ["3–8 人", "Java + 容器 + 原生构建", "成本：中"],
+    },
+    "phoenix-realtime": {
+        "baseline": ["Elixir 1.18", "Phoenix 1.7 稳定线", "PostgreSQL 16", "Ecto 3.12"],
+        "testing": ["单元：ExUnit", "集成：Phoenix.ConnTest + LiveViewTest", "CI：测试 + 格式检查"],
+        "ops": ["构建：release 包", "部署：容器或裸机集群", "监控：Telemetry + Prometheus"],
+        "team": ["2–6 人", "Elixir + OTP + SQL", "成本：中低（单机并发高）"],
+    },
+    "akka-cluster": {
+        "baseline": ["Scala 3.3 LTS", "Akka 2.10", "JDK 21 LTS", "PostgreSQL 16"],
+        "testing": ["单元：ScalaTest", "集群：Akka TestKit / MultiNode", "CI：测试 + 依赖检查"],
+        "ops": ["构建：JAR + 容器", "部署：容器 / 虚拟机集群", "监控：Lightbend Telemetry / OTel"],
+        "team": ["4–10 人", "Scala + Actor 模型", "成本：中高"],
+    },
+    "rust-service": {
+        "baseline": ["Rust 1.83 稳定线", "Axum 0.8", "Tokio 1.x", "PostgreSQL 16"],
+        "testing": ["单元：cargo test", "集成：sqlx::test", "CI：clippy + test + 审计"],
+        "ops": ["构建：musl 静态二进制", "部署：容器 / 裸机", "监控：tracing + Prometheus"],
+        "team": ["2–6 人", "Rust + SQL + 并发调试", "成本：中（开发速度换运行成本）"],
+    },
+    "k8s-control-plane": {
+        "baseline": ["Go 1.23", "controller-runtime 0.19", "Kubernetes 1.31", "Helm 3"],
+        "testing": ["单元：envtest", "集成：kind 集群", "CI：生成校验 + 测试 + 镜像签名"],
+        "ops": ["构建：容器镜像 + 清单", "部署：Helm / Kustomize", "监控：kube-state-metrics + 审计日志"],
+        "team": ["3–8 人", "Go + K8s API + 声明式运维", "成本：高（集群与人力）"],
+    },
+    "flutter-cross": {
+        "baseline": ["Dart 3.6", "Flutter 3.27 稳定线", "Firebase / 自建 API", "Fastlane"],
+        "testing": ["单元：flutter test", "集成：integration_test", "CI：分析 + 测试 + 构建双端"],
+        "ops": ["构建：AAB / IPA", "发布：应用商店 + 灰度", "监控：Crashlytics / Sentry"],
+        "team": ["2–5 人", "Dart + 移动平台基础", "成本：中低"],
+    },
+    "ios-native": {
+        "baseline": ["Swift 6", "iOS 18 SDK", "Xcode 16", "SwiftUI 6"],
+        "testing": ["单元：XCTest", "UI：XCUITest", "CI：构建 + 测试 + TestFlight"],
+        "ops": ["构建：Archive / IPA", "发布：App Store Connect", "监控：MetricKit / Crashlytics"],
+        "team": ["2–5 人", "Swift + Apple 平台", "成本：中（设备与开发者账号）"],
+    },
+    "android-native": {
+        "baseline": ["Kotlin 2.1", "Android SDK 35", "Jetpack Compose 1.7", "Gradle 8.10"],
+        "testing": ["单元：JUnit + Robolectric", "UI：Compose UI Test", "CI：lint + 测试 + AAB"],
+        "ops": ["构建：AAB", "发布：Play Console 分阶段", "监控：Crashlytics / Play Vitals"],
+        "team": ["2–5 人", "Kotlin + Android 平台", "成本：中低"],
+    },
+    "qt-desktop": {
+        "baseline": ["C++20", "Qt 6.8 LTS", "CMake 3.30", "平台 SDK"],
+        "testing": ["单元：Qt Test", "UI：Squish / 手工回归", "CI：多平台构建 + 测试"],
+        "ops": ["构建：各平台安装包", "发布：官网 / 商店", "监控：崩溃上报"],
+        "team": ["3–10 人", "C++ + Qt + 平台集成", "成本：中"],
+    },
+    "tauri-desktop": {
+        "baseline": ["Rust 1.83", "Tauri 2", "TypeScript 5.x", "Vite 6"],
+        "testing": ["单元：cargo test + Vitest", "端到端：WebDriver / 手工", "CI：多平台构建 + 签名"],
+        "ops": ["构建：各平台安装包", "发布：官网 / 自动更新", "监控：崩溃上报"],
+        "team": ["1–4 人", "TS + Rust 基础", "成本：低"],
+    },
+    "unity-game": {
+        "baseline": ["Unity 6 LTS", "C# 9", "Addressables 2", "目标平台 SDK"],
+        "testing": ["单元：NUnit Test Framework", "集成：PlayMode 测试", "CI：构建 + 冒烟包"],
+        "ops": ["构建：多平台包体", "发布：商店 / 平台审核", "监控：崩溃与性能采样"],
+        "team": ["3–15 人", "C# + 引擎 + 美术管线", "成本：中（授权与人力）"],
+    },
+    "unreal-game": {
+        "baseline": ["Unreal Engine 5.5", "C++20", "Blueprint", "目标平台 SDK"],
+        "testing": ["自动化：Unreal Automation", "流程：打包冒烟", "CI：构建 + 资产校验"],
+        "ops": ["构建：多平台打包", "发布：商店 / 主机认证", "监控：崩溃与帧时间"],
+        "team": ["5–30 人", "C++ + 引擎 + 技术美术", "成本：高"],
+    },
+    "bevy-game": {
+        "baseline": ["Rust 1.83", "Bevy 0.15", "wgpu 24", "目标平台工具链"],
+        "testing": ["单元：cargo test", "集成：示例场景冒烟", "CI：构建 + wasm 检查"],
+        "ops": ["构建：各平台二进制", "发布：itch.io / Steam", "监控：帧时间与崩溃"],
+        "team": ["1–6 人", "Rust + ECS", "成本：低中"],
+    },
+    "dbt-warehouse": {
+        "baseline": ["dbt 1.9", "SQL 方言（BigQuery / Snowflake）", "Airflow 2.x 或 dbt Cloud"],
+        "testing": ["数据测试：dbt tests", "契约：source freshness", "CI：dbt build --select state:modified"],
+        "ops": ["构建：模型与文档", "调度：Airflow / Cloud", "监控：运行告警 + 血缘"],
+        "team": ["2–8 人", "SQL + 数仓建模", "成本：中（数仓用量）"],
+    },
+    "spark-batch": {
+        "baseline": ["Spark 3.5 LTS", "Scala 2.13 / Python 3.11", "Hive / Iceberg", "YARN / K8s"],
+        "testing": ["单元：ScalaTest / pytest", "集成：本地 Spark 会话", "CI：构建 + 小数据回归"],
+        "ops": ["构建：JAR / wheel", "调度：Airflow / YARN", "监控：Spark UI + 指标"],
+        "team": ["3–10 人", "Scala/Python + 分布式", "成本：高（计算资源）"],
+    },
+    "ml-serving": {
+        "baseline": ["Python 3.11", "PyTorch 2.5", "FastAPI 0.115", "ONNX Runtime 1.20"],
+        "testing": ["单元：pytest", "模型：离线评测集", "CI：镜像构建 + 推理冒烟"],
+        "ops": ["构建：容器镜像（GPU/CPU）", "部署：K8s + 自动扩缩", "监控：延迟、显存、漂移"],
+        "team": ["3–10 人", "Python + 推理优化 + 运维", "成本：高（GPU）"],
+    },
+    "ai-experiment": {
+        "baseline": ["Python 3.11", "PyTorch 2.5", "JupyterLab 4", "uv / conda"],
+        "testing": ["单元：pytest", "实验：固定种子与配置快照", "CI：格式 + 小样本训练"],
+        "ops": ["环境：容器镜像", "跟踪：MLflow / W&B", "监控：实验记录与数据版本"],
+        "team": ["1–5 人", "Python + 统计/ML", "成本：中（GPU 按需）"],
+    },
+    "rtos-firmware": {
+        "baseline": ["C11", "FreeRTOS 11", "ARM GCC 13", "OpenOCD"],
+        "testing": ["单元：Unity / CMock", "硬件：HIL 冒烟", "CI：交叉编译 + 静态检查"],
+        "ops": ["构建：交叉编译产物", "烧录：JTAG / SWD", "监控：串口日志 + 看门狗"],
+        "team": ["2–6 人", "C + 硬件基础 + 实时约束", "成本：中（硬件与调试器）"],
+    },
+    "appsec-baseline": {
+        "baseline": ["Java 21 LTS", "Spring Boot 3.4", "Spring Security 6.4", "Keycloak 26"],
+        "testing": ["单元：JUnit", "安全：ZAP 基线扫描 + 依赖扫描", "CI：SAST + 依赖 + 密钥扫描"],
+        "ops": ["构建：JAR + 镜像", "部署：容器", "监控：审计日志 + 认证失败告警"],
+        "team": ["3–8 人", "Java + 身份协议 + 合规", "成本：中"],
+    },
+    "evm-contracts": {
+        "baseline": ["Solidity 0.8.28", "Foundry 稳定线", "OpenZeppelin 5.x", "目标链 RPC"],
+        "testing": ["单元：forge test", "不变式：forge invariant", "CI：测试 + 覆盖率 + 静态分析"],
+        "ops": ["构建：字节码 + 部署脚本", "部署：多签 + 时间锁", "监控：事件监听 + 升级权限"],
+        "team": ["2–6 人", "Solidity + 安全审计", "成本：中高（审计与 Gas）"],
+    },
+    "hpc-numerics": {
+        "baseline": ["Fortran 2018", "MPI 4.1", "OpenBLAS / LAPACK", "NetCDF 4"],
+        "testing": ["单元：pFUnit", "回归：基准算例", "CI：集群小规模运行"],
+        "ops": ["构建：模块化 Makefile / CMake", "调度：Slurm", "监控：作业日志 + 性能剖析"],
+        "team": ["2–10 人", "Fortran + 数值方法 + 并行", "成本：高（集群机时）"],
+    },
+    "angular-frontend": {
+        "baseline": ["TypeScript 5.x", "Angular 19 稳定线", "RxJS 7.8", "Node.js 22 LTS"],
+        "testing": ["单元：Jasmine / Vitest", "端到端：Playwright", "CI：lint + 测试 + 构建"],
+        "ops": ["构建：静态资源", "部署：CDN / 容器", "监控：错误上报 + Web Vitals"],
+        "team": ["4–15 人", "TS + 框架约定 + 表单", "成本：中"],
+    },
+    "blazor-fullstack": {
+        "baseline": [".NET 8 LTS", "Blazor Web App", "ASP.NET Core 8", "SQL Server 2022"],
+        "testing": ["单元：bUnit", "端到端：Playwright", "CI：dotnet test + 发布"],
+        "ops": ["构建：自包含发布", "部署：IIS / 容器 / Azure", "监控：App Insights"],
+        "team": ["2–8 人", "C# + Razor + SQL", "成本：中"],
+    },
+    "laravel-stack": {
+        "baseline": ["PHP 8.3", "Laravel 11 LTS", "MySQL 8 / PostgreSQL 16", "Redis 7"],
+        "testing": ["单元：PHPUnit / Pest", "端到端：Laravel Dusk", "CI：测试 + 静态分析"],
+        "ops": ["构建：Composer + 容器", "部署：容器 / 共享主机", "监控：日志 + 队列 + APM"],
+        "team": ["2–8 人", "PHP + SQL", "成本：低中"],
+    },
+    "sinatra-api": {
+        "baseline": ["Ruby 3.3", "Sinatra 4", "Puma 6", "PostgreSQL 16"],
+        "testing": ["单元：RSpec", "集成：Rack::Test", "CI：测试 + RuboCop"],
+        "ops": ["构建：容器镜像", "部署：容器 / PaaS", "监控：日志 + 延迟"],
+        "team": ["1–3 人", "Ruby + HTTP 基础", "成本：低"],
+    },
+    "play-scala": {
+        "baseline": ["Scala 3.3 LTS", "Play 3.0", "Akka 2.10", "PostgreSQL 16"],
+        "testing": ["单元：ScalaTest", "集成：PlaySpec", "CI：测试 + 依赖检查"],
+        "ops": ["构建：JAR + 容器", "部署：容器 / 虚拟机", "监控：OTel + 日志"],
+        "team": ["3–8 人", "Scala + 异步模型", "成本：中高"],
+    },
+    "cowboy-gateway": {
+        "baseline": ["Erlang/OTP 27", "Cowboy 2.12", "Rebar3", "Redis 7"],
+        "testing": ["单元：EUnit / CT", "集成：WebSocket 压测", "CI：编译 + 测试 + dialyzer"],
+        "ops": ["构建：release 包", "部署：集群 + 滚动升级", "监控：Telemetry + 连接数"],
+        "team": ["2–6 人", "Erlang + OTP", "成本：中"],
+    },
+    "wpf-desktop": {
+        "baseline": [".NET 8 LTS", "WPF", "MVVM Toolkit 8", "MSIX"],
+        "testing": ["单元：xUnit", "UI：手工 / WinAppDriver", "CI：构建 + 单测 + 签名"],
+        "ops": ["构建：MSIX / ClickOnce", "发布：内部分发 / 商店", "监控：崩溃上报"],
+        "team": ["2–8 人", "C# + XAML + Windows", "成本：中"],
+    },
+    "love-2d": {
+        "baseline": ["Lua 5.1 / LuaJIT", "LÖVE 11.5", "LuaRocks"],
+        "testing": ["单元：busted", "冒烟：启动场景", "CI：打包校验"],
+        "ops": ["构建：平台二进制", "发布：itch.io / Steam", "监控：崩溃日志"],
+        "team": ["1–3 人", "Lua + 2D 游戏基础", "成本：低"],
+    },
+    "r-shiny": {
+        "baseline": ["R 4.4", "Shiny 1.9", "tidyverse 2.x", "Posit Connect"],
+        "testing": ["单元：testthat", "UI：shinytest2", "CI：R CMD check + 测试"],
+        "ops": ["构建：应用包", "部署：Connect / Shiny Server", "监控：使用日志 + 错误"],
+        "team": ["1–5 人", "R + 统计 + 可视化", "成本：低中"],
+    },
+    "julia-ml": {
+        "baseline": ["Julia 1.11", "Flux 0.14", "DifferentialEquations.jl 7", "Pluto 0.20"],
+        "testing": ["单元：Test.jl", "集成：小数据集训练", "CI：测试 + 预编译"],
+        "ops": ["环境：Project.toml 锁定", "部署：容器 / 批处理", "监控：实验记录 + 资源"],
+        "team": ["1–5 人", "Julia + 数值方法", "成本：中"],
+    },
+}

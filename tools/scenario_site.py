@@ -33,7 +33,7 @@ def _card(entry, scenario, arch, frameworks):
         card = None
         if detail:
             card = next((c for c in detail["cards"] if c["name"] == fw), None)
-        href = f"langs/{slug}-frameworks.html" + (f"#{slugify(fw)}" if card else "")
+        href = f"frameworks/{slug}.html" + (f"#{slugify(fw)}" if card else "")
         ftype = card["type"] if card else "生态 / 工具"
     pattern = dev_scenarios.PATTERN_BY_KEY[arch["pattern"]]
     search = " ".join([

@@ -196,52 +196,6 @@
     applyIndexFilter();
   }
 
-  /* ---------------- 框架场景矩阵 ---------------- */
-  var matrixSearch = document.getElementById("matrixSearch");
-  var matrixScenario = document.getElementById("matrixScenario");
-  var matrixCount = document.getElementById("matrixCount");
-  var matrixEmpty = document.getElementById("matrixEmpty");
-
-  function applyMatrixFilter() {
-    if (!matrixSearch) return;
-    var q = normalize(matrixSearch.value.trim());
-    var sc = matrixScenario ? matrixScenario.value : "all";
-    var cards = document.querySelectorAll(".stack-card");
-    var total = cards.length;
-    var shown = 0;
-
-    cards.forEach(function (card) {
-      var hay = normalize(card.dataset.search || card.textContent);
-      var okQ = !q || hay.indexOf(q) !== -1;
-      var okS = sc === "all" || card.dataset.scenario === sc;
-      var show = okQ && okS;
-      card.hidden = !show;
-      if (show) shown++;
-    });
-
-    document.querySelectorAll(".matrix-section").forEach(function (sec) {
-      var any = sec.querySelector(".stack-card:not([hidden])");
-      sec.hidden = !any;
-    });
-
-    if (matrixCount) {
-      matrixCount.textContent = shown === total
-        ? total + " 组"
-        : shown + " / " + total + " 组";
-    }
-    if (matrixEmpty) matrixEmpty.classList.toggle("is-visible", shown === 0);
-  }
-
-  if (matrixSearch) {
-    var tm;
-    matrixSearch.addEventListener("input", function () {
-      clearTimeout(tm);
-      tm = setTimeout(applyMatrixFilter, 70);
-    });
-    if (matrixScenario) matrixScenario.addEventListener("change", applyMatrixFilter);
-    applyMatrixFilter();
-  }
-
   /* ---------------- 开发场景 ---------------- */
   var devSearch = document.getElementById("devSearch");
   var devScenario = document.getElementById("devScenario");
@@ -296,45 +250,83 @@
     applyDevFilter();
   }
 
-  /* ---------------- 安全工具 ---------------- */
-  var secSearch = document.getElementById("secSearch");
-  var secDirection = document.getElementById("secDirection");
-  var secCount = document.getElementById("secCount");
-  var secEmpty = document.getElementById("secEmpty");
+  /* ---------------- 框架总览 ---------------- */
+  var fwIndexSearch = document.getElementById("fwIndexSearch");
+  var fwIndexLang = document.getElementById("fwIndexLang");
+  var fwIndexType = document.getElementById("fwIndexType");
+  var fwIndexCount = document.getElementById("fwIndexCount");
+  var fwIndexEmpty = document.getElementById("fwIndexEmpty");
 
-  function applySecFilter() {
-    if (!secSearch) return;
-    var q = normalize(secSearch.value.trim());
-    var dir = secDirection ? secDirection.value : "all";
-    var cards = document.querySelectorAll(".sec-tool");
+  function applyFwIndexFilter() {
+    if (!fwIndexSearch) return;
+    var q = normalize(fwIndexSearch.value.trim());
+    var lg = fwIndexLang ? fwIndexLang.value : "all";
+    var ty = fwIndexType ? fwIndexType.value : "all";
+    var cards = document.querySelectorAll(".fw-index-card");
     var total = cards.length;
     var shown = 0;
-
     cards.forEach(function (card) {
       var hay = normalize(card.dataset.search || card.textContent);
-      var okQ = !q || hay.indexOf(q) !== -1;
-      var okD = dir === "all" || card.dataset.dir === dir;
-      var show = okQ && okD;
+      var show = (!q || hay.indexOf(q) !== -1)
+        && (lg === "all" || card.dataset.lang === lg)
+        && (ty === "all" || card.dataset.type === ty);
       card.hidden = !show;
       if (show) shown++;
     });
-
-    if (secCount) {
-      secCount.textContent = shown === total
-        ? total + " 个工具"
-        : shown + " / " + total + " 个工具";
+    if (fwIndexCount) {
+      fwIndexCount.textContent = shown === total ? total + " 张" : shown + " / " + total + " 张";
     }
-    if (secEmpty) secEmpty.classList.toggle("is-visible", shown === 0);
+    if (fwIndexEmpty) fwIndexEmpty.classList.toggle("is-visible", shown === 0);
   }
 
-  if (secSearch) {
-    var ts;
-    secSearch.addEventListener("input", function () {
-      clearTimeout(ts);
-      ts = setTimeout(applySecFilter, 70);
+  if (fwIndexSearch) {
+    var tf;
+    fwIndexSearch.addEventListener("input", function () {
+      clearTimeout(tf);
+      tf = setTimeout(applyFwIndexFilter, 70);
     });
-    if (secDirection) secDirection.addEventListener("change", applySecFilter);
-    applySecFilter();
+    if (fwIndexLang) fwIndexLang.addEventListener("change", applyFwIndexFilter);
+    if (fwIndexType) fwIndexType.addEventListener("change", applyFwIndexFilter);
+    applyFwIndexFilter();
+  }
+
+  /* ---------------- 技术栈总览 ---------------- */
+  var stackSearch = document.getElementById("stackSearch");
+  var stackDomain = document.getElementById("stackDomain");
+  var stackCount = document.getElementById("stackCount");
+  var stackEmpty = document.getElementById("stackEmpty");
+
+  function applyStackFilter() {
+    if (!stackSearch) return;
+    var q = normalize(stackSearch.value.trim());
+    var dom = stackDomain ? stackDomain.value : "all";
+    var cards = document.querySelectorAll(".stack-entry");
+    var total = cards.length;
+    var shown = 0;
+    cards.forEach(function (card) {
+      var hay = normalize(card.dataset.search || card.textContent);
+      var show = (!q || hay.indexOf(q) !== -1)
+        && (dom === "all" || card.dataset.domain === dom);
+      card.hidden = !show;
+      if (show) shown++;
+    });
+    document.querySelectorAll(".matrix-section").forEach(function (sec) {
+      sec.hidden = !sec.querySelector(".stack-entry:not([hidden])");
+    });
+    if (stackCount) {
+      stackCount.textContent = shown === total ? total + " 个栈" : shown + " / " + total + " 个栈";
+    }
+    if (stackEmpty) stackEmpty.classList.toggle("is-visible", shown === 0);
+  }
+
+  if (stackSearch) {
+    var tk;
+    stackSearch.addEventListener("input", function () {
+      clearTimeout(tk);
+      tk = setTimeout(applyStackFilter, 70);
+    });
+    if (stackDomain) stackDomain.addEventListener("change", applyStackFilter);
+    applyStackFilter();
   }
 
   /* ---------------- 来源索引 ---------------- */
@@ -463,21 +455,6 @@
     document.querySelectorAll(".catalog__tools .filter").forEach(function (b) {
       b.addEventListener("click", function () { syncParam("f", b.dataset.filter, true); });
     });
-  } else if (page === "matrix") {
-    setSearchValue(matrixSearch, "q", params.get("q"));
-    if (params.get("s") && matrixScenario) {
-      matrixScenario.value = params.get("s");
-      matrixScenario.dispatchEvent(new Event("change"));
-      syncParam("s", params.get("s"), false);
-    }
-    if (matrixSearch) {
-      matrixSearch.addEventListener("input", function () {
-        syncParam("q", matrixSearch.value.trim(), false);
-      });
-    }
-    if (matrixScenario) {
-      matrixScenario.addEventListener("change", function () { syncParam("s", matrixScenario.value, true); });
-    }
   } else if (page === "scenarios") {
     setSearchValue(devSearch, "q", params.get("q"));
     if (params.get("s") && devScenario) {
@@ -499,19 +476,40 @@
     if (devArch) {
       devArch.addEventListener("change", function () { syncParam("a", devArch.value, true); });
     }
-  } else if (page === "security") {
-    setSearchValue(secSearch, "q", params.get("q"));
-    if (params.get("d") && secDirection) {
-      secDirection.value = params.get("d");
-      secDirection.dispatchEvent(new Event("change"));
+  } else if (page === "frameworks") {
+    setSearchValue(fwIndexSearch, "q", params.get("q"));
+    if (params.get("l") && fwIndexLang) {
+      fwIndexLang.value = params.get("l");
+      fwIndexLang.dispatchEvent(new Event("change"));
     }
-    if (secSearch) {
-      secSearch.addEventListener("input", function () {
-        syncParam("q", secSearch.value.trim(), false);
+    if (params.get("t") && fwIndexType) {
+      fwIndexType.value = params.get("t");
+      fwIndexType.dispatchEvent(new Event("change"));
+    }
+    if (fwIndexSearch) {
+      fwIndexSearch.addEventListener("input", function () {
+        syncParam("q", fwIndexSearch.value.trim(), false);
       });
     }
-    if (secDirection) {
-      secDirection.addEventListener("change", function () { syncParam("d", secDirection.value, true); });
+    if (fwIndexLang) {
+      fwIndexLang.addEventListener("change", function () { syncParam("l", fwIndexLang.value, true); });
+    }
+    if (fwIndexType) {
+      fwIndexType.addEventListener("change", function () { syncParam("t", fwIndexType.value, true); });
+    }
+  } else if (page === "stacks") {
+    setSearchValue(stackSearch, "q", params.get("q"));
+    if (params.get("d") && stackDomain) {
+      stackDomain.value = params.get("d");
+      stackDomain.dispatchEvent(new Event("change"));
+    }
+    if (stackSearch) {
+      stackSearch.addEventListener("input", function () {
+        syncParam("q", stackSearch.value.trim(), false);
+      });
+    }
+    if (stackDomain) {
+      stackDomain.addEventListener("change", function () { syncParam("d", stackDomain.value, true); });
     }
   } else if (page === "sources") {
     setSearchValue(srcSearch, "q", params.get("q"));
@@ -529,11 +527,9 @@
     }
   }
 
-  if (page !== "compare" && page !== "lineage") {
-    window.addEventListener("popstate", function () {
-      window.location.reload();
-    });
-  }
+  window.addEventListener("popstate", function () {
+    window.location.reload();
+  });
 
   /* ---------------- 键盘 ---------------- */
   window.addEventListener("keydown", function (e) {
@@ -547,14 +543,8 @@
       if (page === "index") {
         focusTarget = document.getElementById("indexSearch") ||
                       document.getElementById("catalogSearch");
-      } else if (page === "matrix") {
-        focusTarget = document.getElementById("matrixSearch") ||
-                      document.getElementById("catalogSearch");
       } else if (page === "scenarios") {
         focusTarget = document.getElementById("devSearch") ||
-                      document.getElementById("catalogSearch");
-      } else if (page === "security") {
-        focusTarget = document.getElementById("secSearch") ||
                       document.getElementById("catalogSearch");
       } else if (page === "sources") {
         focusTarget = document.getElementById("srcSearch") ||
@@ -643,7 +633,7 @@
   });
 
   /* 动态计数对读屏可播报 */
-  ["indexCount", "matrixCount", "srcCount", "fmtCount", "lineageCount", "cmpCount"].forEach(function (id) {
+  ["indexCount", "srcCount", "fmtCount", "fwIndexCount", "stackCount"].forEach(function (id) {
     var el = document.getElementById(id);
     if (el) {
       el.setAttribute("aria-live", "polite");
