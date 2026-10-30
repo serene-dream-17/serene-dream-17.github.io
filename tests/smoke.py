@@ -52,7 +52,7 @@ def main():
         print("找不到 Chrome：", CHROME)
         return 2
 
-    pages = [ROOT / "index.html", ROOT / "sources.html", ROOT / "verified.html",
+    pages = [ROOT / "index.html", ROOT / "sources.html",
              ROOT / "scenarios.html", ROOT / "404.html"]
     for name in ("languages", "frameworks", "stacks"):
         pages += sorted((ROOT / name).glob("*.html"))
@@ -76,7 +76,7 @@ def main():
         check("开发场景筛选与 URL", lambda: scenarios_test(page))
         check("来源搜索", lambda: sources_test(page))
         check("产物索引与阶段总表", lambda: formats_test(page))
-        check("实测覆盖表", lambda: verified_test(page))
+        check("安全工具筛选与 URL", lambda: sectools_test(page))
         check("字体控制器持久化", lambda: font_test(page))
         check("命令面板键盘", lambda: cmdk_test(page))
         check("打印样式", lambda: print_test(page))
@@ -122,7 +122,8 @@ def sweep(page, pages, errors):
                     + page.locator(".tag--level").count() >= 1,
                     f"{rel} 缺少内容等级")
             assert_(page.locator(".sources").count() == 1, f"{rel} 缺少参考来源")
-        elif path.parent.name == "frameworks" and path.name != "index.html":
+        elif (path.parent.name == "frameworks"
+              and path.name not in ("index.html", "security.html")):
             cards = page.locator(".fw-card").count()
             if cards:
                 assert_(page.locator(".fw-source").count() == cards,
@@ -142,7 +143,7 @@ def home_test(page):
     )
     for target in ("languages/index.html", "frameworks/index.html", "stacks/index.html"):
         assert_(target in hrefs, f"首页缺少入口 {target}")
-    assert_(page.locator(".topic-link").count() == 4, "首页专题入口不是 4 个")
+    assert_(page.locator(".topic-link").count() == 3, "首页专题入口不是 3 个")
     assert_(page.is_visible(".cmdk-btn"), "首页缺少搜索按钮")
 
 
@@ -164,7 +165,7 @@ def frameworks_index_test(page):
 def stacks_test(page):
     page.goto((ROOT / "stacks" / "index.html").as_uri())
     page.wait_for_timeout(150)
-    assert_(page.locator(".stack-entry").count() == 40, "技术栈不是 40 个")
+    assert_(page.locator(".stack-entry").count() == 42, "技术栈不是 42 个")
     page.select_option("#stackDomain", "mobile")
     page.wait_for_timeout(150)
     assert_(page.locator(".stack-entry:not([hidden])").count() == 3, "移动领域栈不是 3 个")
@@ -177,6 +178,22 @@ def stacks_test(page):
     assert_(page.locator('a[href="../frameworks/dart.html#flutter"]').count() == 1,
             "栈页缺少框架链接")
     assert_(page.locator(".depth-block").count() == 4, "栈页深度段不是 4 个")
+
+
+def sectools_test(page):
+    page.goto((ROOT / "frameworks" / "security.html").as_uri())
+    page.wait_for_timeout(150)
+    assert_(page.locator(".sec-tool-card").count() == 20, "安全工具不是 20 个")
+    assert_(page.locator(".sec-auth-note").count() == 1, "缺少授权提示")
+    page.select_option("#secToolCat", "pentest")
+    page.wait_for_timeout(150)
+    assert_(page.locator(".sec-tool-card:not([hidden])").count() == 7,
+            "渗透测试工具不是 7 个")
+    assert_("c=pentest" in page.url, "安全类别未写入 URL")
+    page.select_option("#secToolCat", "all")
+    page.fill("#secToolSearch", "burp")
+    page.wait_for_timeout(150)
+    assert_(page.locator(".sec-tool-card:not([hidden])").count() == 1, "Burp 搜索异常")
 
 
 def redirect_test(page):
@@ -265,16 +282,6 @@ def formats_test(page):
     page.wait_for_timeout(120)
     assert_(page.locator(".fmt-card:not([hidden])").count() == 1, "ELF 过滤异常")
     assert_("q=elf" in page.url, "格式搜索未写入 URL")
-
-
-def verified_test(page):
-    page.goto((ROOT / "verified.html").as_uri())
-    page.wait_for_timeout(150)
-    assert_(page.locator(".verify-card").count() >= 16, "实测卡片不足")
-    assert_(page.locator(".coverage-table tbody tr").count() == 78, "覆盖表不是 78 行")
-    legend = page.inner_text(".cov-legend")
-    for word in ("已实测", "已装未测", "未安装", "仅文档"):
-        assert_(word in legend, f"图例缺少 {word}")
 
 
 def font_test(page):
