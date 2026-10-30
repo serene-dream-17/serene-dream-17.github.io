@@ -100,6 +100,7 @@ def render_frameworks_index(frameworks, languages, catalog_html, batch_label):
         <select id="fwIndexType"><option value="all">全部类型</option>{type_options}</select>
       </label>
       <span class="era-head__count" id="fwIndexCount">{total} 张</span>
+      <a class="matrix-link" href="security.html">安全工具 →</a>
     </div>
 
     <div class="fw-index-grid" id="fwIndexGrid">{''.join(cards)}</div>

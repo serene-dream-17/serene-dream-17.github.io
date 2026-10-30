@@ -20,18 +20,17 @@ from registry import (  # noqa: E402
 )
 from data import era_1950, era_1970, era_1980, era_1990, era_2000, era_2010, era_2020, era_markup  # noqa: E402
 from data import fw_a, fw_b, fw_c, fw_d, fw_e, fw_meta  # noqa: E402
-from data import dev_scenarios, stacks  # noqa: E402
+from data import dev_scenarios, stacks, sec_tools  # noqa: E402
 import fw_site  # noqa: E402
 import ui  # noqa: E402
 import depth_site  # noqa: E402
 import sources_site  # noqa: E402
 import src_index  # noqa: E402
 import fmt_index  # noqa: E402
-import verified_site  # noqa: E402
 import scenario_site  # noqa: E402
+import sec_tools_site  # noqa: E402
 import stack_site  # noqa: E402
 import frameworks_index  # noqa: E402
-from data import verified  # noqa: E402
 import formats  # noqa: E402
 from data import sources  # noqa: E402
 from data import depth_1, depth_2, depth_3  # noqa: E402
@@ -370,7 +369,6 @@ def render_catalog(active_slug, root, lang_index=None):
     <a href="{root}scenarios.html">开发场景 →</a><br>
     <a href="{root}{LANG_DIR}/formats.html">产物索引 →</a><br>
     <a href="{root}sources.html">来源索引 →</a><br>
-    <a href="{root}verified.html">实测记录 →</a>
   </div>
 </aside>"""
 
@@ -413,10 +411,7 @@ def render_dossier(lang, data):
         f'<span class="cn">{e(lang["cn"])}</span>'
         if lang["cn"] != lang["name"] else ""
     )
-    if lang["slug"] in verified.VERIFIED:
-        level_tag = verified_site.verified_tag(lang["slug"])
-    else:
-        level_tag = '<span class="tag tag--level" title="产物链样例为文档重构，不是本机实测">文档重构</span>'
+    level_tag = '<span class="tag tag--level" title="产物链样例为依据公开文档重构，不是本机运行输出">文档重构</span>'
     froms = " · ".join(e(x) for x in data["lineage"]["from"])
     tos = " · ".join(e(x) for x in data["lineage"]["to"])
 
@@ -502,7 +497,7 @@ def render_chain(data):
         <div class="code-actions">
           <button class="code-btn" type="button" data-copy>复制</button>
           {expand}
-          <span class="code-hint">文档重构 · 非实测输出</span>
+          <span class="code-hint">文档重构 · 示意输出</span>
         </div>
       </div>
       <div class="format">{format_rows}</div>
@@ -589,7 +584,6 @@ def render_hello(data, slug):
         <ol class="why-list">{why}</ol>
       </div>
     </div>
-    {verified_site.verified_block(slug)}
   </section>"""
 
 
@@ -692,7 +686,7 @@ def render_language_page(lang):
     {sources_site.lang_sources(slug)}
     {render_next_card(lang, next_lang)}
     <footer class="pagefoot">
-      <p class="stamp">本页所有文件样例为依据公开规范与文档重构的示意内容；具体地址、偏移与字节数为示例值，不代表任何特定编译器版本的实测输出。</p>
+      <p class="stamp">本页所有文件样例为依据公开规范与文档重构的示意内容；具体地址、偏移与字节数为示例值，不代表任何特定编译器版本的输出。</p>
       <p>{BATCH_LABEL} · PLATE {lang["plate"]:02d} / {TOTAL}</p>
     </footer>
   </div>
@@ -943,7 +937,6 @@ def render_home():
     topics = [
         ("SCENARIOS", "开发场景", f"{len(dev_scenarios.SCENARIOS)} 个场景 · {sum(len(s['architectures']) for s in dev_scenarios.SCENARIOS)} 个架构分组", "scenarios.html"),
         ("FORMATS", "产物索引", "42 种格式反查 + 320 个阶段产物总表", f"{LANG_DIR}/formats.html"),
-        ("VERIFIED", "实测记录", f"{len(verified.VERIFIED)} 门语言的本机复现", "verified.html"),
         ("SOURCES", "来源索引", "220 条官方来源", "sources.html"),
     ]
     topic_html = "".join(
@@ -1192,14 +1185,24 @@ def write_search_js():
                         + [i[1] for l in st["layers"] for i in l["items"] if isinstance(i, tuple)],
         })
 
+    cat_titles = {c["key"]: c["title"] for c in sec_tools.CATEGORIES}
+    for tool in sec_tools.TOOLS:
+        items.append({
+            "title": tool["name"], "group": "安全工具",
+            "desc": f"{cat_titles.get(tool['cat'], '')} · {tool['license']} · {tool['summary']}",
+            "href": f"{FW_DIR}/security.html#{tool['slug']}", "kind": "安全工具",
+            "keywords": [cat_titles.get(tool["cat"], ""), tool["license"],
+                         tool["summary"]] + tool["fit"],
+        })
+
     for title, href, desc in (
         ("编程语言", f"{LANG_DIR}/index.html", "编译管线、产物链与语言列表"),
         ("框架总览", f"{FW_DIR}/index.html", "142 张决策卡，按语言与类型筛选"),
+        ("安全工具", f"{FW_DIR}/security.html", "渗透、网络、逆向、漏洞挖掘等安全工具"),
         ("技术栈", f"{STACK_DIR}/index.html", "语言 + 框架 + 数据与部署的组合栈"),
         ("开发场景", "scenarios.html", "按开发场景 × 架构模式浏览语言与框架"),
         ("来源索引", "sources.html", "220 条官方来源"),
         ("产物索引", f"{LANG_DIR}/formats.html", "按格式反查语言与阶段，含全部阶段产物"),
-        ("实测记录", "verified.html", "本机真正跑通的 Hello 产物链"),
     ):
         items.append({
             "title": title, "group": "页面", "desc": desc,
@@ -1380,7 +1383,7 @@ def validate():
 
 def canonical_pages():
     pages = [
-        ROOT / "index.html", ROOT / "sources.html", ROOT / "verified.html",
+        ROOT / "index.html", ROOT / "sources.html",
         ROOT / "scenarios.html", ROOT / "404.html",
     ]
     for name in (LANG_DIR, FW_DIR, STACK_DIR):
@@ -1464,6 +1467,12 @@ def main():
         ),
         encoding="utf-8",
     )
+    (ROOT / FW_DIR / "security.html").write_text(
+        sec_tools_site.render_security_tools(
+            render_catalog(None, "../"), BATCH_LABEL,
+        ),
+        encoding="utf-8",
+    )
     (ROOT / STACK_DIR / "index.html").write_text(
         stack_site.render_stacks_index(render_catalog(None, "../"), BATCH_LABEL),
         encoding="utf-8",
@@ -1475,12 +1484,6 @@ def main():
         )
 
     (ROOT / "index.html").write_text(render_home(), encoding="utf-8")
-    (ROOT / "verified.html").write_text(
-        verified_site.render_verified_page(
-            {l["slug"]: l for l in BUILT}, render_catalog(None, ""), BATCH_LABEL, BATCH_DONE,
-        ),
-        encoding="utf-8",
-    )
     (ROOT / LANG_DIR / "formats.html").write_text(
         fmt_index.render_formats(
             DATA, {l["slug"]: l for l in BUILT}, render_catalog(None, "../", "index.html"),
@@ -1512,7 +1515,6 @@ def main():
     print(f"产物阶段总数：{sum(stage_count(l['slug']) for l in BUILT)}")
     print(f"框架决策卡：{FRAMEWORK_CARDS} · 开发场景：{len(dev_scenarios.SCENARIOS)}")
     print(f"全局搜索索引：{search_count} 条 · 产物格式：{len(formats.build(DATA))} 种")
-    print(f"实测记录：{len(verified.VERIFIED)} 门语言")
     if problems:
         print("链接问题：")
         for p in problems:

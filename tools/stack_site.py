@@ -194,6 +194,8 @@ def render_stack(stack, catalog_html, batch_label):
             ("团队与成本", "Team", "team"),
         )
     )
+    sec_link = ('<a class="matrix-link" href="../frameworks/security.html">安全工具 →</a>'
+                if stack["domain"] == "security" else "")
     src_title, src_url = stack["source"]
 
     return f"""<!doctype html>
@@ -260,7 +262,7 @@ def render_stack(stack, catalog_html, batch_label):
       <div class="block__head"><span class="block__num">03</span><h2 class="block__title">落地结构<em>Layout</em></h2><span class="block__rule"></span></div>
       <p class="prose">目录结构是示意，不是强制约定；按团队与构建工具调整。</p>
       <ul class="stack-layout">{layout}</ul>
-      <div class="stack-links"><a class="matrix-link" href="../frameworks/index.html">框架总览 →</a><a class="matrix-link matrix-link--ghost" href="../scenarios.html">开发场景 →</a></div>
+      <div class="stack-links"><a class="matrix-link" href="../frameworks/index.html">框架总览 →</a>{sec_link}<a class="matrix-link matrix-link--ghost" href="../scenarios.html">开发场景 →</a></div>
     </section>
 
     <section class="block reveal" id="alternatives">

@@ -3575,3 +3575,20 @@ html[data-line] .prose { line-height: var(--leading); }
   color: var(--moss);
   cursor: pointer;
 }
+
+/* 安全工具页 */
+.sec-auth-note {
+  margin: 4px 0 22px;
+  padding: 10px 14px;
+  font-size: 12px;
+  line-height: 1.75;
+  color: var(--oxide);
+  border: 1px dashed rgba(139, 74, 48, .38);
+  background: rgba(139, 74, 48, .04);
+}
+.sec-tool-card .sec-tool__meta a {
+  color: var(--moss);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(47, 74, 60, .3);
+}
+.sec-tool-card .stack-meta { margin-top: 6px; }

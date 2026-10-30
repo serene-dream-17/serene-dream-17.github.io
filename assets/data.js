@@ -4,7 +4,7 @@ window.ARCHIVE = {
   "batch": 23,
   "frameworks": 142,
   "dev_scenarios": 11,
-  "stacks": 40,
+  "stacks": 42,
   "languages": [
     {
       "plate": 1,

@@ -167,11 +167,23 @@ DEPTH = {
         "ops": ["构建：交叉编译产物", "烧录：JTAG / SWD", "监控：串口日志 + 看门狗"],
         "team": ["2–6 人", "C + 硬件基础 + 实时约束", "成本：中（硬件与调试器）"],
     },
-    "appsec-baseline": {
-        "baseline": ["Java 21 LTS", "Spring Boot 3.4", "Spring Security 6.4", "Keycloak 26"],
-        "testing": ["单元：JUnit", "安全：ZAP 基线扫描 + 依赖扫描", "CI：SAST + 依赖 + 密钥扫描"],
-        "ops": ["构建：JAR + 镜像", "部署：容器", "监控：审计日志 + 认证失败告警"],
-        "team": ["3–8 人", "Java + 身份协议 + 合规", "成本：中"],
+    "web-pentest": {
+        "baseline": ["Kali Linux 2025.x", "Burp Suite Pro 2025.x", "sqlmap 1.9", "Nuclei 3.x"],
+        "testing": ["授权范围与规则复核", "证据可复现性检查", "修复后复测"],
+        "ops": ["测试环境隔离", "流量与操作日志留存", "证据脱敏与归档"],
+        "team": ["1–4 人", "Web 协议 + 漏洞原理 + 报告", "成本：中（Burp Pro 订阅）"],
+    },
+    "red-team-infra": {
+        "baseline": ["Kali / Ubuntu LTS", "Nmap 7.x", "BloodHound CE", "Mythic 3.x"],
+        "testing": ["演练规则与蓝队对齐", "检测覆盖率验证", "回滚与清理检查"],
+        "ops": ["跳板机隔离", "操作日志与时间线", "演练后环境清理"],
+        "team": ["3–8 人", "内网协议 + AD + 对抗", "成本：高（基础设施与人力）"],
+    },
+    "vuln-research-lab": {
+        "baseline": ["C11 / C++20", "AFL++ 4.x", "Clang 18（ASan/UBSan）", "Ghidra 11"],
+        "testing": ["种子语料回归", "崩溃去重与最小化", "修复后回归"],
+        "ops": ["容器化 Fuzz 环境", "崩溃样本归档", "研究披露流程"],
+        "team": ["2–5 人", "C/C++ + 二进制分析", "成本：中（算力）"],
     },
     "evm-contracts": {
         "baseline": ["Solidity 0.8.28", "Foundry 稳定线", "OpenZeppelin 5.x", "目标链 RPC"],

@@ -329,6 +329,45 @@
     applyStackFilter();
   }
 
+  /* ---------------- 安全工具 ---------------- */
+  var secToolSearch = document.getElementById("secToolSearch");
+  var secToolCat = document.getElementById("secToolCat");
+  var secToolCount = document.getElementById("secToolCount");
+  var secToolEmpty = document.getElementById("secToolEmpty");
+
+  function applySecToolFilter() {
+    if (!secToolSearch) return;
+    var q = normalize(secToolSearch.value.trim());
+    var cat = secToolCat ? secToolCat.value : "all";
+    var cards = document.querySelectorAll(".sec-tool-card");
+    var total = cards.length;
+    var shown = 0;
+    cards.forEach(function (card) {
+      var hay = normalize(card.dataset.search || card.textContent);
+      var show = (!q || hay.indexOf(q) !== -1)
+        && (cat === "all" || card.dataset.cat === cat);
+      card.hidden = !show;
+      if (show) shown++;
+    });
+    document.querySelectorAll(".matrix-section").forEach(function (sec) {
+      sec.hidden = !sec.querySelector(".sec-tool-card:not([hidden])");
+    });
+    if (secToolCount) {
+      secToolCount.textContent = shown === total ? total + " 个工具" : shown + " / " + total + " 个工具";
+    }
+    if (secToolEmpty) secToolEmpty.classList.toggle("is-visible", shown === 0);
+  }
+
+  if (secToolSearch) {
+    var tst;
+    secToolSearch.addEventListener("input", function () {
+      clearTimeout(tst);
+      tst = setTimeout(applySecToolFilter, 70);
+    });
+    if (secToolCat) secToolCat.addEventListener("change", applySecToolFilter);
+    applySecToolFilter();
+  }
+
   /* ---------------- 来源索引 ---------------- */
   var srcSearch = document.getElementById("srcSearch");
   var srcCount = document.getElementById("srcCount");
@@ -511,6 +550,20 @@
     if (stackDomain) {
       stackDomain.addEventListener("change", function () { syncParam("d", stackDomain.value, true); });
     }
+  } else if (page === "sectools") {
+    setSearchValue(secToolSearch, "q", params.get("q"));
+    if (params.get("c") && secToolCat) {
+      secToolCat.value = params.get("c");
+      secToolCat.dispatchEvent(new Event("change"));
+    }
+    if (secToolSearch) {
+      secToolSearch.addEventListener("input", function () {
+        syncParam("q", secToolSearch.value.trim(), false);
+      });
+    }
+    if (secToolCat) {
+      secToolCat.addEventListener("change", function () { syncParam("c", secToolCat.value, true); });
+    }
   } else if (page === "sources") {
     setSearchValue(srcSearch, "q", params.get("q"));
     if (srcSearch) {
@@ -545,6 +598,9 @@
                       document.getElementById("catalogSearch");
       } else if (page === "scenarios") {
         focusTarget = document.getElementById("devSearch") ||
+                      document.getElementById("catalogSearch");
+      } else if (page === "sectools") {
+        focusTarget = document.getElementById("secToolSearch") ||
                       document.getElementById("catalogSearch");
       } else if (page === "sources") {
         focusTarget = document.getElementById("srcSearch") ||

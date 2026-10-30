@@ -11,7 +11,7 @@ sys.path.insert(0, str(ROOT / "tools"))
 
 from registry import LANGUAGES, BUILT_SLUGS  # noqa: E402
 from data import sources, fw_a, fw_b, fw_c, fw_d, fw_e, depth_1, depth_2, depth_3  # noqa: E402
-from data import verified, dev_scenarios, stacks  # noqa: E402
+from data import dev_scenarios, stacks, sec_tools  # noqa: E402
 
 FW = {}
 for _m in (fw_a, fw_b, fw_c, fw_d, fw_e):
@@ -33,7 +33,7 @@ def contrast(fg, bg):
 
 
 def main():
-    pages = [ROOT / "index.html", ROOT / "sources.html", ROOT / "verified.html",
+    pages = [ROOT / "index.html", ROOT / "sources.html",
              ROOT / "scenarios.html", ROOT / "404.html"]
     for name in ("languages", "frameworks", "stacks"):
         pages += sorted((ROOT / name).glob("*.html"))
@@ -41,7 +41,7 @@ def main():
     warnings = []
     stats = {
         "pages": len(pages),
-        "index_pages": 9,
+        "index_pages": 10,
         "language_pages": 0,
         "framework_pages": 0,
         "h1_ok": 0,
@@ -54,7 +54,8 @@ def main():
     for page in pages:
         rel = page.relative_to(ROOT).as_posix()
         s = page.read_text(encoding="utf-8")
-        is_framework = page.parent.name == "frameworks" and page.name != "index.html"
+        is_framework = (page.parent.name == "frameworks"
+                    and page.name not in ("index.html", "security.html"))
         is_lang = (page.parent.name == "languages"
                    and page.name not in ("index.html", "formats.html"))
 
@@ -195,6 +196,17 @@ def main():
         if 'id="unclassified"' not in txt:
             failures.append("产物索引缺少未归类阶段")
 
+    sec_page = ROOT / "frameworks" / "security.html"
+    if not sec_page.exists():
+        failures.append("缺少 frameworks/security.html")
+    else:
+        txt = sec_page.read_text(encoding="utf-8")
+        if txt.count('class="stack-card sec-tool-card"') != len(sec_tools.TOOLS):
+            failures.append("安全工具卡数量与数据不一致")
+        for cat in sec_tools.CATEGORIES:
+            if f'id="cat-{cat["key"]}"' not in txt:
+                failures.append(f"安全工具缺少类别 {cat['key']}")
+
     # 数据覆盖
     if len(sources.LANG) != 78:
         failures.append(f"语言来源 {len(sources.LANG)} ≠ 78")
@@ -218,21 +230,6 @@ def main():
         for c in d["cards"]:
             if not (1900 <= c["year"] <= 2030):
                 failures.append(f"{slug}/{c['name']}: 年份异常 {c['year']}")
-
-    # 实测覆盖
-    for slug, info in verified.VERIFIED.items():
-        if slug not in BUILT_SLUGS:
-            failures.append(f"实测条目不存在：{slug}")
-        for field in ("tool", "command", "output", "artifacts", "date"):
-            if field not in info:
-                failures.append(f"实测 {slug}: 缺少 {field}")
-    vpage = (ROOT / "verified.html")
-    if vpage.exists():
-        txt = vpage.read_text(encoding="utf-8")
-        if txt.count('class="verify-card"') != len(verified.VERIFIED):
-            failures.append("实测页卡片数与数据不一致")
-        if 'cov-legend' not in txt:
-            failures.append("实测页缺少覆盖图例")
 
     # 基础对比度
     checks = {
