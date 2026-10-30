@@ -166,6 +166,11 @@ def matrix_test(page):
     assert_(sec_cards >= 10, f"安全场景条目不足 {sec_cards}")
     href = page.get_attribute('#security .stack-card', "href")
     assert_(href.startswith("security.html#"), f"安全场景链接异常 {href}")
+    hrefs = page.eval_on_selector_all(
+        "#security .stack-card", "els => els.map(e => e.getAttribute('href'))"
+    )
+    for anchor in ("security.html#slither", "security.html#gnutls", "security.html#age"):
+        assert_(anchor in hrefs, f"矩阵缺少新增安全工具链接 {anchor}")
 
 
 def scenarios_test(page):
@@ -193,8 +198,21 @@ def scenarios_test(page):
     page.select_option("#devArch", "pipeline")
     page.wait_for_timeout(150)
     shown = page.locator(".dev-card:not([hidden])").count()
-    assert_(shown >= 15, f"管线 / 批流模式结果不足 {shown}")
+    assert_(shown == 27, f"管线 / 批流模式应为 27 组，实际 {shown}")
     assert_("a=pipeline" in page.url, "模式筛选未写入 URL")
+    page.reload()
+    page.wait_for_timeout(180)
+    assert_(page.input_value("#devArch") == "pipeline", "模式筛选刷新后未恢复")
+    assert_(page.locator(".dev-card:not([hidden])").count() == 27, "刷新后模式筛选结果不一致")
+
+    page.select_option("#devScenario", "security")
+    page.select_option("#devArch", "native")
+    page.wait_for_timeout(180)
+    assert_("s=security" in page.url and "a=native" in page.url, "场景 + 模式 URL 状态缺失")
+    assert_(page.locator(".dev-card:not([hidden])").count() == 5,
+            "安全场景 + 原生模式应为 5 组")
+    assert_(page.locator("#dev-security .dev-arch:not([hidden])").count() == 1,
+            "安全场景 + 原生模式应只剩 1 个分组")
 
 
 def security_test(page):
@@ -206,6 +224,13 @@ def security_test(page):
     assert_("q=tls" in page.url, "安全搜索未写入 URL")
     assert_(page.locator(".sec-tool:not([hidden])").count() >= 1, "安全搜索无结果")
     page.fill("#secSearch", "")
+    for term in ("slither", "gnutls", "age"):
+        page.fill("#secSearch", term)
+        page.wait_for_timeout(120)
+        assert_(page.locator(f"#{term}:not([hidden])").count() == 1,
+                f"安全搜索未命中 {term}")
+    page.fill("#secSearch", "")
+    page.wait_for_timeout(120)
     page.select_option("#secCategory", "供应链 / 镜像扫描")
     page.wait_for_timeout(150)
     assert_("c=" in page.url, "安全类别未写入 URL")
@@ -299,6 +324,25 @@ def cmdk_test(page):
     page.keyboard.press("Enter")
     page.wait_for_timeout(350)
     assert_("python-frameworks.html#django" in page.url, "回车跳转异常")
+    page.goto((ROOT / "index.html").as_uri())
+    page.wait_for_timeout(120)
+    page.keyboard.press("Control+k")
+    page.wait_for_timeout(120)
+    page.fill("#cmdkInput", "slither")
+    page.wait_for_timeout(120)
+    page.keyboard.press("Enter")
+    page.wait_for_timeout(350)
+    assert_("security.html#slither" in page.url, "安全工具搜索跳转异常")
+    page.goto((ROOT / "index.html").as_uri())
+    page.wait_for_timeout(120)
+    page.keyboard.press("Control+k")
+    page.wait_for_timeout(120)
+    page.fill("#cmdkInput", "管线")
+    page.wait_for_timeout(120)
+    assert_(page.locator("#cmdkInput").count() == 1, "命令面板输入框丢失")
+    assert_(page.locator(".cmdk__item").count() >= 1, "模式关键词未命中任何索引")
+    page.keyboard.press("Escape")
+    page.wait_for_timeout(100)
     page.goto((ROOT / "index.html").as_uri())
     page.keyboard.press("Control+k")
     page.wait_for_timeout(100)

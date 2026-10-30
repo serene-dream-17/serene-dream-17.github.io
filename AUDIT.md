@@ -135,8 +135,8 @@ python tools/check_sources.py
 | A36 | favicon/OG | 164 页均有 favicon 与 og:title/og:image |
 | A37 | 404 | 404.html 可加载、链接可达、样式一致 |
 | A38 | 矩阵补齐 | 142 张卡全部出现在矩阵；14 个场景 / 169 组 |
-| A39 | 统一模式 | `#devArch` 为 12 种模式 + 全部；图例 12 项；36 个分组均有模式徽标；`?a=pipeline` 有结果 |
-| A40 | 安全工具补齐 | 安全页 15 张卡；Slither / GnuTLS / age 锚点可从开发场景与矩阵跳转；新来源 URL 均返回 200 |
+| A39 | 统一模式 | `#devArch` 为 12 种模式 + 全部；图例 12 项；36 个分组均有模式徽标；`?a=pipeline` 27 组且刷新后恢复；安全场景 + native 只剩 1 个分组 |
+| A40 | 安全工具补齐 | 安全页 15 张卡；搜索 slither / gnutls / age 均命中；Slither / GnuTLS / age 锚点可从矩阵跳转；⌘K 搜 Slither 可跳转、搜「管线」有结果；新来源 URL 均返回 200 |
 | A41 | 实测 | 16 门语言有 `verify` 区块与徽章；未实测条目不标 |
 | A42 | 实测数据 | `python tools/verify.py` 只写入本机跑通的项 |
 
