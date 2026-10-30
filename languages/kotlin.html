@@ -100,7 +100,6 @@ try {
     <a href="../scenarios.html">开发场景 →</a><br>
     <a href="../languages/formats.html">产物索引 →</a><br>
     <a href="../sources.html">来源索引 →</a><br>
-    <a href="../verified.html">实测记录 →</a>
   </div>
 </aside>
 <main class="page" id="main">
@@ -122,7 +121,7 @@ try {
       <div class="meta-item"><span class="meta-label">首次发布</span><span class="meta-value">2011</span></div>
       <div class="meta-item"><span class="meta-label">类型</span><span class="meta-value">解释 / 字节码</span></div>
     </div>
-    <div class="tags"><span class="tag">面向对象</span><span class="tag">空安全</span><span class="tag">JVM</span><span class="tag is-accent">解释 / 字节码</span><span class="tag tag--level" title="产物链样例为文档重构，不是本机实测">文档重构</span></div>
+    <div class="tags"><span class="tag">面向对象</span><span class="tag">空安全</span><span class="tag">JVM</span><span class="tag is-accent">解释 / 字节码</span><span class="tag tag--level" title="产物链样例为依据公开文档重构，不是本机运行输出">文档重构</span></div>
     <a class="dossier__fwlink" href="../frameworks/kotlin.html">框架与场景 →</a>
     <div class="lineage">
       <div><div class="lineage__label">源自 / From</div><p class="lineage__list">Java · Scala · C# · Groovy（部分）</p></div>
@@ -163,7 +162,7 @@ try {
         <div class="code-actions">
           <button class="code-btn" type="button" data-copy>复制</button>
           
-          <span class="code-hint">文档重构 · 非实测输出</span>
+          <span class="code-hint">文档重构 · 示意输出</span>
         </div>
       </div>
       <div class="format"><div class="format__row"><span class="format__key">扩展名</span><span class="format__val">.kt / .kts</span></div><div class="format__row"><span class="format__key">空安全</span><span class="format__val">String 与 String? 不同</span></div><div class="format__row"><span class="format__key">顶层函数</span><span class="format__val">无需类</span></div><div class="format__row"><span class="format__key">入口</span><span class="format__val">fun main()</span></div></div>
@@ -198,7 +197,7 @@ public final class HelloKt {
         <div class="code-actions">
           <button class="code-btn" type="button" data-copy>复制</button>
           
-          <span class="code-hint">文档重构 · 非实测输出</span>
+          <span class="code-hint">文档重构 · 示意输出</span>
         </div>
       </div>
       <div class="format"><div class="format__row"><span class="format__key">产物</span><span class="format__val">JVM .class</span></div><div class="format__row"><span class="format__key">类名</span><span class="format__val">文件名 + Kt</span></div><div class="format__row"><span class="format__key">元数据</span><span class="format__val">@Metadata 注解</span></div><div class="format__row"><span class="format__key">空安全</span><span class="format__val">编译期检查 + 运行时断言</span></div></div>
@@ -230,7 +229,7 @@ $ unzip -l hello.jar | head
         <div class="code-actions">
           <button class="code-btn" type="button" data-copy>复制</button>
           
-          <span class="code-hint">文档重构 · 非实测输出</span>
+          <span class="code-hint">文档重构 · 示意输出</span>
         </div>
       </div>
       <div class="format"><div class="format__row"><span class="format__key">容器</span><span class="format__val">JAR</span></div><div class="format__row"><span class="format__key">依赖</span><span class="format__val">kotlin-stdlib</span></div><div class="format__row"><span class="format__key">入口</span><span class="format__val">Main-Class: HelloKt</span></div><div class="format__row"><span class="format__key">互操作</span><span class="format__val">可被 Java 调用</span></div></div>
@@ -259,7 +258,7 @@ $ xxd -l 8 classes.dex
         <div class="code-actions">
           <button class="code-btn" type="button" data-copy>复制</button>
           
-          <span class="code-hint">文档重构 · 非实测输出</span>
+          <span class="code-hint">文档重构 · 示意输出</span>
         </div>
       </div>
       <div class="format"><div class="format__row"><span class="format__key">转换</span><span class="format__val">.class → .dex</span></div><div class="format__row"><span class="format__key">字节码</span><span class="format__val">寄存器式（ART）</span></div><div class="format__row"><span class="format__key">工具</span><span class="format__val">d8 / R8</span></div><div class="format__row"><span class="format__key">执行</span><span class="format__val">ART：AOT + JIT</span></div></div>
@@ -312,7 +311,6 @@ $ xxd -l 8 classes.dex
         <ol class="why-list"><li><strong>顶层函数</strong>：编译进文件对应的 `*Kt` 类，作为静态方法。</li><li><strong>@Metadata</strong>：把 Kotlin 语义（可空性、默认参数）留给编译器。</li><li><strong>stdlib</strong>：标准库是运行时依赖，影响分发体积。</li><li><strong>dex</strong>：Android 复用 Java 的工具链，只换最后一步。</li></ol>
       </div>
     </div>
-    
   </section>
     <section class="block deep reveal" id="deep">
     <div class="block__head">
@@ -392,7 +390,7 @@ $ xxd -l 8 classes.dex
     <span class="next-card__arrow" aria-hidden="true">→</span>
   </a>
     <footer class="pagefoot">
-      <p class="stamp">本页所有文件样例为依据公开规范与文档重构的示意内容；具体地址、偏移与字节数为示例值，不代表任何特定编译器版本的实测输出。</p>
+      <p class="stamp">本页所有文件样例为依据公开规范与文档重构的示意内容；具体地址、偏移与字节数为示例值，不代表任何特定编译器版本的输出。</p>
       <p>第 1–23 批 · PLATE 50 / 78</p>
     </footer>
   </div>

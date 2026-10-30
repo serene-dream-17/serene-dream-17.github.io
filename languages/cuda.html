@@ -100,7 +100,6 @@ try {
     <a href="../scenarios.html">开发场景 →</a><br>
     <a href="../languages/formats.html">产物索引 →</a><br>
     <a href="../sources.html">来源索引 →</a><br>
-    <a href="../verified.html">实测记录 →</a>
   </div>
 </aside>
 <main class="page" id="main">
@@ -122,7 +121,7 @@ try {
       <div class="meta-item"><span class="meta-label">首次发布</span><span class="meta-value">2007</span></div>
       <div class="meta-item"><span class="meta-label">类型</span><span class="meta-value">领域专用</span></div>
     </div>
-    <div class="tags"><span class="tag">GPU</span><span class="tag">并行</span><span class="tag">SIMT</span><span class="tag is-accent">领域专用</span><span class="tag tag--level" title="产物链样例为文档重构，不是本机实测">文档重构</span></div>
+    <div class="tags"><span class="tag">GPU</span><span class="tag">并行</span><span class="tag">SIMT</span><span class="tag is-accent">领域专用</span><span class="tag tag--level" title="产物链样例为依据公开文档重构，不是本机运行输出">文档重构</span></div>
     <a class="dossier__fwlink" href="../frameworks/cuda.html">框架与场景 →</a>
     <div class="lineage">
       <div><div class="lineage__label">源自 / From</div><p class="lineage__list">C / C++ · SIMT 并行模型 · GPU 图形管线</p></div>
@@ -171,7 +170,7 @@ int main() {
         <div class="code-actions">
           <button class="code-btn" type="button" data-copy>复制</button>
           
-          <span class="code-hint">文档重构 · 非实测输出</span>
+          <span class="code-hint">文档重构 · 示意输出</span>
         </div>
       </div>
       <div class="format"><div class="format__row"><span class="format__key">扩展名</span><span class="format__val">.cu / .cuh</span></div><div class="format__row"><span class="format__key">kernel</span><span class="format__val">__global__ 函数</span></div><div class="format__row"><span class="format__key">启动</span><span class="format__val">&lt;&lt;&lt;grid, block&gt;&gt;&gt;</span></div><div class="format__row"><span class="format__key">线程</span><span class="format__val">blockIdx / threadIdx</span></div></div>
@@ -210,7 +209,7 @@ int main() {
         <div class="code-actions">
           <button class="code-btn" type="button" data-copy>复制</button>
           
-          <span class="code-hint">文档重构 · 非实测输出</span>
+          <span class="code-hint">文档重构 · 示意输出</span>
         </div>
       </div>
       <div class="format"><div class="format__row"><span class="format__key">中间表示</span><span class="format__val">PTX（虚拟 ISA）</span></div><div class="format__row"><span class="format__key">目标</span><span class="format__val">sm_80 等虚拟架构</span></div><div class="format__row"><span class="format__key">可移植</span><span class="format__val">由驱动 JIT 到具体 GPU</span></div><div class="format__row"><span class="format__key">查看</span><span class="format__val">nvcc -ptx / cuobjdump -ptx</span></div></div>
@@ -241,7 +240,7 @@ int main() {
         <div class="code-actions">
           <button class="code-btn" type="button" data-copy>复制</button>
           
-          <span class="code-hint">文档重构 · 非实测输出</span>
+          <span class="code-hint">文档重构 · 示意输出</span>
         </div>
       </div>
       <div class="format"><div class="format__row"><span class="format__key">机器码</span><span class="format__val">SASS</span></div><div class="format__row"><span class="format__key">绑定</span><span class="format__val">GPU 架构（sm_xx）</span></div><div class="format__row"><span class="format__key">查看</span><span class="format__val">cuobjdump -sass</span></div><div class="format__row"><span class="format__key">执行</span><span class="format__val">GPU 流式多处理器</span></div></div>
@@ -275,7 +274,7 @@ arch = sm_80
         <div class="code-actions">
           <button class="code-btn" type="button" data-copy>复制</button>
           
-          <span class="code-hint">文档重构 · 非实测输出</span>
+          <span class="code-hint">文档重构 · 示意输出</span>
         </div>
       </div>
       <div class="format"><div class="format__row"><span class="format__key">宿主</span><span class="format__val">ELF 可执行</span></div><div class="format__row"><span class="format__key">设备</span><span class="format__val">cubin / fatbin</span></div><div class="format__row"><span class="format__key">嵌入</span><span class="format__val">宿主文件内</span></div><div class="format__row"><span class="format__key">加载</span><span class="format__val">CUDA driver</span></div></div>
@@ -336,7 +335,6 @@ int main() {
         <ol class="why-list"><li><strong>PTX</strong>：虚拟 ISA，让同一份代码适配不同 GPU 架构。</li><li><strong>SASS</strong>：具体架构的机器码，性能最好但不可移植。</li><li><strong>fatbin</strong>：把多个架构的 cubin 嵌进宿主文件。</li><li><strong>SIMT</strong>：一个 kernel 由大量线程并行执行，硬件负责调度。</li></ol>
       </div>
     </div>
-    
   </section>
     <section class="block deep reveal" id="deep">
     <div class="block__head">
@@ -409,7 +407,7 @@ int main() {
     <span class="next-card__arrow" aria-hidden="true">→</span>
   </a>
     <footer class="pagefoot">
-      <p class="stamp">本页所有文件样例为依据公开规范与文档重构的示意内容；具体地址、偏移与字节数为示例值，不代表任何特定编译器版本的实测输出。</p>
+      <p class="stamp">本页所有文件样例为依据公开规范与文档重构的示意内容；具体地址、偏移与字节数为示例值，不代表任何特定编译器版本的输出。</p>
       <p>第 1–23 批 · PLATE 69 / 78</p>
     </footer>
   </div>

@@ -100,7 +100,6 @@ try {
     <a href="../scenarios.html">开发场景 →</a><br>
     <a href="../languages/formats.html">产物索引 →</a><br>
     <a href="../sources.html">来源索引 →</a><br>
-    <a href="../verified.html">实测记录 →</a>
   </div>
 </aside>
 <main class="page" id="main">
@@ -122,7 +121,7 @@ try {
       <div class="meta-item"><span class="meta-label">首次发布</span><span class="meta-value">1975</span></div>
       <div class="meta-item"><span class="meta-label">类型</span><span class="meta-value">解释 / 字节码</span></div>
     </div>
-    <div class="tags"><span class="tag">函数式</span><span class="tag">尾调用</span><span class="tag">续延</span><span class="tag is-accent">解释 / 字节码</span><span class="tag tag--level" title="产物链样例为文档重构，不是本机实测">文档重构</span></div>
+    <div class="tags"><span class="tag">函数式</span><span class="tag">尾调用</span><span class="tag">续延</span><span class="tag is-accent">解释 / 字节码</span><span class="tag tag--level" title="产物链样例为依据公开文档重构，不是本机运行输出">文档重构</span></div>
     <a class="dossier__fwlink" href="../frameworks/scheme.html">框架与场景 →</a>
     <div class="lineage">
       <div><div class="lineage__label">源自 / From</div><p class="lineage__list">Lisp 1.5 · λ 演算 · Actors 模型</p></div>
@@ -166,7 +165,7 @@ try {
         <div class="code-actions">
           <button class="code-btn" type="button" data-copy>复制</button>
           
-          <span class="code-hint">文档重构 · 非实测输出</span>
+          <span class="code-hint">文档重构 · 示意输出</span>
         </div>
       </div>
       <div class="format"><div class="format__row"><span class="format__key">定义</span><span class="format__val">define 绑定变量/函数</span></div><div class="format__row"><span class="format__key">调用</span><span class="format__val">(f arg …) 前缀记法</span></div><div class="format__row"><span class="format__key">作用域</span><span class="format__val">词法作用域</span></div><div class="format__row"><span class="format__key">尾调用</span><span class="format__val">尾位置的调用不增长栈</span></div></div>
@@ -201,7 +200,7 @@ try {
         <div class="code-actions">
           <button class="code-btn" type="button" data-copy>复制</button>
           
-          <span class="code-hint">文档重构 · 非实测输出</span>
+          <span class="code-hint">文档重构 · 示意输出</span>
         </div>
       </div>
       <div class="format"><div class="format__row"><span class="format__key">宏</span><span class="format__val">syntax-rules，模式 → 模板</span></div><div class="format__row"><span class="format__key">卫生</span><span class="format__val">引入的绑定自动重命名</span></div><div class="format__row"><span class="format__key">阶段</span><span class="format__val">编译期展开</span></div><div class="format__row"><span class="format__key">输出</span><span class="format__val">核心表达式</span></div></div>
@@ -237,7 +236,7 @@ try {
         <div class="code-actions">
           <button class="code-btn" type="button" data-copy>复制</button>
           
-          <span class="code-hint">文档重构 · 非实测输出</span>
+          <span class="code-hint">文档重构 · 示意输出</span>
         </div>
       </div>
       <div class="format"><div class="format__row"><span class="format__key">CPS</span><span class="format__val">Continuation Passing Style</span></div><div class="format__row"><span class="format__key">续延</span><span class="format__val">显式的一等函数</span></div><div class="format__row"><span class="format__key">尾调用</span><span class="format__val">直接跳转，不压栈</span></div><div class="format__row"><span class="format__key">用途</span><span class="format__val">编译器中间表示 / 实现 call/cc</span></div></div>
@@ -268,7 +267,7 @@ hello: ELF 64-bit LSB pie executable, x86-64 ...
         <div class="code-actions">
           <button class="code-btn" type="button" data-copy>复制</button>
           
-          <span class="code-hint">文档重构 · 非实测输出</span>
+          <span class="code-hint">文档重构 · 示意输出</span>
         </div>
       </div>
       <div class="format"><div class="format__row"><span class="format__key">CHICKEN</span><span class="format__val">编译到 C，再交给 C 编译器</span></div><div class="format__row"><span class="format__key">Chez</span><span class="format__val">原生代码，极快</span></div><div class="format__row"><span class="format__key">Racket</span><span class="format__val">字节码或 Chez 后端</span></div><div class="format__row"><span class="format__key">续延</span><span class="format__val">运行时支持，可能复制栈</span></div></div>
@@ -320,7 +319,6 @@ hello: ELF 64-bit LSB pie executable, x86-64 ...
         <ol class="why-list"><li><strong>极简核心</strong>：特殊形式很少，其余用 lambda 定义，语义容易形式化。</li><li><strong>卫生宏</strong>：在编译期改写语法，且不捕获用户变量。</li><li><strong>CPS</strong>：把控制流变成显式的续延，尾调用与 call/cc 自然实现。</li><li><strong>闭包转换</strong>：把词法作用域变成运行时的环境对象。</li></ol>
       </div>
     </div>
-    
   </section>
     <section class="block deep reveal" id="deep">
     <div class="block__head">
@@ -393,7 +391,7 @@ hello: ELF 64-bit LSB pie executable, x86-64 ...
     <span class="next-card__arrow" aria-hidden="true">→</span>
   </a>
     <footer class="pagefoot">
-      <p class="stamp">本页所有文件样例为依据公开规范与文档重构的示意内容；具体地址、偏移与字节数为示例值，不代表任何特定编译器版本的实测输出。</p>
+      <p class="stamp">本页所有文件样例为依据公开规范与文档重构的示意内容；具体地址、偏移与字节数为示例值，不代表任何特定编译器版本的输出。</p>
       <p>第 1–23 批 · PLATE 16 / 78</p>
     </footer>
   </div>

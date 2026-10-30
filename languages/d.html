@@ -100,7 +100,6 @@ try {
     <a href="../scenarios.html">开发场景 →</a><br>
     <a href="../languages/formats.html">产物索引 →</a><br>
     <a href="../sources.html">来源索引 →</a><br>
-    <a href="../verified.html">实测记录 →</a>
   </div>
 </aside>
 <main class="page" id="main">
@@ -122,7 +121,7 @@ try {
       <div class="meta-item"><span class="meta-label">首次发布</span><span class="meta-value">2001</span></div>
       <div class="meta-item"><span class="meta-label">类型</span><span class="meta-value">编译型</span></div>
     </div>
-    <div class="tags"><span class="tag">系统编程</span><span class="tag">模板</span><span class="tag">GC</span><span class="tag is-accent">编译型</span><span class="tag tag--level" title="产物链样例为文档重构，不是本机实测">文档重构</span></div>
+    <div class="tags"><span class="tag">系统编程</span><span class="tag">模板</span><span class="tag">GC</span><span class="tag is-accent">编译型</span><span class="tag tag--level" title="产物链样例为依据公开文档重构，不是本机运行输出">文档重构</span></div>
     <a class="dossier__fwlink" href="../frameworks/d.html">框架与场景 →</a>
     <div class="lineage">
       <div><div class="lineage__label">源自 / From</div><p class="lineage__list">C++ · Java · C# · Python（range 影响）</p></div>
@@ -165,7 +164,7 @@ void main() {
         <div class="code-actions">
           <button class="code-btn" type="button" data-copy>复制</button>
           
-          <span class="code-hint">文档重构 · 非实测输出</span>
+          <span class="code-hint">文档重构 · 示意输出</span>
         </div>
       </div>
       <div class="format"><div class="format__row"><span class="format__key">扩展名</span><span class="format__val">.d</span></div><div class="format__row"><span class="format__key">模块</span><span class="format__val">module 声明可选</span></div><div class="format__row"><span class="format__key">导入</span><span class="format__val">import std.stdio</span></div><div class="format__row"><span class="format__key">入口</span><span class="format__val">void main()</span></div></div>
@@ -194,7 +193,7 @@ void main();
         <div class="code-actions">
           <button class="code-btn" type="button" data-copy>复制</button>
           
-          <span class="code-hint">文档重构 · 非实测输出</span>
+          <span class="code-hint">文档重构 · 示意输出</span>
         </div>
       </div>
       <div class="format"><div class="format__row"><span class="format__key">扩展名</span><span class="format__val">.di</span></div><div class="format__row"><span class="format__key">生成</span><span class="format__val">dmd -H</span></div><div class="format__row"><span class="format__key">内容</span><span class="format__val">声明，无实现</span></div><div class="format__row"><span class="format__key">作用</span><span class="format__val">独立编译与接口分发</span></div></div>
@@ -224,7 +223,7 @@ void main();
         <div class="code-actions">
           <button class="code-btn" type="button" data-copy>复制</button>
           
-          <span class="code-hint">文档重构 · 非实测输出</span>
+          <span class="code-hint">文档重构 · 示意输出</span>
         </div>
       </div>
       <div class="format"><div class="format__row"><span class="format__key">格式</span><span class="format__val">ELF / COFF 目标</span></div><div class="format__row"><span class="format__key">符号</span><span class="format__val">模块 + 模板实例修饰</span></div><div class="format__row"><span class="format__key">运行时</span><span class="format__val">druntime（GC、异常）</span></div><div class="format__row"><span class="format__key">模板</span><span class="format__val">实例化在编译期完成</span></div></div>
@@ -259,7 +258,7 @@ $ ldd hello
         <div class="code-actions">
           <button class="code-btn" type="button" data-copy>复制</button>
           
-          <span class="code-hint">文档重构 · 非实测输出</span>
+          <span class="code-hint">文档重构 · 示意输出</span>
         </div>
       </div>
       <div class="format"><div class="format__row"><span class="format__key">格式</span><span class="format__val">ELF / PE / Mach-O</span></div><div class="format__row"><span class="format__key">运行时</span><span class="format__val">druntime + Phobos</span></div><div class="format__row"><span class="format__key">GC</span><span class="format__val">默认启用</span></div><div class="format__row"><span class="format__key">-betterC</span><span class="format__val">关闭运行时，接近 C</span></div></div>
@@ -313,7 +312,6 @@ void main() {
         <ol class="why-list"><li><strong>.di</strong>：编译器生成的接口文件，替代手写头文件。</li><li><strong>模板实例化</strong>：模板在编译期展开，符号携带完整实例信息。</li><li><strong>druntime</strong>：GC、异常、模块注册都由运行时提供。</li><li><strong>-betterC</strong>：关掉运行时，回到 C 式部署。</li></ol>
       </div>
     </div>
-    
   </section>
     <section class="block deep reveal" id="deep">
     <div class="block__head">
@@ -386,7 +384,7 @@ void main() {
     <span class="next-card__arrow" aria-hidden="true">→</span>
   </a>
     <footer class="pagefoot">
-      <p class="stamp">本页所有文件样例为依据公开规范与文档重构的示意内容；具体地址、偏移与字节数为示例值，不代表任何特定编译器版本的实测输出。</p>
+      <p class="stamp">本页所有文件样例为依据公开规范与文档重构的示意内容；具体地址、偏移与字节数为示例值，不代表任何特定编译器版本的输出。</p>
       <p>第 1–23 批 · PLATE 45 / 78</p>
     </footer>
   </div>

@@ -100,7 +100,6 @@ try {
     <a href="../scenarios.html">开发场景 →</a><br>
     <a href="../languages/formats.html">产物索引 →</a><br>
     <a href="../sources.html">来源索引 →</a><br>
-    <a href="../verified.html">实测记录 →</a>
   </div>
 </aside>
 <main class="page" id="main">
@@ -122,7 +121,7 @@ try {
       <div class="meta-item"><span class="meta-label">首次发布</span><span class="meta-value">1959</span></div>
       <div class="meta-item"><span class="meta-label">类型</span><span class="meta-value">编译型</span></div>
     </div>
-    <div class="tags"><span class="tag">命令式</span><span class="tag">商业数据</span><span class="tag">记录</span><span class="tag is-accent">编译型</span><span class="tag tag--level" title="产物链样例为文档重构，不是本机实测">文档重构</span></div>
+    <div class="tags"><span class="tag">命令式</span><span class="tag">商业数据</span><span class="tag">记录</span><span class="tag is-accent">编译型</span><span class="tag tag--level" title="产物链样例为依据公开文档重构，不是本机运行输出">文档重构</span></div>
     <a class="dossier__fwlink" href="../frameworks/cobol.html">框架与场景 →</a>
     <div class="lineage">
       <div><div class="lineage__label">源自 / From</div><p class="lineage__list">FLOW-MATIC · COMTRAN · 商业报表格式</p></div>
@@ -169,7 +168,7 @@ try {
         <div class="code-actions">
           <button class="code-btn" type="button" data-copy>复制</button>
           
-          <span class="code-hint">文档重构 · 非实测输出</span>
+          <span class="code-hint">文档重构 · 示意输出</span>
         </div>
       </div>
       <div class="format"><div class="format__row"><span class="format__key">列规则</span><span class="format__val">1–6 序号 · 7 指示符 · 8–72 正文 · 73–80 标识</span></div><div class="format__row"><span class="format__key">指示符</span><span class="format__val">* 注释 · - 续行 · / 换页</span></div><div class="format__row"><span class="format__key">Area A</span><span class="format__val">第 8–11 列：部、段、层号 01</span></div><div class="format__row"><span class="format__key">Area B</span><span class="format__val">第 12–72 列：语句与子句</span></div><div class="format__row"><span class="format__key">固定格式</span><span class="format__val">默认 80 列，现代编译器可放宽</span></div></div>
@@ -204,7 +203,7 @@ int main (int argc, char **argv)
         <div class="code-actions">
           <button class="code-btn" type="button" data-copy>复制</button>
           
-          <span class="code-hint">文档重构 · 非实测输出</span>
+          <span class="code-hint">文档重构 · 示意输出</span>
         </div>
       </div>
       <div class="format"><div class="format__row"><span class="format__key">策略</span><span class="format__val">COBOL → C → 本机编译器</span></div><div class="format__row"><span class="format__key">运行时</span><span class="format__val">libcob 提供 DISPLAY、文件、排序等</span></div><div class="format__row"><span class="format__key">字段</span><span class="format__val">cob_field 描述长度、指针、属性</span></div><div class="format__row"><span class="format__key">编码</span><span class="format__val">GnuCOBOL 默认 ASCII，可切换 EBCDIC</span></div></div>
@@ -231,7 +230,7 @@ $ readelf -d hello | grep NEEDED
         <div class="code-actions">
           <button class="code-btn" type="button" data-copy>复制</button>
           
-          <span class="code-hint">文档重构 · 非实测输出</span>
+          <span class="code-hint">文档重构 · 示意输出</span>
         </div>
       </div>
       <div class="format"><div class="format__row"><span class="format__key">目标</span><span class="format__val">ELF64 · ET_REL</span></div><div class="format__row"><span class="format__key">可执行</span><span class="format__val">ELF64 · ET_DYN（PIE）</span></div><div class="format__row"><span class="format__key">依赖</span><span class="format__val">libcob 运行时</span></div><div class="format__row"><span class="format__key">大型机</span><span class="format__val">z/OS 上产物是 load module（PDS 成员）</span></div></div>
@@ -262,7 +261,7 @@ $ readelf -d hello | grep NEEDED
         <div class="code-actions">
           <button class="code-btn" type="button" data-copy>复制</button>
           
-          <span class="code-hint">文档重构 · 非实测输出</span>
+          <span class="code-hint">文档重构 · 示意输出</span>
         </div>
       </div>
       <div class="format"><div class="format__row"><span class="format__key">编译</span><span class="format__val">IGYCRCTL（Enterprise COBOL）</span></div><div class="format__row"><span class="format__key">链接</span><span class="format__val">IEWL（linkage editor）</span></div><div class="format__row"><span class="format__key">产物</span><span class="format__val">load module，存入 PDS</span></div><div class="format__row"><span class="format__key">数据</span><span class="format__val">EBCDIC · 记录式文件 · 定长/变长</span></div></div>
@@ -317,7 +316,6 @@ $ readelf -d hello | grep NEEDED
         <ol class="why-list"><li><strong>固定列</strong>：源文件首先是 80 列卡片，其次才是程序。</li><li><strong>DATA DIVISION</strong>：数据布局是语言的一部分，PIC 子句同时决定内存与打印。</li><li><strong>翻译成 C</strong>：GnuCOBOL 用 C 作为可移植中间层，运行时在 libcob。</li><li><strong>JCL</strong>：在大型机上，「怎么编译」由作业控制语言描述，而不是 Makefile。</li></ol>
       </div>
     </div>
-    
   </section>
     <section class="block deep reveal" id="deep">
     <div class="block__head">
@@ -390,7 +388,7 @@ $ readelf -d hello | grep NEEDED
     <span class="next-card__arrow" aria-hidden="true">→</span>
   </a>
     <footer class="pagefoot">
-      <p class="stamp">本页所有文件样例为依据公开规范与文档重构的示意内容；具体地址、偏移与字节数为示例值，不代表任何特定编译器版本的实测输出。</p>
+      <p class="stamp">本页所有文件样例为依据公开规范与文档重构的示意内容；具体地址、偏移与字节数为示例值，不代表任何特定编译器版本的输出。</p>
       <p>第 1–23 批 · PLATE 04 / 78</p>
     </footer>
   </div>

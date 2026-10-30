@@ -100,7 +100,6 @@ try {
     <a href="../scenarios.html">开发场景 →</a><br>
     <a href="../languages/formats.html">产物索引 →</a><br>
     <a href="../sources.html">来源索引 →</a><br>
-    <a href="../verified.html">实测记录 →</a>
   </div>
 </aside>
 <main class="page" id="main">
@@ -122,7 +121,7 @@ try {
       <div class="meta-item"><span class="meta-label">首次发布</span><span class="meta-value">1973</span></div>
       <div class="meta-item"><span class="meta-label">类型</span><span class="meta-value">编译型</span></div>
     </div>
-    <div class="tags"><span class="tag">函数式</span><span class="tag">类型推断</span><span class="tag">模式匹配</span><span class="tag is-accent">编译型</span><span class="tag tag--level" title="产物链样例为文档重构，不是本机实测">文档重构</span></div>
+    <div class="tags"><span class="tag">函数式</span><span class="tag">类型推断</span><span class="tag">模式匹配</span><span class="tag is-accent">编译型</span><span class="tag tag--level" title="产物链样例为依据公开文档重构，不是本机运行输出">文档重构</span></div>
     <a class="dossier__fwlink" href="../frameworks/ml.html">框架与场景 →</a>
     <div class="lineage">
       <div><div class="lineage__label">源自 / From</div><p class="lineage__list">LCF · λ 演算 · ALGOL 60</p></div>
@@ -167,7 +166,7 @@ val _ = print (greet &quot;world&quot; ^ &quot;\n&quot;)
         <div class="code-actions">
           <button class="code-btn" type="button" data-copy>复制</button>
           
-          <span class="code-hint">文档重构 · 非实测输出</span>
+          <span class="code-hint">文档重构 · 示意输出</span>
         </div>
       </div>
       <div class="format"><div class="format__row"><span class="format__key">函数</span><span class="format__val">fun 定义，模式匹配参数</span></div><div class="format__row"><span class="format__key">类型</span><span class="format__val">推断，不必显式标注</span></div><div class="format__row"><span class="format__key">字符串</span><span class="format__val">^ 拼接</span></div><div class="format__row"><span class="format__key">注释</span><span class="format__val">(* … *)</span></div></div>
@@ -199,7 +198,7 @@ val it : unit =
         <div class="code-actions">
           <button class="code-btn" type="button" data-copy>复制</button>
           
-          <span class="code-hint">文档重构 · 非实测输出</span>
+          <span class="code-hint">文档重构 · 示意输出</span>
         </div>
       </div>
       <div class="format"><div class="format__row"><span class="format__key">Core</span><span class="format__val">去糖后的核心语言</span></div><div class="format__row"><span class="format__key">类型</span><span class="format__val">每个绑定都有显式类型</span></div><div class="format__row"><span class="format__key">模式</span><span class="format__val">降为 case / 投影</span></div><div class="format__row"><span class="format__key">作用</span><span class="format__val">后续优化的稳定输入</span></div></div>
@@ -228,7 +227,7 @@ greet = closure {
         <div class="code-actions">
           <button class="code-btn" type="button" data-copy>复制</button>
           
-          <span class="code-hint">文档重构 · 非实测输出</span>
+          <span class="code-hint">文档重构 · 示意输出</span>
         </div>
       </div>
       <div class="format"><div class="format__row"><span class="format__key">闭包</span><span class="format__val">代码指针 + 环境</span></div><div class="format__row"><span class="format__key">自由变量</span><span class="format__val">显式放入环境</span></div><div class="format__row"><span class="format__key">后续</span><span class="format__val">CPS / 去函数化 / 寄存器分配</span></div><div class="format__row"><span class="format__key">保证</span><span class="format__val">类型安全在转换中保持</span></div></div>
@@ -258,7 +257,7 @@ hello: ELF 64-bit LSB pie executable, x86-64 ...
         <div class="code-actions">
           <button class="code-btn" type="button" data-copy>复制</button>
           
-          <span class="code-hint">文档重构 · 非实测输出</span>
+          <span class="code-hint">文档重构 · 示意输出</span>
         </div>
       </div>
       <div class="format"><div class="format__row"><span class="format__key">MLton</span><span class="format__val">全程序编译，生成原生 ELF</span></div><div class="format__row"><span class="format__key">SML/NJ</span><span class="format__val">heap image + runtime</span></div><div class="format__row"><span class="format__key">链接</span><span class="format__val">静态链接运行时</span></div><div class="format__row"><span class="format__key">产物</span><span class="format__val">可执行文件或堆镜像</span></div></div>
@@ -310,7 +309,6 @@ hello: ELF 64-bit LSB pie executable, x86-64 ...
         <ol class="why-list"><li><strong>类型推断</strong>：不写类型也能得到最一般类型，编译期严格检查。</li><li><strong>Core</strong>：去糖 + 显式类型，成为后续优化的稳定中间表示。</li><li><strong>闭包转换</strong>：把函数变成代码指针 + 环境，接近机器表示。</li><li><strong>全程序优化</strong>：MLton 能看到整个程序，做跨模块内联与去函数化。</li></ol>
       </div>
     </div>
-    
   </section>
     <section class="block deep reveal" id="deep">
     <div class="block__head">
@@ -383,7 +381,7 @@ hello: ELF 64-bit LSB pie executable, x86-64 ...
     <span class="next-card__arrow" aria-hidden="true">→</span>
   </a>
     <footer class="pagefoot">
-      <p class="stamp">本页所有文件样例为依据公开规范与文档重构的示意内容；具体地址、偏移与字节数为示例值，不代表任何特定编译器版本的实测输出。</p>
+      <p class="stamp">本页所有文件样例为依据公开规范与文档重构的示意内容；具体地址、偏移与字节数为示例值，不代表任何特定编译器版本的输出。</p>
       <p>第 1–23 批 · PLATE 15 / 78</p>
     </footer>
   </div>

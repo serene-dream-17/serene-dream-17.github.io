@@ -100,7 +100,6 @@ try {
     <a href="../scenarios.html">开发场景 →</a><br>
     <a href="../languages/formats.html">产物索引 →</a><br>
     <a href="../sources.html">来源索引 →</a><br>
-    <a href="../verified.html">实测记录 →</a>
   </div>
 </aside>
 <main class="page" id="main">
@@ -122,7 +121,7 @@ try {
       <div class="meta-item"><span class="meta-label">首次发布</span><span class="meta-value">1971</span></div>
       <div class="meta-item"><span class="meta-label">类型</span><span class="meta-value">领域专用</span></div>
     </div>
-    <div class="tags"><span class="tag">脚本</span><span class="tag">管道</span><span class="tag">进程</span><span class="tag is-accent">领域专用</span><a class="tag tag--verified" href="#verify">已实测 Hello · GNU bash, version 4.4.23(1)-release (x86_64-pc-msys)</a></div>
+    <div class="tags"><span class="tag">脚本</span><span class="tag">管道</span><span class="tag">进程</span><span class="tag is-accent">领域专用</span><span class="tag tag--level" title="产物链样例为依据公开文档重构，不是本机运行输出">文档重构</span></div>
     <a class="dossier__fwlink" href="../frameworks/shell.html">框架与场景 →</a>
     <div class="lineage">
       <div><div class="lineage__label">源自 / From</div><p class="lineage__list">Multics shell · Unix 进程模型 · Bourne shell</p></div>
@@ -164,7 +163,7 @@ printf &#x27;Hello, %s\n&#x27; &quot;$name&quot;
         <div class="code-actions">
           <button class="code-btn" type="button" data-copy>复制</button>
           
-          <span class="code-hint">文档重构 · 非实测输出</span>
+          <span class="code-hint">文档重构 · 示意输出</span>
         </div>
       </div>
       <div class="format"><div class="format__row"><span class="format__key">扩展名</span><span class="format__val">.sh / .bash / .zsh</span></div><div class="format__row"><span class="format__key">shebang</span><span class="format__val">#!/bin/sh 指定解释器</span></div><div class="format__row"><span class="format__key">变量</span><span class="format__val">赋值无空格，引用加 $</span></div><div class="format__row"><span class="format__key">退出码</span><span class="format__val">$? 表示上一条命令状态</span></div></div>
@@ -192,7 +191,7 @@ printf &#x27;Hello, %s\n&#x27; &quot;$name&quot;
         <div class="code-actions">
           <button class="code-btn" type="button" data-copy>复制</button>
           
-          <span class="code-hint">文档重构 · 非实测输出</span>
+          <span class="code-hint">文档重构 · 示意输出</span>
         </div>
       </div>
       <div class="format"><div class="format__row"><span class="format__key">工具</span><span class="format__val">bash --pretty-print</span></div><div class="format__row"><span class="format__key">作用</span><span class="format__val">展示解析后的脚本结构</span></div><div class="format__row"><span class="format__key">保留</span><span class="format__val">命令、引用、重定向</span></div><div class="format__row"><span class="format__key">丢失</span><span class="format__val">注释与原始空白</span></div></div>
@@ -220,7 +219,7 @@ Hello, world
         <div class="code-actions">
           <button class="code-btn" type="button" data-copy>复制</button>
           
-          <span class="code-hint">文档重构 · 非实测输出</span>
+          <span class="code-hint">文档重构 · 示意输出</span>
         </div>
       </div>
       <div class="format"><div class="format__row"><span class="format__key">选项</span><span class="format__val">bash -x</span></div><div class="format__row"><span class="format__key">内容</span><span class="format__val">展开后的命令</span></div><div class="format__row"><span class="format__key">变量</span><span class="format__val">已替换为值</span></div><div class="format__row"><span class="format__key">参数</span><span class="format__val">已分词</span></div></div>
@@ -250,7 +249,7 @@ Hello, world
         <div class="code-actions">
           <button class="code-btn" type="button" data-copy>复制</button>
           
-          <span class="code-hint">文档重构 · 非实测输出</span>
+          <span class="code-hint">文档重构 · 示意输出</span>
         </div>
       </div>
       <div class="format"><div class="format__row"><span class="format__key">系统调用</span><span class="format__val">execve</span></div><div class="format__row"><span class="format__key">参数</span><span class="format__val">argv 数组</span></div><div class="format__row"><span class="format__key">进程</span><span class="format__val">fork + exec（外部命令）</span></div><div class="format__row"><span class="format__key">管道</span><span class="format__val">pipe + dup2</span></div></div>
@@ -301,19 +300,6 @@ printf &#x27;Hello, world\n&#x27;</code></pre>
         <div class="footprint"><div class="footprint__row"><span class="footprint__stage">脚本</span><span class="footprint__track"><span class="footprint__fill" data-w="4" style="width:4%"></span></span><span class="footprint__size">≈ 36 B</span></div><div class="footprint__row"><span class="footprint__stage">规范化</span><span class="footprint__track"><span class="footprint__fill" data-w="4" style="width:4%"></span></span><span class="footprint__size">≈ 36 B</span></div><div class="footprint__row"><span class="footprint__stage">trace</span><span class="footprint__track"><span class="footprint__fill" data-w="5" style="width:5%"></span></span><span class="footprint__size">≈ 40 B</span></div><div class="footprint__row"><span class="footprint__stage">execve</span><span class="footprint__track"><span class="footprint__fill" data-w="6" style="width:6%"></span></span><span class="footprint__size">1 次</span></div><div class="footprint__row"><span class="footprint__stage">+ shell</span><span class="footprint__track"><span class="footprint__fill" data-w="70" style="width:70%"></span></span><span class="footprint__size">≈ 1 MB</span></div></div>
         <ol class="why-list"><li><strong>无编译产物</strong>：每次执行都重新解析与展开。</li><li><strong>进程组合</strong>：管道与重定向连接的是文件描述符，不是函数调用。</li><li><strong>字符串模型</strong>：变量与命令输出都是字符串，简单但不适合复杂数据。</li><li><strong>可观察</strong>：trace 与 execve 让执行过程可审计。</li></ol>
       </div>
-    </div>
-    <div class="verify" id="verify">
-      <div class="verify__head">
-        <span class="verify__badge">已实测</span>
-        <b>本机复现记录</b>
-        <span class="verify__meta">2026-10-28 · GNU bash, version 4.4.23(1)-release (x86_64-pc-msys)</span>
-      </div>
-      <div class="verify__grid">
-        <div class="verify__item"><span class="verify__key">命令</span><code>bash hello.sh</code></div>
-        <div class="verify__item"><span class="verify__key">输出</span><code>Hello, world</code></div>
-      </div>
-      <div class="verify__item"><span class="verify__key">产物 / 观察</span><ul class="verify__list"><li>脚本直接由 shell 解析；无目标文件。</li></ul></div>
-      <p class="verify__note">Shell 没有编译产物；解析、展开与 execve 是可观察的中间层。</p>
     </div>
   </section>
     <section class="block deep reveal" id="deep">
@@ -387,7 +373,7 @@ printf &#x27;Hello, world\n&#x27;</code></pre>
     <span class="next-card__arrow" aria-hidden="true">→</span>
   </a>
     <footer class="pagefoot">
-      <p class="stamp">本页所有文件样例为依据公开规范与文档重构的示意内容；具体地址、偏移与字节数为示例值，不代表任何特定编译器版本的实测输出。</p>
+      <p class="stamp">本页所有文件样例为依据公开规范与文档重构的示意内容；具体地址、偏移与字节数为示例值，不代表任何特定编译器版本的输出。</p>
       <p>第 1–23 批 · PLATE 67 / 78</p>
     </footer>
   </div>

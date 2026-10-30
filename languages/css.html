@@ -100,7 +100,6 @@ try {
     <a href="../scenarios.html">开发场景 →</a><br>
     <a href="../languages/formats.html">产物索引 →</a><br>
     <a href="../sources.html">来源索引 →</a><br>
-    <a href="../verified.html">实测记录 →</a>
   </div>
 </aside>
 <main class="page" id="main">
@@ -122,7 +121,7 @@ try {
       <div class="meta-item"><span class="meta-label">首次发布</span><span class="meta-value">1996</span></div>
       <div class="meta-item"><span class="meta-label">类型</span><span class="meta-value">标记 / 配置</span></div>
     </div>
-    <div class="tags"><span class="tag">样式</span><span class="tag">层叠</span><span class="tag">声明式</span><span class="tag is-accent">标记 / 配置</span><a class="tag tag--verified" href="#verify">已实测 Hello · Chromium 156.0.8078.47</a></div>
+    <div class="tags"><span class="tag">样式</span><span class="tag">层叠</span><span class="tag">声明式</span><span class="tag is-accent">标记 / 配置</span><span class="tag tag--level" title="产物链样例为依据公开文档重构，不是本机运行输出">文档重构</span></div>
     <a class="dossier__fwlink" href="../frameworks/css.html">框架与场景 →</a>
     <div class="lineage">
       <div><div class="lineage__label">源自 / From</div><p class="lineage__list">SGML / HTML 表现需求 · 桌面排版</p></div>
@@ -165,7 +164,7 @@ try {
         <div class="code-actions">
           <button class="code-btn" type="button" data-copy>复制</button>
           
-          <span class="code-hint">文档重构 · 非实测输出</span>
+          <span class="code-hint">文档重构 · 示意输出</span>
         </div>
       </div>
       <div class="format"><div class="format__row"><span class="format__key">扩展名</span><span class="format__val">.css</span></div><div class="format__row"><span class="format__key">规则</span><span class="format__val">选择器 + 声明块</span></div><div class="format__row"><span class="format__key">层叠</span><span class="format__val">来源 / 重要性 / 优先级 / 顺序</span></div><div class="format__row"><span class="format__key">单位</span><span class="format__val">px / rem / em / % / vw …</span></div></div>
@@ -197,7 +196,7 @@ try {
         <div class="code-actions">
           <button class="code-btn" type="button" data-copy>复制</button>
           
-          <span class="code-hint">文档重构 · 非实测输出</span>
+          <span class="code-hint">文档重构 · 示意输出</span>
         </div>
       </div>
       <div class="format"><div class="format__row"><span class="format__key">对象</span><span class="format__val">CSSStyleSheet / CSSStyleRule</span></div><div class="format__row"><span class="format__key">选择器</span><span class="format__val">selectorText</span></div><div class="format__row"><span class="format__key">声明</span><span class="format__val">CSSStyleDeclaration</span></div><div class="format__row"><span class="format__key">可变</span><span class="format__val">JS 可插入/删除规则</span></div></div>
@@ -228,7 +227,7 @@ color: rgb(0, 0, 0)
         <div class="code-actions">
           <button class="code-btn" type="button" data-copy>复制</button>
           
-          <span class="code-hint">文档重构 · 非实测输出</span>
+          <span class="code-hint">文档重构 · 示意输出</span>
         </div>
       </div>
       <div class="format"><div class="format__row"><span class="format__key">层叠</span><span class="format__val">来源 / !important / 优先级 / 顺序</span></div><div class="format__row"><span class="format__key">继承</span><span class="format__val">字体、颜色等可继承属性</span></div><div class="format__row"><span class="format__key">计算</span><span class="format__val">相对单位 → 绝对值</span></div><div class="format__row"><span class="format__key">使用值</span><span class="format__val">布局阶段最终采用的值</span></div></div>
@@ -263,7 +262,7 @@ color: rgb(0, 0, 0)
         <div class="code-actions">
           <button class="code-btn" type="button" data-copy>复制</button>
           
-          <span class="code-hint">文档重构 · 非实测输出</span>
+          <span class="code-hint">文档重构 · 示意输出</span>
         </div>
       </div>
       <div class="format"><div class="format__row"><span class="format__key">盒模型</span><span class="format__val">content / padding / border / margin</span></div><div class="format__row"><span class="format__key">布局</span><span class="format__val">块级 / 行内 / Flex / Grid</span></div><div class="format__row"><span class="format__key">绘制</span><span class="format__val">文本、背景、边框</span></div><div class="format__row"><span class="format__key">产物</span><span class="format__val">像素</span></div></div>
@@ -317,19 +316,6 @@ color: rgb(0, 0, 0)
         <div class="footprint"><div class="footprint__row"><span class="footprint__stage">CSS</span><span class="footprint__track"><span class="footprint__fill" data-w="5" style="width:5%"></span></span><span class="footprint__size">≈ 100 B</span></div><div class="footprint__row"><span class="footprint__stage">CSSOM</span><span class="footprint__track"><span class="footprint__fill" data-w="6" style="width:6%"></span></span><span class="footprint__size">1 条规则</span></div><div class="footprint__row"><span class="footprint__stage">计算样式</span><span class="footprint__track"><span class="footprint__fill" data-w="8" style="width:8%"></span></span><span class="footprint__size">≈ 10 个属性</span></div><div class="footprint__row"><span class="footprint__stage">布局</span><span class="footprint__track"><span class="footprint__fill" data-w="8" style="width:8%"></span></span><span class="footprint__size">1 个伪元素盒</span></div><div class="footprint__row"><span class="footprint__stage">像素</span><span class="footprint__track"><span class="footprint__fill" data-w="60" style="width:60%"></span></span><span class="footprint__size">视口大小</span></div></div>
         <ol class="why-list"><li><strong>层叠</strong>：多个规则命中同一元素时，用一套确定的规则决出胜者。</li><li><strong>继承</strong>：字体、颜色等属性自动向下传递，减少重复声明。</li><li><strong>盒模型</strong>：内容、内边距、边框、外边距决定元素占位。</li><li><strong>布局系统</strong>：Flexbox / Grid 把二维排版变成可计算的约束。</li></ol>
       </div>
-    </div>
-    <div class="verify" id="verify">
-      <div class="verify__head">
-        <span class="verify__badge">已实测</span>
-        <b>本机复现记录</b>
-        <span class="verify__meta">2026-10-28 · Chromium 156.0.8078.47</span>
-      </div>
-      <div class="verify__grid">
-        <div class="verify__item"><span class="verify__key">命令</span><code>打开 hello.html，读取 getComputedStyle(.g, &#x27;::before&#x27;)</code></div>
-        <div class="verify__item"><span class="verify__key">输出</span><code>content: &quot;Hello, world&quot; · color: rgb(140, 51, 36)</code></div>
-      </div>
-      <div class="verify__item"><span class="verify__key">产物 / 观察</span><ul class="verify__list"><li>CSSOM 与计算样式由浏览器生成；没有目标文件。</li></ul></div>
-      <p class="verify__note">CSS 的产物是计算样式与像素。</p>
     </div>
   </section>
     <section class="block deep reveal" id="deep">
@@ -403,7 +389,7 @@ color: rgb(0, 0, 0)
     <span class="next-card__arrow" aria-hidden="true">→</span>
   </a>
     <footer class="pagefoot">
-      <p class="stamp">本页所有文件样例为依据公开规范与文档重构的示意内容；具体地址、偏移与字节数为示例值，不代表任何特定编译器版本的实测输出。</p>
+      <p class="stamp">本页所有文件样例为依据公开规范与文档重构的示意内容；具体地址、偏移与字节数为示例值，不代表任何特定编译器版本的输出。</p>
       <p>第 1–23 批 · PLATE 72 / 78</p>
     </footer>
   </div>

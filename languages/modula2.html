@@ -100,7 +100,6 @@ try {
     <a href="../scenarios.html">开发场景 →</a><br>
     <a href="../languages/formats.html">产物索引 →</a><br>
     <a href="../sources.html">来源索引 →</a><br>
-    <a href="../verified.html">实测记录 →</a>
   </div>
 </aside>
 <main class="page" id="main">
@@ -122,7 +121,7 @@ try {
       <div class="meta-item"><span class="meta-label">首次发布</span><span class="meta-value">1978</span></div>
       <div class="meta-item"><span class="meta-label">类型</span><span class="meta-value">编译型</span></div>
     </div>
-    <div class="tags"><span class="tag">模块化</span><span class="tag">系统编程</span><span class="tag">强类型</span><span class="tag is-accent">编译型</span><span class="tag tag--level" title="产物链样例为文档重构，不是本机实测">文档重构</span></div>
+    <div class="tags"><span class="tag">模块化</span><span class="tag">系统编程</span><span class="tag">强类型</span><span class="tag is-accent">编译型</span><span class="tag tag--level" title="产物链样例为依据公开文档重构，不是本机运行输出">文档重构</span></div>
     <a class="dossier__fwlink" href="../frameworks/modula2.html">框架与场景 →</a>
     <div class="lineage">
       <div><div class="lineage__label">源自 / From</div><p class="lineage__list">Pascal · Modula</p></div>
@@ -165,7 +164,7 @@ END Hello.</code></pre>
         <div class="code-actions">
           <button class="code-btn" type="button" data-copy>复制</button>
           
-          <span class="code-hint">文档重构 · 非实测输出</span>
+          <span class="code-hint">文档重构 · 示意输出</span>
         </div>
       </div>
       <div class="format"><div class="format__row"><span class="format__key">扩展名</span><span class="format__val">.def</span></div><div class="format__row"><span class="format__key">内容</span><span class="format__val">只写接口，不写实现</span></div><div class="format__row"><span class="format__key">导出</span><span class="format__val">名字后的 * 表示对外可见</span></div><div class="format__row"><span class="format__key">客户</span><span class="format__val">只依赖这份声明</span></div></div>
@@ -197,7 +196,7 @@ END Hello.</code></pre>
         <div class="code-actions">
           <button class="code-btn" type="button" data-copy>复制</button>
           
-          <span class="code-hint">文档重构 · 非实测输出</span>
+          <span class="code-hint">文档重构 · 示意输出</span>
         </div>
       </div>
       <div class="format"><div class="format__row"><span class="format__key">扩展名</span><span class="format__val">.mod</span></div><div class="format__row"><span class="format__key">内容</span><span class="format__val">实现 + 私有声明</span></div><div class="format__row"><span class="format__key">IMPORT</span><span class="format__val">显式导入依赖</span></div><div class="format__row"><span class="format__key">一致性</span><span class="format__val">必须与 .def 的签名匹配</span></div></div>
@@ -228,7 +227,7 @@ Hello.obj: Intel 80386 COFF object file
         <div class="code-actions">
           <button class="code-btn" type="button" data-copy>复制</button>
           
-          <span class="code-hint">文档重构 · 非实测输出</span>
+          <span class="code-hint">文档重构 · 示意输出</span>
         </div>
       </div>
       <div class="format"><div class="format__row"><span class="format__key">符号文件</span><span class="format__val">.sym，编译器私有格式</span></div><div class="format__row"><span class="format__key">目标</span><span class="format__val">.obj / .o，平台格式</span></div><div class="format__row"><span class="format__key">检查</span><span class="format__val">客户模块对照 .sym 检查签名</span></div><div class="format__row"><span class="format__key">重编译</span><span class="format__val">接口不变则无需重编客户</span></div></div>
@@ -257,7 +256,7 @@ hello: ELF 64-bit LSB pie executable, x86-64 ...
         <div class="code-actions">
           <button class="code-btn" type="button" data-copy>复制</button>
           
-          <span class="code-hint">文档重构 · 非实测输出</span>
+          <span class="code-hint">文档重构 · 示意输出</span>
         </div>
       </div>
       <div class="format"><div class="format__row"><span class="format__key">编译器</span><span class="format__val">GNU Modula-2（gm2）</span></div><div class="format__row"><span class="format__key">链接</span><span class="format__val">与运行时、系统库合并</span></div><div class="format__row"><span class="format__key">产物</span><span class="format__val">原生可执行文件</span></div><div class="format__row"><span class="format__key">平台</span><span class="format__val">Linux / Windows / 嵌入式</span></div></div>
@@ -313,7 +312,6 @@ END Hello.</code></pre>
         <ol class="why-list"><li><strong>定义/实现分离</strong>：接口是契约，实现可以替换。</li><li><strong>符号文件</strong>：携带类型签名，支持严格的独立编译。</li><li><strong>显式 IMPORT</strong>：依赖写在模块头部，不需要预处理器。</li><li><strong>强类型</strong>：数组边界、子界、枚举都在编译期检查。</li></ol>
       </div>
     </div>
-    
   </section>
     <section class="block deep reveal" id="deep">
     <div class="block__head">
@@ -386,7 +384,7 @@ END Hello.</code></pre>
     <span class="next-card__arrow" aria-hidden="true">→</span>
   </a>
     <footer class="pagefoot">
-      <p class="stamp">本页所有文件样例为依据公开规范与文档重构的示意内容；具体地址、偏移与字节数为示例值，不代表任何特定编译器版本的实测输出。</p>
+      <p class="stamp">本页所有文件样例为依据公开规范与文档重构的示意内容；具体地址、偏移与字节数为示例值，不代表任何特定编译器版本的输出。</p>
       <p>第 1–23 批 · PLATE 18 / 78</p>
     </footer>
   </div>

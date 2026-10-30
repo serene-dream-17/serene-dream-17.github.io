@@ -100,7 +100,6 @@ try {
     <a href="../scenarios.html">开发场景 →</a><br>
     <a href="../languages/formats.html">产物索引 →</a><br>
     <a href="../sources.html">来源索引 →</a><br>
-    <a href="../verified.html">实测记录 →</a>
   </div>
 </aside>
 <main class="page" id="main">
@@ -122,7 +121,7 @@ try {
       <div class="meta-item"><span class="meta-label">首次发布</span><span class="meta-value">1966</span></div>
       <div class="meta-item"><span class="meta-label">类型</span><span class="meta-value">解释 / 字节码</span></div>
     </div>
-    <div class="tags"><span class="tag">数组</span><span class="tag">函数式</span><span class="tag">交互式</span><span class="tag is-accent">解释 / 字节码</span><span class="tag tag--level" title="产物链样例为文档重构，不是本机实测">文档重构</span></div>
+    <div class="tags"><span class="tag">数组</span><span class="tag">函数式</span><span class="tag">交互式</span><span class="tag is-accent">解释 / 字节码</span><span class="tag tag--level" title="产物链样例为依据公开文档重构，不是本机运行输出">文档重构</span></div>
     <a class="dossier__fwlink" href="../frameworks/apl.html">框架与场景 →</a>
     <div class="lineage">
       <div><div class="lineage__label">源自 / From</div><p class="lineage__list">数学记法 · 数组理论</p></div>
@@ -172,7 +171,7 @@ try {
         <div class="code-actions">
           <button class="code-btn" type="button" data-copy>复制</button>
           
-          <span class="code-hint">文档重构 · 非实测输出</span>
+          <span class="code-hint">文档重构 · 示意输出</span>
         </div>
       </div>
       <div class="format"><div class="format__row"><span class="format__key">函数</span><span class="format__val">∇ 开始/结束，结果赋值给 R</span></div><div class="format__row"><span class="format__key">数组</span><span class="format__val">默认操作整个数组，无显式循环</span></div><div class="format__row"><span class="format__key">符号</span><span class="format__val">← 赋值，⍴ 取形状，⍳ 生成序列</span></div><div class="format__row"><span class="format__key">会话</span><span class="format__val">交互式，表达式立即求值</span></div></div>
@@ -204,7 +203,7 @@ try {
         <div class="code-actions">
           <button class="code-btn" type="button" data-copy>复制</button>
           
-          <span class="code-hint">文档重构 · 非实测输出</span>
+          <span class="code-hint">文档重构 · 示意输出</span>
         </div>
       </div>
       <div class="format"><div class="format__row"><span class="format__key">字符集</span><span class="format__val">超出 ASCII 的 APL 符号</span></div><div class="format__row"><span class="format__key">终端</span><span class="format__val">IBM 2741 Selectric</span></div><div class="format__row"><span class="format__key">编码</span><span class="format__val">EBCDIC APL 代码页</span></div><div class="format__row"><span class="format__key">互操作</span><span class="format__val">工作区跨实现通常不兼容</span></div></div>
@@ -234,7 +233,7 @@ body:
         <div class="code-actions">
           <button class="code-btn" type="button" data-copy>复制</button>
           
-          <span class="code-hint">文档重构 · 非实测输出</span>
+          <span class="code-hint">文档重构 · 示意输出</span>
         </div>
       </div>
       <div class="format"><div class="format__row"><span class="format__key">解析</span><span class="format__val">APL 表达式按右结合解析</span></div><div class="format__row"><span class="format__key">执行</span><span class="format__val">解释器逐项执行，或编译为字节码</span></div><div class="format__row"><span class="format__key">数组</span><span class="format__val">运行时对象带形状与类型</span></div><div class="format__row"><span class="format__key">优化</span><span class="format__val">现代实现会做数组融合</span></div></div>
@@ -266,7 +265,7 @@ MEAN</code></pre>
         <div class="code-actions">
           <button class="code-btn" type="button" data-copy>复制</button>
           
-          <span class="code-hint">文档重构 · 非实测输出</span>
+          <span class="code-hint">文档重构 · 示意输出</span>
         </div>
       </div>
       <div class="format"><div class="format__row"><span class="format__key">工作区</span><span class="format__val">函数 + 变量 + 系统设置的整体</span></div><div class="format__row"><span class="format__key">格式</span><span class="format__val">二进制，实现相关</span></div><div class="format__row"><span class="format__key">加载</span><span class="format__val">)LOAD 恢复全部状态</span></div><div class="format__row"><span class="format__key">移植</span><span class="format__val">不保证跨版本/平台兼容</span></div></div>
@@ -317,7 +316,6 @@ MEAN</code></pre>
         <ol class="why-list"><li><strong>数组优先</strong>：操作符默认作用于整个数组，循环被吸收进原语。</li><li><strong>右结合解析</strong>：没有优先级表，表达式从右往左归约。</li><li><strong>工作区</strong>：保存程序就是保存运行状态，函数与数据不分离。</li><li><strong>字符集</strong>：符号是语言的一部分，编码与终端因此成为产物链的一环。</li></ol>
       </div>
     </div>
-    
   </section>
     <section class="block deep reveal" id="deep">
     <div class="block__head">
@@ -390,7 +388,7 @@ MEAN</code></pre>
     <span class="next-card__arrow" aria-hidden="true">→</span>
   </a>
     <footer class="pagefoot">
-      <p class="stamp">本页所有文件样例为依据公开规范与文档重构的示意内容；具体地址、偏移与字节数为示例值，不代表任何特定编译器版本的实测输出。</p>
+      <p class="stamp">本页所有文件样例为依据公开规范与文档重构的示意内容；具体地址、偏移与字节数为示例值，不代表任何特定编译器版本的输出。</p>
       <p>第 1–23 批 · PLATE 08 / 78</p>
     </footer>
   </div>

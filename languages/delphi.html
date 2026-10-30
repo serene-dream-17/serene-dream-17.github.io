@@ -100,7 +100,6 @@ try {
     <a href="../scenarios.html">开发场景 →</a><br>
     <a href="../languages/formats.html">产物索引 →</a><br>
     <a href="../sources.html">来源索引 →</a><br>
-    <a href="../verified.html">实测记录 →</a>
   </div>
 </aside>
 <main class="page" id="main">
@@ -122,7 +121,7 @@ try {
       <div class="meta-item"><span class="meta-label">首次发布</span><span class="meta-value">1995</span></div>
       <div class="meta-item"><span class="meta-label">类型</span><span class="meta-value">编译型</span></div>
     </div>
-    <div class="tags"><span class="tag">面向对象</span><span class="tag">快速应用</span><span class="tag">Windows</span><span class="tag is-accent">编译型</span><span class="tag tag--level" title="产物链样例为文档重构，不是本机实测">文档重构</span></div>
+    <div class="tags"><span class="tag">面向对象</span><span class="tag">快速应用</span><span class="tag">Windows</span><span class="tag is-accent">编译型</span><span class="tag tag--level" title="产物链样例为依据公开文档重构，不是本机运行输出">文档重构</span></div>
     <a class="dossier__fwlink" href="../frameworks/delphi.html">框架与场景 →</a>
     <div class="lineage">
       <div><div class="lineage__label">源自 / From</div><p class="lineage__list">Pascal · Turbo Pascal · Object Pascal</p></div>
@@ -170,7 +169,7 @@ end.</code></pre>
         <div class="code-actions">
           <button class="code-btn" type="button" data-copy>复制</button>
           
-          <span class="code-hint">文档重构 · 非实测输出</span>
+          <span class="code-hint">文档重构 · 示意输出</span>
         </div>
       </div>
       <div class="format"><div class="format__row"><span class="format__key">扩展名</span><span class="format__val">.dpr（项目）/ .pas（单元）</span></div><div class="format__row"><span class="format__key">指令</span><span class="format__val">{$APPTYPE CONSOLE} 指定子系统</span></div><div class="format__row"><span class="format__key">uses</span><span class="format__val">显式依赖单元</span></div><div class="format__row"><span class="format__key">编译</span><span class="format__val">dcc32 / dcc64</span></div></div>
@@ -213,7 +212,7 @@ end</code></pre>
         <div class="code-actions">
           <button class="code-btn" type="button" data-copy>复制</button>
           <button class="code-btn" type="button" data-expand aria-expanded="false">展开全部</button>
-          <span class="code-hint">文档重构 · 非实测输出</span>
+          <span class="code-hint">文档重构 · 示意输出</span>
         </div>
       </div>
       <div class="format"><div class="format__row"><span class="format__key">单元</span><span class="format__val">.pas，interface + implementation</span></div><div class="format__row"><span class="format__key">窗体</span><span class="format__val">.dfm 文本资源 / .res 二进制</span></div><div class="format__row"><span class="format__key">单元</span><span class="format__val">.dcu 编译产物</span></div><div class="format__row"><span class="format__key">链接</span><span class="format__val">项目把单元与资源合成 .exe</span></div></div>
@@ -245,7 +244,7 @@ HelloUnit.dcu: data
         <div class="code-actions">
           <button class="code-btn" type="button" data-copy>复制</button>
           
-          <span class="code-hint">文档重构 · 非实测输出</span>
+          <span class="code-hint">文档重构 · 示意输出</span>
         </div>
       </div>
       <div class="format"><div class="format__row"><span class="format__key">格式</span><span class="format__val">私有二进制</span></div><div class="format__row"><span class="format__key">内容</span><span class="format__val">代码 + 符号 + 类型 + 内联</span></div><div class="format__row"><span class="format__key">兼容</span><span class="format__val">与编译器版本绑定</span></div><div class="format__row"><span class="format__key">用途</span><span class="format__val">增量编译 / 闭源单元分发</span></div></div>
@@ -277,7 +276,7 @@ $ objdump -p Hello.exe | grep &#x27;DLL Name&#x27;
         <div class="code-actions">
           <button class="code-btn" type="button" data-copy>复制</button>
           
-          <span class="code-hint">文档重构 · 非实测输出</span>
+          <span class="code-hint">文档重构 · 示意输出</span>
         </div>
       </div>
       <div class="format"><div class="format__row"><span class="format__key">格式</span><span class="format__val">PE32 / PE32+</span></div><div class="format__row"><span class="format__key">依赖</span><span class="format__val">Win32 API + 可选 BPL</span></div><div class="format__row"><span class="format__key">资源</span><span class="format__val">图标、版本、窗体</span></div><div class="format__row"><span class="format__key">部署</span><span class="format__val">拷贝 exe（+ bpl/dll）即可</span></div></div>
@@ -332,7 +331,6 @@ end.</code></pre>
         <ol class="why-list"><li><strong>单遍编译</strong>：Object Pascal 设计上就能快速编译，IDE 体验是核心卖点。</li><li><strong>DCU</strong>：编译单元 + 符号表，支持增量编译与闭源分发。</li><li><strong>DFM</strong>：窗体是对象树，保存为资源，链接进 exe。</li><li><strong>原生 PE</strong>：没有虚拟机，部署就是拷贝文件。</li></ol>
       </div>
     </div>
-    
   </section>
     <section class="block deep reveal" id="deep">
     <div class="block__head">
@@ -405,7 +403,7 @@ end.</code></pre>
     <span class="next-card__arrow" aria-hidden="true">→</span>
   </a>
     <footer class="pagefoot">
-      <p class="stamp">本页所有文件样例为依据公开规范与文档重构的示意内容；具体地址、偏移与字节数为示例值，不代表任何特定编译器版本的实测输出。</p>
+      <p class="stamp">本页所有文件样例为依据公开规范与文档重构的示意内容；具体地址、偏移与字节数为示例值，不代表任何特定编译器版本的输出。</p>
       <p>第 1–23 批 · PLATE 36 / 78</p>
     </footer>
   </div>

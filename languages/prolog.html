@@ -100,7 +100,6 @@ try {
     <a href="../scenarios.html">开发场景 →</a><br>
     <a href="../languages/formats.html">产物索引 →</a><br>
     <a href="../sources.html">来源索引 →</a><br>
-    <a href="../verified.html">实测记录 →</a>
   </div>
 </aside>
 <main class="page" id="main">
@@ -122,7 +121,7 @@ try {
       <div class="meta-item"><span class="meta-label">首次发布</span><span class="meta-value">1972</span></div>
       <div class="meta-item"><span class="meta-label">类型</span><span class="meta-value">解释 / 字节码</span></div>
     </div>
-    <div class="tags"><span class="tag">逻辑</span><span class="tag">声明式</span><span class="tag">回溯</span><span class="tag is-accent">解释 / 字节码</span><span class="tag tag--level" title="产物链样例为文档重构，不是本机实测">文档重构</span></div>
+    <div class="tags"><span class="tag">逻辑</span><span class="tag">声明式</span><span class="tag">回溯</span><span class="tag is-accent">解释 / 字节码</span><span class="tag tag--level" title="产物链样例为依据公开文档重构，不是本机运行输出">文档重构</span></div>
     <a class="dossier__fwlink" href="../frameworks/prolog.html">框架与场景 →</a>
     <div class="lineage">
       <div><div class="lineage__label">源自 / From</div><p class="lineage__list">一阶逻辑 · 归结原理 · ALGOL（语法）</p></div>
@@ -169,7 +168,7 @@ try {
         <div class="code-actions">
           <button class="code-btn" type="button" data-copy>复制</button>
           
-          <span class="code-hint">文档重构 · 非实测输出</span>
+          <span class="code-hint">文档重构 · 示意输出</span>
         </div>
       </div>
       <div class="format"><div class="format__row"><span class="format__key">事实</span><span class="format__val">parent(tom, bob).</span></div><div class="format__row"><span class="format__key">规则</span><span class="format__val">Head :- Body.</span></div><div class="format__row"><span class="format__key">变量</span><span class="format__val">大写或 _ 开头</span></div><div class="format__row"><span class="format__key">查询</span><span class="format__val">?- Goal.</span></div></div>
@@ -201,7 +200,7 @@ clause greet/1:
         <div class="code-actions">
           <button class="code-btn" type="button" data-copy>复制</button>
           
-          <span class="code-hint">文档重构 · 非实测输出</span>
+          <span class="code-hint">文档重构 · 示意输出</span>
         </div>
       </div>
       <div class="format"><div class="format__row"><span class="format__key">中间码</span><span class="format__val">WAM 指令序列</span></div><div class="format__row"><span class="format__key">合一</span><span class="format__val">get_* / unify_* 匹配参数</span></div><div class="format__row"><span class="format__key">调用</span><span class="format__val">call 谓词/元数</span></div><div class="format__row"><span class="format__key">回溯</span><span class="format__val">choice point + trail</span></div></div>
@@ -236,7 +235,7 @@ X = hello.
         <div class="code-actions">
           <button class="code-btn" type="button" data-copy>复制</button>
           
-          <span class="code-hint">文档重构 · 非实测输出</span>
+          <span class="code-hint">文档重构 · 示意输出</span>
         </div>
       </div>
       <div class="format"><div class="format__row"><span class="format__key">数据库</span><span class="format__val">子句的有序集合</span></div><div class="format__row"><span class="format__key">consult</span><span class="format__val">把文件中的子句装入</span></div><div class="format__row"><span class="format__key">assert/retract</span><span class="format__val">运行时增删子句</span></div><div class="format__row"><span class="format__key">索引</span><span class="format__val">首参数索引加速匹配</span></div></div>
@@ -266,7 +265,7 @@ greet: ELF 64-bit LSB pie executable, x86-64 ...
         <div class="code-actions">
           <button class="code-btn" type="button" data-copy>复制</button>
           
-          <span class="code-hint">文档重构 · 非实测输出</span>
+          <span class="code-hint">文档重构 · 示意输出</span>
         </div>
       </div>
       <div class="format"><div class="format__row"><span class="format__key">编译</span><span class="format__val">子句 → WAM → 原生/字节码</span></div><div class="format__row"><span class="format__key">打包</span><span class="format__val">把运行时与数据库嵌入可执行</span></div><div class="format__row"><span class="format__key">解释</span><span class="format__val">不编译也可直接 consult</span></div><div class="format__row"><span class="format__key">产物</span><span class="format__val">可执行文件或数据库状态</span></div></div>
@@ -321,7 +320,6 @@ greet: ELF 64-bit LSB pie executable, x86-64 ...
         <ol class="why-list"><li><strong>合一</strong>：参数匹配不是赋值，而是寻找变量绑定。</li><li><strong>回溯</strong>：失败时回到最近的选择点，尝试其他子句。</li><li><strong>WAM</strong>：把合一与回溯编译成显式指令，提升性能。</li><li><strong>数据库</strong>：子句可以在运行时增删，程序状态与代码合一。</li></ol>
       </div>
     </div>
-    
   </section>
     <section class="block deep reveal" id="deep">
     <div class="block__head">
@@ -394,7 +392,7 @@ greet: ELF 64-bit LSB pie executable, x86-64 ...
     <span class="next-card__arrow" aria-hidden="true">→</span>
   </a>
     <footer class="pagefoot">
-      <p class="stamp">本页所有文件样例为依据公开规范与文档重构的示意内容；具体地址、偏移与字节数为示例值，不代表任何特定编译器版本的实测输出。</p>
+      <p class="stamp">本页所有文件样例为依据公开规范与文档重构的示意内容；具体地址、偏移与字节数为示例值，不代表任何特定编译器版本的输出。</p>
       <p>第 1–23 批 · PLATE 14 / 78</p>
     </footer>
   </div>

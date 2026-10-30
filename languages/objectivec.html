@@ -100,7 +100,6 @@ try {
     <a href="../scenarios.html">开发场景 →</a><br>
     <a href="../languages/formats.html">产物索引 →</a><br>
     <a href="../sources.html">来源索引 →</a><br>
-    <a href="../verified.html">实测记录 →</a>
   </div>
 </aside>
 <main class="page" id="main">
@@ -122,7 +121,7 @@ try {
       <div class="meta-item"><span class="meta-label">首次发布</span><span class="meta-value">1984</span></div>
       <div class="meta-item"><span class="meta-label">类型</span><span class="meta-value">编译型</span></div>
     </div>
-    <div class="tags"><span class="tag">面向对象</span><span class="tag">消息传递</span><span class="tag">Apple 生态</span><span class="tag is-accent">编译型</span><span class="tag tag--level" title="产物链样例为文档重构，不是本机实测">文档重构</span></div>
+    <div class="tags"><span class="tag">面向对象</span><span class="tag">消息传递</span><span class="tag">Apple 生态</span><span class="tag is-accent">编译型</span><span class="tag tag--level" title="产物链样例为依据公开文档重构，不是本机运行输出">文档重构</span></div>
     <a class="dossier__fwlink" href="../frameworks/objectivec.html">框架与场景 →</a>
     <div class="lineage">
       <div><div class="lineage__label">源自 / From</div><p class="lineage__list">C · Smalltalk-80</p></div>
@@ -169,7 +168,7 @@ int main(void) {
         <div class="code-actions">
           <button class="code-btn" type="button" data-copy>复制</button>
           
-          <span class="code-hint">文档重构 · 非实测输出</span>
+          <span class="code-hint">文档重构 · 示意输出</span>
         </div>
       </div>
       <div class="format"><div class="format__row"><span class="format__key">扩展名</span><span class="format__val">.m；Objective-C++ 用 .mm</span></div><div class="format__row"><span class="format__key">消息</span><span class="format__val">[receiver selector:arg]</span></div><div class="format__row"><span class="format__key">字符串</span><span class="format__val">@&quot;...&quot; 是 NSString 字面量</span></div><div class="format__row"><span class="format__key">内存</span><span class="format__val">ARC 或手动 retain/release</span></div></div>
@@ -206,7 +205,7 @@ int main(void) {
         <div class="code-actions">
           <button class="code-btn" type="button" data-copy>复制</button>
           
-          <span class="code-hint">文档重构 · 非实测输出</span>
+          <span class="code-hint">文档重构 · 示意输出</span>
         </div>
       </div>
       <div class="format"><div class="format__row"><span class="format__key">扩展名</span><span class="format__val">.mi（预处理后文本）</span></div><div class="format__row"><span class="format__key">头文件</span><span class="format__val">Foundation 框架的全部声明</span></div><div class="format__row"><span class="format__key">宏</span><span class="format__val">#import 保证只包含一次</span></div><div class="format__row"><span class="format__key">产物</span><span class="format__val">仍然是 Objective-C 语法，不是纯 C</span></div></div>
@@ -245,7 +244,7 @@ L_OBJC_SELECTOR_REFERENCES_:
         <div class="code-actions">
           <button class="code-btn" type="button" data-copy>复制</button>
           
-          <span class="code-hint">文档重构 · 非实测输出</span>
+          <span class="code-hint">文档重构 · 示意输出</span>
         </div>
       </div>
       <div class="format"><div class="format__row"><span class="format__key">消息发送</span><span class="format__val">objc_msgSend(receiver, selector, args…)</span></div><div class="format__row"><span class="format__key">选择器</span><span class="format__val">stringWithFormat: 存进 __objc_selrefs</span></div><div class="format__row"><span class="format__key">类引用</span><span class="format__val">类对象地址存进 __objc_classrefs</span></div><div class="format__row"><span class="format__key">平台</span><span class="format__val">Mach-O 段名，如 __TEXT/__DATA</span></div></div>
@@ -276,7 +275,7 @@ $ otool -l hello.o | grep -A3 -E &#x27;__objc|__text&#x27;
         <div class="code-actions">
           <button class="code-btn" type="button" data-copy>复制</button>
           
-          <span class="code-hint">文档重构 · 非实测输出</span>
+          <span class="code-hint">文档重构 · 示意输出</span>
         </div>
       </div>
       <div class="format"><div class="format__row"><span class="format__key">格式</span><span class="format__val">Mach-O 64 位目标文件</span></div><div class="format__row"><span class="format__key">魔数</span><span class="format__val">0xfeedfacf（小端 64 位）</span></div><div class="format__row"><span class="format__key">段</span><span class="format__val">__TEXT,__text / __DATA,__objc_*</span></div><div class="format__row"><span class="format__key">符号</span><span class="format__val">_main 已定义，objc_msgSend 未定义</span></div></div>
@@ -308,7 +307,7 @@ $ ./hello
         <div class="code-actions">
           <button class="code-btn" type="button" data-copy>复制</button>
           
-          <span class="code-hint">文档重构 · 非实测输出</span>
+          <span class="code-hint">文档重构 · 示意输出</span>
         </div>
       </div>
       <div class="format"><div class="format__row"><span class="format__key">格式</span><span class="format__val">Mach-O 可执行文件</span></div><div class="format__row"><span class="format__key">依赖</span><span class="format__val">Foundation / libobjc / libSystem</span></div><div class="format__row"><span class="format__key">加载</span><span class="format__val">dyld 注册类与方法，再调 main</span></div><div class="format__row"><span class="format__key">签名</span><span class="format__val">macOS / iOS 要求代码签名</span></div></div>
@@ -365,7 +364,6 @@ int main(void) {
         <ol class="why-list"><li><strong>消息发送</strong>：调用点只保存接收者与选择器，方法查找推迟到运行时。</li><li><strong>运行时元数据</strong>：类、方法、协议、选择器都在 __objc_* 段里。</li><li><strong>Foundation</strong>：字符串、集合、日志、autoreleasepool 都由框架提供。</li><li><strong>动态派发</strong>：可以在运行时替换方法实现（swizzling），这是 Cocoa 很多机制的基础。</li></ol>
       </div>
     </div>
-    
   </section>
     <section class="block deep reveal" id="deep">
     <div class="block__head">
@@ -438,7 +436,7 @@ int main(void) {
     <span class="next-card__arrow" aria-hidden="true">→</span>
   </a>
     <footer class="pagefoot">
-      <p class="stamp">本页所有文件样例为依据公开规范与文档重构的示意内容；具体地址、偏移与字节数为示例值，不代表任何特定编译器版本的实测输出。</p>
+      <p class="stamp">本页所有文件样例为依据公开规范与文档重构的示意内容；具体地址、偏移与字节数为示例值，不代表任何特定编译器版本的输出。</p>
       <p>第 1–23 批 · PLATE 20 / 78</p>
     </footer>
   </div>

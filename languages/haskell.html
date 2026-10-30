@@ -100,7 +100,6 @@ try {
     <a href="../scenarios.html">开发场景 →</a><br>
     <a href="../languages/formats.html">产物索引 →</a><br>
     <a href="../sources.html">来源索引 →</a><br>
-    <a href="../verified.html">实测记录 →</a>
   </div>
 </aside>
 <main class="page" id="main">
@@ -122,7 +121,7 @@ try {
       <div class="meta-item"><span class="meta-label">首次发布</span><span class="meta-value">1990</span></div>
       <div class="meta-item"><span class="meta-label">类型</span><span class="meta-value">编译型</span></div>
     </div>
-    <div class="tags"><span class="tag">纯函数式</span><span class="tag">惰性</span><span class="tag">类型系统</span><span class="tag is-accent">编译型</span><span class="tag tag--level" title="产物链样例为文档重构，不是本机实测">文档重构</span></div>
+    <div class="tags"><span class="tag">纯函数式</span><span class="tag">惰性</span><span class="tag">类型系统</span><span class="tag is-accent">编译型</span><span class="tag tag--level" title="产物链样例为依据公开文档重构，不是本机运行输出">文档重构</span></div>
     <a class="dossier__fwlink" href="../frameworks/haskell.html">框架与场景 →</a>
     <div class="lineage">
       <div><div class="lineage__label">源自 / From</div><p class="lineage__list">Miranda · ML · λ 演算</p></div>
@@ -165,7 +164,7 @@ main = putStrLn &quot;Hello, world&quot;
         <div class="code-actions">
           <button class="code-btn" type="button" data-copy>复制</button>
           
-          <span class="code-hint">文档重构 · 非实测输出</span>
+          <span class="code-hint">文档重构 · 示意输出</span>
         </div>
       </div>
       <div class="format"><div class="format__row"><span class="format__key">扩展名</span><span class="format__val">.hs / .lhs</span></div><div class="format__row"><span class="format__key">类型</span><span class="format__val">静态、推断、多态</span></div><div class="format__row"><span class="format__key">求值</span><span class="format__val">默认惰性</span></div><div class="format__row"><span class="format__key">入口</span><span class="format__val">main :: IO ()</span></div></div>
@@ -195,7 +194,7 @@ Main.main1 =
         <div class="code-actions">
           <button class="code-btn" type="button" data-copy>复制</button>
           
-          <span class="code-hint">文档重构 · 非实测输出</span>
+          <span class="code-hint">文档重构 · 示意输出</span>
         </div>
       </div>
       <div class="format"><div class="format__row"><span class="format__key">中间语言</span><span class="format__val">Core</span></div><div class="format__row"><span class="format__key">特征</span><span class="format__val">显式类型、显式 case、无语法糖</span></div><div class="format__row"><span class="format__key">状态</span><span class="format__val">State# 把世界状态串起来</span></div><div class="format__row"><span class="format__key">优化</span><span class="format__val">内联、严格性、融合</span></div></div>
@@ -224,7 +223,7 @@ main = \u -&gt;
         <div class="code-actions">
           <button class="code-btn" type="button" data-copy>复制</button>
           
-          <span class="code-hint">文档重构 · 非实测输出</span>
+          <span class="code-hint">文档重构 · 示意输出</span>
         </div>
       </div>
       <div class="format"><div class="format__row"><span class="format__key">中间语言</span><span class="format__val">STG</span></div><div class="format__row"><span class="format__key">模型</span><span class="format__val">thunk + 进入 + 更新</span></div><div class="format__row"><span class="format__key">惰性</span><span class="format__val">参数是闭包，需要时才求值</span></div><div class="format__row"><span class="format__key">后续</span><span class="format__val">Cmm → 汇编 → 目标</span></div></div>
@@ -260,7 +259,7 @@ hello: ELF 64-bit LSB executable, x86-64 ...
         <div class="code-actions">
           <button class="code-btn" type="button" data-copy>复制</button>
           
-          <span class="code-hint">文档重构 · 非实测输出</span>
+          <span class="code-hint">文档重构 · 示意输出</span>
         </div>
       </div>
       <div class="format"><div class="format__row"><span class="format__key">Cmm</span><span class="format__val">GHC 的低级中间语言</span></div><div class="format__row"><span class="format__key">后端</span><span class="format__val">汇编 / 目标文件</span></div><div class="format__row"><span class="format__key">运行时</span><span class="format__val">GHC RTS，静态链接</span></div><div class="format__row"><span class="format__key">体积</span><span class="format__val">hello 通常 1–2 MB</span></div></div>
@@ -313,7 +312,6 @@ main = putStrLn &quot;Hello, world&quot;
         <ol class="why-list"><li><strong>Core</strong>：去糖后的函数式核心，类型与 case 显式。</li><li><strong>STG</strong>：把惰性求值变成可执行的 thunk/enter/update 模型。</li><li><strong>Cmm</strong>：接近机器的低级 IR，负责调用约定与栈。</li><li><strong>RTS</strong>：GC、绿色线程、异常、时钟都在运行时里。</li></ol>
       </div>
     </div>
-    
   </section>
     <section class="block deep reveal" id="deep">
     <div class="block__head">
@@ -386,7 +384,7 @@ main = putStrLn &quot;Hello, world&quot;
     <span class="next-card__arrow" aria-hidden="true">→</span>
   </a>
     <footer class="pagefoot">
-      <p class="stamp">本页所有文件样例为依据公开规范与文档重构的示意内容；具体地址、偏移与字节数为示例值，不代表任何特定编译器版本的实测输出。</p>
+      <p class="stamp">本页所有文件样例为依据公开规范与文档重构的示意内容；具体地址、偏移与字节数为示例值，不代表任何特定编译器版本的输出。</p>
       <p>第 1–23 批 · PLATE 33 / 78</p>
     </footer>
   </div>

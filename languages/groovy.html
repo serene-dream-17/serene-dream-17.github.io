@@ -100,7 +100,6 @@ try {
     <a href="../scenarios.html">开发场景 →</a><br>
     <a href="../languages/formats.html">产物索引 →</a><br>
     <a href="../sources.html">来源索引 →</a><br>
-    <a href="../verified.html">实测记录 →</a>
   </div>
 </aside>
 <main class="page" id="main">
@@ -122,7 +121,7 @@ try {
       <div class="meta-item"><span class="meta-label">首次发布</span><span class="meta-value">2003</span></div>
       <div class="meta-item"><span class="meta-label">类型</span><span class="meta-value">解释 / 字节码</span></div>
     </div>
-    <div class="tags"><span class="tag">动态类型</span><span class="tag">JVM</span><span class="tag">脚本</span><span class="tag is-accent">解释 / 字节码</span><span class="tag tag--level" title="产物链样例为文档重构，不是本机实测">文档重构</span></div>
+    <div class="tags"><span class="tag">动态类型</span><span class="tag">JVM</span><span class="tag">脚本</span><span class="tag is-accent">解释 / 字节码</span><span class="tag tag--level" title="产物链样例为依据公开文档重构，不是本机运行输出">文档重构</span></div>
     <a class="dossier__fwlink" href="../frameworks/groovy.html">框架与场景 →</a>
     <div class="lineage">
       <div><div class="lineage__label">源自 / From</div><p class="lineage__list">Java · Ruby · Python · Smalltalk（部分）</p></div>
@@ -164,7 +163,7 @@ try {
         <div class="code-actions">
           <button class="code-btn" type="button" data-copy>复制</button>
           
-          <span class="code-hint">文档重构 · 非实测输出</span>
+          <span class="code-hint">文档重构 · 示意输出</span>
         </div>
       </div>
       <div class="format"><div class="format__row"><span class="format__key">扩展名</span><span class="format__val">.groovy / .gradle</span></div><div class="format__row"><span class="format__key">类型</span><span class="format__val">动态，可选静态编译</span></div><div class="format__row"><span class="format__key">顶层语句</span><span class="format__val">自动变成 run()</span></div><div class="format__row"><span class="format__key">互操作</span><span class="format__val">直接调用 Java 类</span></div></div>
@@ -193,7 +192,7 @@ try {
         <div class="code-actions">
           <button class="code-btn" type="button" data-copy>复制</button>
           
-          <span class="code-hint">文档重构 · 非实测输出</span>
+          <span class="code-hint">文档重构 · 示意输出</span>
         </div>
       </div>
       <div class="format"><div class="format__row"><span class="format__key">AST</span><span class="format__val">Groovy AST（可变换）</span></div><div class="format__row"><span class="format__key">阶段</span><span class="format__val">解析 → 转换 → 语义分析</span></div><div class="format__row"><span class="format__key">DSL</span><span class="format__val">AST 变换是 Groovy DSL 的基础</span></div><div class="format__row"><span class="format__key">注解</span><span class="format__val">@CompileStatic / @TypeChecked</span></div></div>
@@ -227,7 +226,7 @@ public class Hello extends groovy.lang.Script {
         <div class="code-actions">
           <button class="code-btn" type="button" data-copy>复制</button>
           
-          <span class="code-hint">文档重构 · 非实测输出</span>
+          <span class="code-hint">文档重构 · 示意输出</span>
         </div>
       </div>
       <div class="format"><div class="format__row"><span class="format__key">产物</span><span class="format__val">JVM .class</span></div><div class="format__row"><span class="format__key">调用</span><span class="format__val">invokedynamic + call site</span></div><div class="format__row"><span class="format__key">基类</span><span class="format__val">groovy.lang.Script</span></div><div class="format__row"><span class="format__key">静态编译</span><span class="format__val">@CompileStatic 可去掉动态派发</span></div></div>
@@ -257,7 +256,7 @@ $ unzip -l hello.jar
         <div class="code-actions">
           <button class="code-btn" type="button" data-copy>复制</button>
           
-          <span class="code-hint">文档重构 · 非实测输出</span>
+          <span class="code-hint">文档重构 · 示意输出</span>
         </div>
       </div>
       <div class="format"><div class="format__row"><span class="format__key">容器</span><span class="format__val">JAR</span></div><div class="format__row"><span class="format__key">依赖</span><span class="format__val">groovy.jar</span></div><div class="format__row"><span class="format__key">运行</span><span class="format__val">java -cp …</span></div><div class="format__row"><span class="format__key">构建工具</span><span class="format__val">Gradle / Jenkins 内嵌</span></div></div>
@@ -309,7 +308,6 @@ $ unzip -l hello.jar
         <ol class="why-list"><li><strong>脚本类</strong>：顶层语句被包进 run()，没有显式 main。</li><li><strong>AST 变换</strong>：DSL 与注解在编译期改写语法树。</li><li><strong>invokedynamic</strong>：动态派发用 call site 缓存，兼顾灵活与性能。</li><li><strong>JVM jar</strong>：产物与 Java 生态一致，运行时库单独依赖。</li></ol>
       </div>
     </div>
-    
   </section>
     <section class="block deep reveal" id="deep">
     <div class="block__head">
@@ -382,7 +380,7 @@ $ unzip -l hello.jar
     <span class="next-card__arrow" aria-hidden="true">→</span>
   </a>
     <footer class="pagefoot">
-      <p class="stamp">本页所有文件样例为依据公开规范与文档重构的示意内容；具体地址、偏移与字节数为示例值，不代表任何特定编译器版本的实测输出。</p>
+      <p class="stamp">本页所有文件样例为依据公开规范与文档重构的示意内容；具体地址、偏移与字节数为示例值，不代表任何特定编译器版本的输出。</p>
       <p>第 1–23 批 · PLATE 43 / 78</p>
     </footer>
   </div>

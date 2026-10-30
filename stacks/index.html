@@ -100,14 +100,13 @@ try {
     <a href="../scenarios.html">开发场景 →</a><br>
     <a href="../languages/formats.html">产物索引 →</a><br>
     <a href="../sources.html">来源索引 →</a><br>
-    <a href="../verified.html">实测记录 →</a>
   </div>
 </aside>
 <main class="page" id="main">
   <div class="page__inner">
     <nav class="plate-nav" aria-label="技术栈导航">
       <a class="plate-nav__link" href="../index.html">← <span>首页</span></a>
-      <span class="plate-nav__counter">STACKS · 40</span>
+      <span class="plate-nav__counter">STACKS · 42</span>
       <a class="plate-nav__link" href="../languages/index.html"><span>编程语言</span> →</a>
     </nav>
     <header class="hero">
@@ -115,7 +114,7 @@ try {
       <h1 class="hero__title">技术<br><em>栈</em></h1>
       <p class="hero__sub">栈是「能直接开工的组合」：语言、框架、数据库、运行环境与交付方式。同一个框架可以出现在不同栈里，取舍写在每一页。</p>
       <div class="hero__meta">
-        <div class="stat"><span class="stat__num">40</span><span class="stat__label">个技术栈</span></div>
+        <div class="stat"><span class="stat__num">42</span><span class="stat__label">个技术栈</span></div>
         <div class="stat"><span class="stat__num">12</span><span class="stat__label">个领域</span></div>
         <div class="stat"><span class="stat__num">24</span><span class="stat__label">门语言</span></div>
         <div class="stat"><span class="stat__num">48</span><span class="stat__label">个框架页</span></div>
@@ -131,7 +130,7 @@ try {
         <span>领域</span>
         <select id="stackDomain"><option value="all">全部领域</option><option value="web-frontend">Web 前端</option><option value="web-backend">Web 后端</option><option value="services">服务化 / 云原生</option><option value="mobile">移动</option><option value="desktop">桌面</option><option value="game">游戏</option><option value="data">数据</option><option value="ai">AI / 机器学习</option><option value="embedded">嵌入式</option><option value="security">安全</option><option value="blockchain">区块链</option><option value="science">科学计算</option></select>
       </label>
-      <span class="era-head__count" id="stackCount">40 个栈</span>
+      <span class="era-head__count" id="stackCount">42 个栈</span>
     </div>
 
     <div class="matrix-grid" id="stackSections"><section class="dev-section matrix-section" id="domain-web-frontend" data-domain="web-frontend">
@@ -385,14 +384,24 @@ try {
     </section><section class="dev-section matrix-section" id="domain-security" data-domain="security">
       <div class="era-head">
         <h2 class="era-head__title">安全</h2>
-        <span class="era-head__range">1 个栈</span>
+        <span class="era-head__range">3 个栈</span>
         <span class="era-head__count">默认安全与合规基线优先，安全能力尽量做成平台能力。</span>
       </div>
-      <div class="stack-grid"><a class="stack-card stack-entry" href="appsec-baseline.html" data-search="应用安全基线 在业务栈上补齐认证、授权、http 安全头与依赖审计，形成可重复的安全基线。 安全 java · spring boot 企业业务系统 统一登录与授权 合规与审计" data-domain="security">
+      <div class="stack-grid"><a class="stack-card stack-entry" href="web-pentest.html" data-search="web 渗透测试 以 burp 为中心的手工测试 + sqlmap / nuclei 的自动化验证，输出可复现证据与修复建议。 安全  web / api 授权测试 漏洞验证与复测 安全基线检查" data-domain="security">
         <span class="stack-top"><span class="stack-lang">安全</span><span class="stack-type">技术栈</span></span>
-        <span class="stack-fw">应用安全基线</span>
-        <span class="stack-why">在业务栈上补齐认证、授权、HTTP 安全头与依赖审计，形成可重复的安全基线。</span>
-        <span class="stack-meta">Java · Spring Boot</span>
+        <span class="stack-fw">Web 渗透测试</span>
+        <span class="stack-why">以 Burp 为中心的手工测试 + sqlmap / Nuclei 的自动化验证，输出可复现证据与修复建议。</span>
+        <span class="stack-meta"></span>
+      </a><a class="stack-card stack-entry" href="red-team-infra.html" data-search="红队基础设施 侦察、权限路径与命令控制的基础设施组合；重点是授权范围、日志与可回收性。 安全  授权红队演练 防御检测验证 att&amp;ck 覆盖评估" data-domain="security">
+        <span class="stack-top"><span class="stack-lang">安全</span><span class="stack-type">技术栈</span></span>
+        <span class="stack-fw">红队基础设施</span>
+        <span class="stack-why">侦察、权限路径与命令控制的基础设施组合；重点是授权范围、日志与可回收性。</span>
+        <span class="stack-meta"></span>
+      </a><a class="stack-card stack-entry" href="vuln-research-lab.html" data-search="漏洞挖掘与逆向 c/c++ 目标上的 fuzz + 消毒器 + 反汇编分析，把崩溃变成可复现的漏洞报告。 安全 c · c++ 解析器与文件格式 c/c++ 库漏洞 安全研究" data-domain="security">
+        <span class="stack-top"><span class="stack-lang">安全</span><span class="stack-type">技术栈</span></span>
+        <span class="stack-fw">漏洞挖掘与逆向</span>
+        <span class="stack-why">C/C++ 目标上的 Fuzz + 消毒器 + 反汇编分析，把崩溃变成可复现的漏洞报告。</span>
+        <span class="stack-meta">C · C++</span>
       </a></div>
     </section><section class="dev-section matrix-section" id="domain-blockchain" data-domain="blockchain">
       <div class="era-head">

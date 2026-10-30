@@ -100,7 +100,6 @@ try {
     <a href="../scenarios.html">开发场景 →</a><br>
     <a href="../languages/formats.html">产物索引 →</a><br>
     <a href="../sources.html">来源索引 →</a><br>
-    <a href="../verified.html">实测记录 →</a>
   </div>
 </aside>
 <main class="page" id="main">
@@ -122,7 +121,7 @@ try {
       <div class="meta-item"><span class="meta-label">首次发布</span><span class="meta-value">1958</span></div>
       <div class="meta-item"><span class="meta-label">类型</span><span class="meta-value">解释 / 字节码</span></div>
     </div>
-    <div class="tags"><span class="tag">函数式</span><span class="tag">符号计算</span><span class="tag">宏</span><span class="tag is-accent">解释 / 字节码</span><span class="tag tag--level" title="产物链样例为文档重构，不是本机实测">文档重构</span></div>
+    <div class="tags"><span class="tag">函数式</span><span class="tag">符号计算</span><span class="tag">宏</span><span class="tag is-accent">解释 / 字节码</span><span class="tag tag--level" title="产物链样例为依据公开文档重构，不是本机运行输出">文档重构</span></div>
     <a class="dossier__fwlink" href="../frameworks/lisp.html">框架与场景 →</a>
     <div class="lineage">
       <div><div class="lineage__label">源自 / From</div><p class="lineage__list">λ 演算 · IPL（信息处理语言）</p></div>
@@ -164,7 +163,7 @@ try {
         <div class="code-actions">
           <button class="code-btn" type="button" data-copy>复制</button>
           
-          <span class="code-hint">文档重构 · 非实测输出</span>
+          <span class="code-hint">文档重构 · 示意输出</span>
         </div>
       </div>
       <div class="format"><div class="format__row"><span class="format__key">语法</span><span class="format__val">S 表达式，前缀记法</span></div><div class="format__row"><span class="format__key">结构</span><span class="format__val">列表即函数调用，第一个元素是操作符</span></div><div class="format__row"><span class="format__key">注释</span><span class="format__val">分号到行尾</span></div><div class="format__row"><span class="format__key">大小写</span><span class="format__val">读取器默认折叠为大写（Common Lisp）</span></div></div>
@@ -195,7 +194,7 @@ try {
         <div class="code-actions">
           <button class="code-btn" type="button" data-copy>复制</button>
           
-          <span class="code-hint">文档重构 · 非实测输出</span>
+          <span class="code-hint">文档重构 · 示意输出</span>
         </div>
       </div>
       <div class="format"><div class="format__row"><span class="format__key">cons</span><span class="format__val">两个字段：car 与 cdr</span></div><div class="format__row"><span class="format__key">符号</span><span class="format__val">intern 后全局唯一，带包归属</span></div><div class="format__row"><span class="format__key">字符串</span><span class="format__val">向量，带长度与填充指针</span></div><div class="format__row"><span class="format__key">数字</span><span class="format__val">立即数或 boxed 对象，视实现而定</span></div></div>
@@ -227,7 +226,7 @@ try {
         <div class="code-actions">
           <button class="code-btn" type="button" data-copy>复制</button>
           
-          <span class="code-hint">文档重构 · 非实测输出</span>
+          <span class="code-hint">文档重构 · 示意输出</span>
         </div>
       </div>
       <div class="format"><div class="format__row"><span class="format__key">FASL</span><span class="format__val">Fast Load，编译器产物</span></div><div class="format__row"><span class="format__key">内容</span><span class="format__val">机器码 + 字面量 + 符号 + 调试信息</span></div><div class="format__row"><span class="format__key">绑定</span><span class="format__val">与实现版本、字长、特性集相关</span></div><div class="format__row"><span class="format__key">加载</span><span class="format__val">跳过读取器、宏展开与大部分编译</span></div></div>
@@ -259,7 +258,7 @@ Hello, world!
         <div class="code-actions">
           <button class="code-btn" type="button" data-copy>复制</button>
           
-          <span class="code-hint">文档重构 · 非实测输出</span>
+          <span class="code-hint">文档重构 · 示意输出</span>
         </div>
       </div>
       <div class="format"><div class="format__row"><span class="format__key">镜像</span><span class="format__val">整个 Lisp 堆的二进制快照</span></div><div class="format__row"><span class="format__key">包含</span><span class="format__val">代码、符号、包、CLOS、全局状态</span></div><div class="format__row"><span class="format__key">绑定</span><span class="format__val">OS、字长、实现版本</span></div><div class="format__row"><span class="format__key">可执行</span><span class="format__val">save-lisp-and-die 可生成 standalone binary</span></div></div>
@@ -313,7 +312,6 @@ Hello, world!
         <ol class="why-list"><li><strong>读取器与求值器分离</strong>：read 产生数据，eval 消费数据，语言因此可以操作自己。</li><li><strong>宏在编译期运行</strong>：它在树变成代码之前改写树，所以源码不是最终形态。</li><li><strong>FASL</strong>：跳过读取与宏展开，只做重定位，加载速度接近 mmap。</li><li><strong>镜像</strong>：把运行时状态整体冻结，启动时直接恢复，不必重新初始化世界。</li></ol>
       </div>
     </div>
-    
   </section>
     <section class="block deep reveal" id="deep">
     <div class="block__head">
@@ -386,7 +384,7 @@ Hello, world!
     <span class="next-card__arrow" aria-hidden="true">→</span>
   </a>
     <footer class="pagefoot">
-      <p class="stamp">本页所有文件样例为依据公开规范与文档重构的示意内容；具体地址、偏移与字节数为示例值，不代表任何特定编译器版本的实测输出。</p>
+      <p class="stamp">本页所有文件样例为依据公开规范与文档重构的示意内容；具体地址、偏移与字节数为示例值，不代表任何特定编译器版本的输出。</p>
       <p>第 1–23 批 · PLATE 02 / 78</p>
     </footer>
   </div>

@@ -100,7 +100,6 @@ try {
     <a href="../scenarios.html">开发场景 →</a><br>
     <a href="../languages/formats.html">产物索引 →</a><br>
     <a href="../sources.html">来源索引 →</a><br>
-    <a href="../verified.html">实测记录 →</a>
   </div>
 </aside>
 <main class="page" id="main">
@@ -122,7 +121,7 @@ try {
       <div class="meta-item"><span class="meta-label">首次发布</span><span class="meta-value">1984</span></div>
       <div class="meta-item"><span class="meta-label">类型</span><span class="meta-value">解释 / 字节码</span></div>
     </div>
-    <div class="tags"><span class="tag">函数式</span><span class="tag">宏</span><span class="tag">CLOS</span><span class="tag is-accent">解释 / 字节码</span><span class="tag tag--level" title="产物链样例为文档重构，不是本机实测">文档重构</span></div>
+    <div class="tags"><span class="tag">函数式</span><span class="tag">宏</span><span class="tag">CLOS</span><span class="tag is-accent">解释 / 字节码</span><span class="tag tag--level" title="产物链样例为依据公开文档重构，不是本机运行输出">文档重构</span></div>
     <a class="dossier__fwlink" href="../frameworks/commonlisp.html">框架与场景 →</a>
     <div class="lineage">
       <div><div class="lineage__label">源自 / From</div><p class="lineage__list">Maclisp · Franz Lisp · Interlisp · Scheme（部分）</p></div>
@@ -174,7 +173,7 @@ try {
         <div class="code-actions">
           <button class="code-btn" type="button" data-copy>复制</button>
           
-          <span class="code-hint">文档重构 · 非实测输出</span>
+          <span class="code-hint">文档重构 · 示意输出</span>
         </div>
       </div>
       <div class="format"><div class="format__row"><span class="format__key">包</span><span class="format__val">defpackage 管理符号归属</span></div><div class="format__row"><span class="format__key">类</span><span class="format__val">defclass + 槽 + reader</span></div><div class="format__row"><span class="format__key">方法</span><span class="format__val">defmethod 按参数特化</span></div><div class="format__row"><span class="format__key">入口</span><span class="format__val">main 是自己约定的函数</span></div></div>
@@ -202,7 +201,7 @@ T
         <div class="code-actions">
           <button class="code-btn" type="button" data-copy>复制</button>
           
-          <span class="code-hint">文档重构 · 非实测输出</span>
+          <span class="code-hint">文档重构 · 示意输出</span>
         </div>
       </div>
       <div class="format"><div class="format__row"><span class="format__key">宏</span><span class="format__val">编译期代码变换</span></div><div class="format__row"><span class="format__key">展开</span><span class="format__val">macroexpand-1 / macroexpand</span></div><div class="format__row"><span class="format__key">卫生</span><span class="format__val">Common Lisp 宏不自动卫生</span></div><div class="format__row"><span class="format__key">能力</span><span class="format__val">可定义控制流、DSL、绑定形式</span></div></div>
@@ -234,7 +233,7 @@ $ ls -lh hello.fasl
         <div class="code-actions">
           <button class="code-btn" type="button" data-copy>复制</button>
           
-          <span class="code-hint">文档重构 · 非实测输出</span>
+          <span class="code-hint">文档重构 · 示意输出</span>
         </div>
       </div>
       <div class="format"><div class="format__row"><span class="format__key">FASL</span><span class="format__val">Fast Load，编译产物</span></div><div class="format__row"><span class="format__key">绑定</span><span class="format__val">与实现、版本、字长相关</span></div><div class="format__row"><span class="format__key">内容</span><span class="format__val">代码 + 字面量 + 符号 + 调试信息</span></div><div class="format__row"><span class="format__key">加载</span><span class="format__val">跳过读取与宏展开</span></div></div>
@@ -266,7 +265,7 @@ $ ls -lh hello
         <div class="code-actions">
           <button class="code-btn" type="button" data-copy>复制</button>
           
-          <span class="code-hint">文档重构 · 非实测输出</span>
+          <span class="code-hint">文档重构 · 示意输出</span>
         </div>
       </div>
       <div class="format"><div class="format__row"><span class="format__key">机制</span><span class="format__val">保存镜像并加上可执行头</span></div><div class="format__row"><span class="format__key">体积</span><span class="format__val">通常 40–60 MB</span></div><div class="format__row"><span class="format__key">启动</span><span class="format__val">恢复堆，然后调用 toplevel</span></div><div class="format__row"><span class="format__key">平台</span><span class="format__val">与保存时的 OS/架构绑定</span></div></div>
@@ -318,7 +317,6 @@ $ ls -lh hello
         <ol class="why-list"><li><strong>包</strong>：解决大型程序中符号重名，是模块系统的 Lisp 版本。</li><li><strong>CLOS</strong>：泛型函数与多重方法，把 OO 从「类的成员」变成「方法的组合」。</li><li><strong>FASL</strong>：编译后的可加载代码，跳过读取与宏展开。</li><li><strong>镜像</strong>：把整个 Lisp 世界保存成文件，启动即恢复。</li></ol>
       </div>
     </div>
-    
   </section>
     <section class="block deep reveal" id="deep">
     <div class="block__head">
@@ -391,7 +389,7 @@ $ ls -lh hello
     <span class="next-card__arrow" aria-hidden="true">→</span>
   </a>
     <footer class="pagefoot">
-      <p class="stamp">本页所有文件样例为依据公开规范与文档重构的示意内容；具体地址、偏移与字节数为示例值，不代表任何特定编译器版本的实测输出。</p>
+      <p class="stamp">本页所有文件样例为依据公开规范与文档重构的示意内容；具体地址、偏移与字节数为示例值，不代表任何特定编译器版本的输出。</p>
       <p>第 1–23 批 · PLATE 26 / 78</p>
     </footer>
   </div>

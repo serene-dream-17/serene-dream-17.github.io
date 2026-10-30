@@ -100,7 +100,6 @@ try {
     <a href="../scenarios.html">开发场景 →</a><br>
     <a href="../languages/formats.html">产物索引 →</a><br>
     <a href="../sources.html">来源索引 →</a><br>
-    <a href="../verified.html">实测记录 →</a>
   </div>
 </aside>
 <main class="page" id="main">
@@ -122,7 +121,7 @@ try {
       <div class="meta-item"><span class="meta-label">首次发布</span><span class="meta-value">1984</span></div>
       <div class="meta-item"><span class="meta-label">类型</span><span class="meta-value">领域专用</span></div>
     </div>
-    <div class="tags"><span class="tag">硬件描述</span><span class="tag">并发</span><span class="tag">仿真</span><span class="tag is-accent">领域专用</span><span class="tag tag--level" title="产物链样例为文档重构，不是本机实测">文档重构</span></div>
+    <div class="tags"><span class="tag">硬件描述</span><span class="tag">并发</span><span class="tag">仿真</span><span class="tag is-accent">领域专用</span><span class="tag tag--level" title="产物链样例为依据公开文档重构，不是本机运行输出">文档重构</span></div>
     <a class="dossier__fwlink" href="../frameworks/verilog.html">框架与场景 →</a>
     <div class="lineage">
       <div><div class="lineage__label">源自 / From</div><p class="lineage__list">C（语法） · 硬件描述需求 · EDA 工具</p></div>
@@ -171,7 +170,7 @@ endmodule</code></pre>
         <div class="code-actions">
           <button class="code-btn" type="button" data-copy>复制</button>
           
-          <span class="code-hint">文档重构 · 非实测输出</span>
+          <span class="code-hint">文档重构 · 示意输出</span>
         </div>
       </div>
       <div class="format"><div class="format__row"><span class="format__key">扩展名</span><span class="format__val">.v / .sv</span></div><div class="format__row"><span class="format__key">模块</span><span class="format__val">module … endmodule</span></div><div class="format__row"><span class="format__key">并行</span><span class="format__val">always / assign 同时存在</span></div><div class="format__row"><span class="format__key">时序</span><span class="format__val">posedge clk 触发</span></div></div>
@@ -207,7 +206,7 @@ $scope module hello_tb $end</code></pre>
         <div class="code-actions">
           <button class="code-btn" type="button" data-copy>复制</button>
           
-          <span class="code-hint">文档重构 · 非实测输出</span>
+          <span class="code-hint">文档重构 · 示意输出</span>
         </div>
       </div>
       <div class="format"><div class="format__row"><span class="format__key">格式</span><span class="format__val">VCD（值变化转储）</span></div><div class="format__row"><span class="format__key">工具</span><span class="format__val">Icarus Verilog / Verilator</span></div><div class="format__row"><span class="format__key">内容</span><span class="format__val">时间 + 信号 + 值</span></div><div class="format__row"><span class="format__key">用途</span><span class="format__val">调试、验证、波形查看</span></div></div>
@@ -241,7 +240,7 @@ endmodule
         <div class="code-actions">
           <button class="code-btn" type="button" data-copy>复制</button>
           
-          <span class="code-hint">文档重构 · 非实测输出</span>
+          <span class="code-hint">文档重构 · 示意输出</span>
         </div>
       </div>
       <div class="format"><div class="format__row"><span class="format__key">工具</span><span class="format__val">Yosys / 商业综合工具</span></div><div class="format__row"><span class="format__key">产物</span><span class="format__val">门级网表</span></div><div class="format__row"><span class="format__key">元件</span><span class="format__val">LUT / DFF / 连线</span></div><div class="format__row"><span class="format__key">绑定</span><span class="format__val">工艺库 / FPGA 原语</span></div></div>
@@ -271,7 +270,7 @@ $ ls -l hello.bin
         <div class="code-actions">
           <button class="code-btn" type="button" data-copy>复制</button>
           
-          <span class="code-hint">文档重构 · 非实测输出</span>
+          <span class="code-hint">文档重构 · 示意输出</span>
         </div>
       </div>
       <div class="format"><div class="format__row"><span class="format__key">格式</span><span class="format__val">FPGA 比特流（厂商相关）</span></div><div class="format__row"><span class="format__key">工具</span><span class="format__val">nextpnr / icepack / 厂商工具</span></div><div class="format__row"><span class="format__key">绑定</span><span class="format__val">芯片型号与封装</span></div><div class="format__row"><span class="format__key">部署</span><span class="format__val">JTAG / Flash 配置</span></div></div>
@@ -331,7 +330,6 @@ endmodule</code></pre>
         <ol class="why-list"><li><strong>并行语义</strong>：always 块与连续赋值描述同时存在的硬件。</li><li><strong>仿真</strong>：VCD 波形是验证电路行为的主要产物。</li><li><strong>综合</strong>：RTL 被映射成 LUT、触发器与连线。</li><li><strong>比特流</strong>：配置位与芯片型号绑定，是硬件的「可执行文件」。</li></ol>
       </div>
     </div>
-    
   </section>
     <section class="block deep reveal" id="deep">
     <div class="block__head">
@@ -404,7 +402,7 @@ endmodule</code></pre>
     <span class="next-card__arrow" aria-hidden="true">→</span>
   </a>
     <footer class="pagefoot">
-      <p class="stamp">本页所有文件样例为依据公开规范与文档重构的示意内容；具体地址、偏移与字节数为示例值，不代表任何特定编译器版本的实测输出。</p>
+      <p class="stamp">本页所有文件样例为依据公开规范与文档重构的示意内容；具体地址、偏移与字节数为示例值，不代表任何特定编译器版本的输出。</p>
       <p>第 1–23 批 · PLATE 68 / 78</p>
     </footer>
   </div>

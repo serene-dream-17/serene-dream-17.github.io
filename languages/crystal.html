@@ -100,7 +100,6 @@ try {
     <a href="../scenarios.html">开发场景 →</a><br>
     <a href="../languages/formats.html">产物索引 →</a><br>
     <a href="../sources.html">来源索引 →</a><br>
-    <a href="../verified.html">实测记录 →</a>
   </div>
 </aside>
 <main class="page" id="main">
@@ -122,7 +121,7 @@ try {
       <div class="meta-item"><span class="meta-label">首次发布</span><span class="meta-value">2014</span></div>
       <div class="meta-item"><span class="meta-label">类型</span><span class="meta-value">编译型</span></div>
     </div>
-    <div class="tags"><span class="tag">静态类型</span><span class="tag">Ruby 语法</span><span class="tag">LLVM</span><span class="tag is-accent">编译型</span><span class="tag tag--level" title="产物链样例为文档重构，不是本机实测">文档重构</span></div>
+    <div class="tags"><span class="tag">静态类型</span><span class="tag">Ruby 语法</span><span class="tag">LLVM</span><span class="tag is-accent">编译型</span><span class="tag tag--level" title="产物链样例为依据公开文档重构，不是本机运行输出">文档重构</span></div>
     <a class="dossier__fwlink" href="../frameworks/crystal.html">框架与场景 →</a>
     <div class="lineage">
       <div><div class="lineage__label">源自 / From</div><p class="lineage__list">Ruby（语法） · C（性能目标） · LLVM</p></div>
@@ -162,7 +161,7 @@ try {
         <div class="code-actions">
           <button class="code-btn" type="button" data-copy>复制</button>
           
-          <span class="code-hint">文档重构 · 非实测输出</span>
+          <span class="code-hint">文档重构 · 示意输出</span>
         </div>
       </div>
       <div class="format"><div class="format__row"><span class="format__key">扩展名</span><span class="format__val">.cr</span></div><div class="format__row"><span class="format__key">语法</span><span class="format__val">Ruby 风格</span></div><div class="format__row"><span class="format__key">类型</span><span class="format__val">静态，全程序推断</span></div><div class="format__row"><span class="format__key">编译</span><span class="format__val">crystal build</span></div></div>
@@ -193,7 +192,7 @@ entry:
         <div class="code-actions">
           <button class="code-btn" type="button" data-copy>复制</button>
           
-          <span class="code-hint">文档重构 · 非实测输出</span>
+          <span class="code-hint">文档重构 · 示意输出</span>
         </div>
       </div>
       <div class="format"><div class="format__row"><span class="format__key">中间表示</span><span class="format__val">LLVM IR</span></div><div class="format__row"><span class="format__key">推断</span><span class="format__val">全程序、单态化</span></div><div class="format__row"><span class="format__key">输出</span><span class="format__val">--emit llvm-ir</span></div><div class="format__row"><span class="format__key">后端</span><span class="format__val">LLVM</span></div></div>
@@ -225,7 +224,7 @@ $ nm hello.o | grep -E &#x27;main|puts&#x27;
         <div class="code-actions">
           <button class="code-btn" type="button" data-copy>复制</button>
           
-          <span class="code-hint">文档重构 · 非实测输出</span>
+          <span class="code-hint">文档重构 · 示意输出</span>
         </div>
       </div>
       <div class="format"><div class="format__row"><span class="format__key">格式</span><span class="format__val">ELF / Mach-O / COFF</span></div><div class="format__row"><span class="format__key">GC</span><span class="format__val">Boehm（libgc）</span></div><div class="format__row"><span class="format__key">标准库</span><span class="format__val">静态编译</span></div><div class="format__row"><span class="format__key">链接</span><span class="format__val">系统链接器</span></div></div>
@@ -260,7 +259,7 @@ $ ldd hello
         <div class="code-actions">
           <button class="code-btn" type="button" data-copy>复制</button>
           
-          <span class="code-hint">文档重构 · 非实测输出</span>
+          <span class="code-hint">文档重构 · 示意输出</span>
         </div>
       </div>
       <div class="format"><div class="format__row"><span class="format__key">格式</span><span class="format__val">原生可执行</span></div><div class="format__row"><span class="format__key">运行时</span><span class="format__val">Boehm GC + libevent</span></div><div class="format__row"><span class="format__key">启动</span><span class="format__val">无 VM，直接执行</span></div><div class="format__row"><span class="format__key">代价</span><span class="format__val">编译慢、产物依赖库</span></div></div>
@@ -312,7 +311,6 @@ $ ldd hello
         <ol class="why-list"><li><strong>全程序推断</strong>：没有运行时类型检查，泛型在编译期特化。</li><li><strong>LLVM</strong>：直接生成 IR，复用成熟优化器与后端。</li><li><strong>无 VM</strong>：启动快，运行时行为可预测。</li><li><strong>Boehm GC</strong>：自动内存管理，但保留了原生代码的执行模型。</li></ol>
       </div>
     </div>
-    
   </section>
     <section class="block deep reveal" id="deep">
     <div class="block__head">
@@ -385,7 +383,7 @@ $ ldd hello
     <span class="next-card__arrow" aria-hidden="true">→</span>
   </a>
     <footer class="pagefoot">
-      <p class="stamp">本页所有文件样例为依据公开规范与文档重构的示意内容；具体地址、偏移与字节数为示例值，不代表任何特定编译器版本的实测输出。</p>
+      <p class="stamp">本页所有文件样例为依据公开规范与文档重构的示意内容；具体地址、偏移与字节数为示例值，不代表任何特定编译器版本的输出。</p>
       <p>第 1–23 批 · PLATE 56 / 78</p>
     </footer>
   </div>

@@ -100,7 +100,6 @@ try {
     <a href="../scenarios.html">开发场景 →</a><br>
     <a href="../languages/formats.html">产物索引 →</a><br>
     <a href="../sources.html">来源索引 →</a><br>
-    <a href="../verified.html">实测记录 →</a>
   </div>
 </aside>
 <main class="page" id="main">
@@ -122,7 +121,7 @@ try {
       <div class="meta-item"><span class="meta-label">首次发布</span><span class="meta-value">2014</span></div>
       <div class="meta-item"><span class="meta-label">类型</span><span class="meta-value">领域专用</span></div>
     </div>
-    <div class="tags"><span class="tag">智能合约</span><span class="tag">EVM</span><span class="tag">静态类型</span><span class="tag is-accent">领域专用</span><span class="tag tag--level" title="产物链样例为文档重构，不是本机实测">文档重构</span></div>
+    <div class="tags"><span class="tag">智能合约</span><span class="tag">EVM</span><span class="tag">静态类型</span><span class="tag is-accent">领域专用</span><span class="tag tag--level" title="产物链样例为依据公开文档重构，不是本机运行输出">文档重构</span></div>
     <a class="dossier__fwlink" href="../frameworks/solidity.html">框架与场景 →</a>
     <div class="lineage">
       <div><div class="lineage__label">源自 / From</div><p class="lineage__list">JavaScript（语法） · EVM · Vyper（竞争） · Yul</p></div>
@@ -168,7 +167,7 @@ contract Hello {
         <div class="code-actions">
           <button class="code-btn" type="button" data-copy>复制</button>
           
-          <span class="code-hint">文档重构 · 非实测输出</span>
+          <span class="code-hint">文档重构 · 示意输出</span>
         </div>
       </div>
       <div class="format"><div class="format__row"><span class="format__key">扩展名</span><span class="format__val">.sol</span></div><div class="format__row"><span class="format__key">合约</span><span class="format__val">contract + 函数</span></div><div class="format__row"><span class="format__key">可见性</span><span class="format__val">public / pure</span></div><div class="format__row"><span class="format__key">存储</span><span class="format__val">storage / memory / calldata</span></div></div>
@@ -204,7 +203,7 @@ contract Hello {
         <div class="code-actions">
           <button class="code-btn" type="button" data-copy>复制</button>
           
-          <span class="code-hint">文档重构 · 非实测输出</span>
+          <span class="code-hint">文档重构 · 示意输出</span>
         </div>
       </div>
       <div class="format"><div class="format__row"><span class="format__key">格式</span><span class="format__val">JSON AST</span></div><div class="format__row"><span class="format__key">节点</span><span class="format__val">ContractDefinition / FunctionDefinition</span></div><div class="format__row"><span class="format__key">用途</span><span class="format__val">静态分析、审计、代码生成</span></div><div class="format__row"><span class="format__key">查看</span><span class="format__val">--ast-compact-json</span></div></div>
@@ -243,7 +242,7 @@ contract Hello {
         <div class="code-actions">
           <button class="code-btn" type="button" data-copy>复制</button>
           
-          <span class="code-hint">文档重构 · 非实测输出</span>
+          <span class="code-hint">文档重构 · 示意输出</span>
         </div>
       </div>
       <div class="format"><div class="format__row"><span class="format__key">中间表示</span><span class="format__val">Yul</span></div><div class="format__row"><span class="format__key">对象</span><span class="format__val">部署代码 + runtime 对象</span></div><div class="format__row"><span class="format__key">优化</span><span class="format__val">Yul 优化器</span></div><div class="format__row"><span class="format__key">查看</span><span class="format__val">--ir</span></div></div>
@@ -277,7 +276,7 @@ Contract JSON ABI:
         <div class="code-actions">
           <button class="code-btn" type="button" data-copy>复制</button>
           
-          <span class="code-hint">文档重构 · 非实测输出</span>
+          <span class="code-hint">文档重构 · 示意输出</span>
         </div>
       </div>
       <div class="format"><div class="format__row"><span class="format__key">字节码</span><span class="format__val">EVM 十六进制</span></div><div class="format__row"><span class="format__key">部署码</span><span class="format__val">creation code + runtime</span></div><div class="format__row"><span class="format__key">ABI</span><span class="format__val">JSON，描述函数与事件</span></div><div class="format__row"><span class="format__key">执行</span><span class="format__val">EVM 栈式虚拟机</span></div></div>
@@ -334,7 +333,6 @@ contract Hello {
         <ol class="why-list"><li><strong>EVM 字节码</strong>：不是本机代码，由链上虚拟机执行。</li><li><strong>Yul</strong>：可读的低级 IR，暴露栈、内存与 ABI 编码。</li><li><strong>creation/runtime</strong>：部署码只执行一次，runtime 永久保存在链上。</li><li><strong>ABI</strong>：外部调用者按 ABI 编码参数，字节码本身不描述接口。</li></ol>
       </div>
     </div>
-    
   </section>
     <section class="block deep reveal" id="deep">
     <div class="block__head">
@@ -414,7 +412,7 @@ contract Hello {
     <span class="next-card__arrow" aria-hidden="true">→</span>
   </a>
     <footer class="pagefoot">
-      <p class="stamp">本页所有文件样例为依据公开规范与文档重构的示意内容；具体地址、偏移与字节数为示例值，不代表任何特定编译器版本的实测输出。</p>
+      <p class="stamp">本页所有文件样例为依据公开规范与文档重构的示意内容；具体地址、偏移与字节数为示例值，不代表任何特定编译器版本的输出。</p>
       <p>第 1–23 批 · PLATE 58 / 78</p>
     </footer>
   </div>

@@ -100,7 +100,6 @@ try {
     <a href="../scenarios.html">开发场景 →</a><br>
     <a href="../languages/formats.html">产物索引 →</a><br>
     <a href="../sources.html">来源索引 →</a><br>
-    <a href="../verified.html">实测记录 →</a>
   </div>
 </aside>
 <main class="page" id="main">
@@ -122,7 +121,7 @@ try {
       <div class="meta-item"><span class="meta-label">首次发布</span><span class="meta-value">1967</span></div>
       <div class="meta-item"><span class="meta-label">类型</span><span class="meta-value">编译型</span></div>
     </div>
-    <div class="tags"><span class="tag">面向对象</span><span class="tag">仿真</span><span class="tag">协程</span><span class="tag is-accent">编译型</span><span class="tag tag--level" title="产物链样例为文档重构，不是本机实测">文档重构</span></div>
+    <div class="tags"><span class="tag">面向对象</span><span class="tag">仿真</span><span class="tag">协程</span><span class="tag is-accent">编译型</span><span class="tag tag--level" title="产物链样例为依据公开文档重构，不是本机运行输出">文档重构</span></div>
     <a class="dossier__fwlink" href="../frameworks/simula.html">框架与场景 →</a>
     <div class="lineage">
       <div><div class="lineage__label">源自 / From</div><p class="lineage__list">ALGOL 60 · 离散事件仿真</p></div>
@@ -171,7 +170,7 @@ END</code></pre>
         <div class="code-actions">
           <button class="code-btn" type="button" data-copy>复制</button>
           
-          <span class="code-hint">文档重构 · 非实测输出</span>
+          <span class="code-hint">文档重构 · 示意输出</span>
         </div>
       </div>
       <div class="format"><div class="format__row"><span class="format__key">类</span><span class="format__val">CLASS … END，字段与过程放在一起</span></div><div class="format__row"><span class="format__key">引用</span><span class="format__val">REF(Point)，赋值用 :-</span></div><div class="format__row"><span class="format__key">对象</span><span class="format__val">NEW 在堆上分配</span></div><div class="format__row"><span class="format__key">继承</span><span class="format__val">prefixing：CLASS Sub(Super)</span></div></div>
@@ -200,7 +199,7 @@ END Point;
         <div class="code-actions">
           <button class="code-btn" type="button" data-copy>复制</button>
           
-          <span class="code-hint">文档重构 · 非实测输出</span>
+          <span class="code-hint">文档重构 · 示意输出</span>
         </div>
       </div>
       <div class="format"><div class="format__row"><span class="format__key">独立编译</span><span class="format__val">类可以单独编译</span></div><div class="format__row"><span class="format__key">声明</span><span class="format__val">客户模块依赖 EXTERNAL CLASS</span></div><div class="format__row"><span class="format__key">类型检查</span><span class="format__val">编译期核对过程签名</span></div><div class="format__row"><span class="format__key">对应物</span><span class="format__val">C 的头文件 / Modula-2 的 .def</span></div></div>
@@ -237,7 +236,7 @@ ColoredPoint:
         <div class="code-actions">
           <button class="code-btn" type="button" data-copy>复制</button>
           
-          <span class="code-hint">文档重构 · 非实测输出</span>
+          <span class="code-hint">文档重构 · 示意输出</span>
         </div>
       </div>
       <div class="format"><div class="format__row"><span class="format__key">对象</span><span class="format__val">连续的字块，首字指向类描述符</span></div><div class="format__row"><span class="format__key">虚表</span><span class="format__val">每个类一张，支持动态绑定</span></div><div class="format__row"><span class="format__key">继承</span><span class="format__val">父类字段在前，子类字段在后</span></div><div class="format__row"><span class="format__key">回收</span><span class="format__val">运行时垃圾回收</span></div></div>
@@ -264,7 +263,7 @@ $ size a.out
         <div class="code-actions">
           <button class="code-btn" type="button" data-copy>复制</button>
           
-          <span class="code-hint">文档重构 · 非实测输出</span>
+          <span class="code-hint">文档重构 · 示意输出</span>
         </div>
       </div>
       <div class="format"><div class="format__row"><span class="format__key">编译器</span><span class="format__val">SIMULA 67 编译器（各机器一套）</span></div><div class="format__row"><span class="format__key">运行时</span><span class="format__val">堆、垃圾回收、协程调度</span></div><div class="format__row"><span class="format__key">链接</span><span class="format__val">与运行时库一起装入</span></div><div class="format__row"><span class="format__key">产物</span><span class="format__val">机器码可执行文件</span></div></div>
@@ -318,7 +317,6 @@ END</code></pre>
         <ol class="why-list"><li><strong>类</strong>：把数据与操作绑定为一个可复制的模板。</li><li><strong>前缀继承</strong>：子类对象直接复用父类字段布局。</li><li><strong>外部类</strong>：声明与实现分离，支持独立编译。</li><li><strong>运行时</strong>：堆、垃圾回收、协程都需要运行时支持。</li></ol>
       </div>
     </div>
-    
   </section>
     <section class="block deep reveal" id="deep">
     <div class="block__head">
@@ -391,7 +389,7 @@ END</code></pre>
     <span class="next-card__arrow" aria-hidden="true">→</span>
   </a>
     <footer class="pagefoot">
-      <p class="stamp">本页所有文件样例为依据公开规范与文档重构的示意内容；具体地址、偏移与字节数为示例值，不代表任何特定编译器版本的实测输出。</p>
+      <p class="stamp">本页所有文件样例为依据公开规范与文档重构的示意内容；具体地址、偏移与字节数为示例值，不代表任何特定编译器版本的输出。</p>
       <p>第 1–23 批 · PLATE 06 / 78</p>
     </footer>
   </div>

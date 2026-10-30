@@ -100,7 +100,6 @@ try {
     <a href="../scenarios.html">开发场景 →</a><br>
     <a href="../languages/formats.html">产物索引 →</a><br>
     <a href="../sources.html">来源索引 →</a><br>
-    <a href="../verified.html">实测记录 →</a>
   </div>
 </aside>
 <main class="page" id="main">
@@ -122,7 +121,7 @@ try {
       <div class="meta-item"><span class="meta-label">首次发布</span><span class="meta-value">1993</span></div>
       <div class="meta-item"><span class="meta-label">类型</span><span class="meta-value">解释 / 字节码</span></div>
     </div>
-    <div class="tags"><span class="tag">脚本</span><span class="tag">嵌入</span><span class="tag">轻量</span><span class="tag is-accent">解释 / 字节码</span><span class="tag tag--level" title="产物链样例为文档重构，不是本机实测">文档重构</span></div>
+    <div class="tags"><span class="tag">脚本</span><span class="tag">嵌入</span><span class="tag">轻量</span><span class="tag is-accent">解释 / 字节码</span><span class="tag tag--level" title="产物链样例为依据公开文档重构，不是本机运行输出">文档重构</span></div>
     <a class="dossier__fwlink" href="../frameworks/lua.html">框架与场景 →</a>
     <div class="lineage">
       <div><div class="lineage__label">源自 / From</div><p class="lineage__list">C · Scheme（部分） · 自身体积约束</p></div>
@@ -161,7 +160,7 @@ try {
         <div class="code-actions">
           <button class="code-btn" type="button" data-copy>复制</button>
           
-          <span class="code-hint">文档重构 · 非实测输出</span>
+          <span class="code-hint">文档重构 · 示意输出</span>
         </div>
       </div>
       <div class="format"><div class="format__row"><span class="format__key">扩展名</span><span class="format__val">.lua</span></div><div class="format__row"><span class="format__key">类型</span><span class="format__val">动态，唯一容器是 table</span></div><div class="format__row"><span class="format__key">索引</span><span class="format__val">从 1 开始</span></div><div class="format__row"><span class="format__key">执行</span><span class="format__val">编译成字节码后由 VM 执行</span></div></div>
@@ -193,7 +192,7 @@ constants (1) for 0x...:
         <div class="code-actions">
           <button class="code-btn" type="button" data-copy>复制</button>
           
-          <span class="code-hint">文档重构 · 非实测输出</span>
+          <span class="code-hint">文档重构 · 示意输出</span>
         </div>
       </div>
       <div class="format"><div class="format__row"><span class="format__key">指令</span><span class="format__val">寄存器式字节码</span></div><div class="format__row"><span class="format__key">常量表</span><span class="format__val">字符串、数字、函数原型</span></div><div class="format__row"><span class="format__key">原型</span><span class="format__val">每个函数一个 Proto</span></div><div class="format__row"><span class="format__key">查看</span><span class="format__val">luac -l -l</span></div></div>
@@ -223,7 +222,7 @@ constants (1) for 0x...:
         <div class="code-actions">
           <button class="code-btn" type="button" data-copy>复制</button>
           
-          <span class="code-hint">文档重构 · 非实测输出</span>
+          <span class="code-hint">文档重构 · 示意输出</span>
         </div>
       </div>
       <div class="format"><div class="format__row"><span class="format__key">魔数</span><span class="format__val">\x1bLua + 版本</span></div><div class="format__row"><span class="format__key">格式</span><span class="format__val">头部 + 原型 + 常量 + 调试信息</span></div><div class="format__row"><span class="format__key">兼容</span><span class="format__val">跨版本不保证</span></div><div class="format__row"><span class="format__key">生成</span><span class="format__val">luac -o</span></div></div>
@@ -254,7 +253,7 @@ Hello, world
         <div class="code-actions">
           <button class="code-btn" type="button" data-copy>复制</button>
           
-          <span class="code-hint">文档重构 · 非实测输出</span>
+          <span class="code-hint">文档重构 · 示意输出</span>
         </div>
       </div>
       <div class="format"><div class="format__row"><span class="format__key">打包</span><span class="format__val">srlua / luastatic</span></div><div class="format__row"><span class="format__key">内容</span><span class="format__val">解释器 + 字节码</span></div><div class="format__row"><span class="format__key">嵌入</span><span class="format__val">C API：luaL_loadbuffer / lua_pcall</span></div><div class="format__row"><span class="format__key">体积</span><span class="format__val">通常 200–400 KB</span></div></div>
@@ -305,7 +304,6 @@ Hello, world
         <ol class="why-list"><li><strong>寄存器字节码</strong>：指令紧凑，适合嵌入与快速加载。</li><li><strong>Proto</strong>：每个函数一个原型，包含指令、常量、调试信息。</li><li><strong>.luac</strong>：可加载的字节码，不是独立程序。</li><li><strong>嵌入</strong>：宿主程序通过 C API 加载脚本，替换脚本不需重编译宿主。</li></ol>
       </div>
     </div>
-    
   </section>
     <section class="block deep reveal" id="deep">
     <div class="block__head">
@@ -385,7 +383,7 @@ Hello, world
     <span class="next-card__arrow" aria-hidden="true">→</span>
   </a>
     <footer class="pagefoot">
-      <p class="stamp">本页所有文件样例为依据公开规范与文档重构的示意内容；具体地址、偏移与字节数为示例值，不代表任何特定编译器版本的实测输出。</p>
+      <p class="stamp">本页所有文件样例为依据公开规范与文档重构的示意内容；具体地址、偏移与字节数为示例值，不代表任何特定编译器版本的输出。</p>
       <p>第 1–23 批 · PLATE 34 / 78</p>
     </footer>
   </div>

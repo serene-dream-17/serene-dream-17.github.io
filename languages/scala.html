@@ -100,7 +100,6 @@ try {
     <a href="../scenarios.html">开发场景 →</a><br>
     <a href="../languages/formats.html">产物索引 →</a><br>
     <a href="../sources.html">来源索引 →</a><br>
-    <a href="../verified.html">实测记录 →</a>
   </div>
 </aside>
 <main class="page" id="main">
@@ -122,7 +121,7 @@ try {
       <div class="meta-item"><span class="meta-label">首次发布</span><span class="meta-value">2004</span></div>
       <div class="meta-item"><span class="meta-label">类型</span><span class="meta-value">解释 / 字节码</span></div>
     </div>
-    <div class="tags"><span class="tag">函数式</span><span class="tag">面向对象</span><span class="tag">JVM</span><span class="tag is-accent">解释 / 字节码</span><span class="tag tag--level" title="产物链样例为文档重构，不是本机实测">文档重构</span></div>
+    <div class="tags"><span class="tag">函数式</span><span class="tag">面向对象</span><span class="tag">JVM</span><span class="tag is-accent">解释 / 字节码</span><span class="tag tag--level" title="产物链样例为依据公开文档重构，不是本机运行输出">文档重构</span></div>
     <a class="dossier__fwlink" href="../frameworks/scala.html">框架与场景 →</a>
     <div class="lineage">
       <div><div class="lineage__label">源自 / From</div><p class="lineage__list">Java · ML · Haskell · Pizza</p></div>
@@ -163,7 +162,7 @@ try {
         <div class="code-actions">
           <button class="code-btn" type="button" data-copy>复制</button>
           
-          <span class="code-hint">文档重构 · 非实测输出</span>
+          <span class="code-hint">文档重构 · 示意输出</span>
         </div>
       </div>
       <div class="format"><div class="format__row"><span class="format__key">扩展名</span><span class="format__val">.scala / .sc</span></div><div class="format__row"><span class="format__key">object</span><span class="format__val">单例对象，编译成两个类</span></div><div class="format__row"><span class="format__key">App</span><span class="format__val">提供 main 的 trait</span></div><div class="format__row"><span class="format__key">类型</span><span class="format__val">静态、推断、代数数据类型</span></div></div>
@@ -198,7 +197,7 @@ try {
         <div class="code-actions">
           <button class="code-btn" type="button" data-copy>复制</button>
           
-          <span class="code-hint">文档重构 · 非实测输出</span>
+          <span class="code-hint">文档重构 · 示意输出</span>
         </div>
       </div>
       <div class="format"><div class="format__row"><span class="format__key">阶段</span><span class="format__val">typer → erasure</span></div><div class="format__row"><span class="format__key">擦除</span><span class="format__val">泛型类型参数被移除</span></div><div class="format__row"><span class="format__key">去糖</span><span class="format__val">for / match / 闭包展开</span></div><div class="format__row"><span class="format__key">输出</span><span class="format__val">更接近 JVM 的核心语言</span></div></div>
@@ -232,7 +231,7 @@ public final class Hello$ {
         <div class="code-actions">
           <button class="code-btn" type="button" data-copy>复制</button>
           
-          <span class="code-hint">文档重构 · 非实测输出</span>
+          <span class="code-hint">文档重构 · 示意输出</span>
         </div>
       </div>
       <div class="format"><div class="format__row"><span class="format__key">产物</span><span class="format__val">.class（JVM 字节码）</span></div><div class="format__row"><span class="format__key">伴生</span><span class="format__val">Hello$ + Hello</span></div><div class="format__row"><span class="format__key">签名</span><span class="format__val">ScalaSignature 注解携带类型信息</span></div><div class="format__row"><span class="format__key">互操作</span><span class="format__val">可从 Java 调用</span></div></div>
@@ -265,7 +264,7 @@ $ unzip -l hello.jar | head
         <div class="code-actions">
           <button class="code-btn" type="button" data-copy>复制</button>
           
-          <span class="code-hint">文档重构 · 非实测输出</span>
+          <span class="code-hint">文档重构 · 示意输出</span>
         </div>
       </div>
       <div class="format"><div class="format__row"><span class="format__key">容器</span><span class="format__val">JAR（zip）</span></div><div class="format__row"><span class="format__key">依赖</span><span class="format__val">scala-library</span></div><div class="format__row"><span class="format__key">assembly</span><span class="format__val">把依赖展开进同一个 jar</span></div><div class="format__row"><span class="format__key">运行</span><span class="format__val">java -jar / scala</span></div></div>
@@ -318,7 +317,6 @@ $ unzip -l hello.jar | head
         <ol class="why-list"><li><strong>擦除</strong>：JVM 泛型不保留类型参数，Scala 在编译期擦除并补签名。</li><li><strong>伴生对象</strong>：object 编译成两个类，静态与实例入口分开。</li><li><strong>trait</strong>：默认实现与线性化在编译期展开成方法。</li><li><strong>jar</strong>：复用 JVM 生态的部署格式，依赖单独管理。</li></ol>
       </div>
     </div>
-    
   </section>
     <section class="block deep reveal" id="deep">
     <div class="block__head">
@@ -398,7 +396,7 @@ $ unzip -l hello.jar | head
     <span class="next-card__arrow" aria-hidden="true">→</span>
   </a>
     <footer class="pagefoot">
-      <p class="stamp">本页所有文件样例为依据公开规范与文档重构的示意内容；具体地址、偏移与字节数为示例值，不代表任何特定编译器版本的实测输出。</p>
+      <p class="stamp">本页所有文件样例为依据公开规范与文档重构的示意内容；具体地址、偏移与字节数为示例值，不代表任何特定编译器版本的输出。</p>
       <p>第 1–23 批 · PLATE 40 / 78</p>
     </footer>
   </div>

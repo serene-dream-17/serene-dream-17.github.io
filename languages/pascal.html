@@ -100,7 +100,6 @@ try {
     <a href="../scenarios.html">开发场景 →</a><br>
     <a href="../languages/formats.html">产物索引 →</a><br>
     <a href="../sources.html">来源索引 →</a><br>
-    <a href="../verified.html">实测记录 →</a>
   </div>
 </aside>
 <main class="page" id="main">
@@ -122,7 +121,7 @@ try {
       <div class="meta-item"><span class="meta-label">首次发布</span><span class="meta-value">1970</span></div>
       <div class="meta-item"><span class="meta-label">类型</span><span class="meta-value">编译型</span></div>
     </div>
-    <div class="tags"><span class="tag">命令式</span><span class="tag">结构化</span><span class="tag">教学</span><span class="tag is-accent">编译型</span><span class="tag tag--level" title="产物链样例为文档重构，不是本机实测">文档重构</span></div>
+    <div class="tags"><span class="tag">命令式</span><span class="tag">结构化</span><span class="tag">教学</span><span class="tag is-accent">编译型</span><span class="tag tag--level" title="产物链样例为依据公开文档重构，不是本机运行输出">文档重构</span></div>
     <a class="dossier__fwlink" href="../frameworks/pascal.html">框架与场景 →</a>
     <div class="lineage">
       <div><div class="lineage__label">源自 / From</div><p class="lineage__list">ALGOL 60 · ALGOL W</p></div>
@@ -164,7 +163,7 @@ end.</code></pre>
         <div class="code-actions">
           <button class="code-btn" type="button" data-copy>复制</button>
           
-          <span class="code-hint">文档重构 · 非实测输出</span>
+          <span class="code-hint">文档重构 · 示意输出</span>
         </div>
       </div>
       <div class="format"><div class="format__row"><span class="format__key">结构</span><span class="format__val">program … begin … end.</span></div><div class="format__row"><span class="format__key">语句</span><span class="format__val">分号分隔，最后一句可省略</span></div><div class="format__row"><span class="format__key">类型</span><span class="format__val">强类型，需显式声明</span></div><div class="format__row"><span class="format__key">大小写</span><span class="format__val">不敏感</span></div></div>
@@ -193,7 +192,7 @@ end.</code></pre>
         <div class="code-actions">
           <button class="code-btn" type="button" data-copy>复制</button>
           
-          <span class="code-hint">文档重构 · 非实测输出</span>
+          <span class="code-hint">文档重构 · 示意输出</span>
         </div>
       </div>
       <div class="format"><div class="format__row"><span class="format__key">形态</span><span class="format__val">栈式虚拟机的指令序列</span></div><div class="format__row"><span class="format__key">可移植</span><span class="format__val">换机器只需实现 P 解释器</span></div><div class="format__row"><span class="format__key">栈</span><span class="format__val">操作数栈 + 活动记录栈</span></div><div class="format__row"><span class="format__key">影响</span><span class="format__val">JVM 字节码 / .NET IL 的先声</span></div></div>
@@ -224,7 +223,7 @@ end.</code></pre>
         <div class="code-actions">
           <button class="code-btn" type="button" data-copy>复制</button>
           
-          <span class="code-hint">文档重构 · 非实测输出</span>
+          <span class="code-hint">文档重构 · 示意输出</span>
         </div>
       </div>
       <div class="format"><div class="format__row"><span class="format__key">格式</span><span class="format__val">DOS MZ 可执行（.EXE）</span></div><div class="format__row"><span class="format__key">代码</span><span class="format__val">直接生成 8086 机器码</span></div><div class="format__row"><span class="format__key">运行时</span><span class="format__val">静态链接，无需外部 DLL</span></div><div class="format__row"><span class="format__key">体积</span><span class="format__val">最小程序约 2–4 KB</span></div></div>
@@ -252,7 +251,7 @@ Hello, world</code></pre>
         <div class="code-actions">
           <button class="code-btn" type="button" data-copy>复制</button>
           
-          <span class="code-hint">文档重构 · 非实测输出</span>
+          <span class="code-hint">文档重构 · 示意输出</span>
         </div>
       </div>
       <div class="format"><div class="format__row"><span class="format__key">编译器</span><span class="format__val">Free Pascal / Delphi</span></div><div class="format__row"><span class="format__key">后端</span><span class="format__val">原生代码，可选 LLVM</span></div><div class="format__row"><span class="format__key">运行时</span><span class="format__val">静态或动态链接</span></div><div class="format__row"><span class="format__key">平台</span><span class="format__val">Windows / Linux / macOS / 嵌入式</span></div></div>
@@ -306,7 +305,6 @@ end.</code></pre>
         <ol class="why-list"><li><strong>P-code</strong>：用虚拟指令换取可移植性，换平台只重写解释器。</li><li><strong>强类型</strong>：编译期检查数组边界与参数类型，运行时更轻。</li><li><strong>Turbo 的静态链接</strong>：把运行时塞进 EXE，换来「拷贝即运行」。</li><li><strong>现代后端</strong>：Free Pascal 直接生成原生代码，P-code 成为历史层。</li></ol>
       </div>
     </div>
-    
   </section>
     <section class="block deep reveal" id="deep">
     <div class="block__head">
@@ -379,7 +377,7 @@ end.</code></pre>
     <span class="next-card__arrow" aria-hidden="true">→</span>
   </a>
     <footer class="pagefoot">
-      <p class="stamp">本页所有文件样例为依据公开规范与文档重构的示意内容；具体地址、偏移与字节数为示例值，不代表任何特定编译器版本的实测输出。</p>
+      <p class="stamp">本页所有文件样例为依据公开规范与文档重构的示意内容；具体地址、偏移与字节数为示例值，不代表任何特定编译器版本的输出。</p>
       <p>第 1–23 批 · PLATE 12 / 78</p>
     </footer>
   </div>

@@ -100,7 +100,6 @@ try {
     <a href="../scenarios.html">开发场景 →</a><br>
     <a href="../languages/formats.html">产物索引 →</a><br>
     <a href="../sources.html">来源索引 →</a><br>
-    <a href="../verified.html">实测记录 →</a>
   </div>
 </aside>
 <main class="page" id="main">
@@ -122,7 +121,7 @@ try {
       <div class="meta-item"><span class="meta-label">首次发布</span><span class="meta-value">2011</span></div>
       <div class="meta-item"><span class="meta-label">类型</span><span class="meta-value">解释 / 字节码</span></div>
     </div>
-    <div class="tags"><span class="tag">面向对象</span><span class="tag">Flutter</span><span class="tag">空安全</span><span class="tag is-accent">解释 / 字节码</span><span class="tag tag--level" title="产物链样例为文档重构，不是本机实测">文档重构</span></div>
+    <div class="tags"><span class="tag">面向对象</span><span class="tag">Flutter</span><span class="tag">空安全</span><span class="tag is-accent">解释 / 字节码</span><span class="tag tag--level" title="产物链样例为依据公开文档重构，不是本机运行输出">文档重构</span></div>
     <a class="dossier__fwlink" href="../frameworks/dart.html">框架与场景 →</a>
     <div class="lineage">
       <div><div class="lineage__label">源自 / From</div><p class="lineage__list">Java · JavaScript · C#（部分） · Flutter</p></div>
@@ -163,7 +162,7 @@ try {
         <div class="code-actions">
           <button class="code-btn" type="button" data-copy>复制</button>
           
-          <span class="code-hint">文档重构 · 非实测输出</span>
+          <span class="code-hint">文档重构 · 示意输出</span>
         </div>
       </div>
       <div class="format"><div class="format__row"><span class="format__key">扩展名</span><span class="format__val">.dart</span></div><div class="format__row"><span class="format__key">类型</span><span class="format__val">静态，空安全</span></div><div class="format__row"><span class="format__key">入口</span><span class="format__val">void main()</span></div><div class="format__row"><span class="format__key">运行</span><span class="format__val">JIT（开发）/ AOT（发布）</span></div></div>
@@ -194,7 +193,7 @@ hello.dill: data
         <div class="code-actions">
           <button class="code-btn" type="button" data-copy>复制</button>
           
-          <span class="code-hint">文档重构 · 非实测输出</span>
+          <span class="code-hint">文档重构 · 示意输出</span>
         </div>
       </div>
       <div class="format"><div class="format__row"><span class="format__key">格式</span><span class="format__val">Kernel binary（.dill）</span></div><div class="format__row"><span class="format__key">内容</span><span class="format__val">AST + 类型 + 常量</span></div><div class="format__row"><span class="format__key">作用</span><span class="format__val">前端与后端的分界</span></div><div class="format__row"><span class="format__key">稳定</span><span class="format__val">不保证跨 SDK 版本</span></div></div>
@@ -228,7 +227,7 @@ $ ls -lh hello
         <div class="code-actions">
           <button class="code-btn" type="button" data-copy>复制</button>
           
-          <span class="code-hint">文档重构 · 非实测输出</span>
+          <span class="code-hint">文档重构 · 示意输出</span>
         </div>
       </div>
       <div class="format"><div class="format__row"><span class="format__key">命令</span><span class="format__val">dart compile exe</span></div><div class="format__row"><span class="format__key">产物</span><span class="format__val">原生 ELF / PE / Mach-O</span></div><div class="format__row"><span class="format__key">运行时</span><span class="format__val">裁剪后的 Dart runtime</span></div><div class="format__row"><span class="format__key">体积</span><span class="format__val">hello ≈ 5 MB</span></div></div>
@@ -257,7 +256,7 @@ $ unzip -l build/app/outputs/flutter-apk/app-release.apk | grep libapp
         <div class="code-actions">
           <button class="code-btn" type="button" data-copy>复制</button>
           
-          <span class="code-hint">文档重构 · 非实测输出</span>
+          <span class="code-hint">文档重构 · 示意输出</span>
         </div>
       </div>
       <div class="format"><div class="format__row"><span class="format__key">产物</span><span class="format__val">libapp.so + 资源</span></div><div class="format__row"><span class="format__key">引擎</span><span class="format__val">Flutter Engine（Skia/Impeller）</span></div><div class="format__row"><span class="format__key">容器</span><span class="format__val">APK / AAB / IPA</span></div><div class="format__row"><span class="format__key">平台</span><span class="format__val">Android / iOS / 桌面 / Web</span></div></div>
@@ -310,7 +309,6 @@ $ unzip -l build/app/outputs/flutter-apk/app-release.apk | grep libapp
         <ol class="why-list"><li><strong>Kernel</strong>：前端产出的二进制 AST，JIT 与 AOT 的共同入口。</li><li><strong>AOT</strong>：发布时编译成机器码，避免 JIT 的启动与预热。</li><li><strong>运行时</strong>：AOT 产物仍带裁剪后的 Dart runtime（GC、类型、异常）。</li><li><strong>Flutter</strong>：Dart 代码与引擎分离，`libapp.so` 只是应用层。</li></ol>
       </div>
     </div>
-    
   </section>
     <section class="block deep reveal" id="deep">
     <div class="block__head">
@@ -390,7 +388,7 @@ $ unzip -l build/app/outputs/flutter-apk/app-release.apk | grep libapp
     <span class="next-card__arrow" aria-hidden="true">→</span>
   </a>
     <footer class="pagefoot">
-      <p class="stamp">本页所有文件样例为依据公开规范与文档重构的示意内容；具体地址、偏移与字节数为示例值，不代表任何特定编译器版本的实测输出。</p>
+      <p class="stamp">本页所有文件样例为依据公开规范与文档重构的示意内容；具体地址、偏移与字节数为示例值，不代表任何特定编译器版本的输出。</p>
       <p>第 1–23 批 · PLATE 53 / 78</p>
     </footer>
   </div>

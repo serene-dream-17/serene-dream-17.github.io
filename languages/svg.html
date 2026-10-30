@@ -100,7 +100,6 @@ try {
     <a href="../scenarios.html">开发场景 →</a><br>
     <a href="../languages/formats.html">产物索引 →</a><br>
     <a href="../sources.html">来源索引 →</a><br>
-    <a href="../verified.html">实测记录 →</a>
   </div>
 </aside>
 <main class="page" id="main">
@@ -122,7 +121,7 @@ try {
       <div class="meta-item"><span class="meta-label">首次发布</span><span class="meta-value">2001</span></div>
       <div class="meta-item"><span class="meta-label">类型</span><span class="meta-value">标记 / 配置</span></div>
     </div>
-    <div class="tags"><span class="tag">矢量图形</span><span class="tag">XML</span><span class="tag">声明式</span><span class="tag is-accent">标记 / 配置</span><a class="tag tag--verified" href="#verify">已实测 Hello · Chromium 156.0.8078.47</a></div>
+    <div class="tags"><span class="tag">矢量图形</span><span class="tag">XML</span><span class="tag">声明式</span><span class="tag is-accent">标记 / 配置</span><span class="tag tag--level" title="产物链样例为依据公开文档重构，不是本机运行输出">文档重构</span></div>
     <a class="dossier__fwlink" href="../frameworks/svg.html">框架与场景 →</a>
     <div class="lineage">
       <div><div class="lineage__label">源自 / From</div><p class="lineage__list">XML · PGML / VML · 矢量图形需求</p></div>
@@ -167,7 +166,7 @@ try {
         <div class="code-actions">
           <button class="code-btn" type="button" data-copy>复制</button>
           
-          <span class="code-hint">文档重构 · 非实测输出</span>
+          <span class="code-hint">文档重构 · 示意输出</span>
         </div>
       </div>
       <div class="format"><div class="format__row"><span class="format__key">扩展名</span><span class="format__val">.svg</span></div><div class="format__row"><span class="format__key">MIME</span><span class="format__val">image/svg+xml</span></div><div class="format__row"><span class="format__key">坐标</span><span class="format__val">viewBox 定义用户坐标</span></div><div class="format__row"><span class="format__key">图形</span><span class="format__val">rect / path / text / circle</span></div></div>
@@ -196,7 +195,7 @@ try {
         <div class="code-actions">
           <button class="code-btn" type="button" data-copy>复制</button>
           
-          <span class="code-hint">文档重构 · 非实测输出</span>
+          <span class="code-hint">文档重构 · 示意输出</span>
         </div>
       </div>
       <div class="format"><div class="format__row"><span class="format__key">节点</span><span class="format__val">svg / rect / text / path</span></div><div class="format__row"><span class="format__key">样式</span><span class="format__val">CSS 可作用于 SVG 元素</span></div><div class="format__row"><span class="format__key">脚本</span><span class="format__val">可查询、修改、绑定事件</span></div><div class="format__row"><span class="format__key">无障碍</span><span class="format__val">可加 title / desc / role</span></div></div>
@@ -226,7 +225,7 @@ text:  baseline=(16,48)
         <div class="code-actions">
           <button class="code-btn" type="button" data-copy>复制</button>
           
-          <span class="code-hint">文档重构 · 非实测输出</span>
+          <span class="code-hint">文档重构 · 示意输出</span>
         </div>
       </div>
       <div class="format"><div class="format__row"><span class="format__key">坐标</span><span class="format__val">用户坐标 → 视口坐标</span></div><div class="format__row"><span class="format__key">几何</span><span class="format__val">路径、包围盒、变换</span></div><div class="format__row"><span class="format__key">文本</span><span class="format__val">字体度量 + 字形</span></div><div class="format__row"><span class="format__key">动画</span><span class="format__val">SMIL / CSS / JS</span></div></div>
@@ -254,7 +253,7 @@ hello.png: PNG image data, 640 x 160, 8-bit/color RGBA
         <div class="code-actions">
           <button class="code-btn" type="button" data-copy>复制</button>
           
-          <span class="code-hint">文档重构 · 非实测输出</span>
+          <span class="code-hint">文档重构 · 示意输出</span>
         </div>
       </div>
       <div class="format"><div class="format__row"><span class="format__key">浏览器</span><span class="format__val">矢量 → 图层 → GPU</span></div><div class="format__row"><span class="format__key">导出</span><span class="format__val">rsvg-convert / Inkscape / sharp</span></div><div class="format__row"><span class="format__key">格式</span><span class="format__val">PNG / WebP / PDF</span></div><div class="format__row"><span class="format__key">分辨率</span><span class="format__val">栅格化时决定</span></div></div>
@@ -307,19 +306,6 @@ hello.png: PNG image data, 640 x 160, 8-bit/color RGBA
         <div class="footprint"><div class="footprint__row"><span class="footprint__stage">SVG</span><span class="footprint__track"><span class="footprint__fill" data-w="6" style="width:6%"></span></span><span class="footprint__size">≈ 230 B</span></div><div class="footprint__row"><span class="footprint__stage">DOM</span><span class="footprint__track"><span class="footprint__fill" data-w="7" style="width:7%"></span></span><span class="footprint__size">3 个节点</span></div><div class="footprint__row"><span class="footprint__stage">场景</span><span class="footprint__track"><span class="footprint__fill" data-w="6" style="width:6%"></span></span><span class="footprint__size">2 个图元</span></div><div class="footprint__row"><span class="footprint__stage">PNG 640</span><span class="footprint__track"><span class="footprint__fill" data-w="20" style="width:20%"></span></span><span class="footprint__size">≈ 8 KB</span></div><div class="footprint__row"><span class="footprint__stage">像素</span><span class="footprint__track"><span class="footprint__fill" data-w="30" style="width:30%"></span></span><span class="footprint__size">640 × 160</span></div></div>
         <ol class="why-list"><li><strong>矢量</strong>：几何在栅格化前保持精确，任意缩放。</li><li><strong>DOM</strong>：可被 CSS/JS 操作，能做交互与动画。</li><li><strong>viewBox</strong>：把用户坐标与视口解耦，响应式布局的基础。</li><li><strong>文本可访问</strong>：SVG 文本是可选中、可搜索的。</li></ol>
       </div>
-    </div>
-    <div class="verify" id="verify">
-      <div class="verify__head">
-        <span class="verify__badge">已实测</span>
-        <b>本机复现记录</b>
-        <span class="verify__meta">2026-10-28 · Chromium 156.0.8078.47</span>
-      </div>
-      <div class="verify__grid">
-        <div class="verify__item"><span class="verify__key">命令</span><code>在浏览器中打开 hello.svg</code></div>
-        <div class="verify__item"><span class="verify__key">输出</span><code>Hello, world</code></div>
-      </div>
-      <div class="verify__item"><span class="verify__key">产物 / 观察</span><ul class="verify__list"><li>SVG 子元素 2 个；矢量图元由浏览器栅格化。</li></ul></div>
-      <p class="verify__note">SVG 的产物是 DOM/场景图与像素。</p>
     </div>
   </section>
     <section class="block deep reveal" id="deep">
@@ -393,7 +379,7 @@ hello.png: PNG image data, 640 x 160, 8-bit/color RGBA
     <span class="next-card__arrow" aria-hidden="true">→</span>
   </a>
     <footer class="pagefoot">
-      <p class="stamp">本页所有文件样例为依据公开规范与文档重构的示意内容；具体地址、偏移与字节数为示例值，不代表任何特定编译器版本的实测输出。</p>
+      <p class="stamp">本页所有文件样例为依据公开规范与文档重构的示意内容；具体地址、偏移与字节数为示例值，不代表任何特定编译器版本的输出。</p>
       <p>第 1–23 批 · PLATE 74 / 78</p>
     </footer>
   </div>

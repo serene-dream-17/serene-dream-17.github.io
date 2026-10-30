@@ -100,7 +100,6 @@ try {
     <a href="../scenarios.html">开发场景 →</a><br>
     <a href="../languages/formats.html">产物索引 →</a><br>
     <a href="../sources.html">来源索引 →</a><br>
-    <a href="../verified.html">实测记录 →</a>
   </div>
 </aside>
 <main class="page" id="main">
@@ -122,7 +121,7 @@ try {
       <div class="meta-item"><span class="meta-label">首次发布</span><span class="meta-value">1991</span></div>
       <div class="meta-item"><span class="meta-label">类型</span><span class="meta-value">标记 / 配置</span></div>
     </div>
-    <div class="tags"><span class="tag">标记</span><span class="tag">文档结构</span><span class="tag">超文本</span><span class="tag is-accent">标记 / 配置</span><a class="tag tag--verified" href="#verify">已实测 Hello · Chromium 156.0.8078.47</a></div>
+    <div class="tags"><span class="tag">标记</span><span class="tag">文档结构</span><span class="tag">超文本</span><span class="tag is-accent">标记 / 配置</span><span class="tag tag--level" title="产物链样例为依据公开文档重构，不是本机运行输出">文档重构</span></div>
     <a class="dossier__fwlink" href="../frameworks/html.html">框架与场景 →</a>
     <div class="lineage">
       <div><div class="lineage__label">源自 / From</div><p class="lineage__list">SGML · 超文本系统 · CERN 文档需求</p></div>
@@ -170,7 +169,7 @@ try {
         <div class="code-actions">
           <button class="code-btn" type="button" data-copy>复制</button>
           
-          <span class="code-hint">文档重构 · 非实测输出</span>
+          <span class="code-hint">文档重构 · 示意输出</span>
         </div>
       </div>
       <div class="format"><div class="format__row"><span class="format__key">MIME</span><span class="format__val">text/html</span></div><div class="format__row"><span class="format__key">编码</span><span class="format__val">UTF-8（meta charset 声明）</span></div><div class="format__row"><span class="format__key">结构</span><span class="format__val">doctype → html → head/body</span></div><div class="format__row"><span class="format__key">解析</span><span class="format__val">容错解析器，标签可省略</span></div></div>
@@ -204,7 +203,7 @@ try {
         <div class="code-actions">
           <button class="code-btn" type="button" data-copy>复制</button>
           
-          <span class="code-hint">文档重构 · 非实测输出</span>
+          <span class="code-hint">文档重构 · 示意输出</span>
         </div>
       </div>
       <div class="format"><div class="format__row"><span class="format__key">节点</span><span class="format__val">Document / Element / Text</span></div><div class="format__row"><span class="format__key">接口</span><span class="format__val">DOM API（querySelector 等）</span></div><div class="format__row"><span class="format__key">可变</span><span class="format__val">JS 可以增删改节点</span></div><div class="format__row"><span class="format__key">事件</span><span class="format__val">DOM 也是事件目标树</span></div></div>
@@ -234,7 +233,7 @@ try {
         <div class="code-actions">
           <button class="code-btn" type="button" data-copy>复制</button>
           
-          <span class="code-hint">文档重构 · 非实测输出</span>
+          <span class="code-hint">文档重构 · 示意输出</span>
         </div>
       </div>
       <div class="format"><div class="format__row"><span class="format__key">输入</span><span class="format__val">DOM + CSSOM</span></div><div class="format__row"><span class="format__key">节点</span><span class="format__val">RenderBlock / RenderInline / RenderText</span></div><div class="format__row"><span class="format__key">过滤</span><span class="format__val">display:none 不参与</span></div><div class="format__row"><span class="format__key">伪元素</span><span class="format__val">::before / ::after 生成盒子</span></div></div>
@@ -263,7 +262,7 @@ try {
         <div class="code-actions">
           <button class="code-btn" type="button" data-copy>复制</button>
           
-          <span class="code-hint">文档重构 · 非实测输出</span>
+          <span class="code-hint">文档重构 · 示意输出</span>
         </div>
       </div>
       <div class="format"><div class="format__row"><span class="format__key">布局</span><span class="format__val">盒模型：content / padding / border / margin</span></div><div class="format__row"><span class="format__key">绘制</span><span class="format__val">文本、背景、边框、阴影</span></div><div class="format__row"><span class="format__key">合成</span><span class="format__val">图层 + GPU</span></div><div class="format__row"><span class="format__key">产物</span><span class="format__val">屏幕像素 / 无障碍树</span></div></div>
@@ -317,19 +316,6 @@ try {
         <div class="footprint"><div class="footprint__row"><span class="footprint__stage">HTML</span><span class="footprint__track"><span class="footprint__fill" data-w="5" style="width:5%"></span></span><span class="footprint__size">≈ 110 B</span></div><div class="footprint__row"><span class="footprint__stage">DOM</span><span class="footprint__track"><span class="footprint__fill" data-w="8" style="width:8%"></span></span><span class="footprint__size">≈ 6 个节点</span></div><div class="footprint__row"><span class="footprint__stage">渲染树</span><span class="footprint__track"><span class="footprint__fill" data-w="10" style="width:10%"></span></span><span class="footprint__size">≈ 4 个盒子</span></div><div class="footprint__row"><span class="footprint__stage">布局</span><span class="footprint__track"><span class="footprint__fill" data-w="8" style="width:8%"></span></span><span class="footprint__size">1 个块级盒</span></div><div class="footprint__row"><span class="footprint__stage">像素</span><span class="footprint__track"><span class="footprint__fill" data-w="60" style="width:60%"></span></span><span class="footprint__size">视口大小</span></div></div>
         <ol class="why-list"><li><strong>标签</strong>：用嵌套结构表达文档语义，而不是绘制指令。</li><li><strong>DOM</strong>：把文档变成可查询、可修改、可绑定事件的对象树。</li><li><strong>渲染树</strong>：DOM 与 CSSOM 结合，只保留可见节点。</li><li><strong>布局 / 绘制</strong>：盒模型决定位置，绘制决定像素。</li></ol>
       </div>
-    </div>
-    <div class="verify" id="verify">
-      <div class="verify__head">
-        <span class="verify__badge">已实测</span>
-        <b>本机复现记录</b>
-        <span class="verify__meta">2026-10-28 · Chromium 156.0.8078.47</span>
-      </div>
-      <div class="verify__grid">
-        <div class="verify__item"><span class="verify__key">命令</span><code>在浏览器中打开 hello.html</code></div>
-        <div class="verify__item"><span class="verify__key">输出</span><code>Hello, world</code></div>
-      </div>
-      <div class="verify__item"><span class="verify__key">产物 / 观察</span><ul class="verify__list"><li>DOM 元素 6 个；渲染树/布局/绘制由浏览器完成。</li></ul></div>
-      <p class="verify__note">HTML 的产物是 DOM 与像素，不是文件。</p>
     </div>
   </section>
     <section class="block deep reveal" id="deep">
@@ -403,7 +389,7 @@ try {
     <span class="next-card__arrow" aria-hidden="true">→</span>
   </a>
     <footer class="pagefoot">
-      <p class="stamp">本页所有文件样例为依据公开规范与文档重构的示意内容；具体地址、偏移与字节数为示例值，不代表任何特定编译器版本的实测输出。</p>
+      <p class="stamp">本页所有文件样例为依据公开规范与文档重构的示意内容；具体地址、偏移与字节数为示例值，不代表任何特定编译器版本的输出。</p>
       <p>第 1–23 批 · PLATE 71 / 78</p>
     </footer>
   </div>

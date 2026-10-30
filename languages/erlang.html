@@ -100,7 +100,6 @@ try {
     <a href="../scenarios.html">开发场景 →</a><br>
     <a href="../languages/formats.html">产物索引 →</a><br>
     <a href="../sources.html">来源索引 →</a><br>
-    <a href="../verified.html">实测记录 →</a>
   </div>
 </aside>
 <main class="page" id="main">
@@ -122,7 +121,7 @@ try {
       <div class="meta-item"><span class="meta-label">首次发布</span><span class="meta-value">1986</span></div>
       <div class="meta-item"><span class="meta-label">类型</span><span class="meta-value">解释 / 字节码</span></div>
     </div>
-    <div class="tags"><span class="tag">并发</span><span class="tag">容错</span><span class="tag">函数式</span><span class="tag is-accent">解释 / 字节码</span><span class="tag tag--level" title="产物链样例为文档重构，不是本机实测">文档重构</span></div>
+    <div class="tags"><span class="tag">并发</span><span class="tag">容错</span><span class="tag">函数式</span><span class="tag is-accent">解释 / 字节码</span><span class="tag tag--level" title="产物链样例为依据公开文档重构，不是本机运行输出">文档重构</span></div>
     <a class="dossier__fwlink" href="../frameworks/erlang.html">框架与场景 →</a>
     <div class="lineage">
       <div><div class="lineage__label">源自 / From</div><p class="lineage__list">Prolog（语法） · telecom 容错需求 · 并发演算</p></div>
@@ -165,7 +164,7 @@ world() -&gt;
         <div class="code-actions">
           <button class="code-btn" type="button" data-copy>复制</button>
           
-          <span class="code-hint">文档重构 · 非实测输出</span>
+          <span class="code-hint">文档重构 · 示意输出</span>
         </div>
       </div>
       <div class="format"><div class="format__row"><span class="format__key">模块</span><span class="format__val">-module(hello) 必须与文件名一致</span></div><div class="format__row"><span class="format__key">导出</span><span class="format__val">-export([world/0])</span></div><div class="format__row"><span class="format__key">函数</span><span class="format__val">world/0 表示零个参数</span></div><div class="format__row"><span class="format__key">结束</span><span class="format__val">每个子句以句号结束</span></div></div>
@@ -196,7 +195,7 @@ world() -&gt;
         <div class="code-actions">
           <button class="code-btn" type="button" data-copy>复制</button>
           
-          <span class="code-hint">文档重构 · 非实测输出</span>
+          <span class="code-hint">文档重构 · 示意输出</span>
         </div>
       </div>
       <div class="format"><div class="format__row"><span class="format__key">中间语言</span><span class="format__val">Core Erlang</span></div><div class="format__row"><span class="format__key">作用</span><span class="format__val">优化与代码生成的稳定输入</span></div><div class="format__row"><span class="format__key">形式</span><span class="format__val">模块 + 函数 + 表达式</span></div><div class="format__row"><span class="format__key">查看</span><span class="format__val">erlc +to_core</span></div></div>
@@ -226,7 +225,7 @@ world() -&gt;
         <div class="code-actions">
           <button class="code-btn" type="button" data-copy>复制</button>
           
-          <span class="code-hint">文档重构 · 非实测输出</span>
+          <span class="code-hint">文档重构 · 示意输出</span>
         </div>
       </div>
       <div class="format"><div class="format__row"><span class="format__key">魔数</span><span class="format__val">FOR1（IFF 风格容器）</span></div><div class="format__row"><span class="format__key">块</span><span class="format__val">BEAM / Code / Atom / LitT / Attr …</span></div><div class="format__row"><span class="format__key">字节码</span><span class="format__val">Code 块中的 BEAM 指令</span></div><div class="format__row"><span class="format__key">单元</span><span class="format__val">一个模块一个 .beam</span></div></div>
@@ -258,7 +257,7 @@ ok
         <div class="code-actions">
           <button class="code-btn" type="button" data-copy>复制</button>
           
-          <span class="code-hint">文档重构 · 非实测输出</span>
+          <span class="code-hint">文档重构 · 示意输出</span>
         </div>
       </div>
       <div class="format"><div class="format__row"><span class="format__key">发布</span><span class="format__val">ERTS + 应用 + 启动脚本</span></div><div class="format__row"><span class="format__key">体积</span><span class="format__val">通常 20–80 MB（含运行时）</span></div><div class="format__row"><span class="format__key">启动</span><span class="format__val">boot 脚本按顺序加载模块</span></div><div class="format__row"><span class="format__key">热升级</span><span class="format__val">release_handler 替换模块</span></div></div>
@@ -312,7 +311,6 @@ world() -&gt; io:format(&quot;Hello, world~n&quot;).</code></pre>
         <ol class="why-list"><li><strong>模块</strong>：编译、加载、热替换都以模块为单位。</li><li><strong>BEAM 文件</strong>：容器里同时装着字节码、原子表、导出表与调试信息。</li><li><strong>轻量进程</strong>：虚拟机调度，不依赖操作系统线程。</li><li><strong>release</strong>：把运行时与所有模块打包，目标机器无需安装 Erlang。</li></ol>
       </div>
     </div>
-    
   </section>
     <section class="block deep reveal" id="deep">
     <div class="block__head">
@@ -392,7 +390,7 @@ world() -&gt; io:format(&quot;Hello, world~n&quot;).</code></pre>
     <span class="next-card__arrow" aria-hidden="true">→</span>
   </a>
     <footer class="pagefoot">
-      <p class="stamp">本页所有文件样例为依据公开规范与文档重构的示意内容；具体地址、偏移与字节数为示例值，不代表任何特定编译器版本的实测输出。</p>
+      <p class="stamp">本页所有文件样例为依据公开规范与文档重构的示意内容；具体地址、偏移与字节数为示例值，不代表任何特定编译器版本的输出。</p>
       <p>第 1–23 批 · PLATE 22 / 78</p>
     </footer>
   </div>

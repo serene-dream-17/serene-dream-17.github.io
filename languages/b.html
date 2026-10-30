@@ -100,7 +100,6 @@ try {
     <a href="../scenarios.html">开发场景 →</a><br>
     <a href="../languages/formats.html">产物索引 →</a><br>
     <a href="../sources.html">来源索引 →</a><br>
-    <a href="../verified.html">实测记录 →</a>
   </div>
 </aside>
 <main class="page" id="main">
@@ -122,7 +121,7 @@ try {
       <div class="meta-item"><span class="meta-label">首次发布</span><span class="meta-value">1969</span></div>
       <div class="meta-item"><span class="meta-label">类型</span><span class="meta-value">编译型</span></div>
     </div>
-    <div class="tags"><span class="tag">命令式</span><span class="tag">无类型</span><span class="tag">系统编程</span><span class="tag is-accent">编译型</span><span class="tag tag--level" title="产物链样例为文档重构，不是本机实测">文档重构</span></div>
+    <div class="tags"><span class="tag">命令式</span><span class="tag">无类型</span><span class="tag">系统编程</span><span class="tag is-accent">编译型</span><span class="tag tag--level" title="产物链样例为依据公开文档重构，不是本机运行输出">文档重构</span></div>
     <a class="dossier__fwlink" href="../frameworks/b.html">框架与场景 →</a>
     <div class="lineage">
       <div><div class="lineage__label">源自 / From</div><p class="lineage__list">BCPL · PDP-7 汇编</p></div>
@@ -169,7 +168,7 @@ try {
         <div class="code-actions">
           <button class="code-btn" type="button" data-copy>复制</button>
           
-          <span class="code-hint">文档重构 · 非实测输出</span>
+          <span class="code-hint">文档重构 · 示意输出</span>
         </div>
       </div>
       <div class="format"><div class="format__row"><span class="format__key">类型</span><span class="format__val">只有 word，没有 char/int 区分</span></div><div class="format__row"><span class="format__key">字符串</span><span class="format__val">字数组，*n 表示换行</span></div><div class="format__row"><span class="format__key">声明</span><span class="format__val">auto 局部，extrn 外部</span></div><div class="format__row"><span class="format__key">语法</span><span class="format__val">C 的直接前身</span></div></div>
@@ -203,7 +202,7 @@ m12: -12</code></pre>
         <div class="code-actions">
           <button class="code-btn" type="button" data-copy>复制</button>
           
-          <span class="code-hint">文档重构 · 非实测输出</span>
+          <span class="code-hint">文档重构 · 示意输出</span>
         </div>
       </div>
       <div class="format"><div class="format__row"><span class="format__key">机器</span><span class="format__val">PDP-7，18 位字</span></div><div class="format__row"><span class="format__key">语法</span><span class="format__val">PAL 汇编，符号地址</span></div><div class="format__row"><span class="format__key">调用</span><span class="format__val">JMS 跳转子程序</span></div><div class="format__row"><span class="format__key">数据</span><span class="format__val">字数组，无字节寻址</span></div></div>
@@ -234,7 +233,7 @@ m12: -12</code></pre>
         <div class="code-actions">
           <button class="code-btn" type="button" data-copy>复制</button>
           
-          <span class="code-hint">文档重构 · 非实测输出</span>
+          <span class="code-hint">文档重构 · 示意输出</span>
         </div>
       </div>
       <div class="format"><div class="format__row"><span class="format__key">格式</span><span class="format__val">PDP-7 a.out，8 字头</span></div><div class="format__row"><span class="format__key">魔数</span><span class="format__val">标识可执行格式，随版本变化</span></div><div class="format__row"><span class="format__key">段</span><span class="format__val">text / data / bss</span></div><div class="format__row"><span class="format__key">装入</span><span class="format__val">头部之后直接映射正文</span></div></div>
@@ -261,7 +260,7 @@ m12: -12</code></pre>
         <div class="code-actions">
           <button class="code-btn" type="button" data-copy>复制</button>
           
-          <span class="code-hint">文档重构 · 非实测输出</span>
+          <span class="code-hint">文档重构 · 示意输出</span>
         </div>
       </div>
       <div class="format"><div class="format__row"><span class="format__key">自举</span><span class="format__val">编译器用自身语言实现</span></div><div class="format__row"><span class="format__key">种子</span><span class="format__val">第一版必须借助汇编/其他语言</span></div><div class="format__row"><span class="format__key">验证</span><span class="format__val">自编译结果与原编译器一致</span></div><div class="format__row"><span class="format__key">传承</span><span class="format__val">C 继承了这套自举传统</span></div></div>
@@ -320,7 +319,6 @@ m12: -12</code></pre>
         <ol class="why-list"><li><strong>单一类型</strong>：所有值都是字，编译器不需要类型布局。</li><li><strong>自举</strong>：编译器用 B 写，语言可以自我演化。</li><li><strong>a.out</strong>：极简头部 + 连续段，装入器几乎只是 mmap。</li><li><strong>字寻址</strong>：字符串按字存放，直接影响了 C 的早期实现。</li></ol>
       </div>
     </div>
-    
   </section>
     <section class="block deep reveal" id="deep">
     <div class="block__head">
@@ -393,7 +391,7 @@ m12: -12</code></pre>
     <span class="next-card__arrow" aria-hidden="true">→</span>
   </a>
     <footer class="pagefoot">
-      <p class="stamp">本页所有文件样例为依据公开规范与文档重构的示意内容；具体地址、偏移与字节数为示例值，不代表任何特定编译器版本的实测输出。</p>
+      <p class="stamp">本页所有文件样例为依据公开规范与文档重构的示意内容；具体地址、偏移与字节数为示例值，不代表任何特定编译器版本的输出。</p>
       <p>第 1–23 批 · PLATE 10 / 78</p>
     </footer>
   </div>

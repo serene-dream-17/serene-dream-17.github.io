@@ -100,7 +100,6 @@ try {
     <a href="../scenarios.html">开发场景 →</a><br>
     <a href="../languages/formats.html">产物索引 →</a><br>
     <a href="../sources.html">来源索引 →</a><br>
-    <a href="../verified.html">实测记录 →</a>
   </div>
 </aside>
 <main class="page" id="main">
@@ -122,7 +121,7 @@ try {
       <div class="meta-item"><span class="meta-label">首次发布</span><span class="meta-value">1986</span></div>
       <div class="meta-item"><span class="meta-label">类型</span><span class="meta-value">编译型</span></div>
     </div>
-    <div class="tags"><span class="tag">面向对象</span><span class="tag">契约式设计</span><span class="tag">静态类型</span><span class="tag is-accent">编译型</span><span class="tag tag--level" title="产物链样例为文档重构，不是本机实测">文档重构</span></div>
+    <div class="tags"><span class="tag">面向对象</span><span class="tag">契约式设计</span><span class="tag">静态类型</span><span class="tag is-accent">编译型</span><span class="tag tag--level" title="产物链样例为依据公开文档重构，不是本机运行输出">文档重构</span></div>
     <a class="dossier__fwlink" href="../frameworks/eiffel.html">框架与场景 →</a>
     <div class="lineage">
       <div><div class="lineage__label">源自 / From</div><p class="lineage__list">Simula 67 · ALGOL W · Z 规格说明</p></div>
@@ -170,7 +169,7 @@ end</code></pre>
         <div class="code-actions">
           <button class="code-btn" type="button" data-copy>复制</button>
           
-          <span class="code-hint">文档重构 · 非实测输出</span>
+          <span class="code-hint">文档重构 · 示意输出</span>
         </div>
       </div>
       <div class="format"><div class="format__row"><span class="format__key">扩展名</span><span class="format__val">.e</span></div><div class="format__row"><span class="format__key">类</span><span class="format__val">class … end，一切皆类</span></div><div class="format__row"><span class="format__key">创建</span><span class="format__val">create make 指定构造过程</span></div><div class="format__row"><span class="format__key">换行</span><span class="format__val">%N 是 Eiffel 的换行转义</span></div></div>
@@ -207,7 +206,7 @@ end</code></pre>
         <div class="code-actions">
           <button class="code-btn" type="button" data-copy>复制</button>
           
-          <span class="code-hint">文档重构 · 非实测输出</span>
+          <span class="code-hint">文档重构 · 示意输出</span>
         </div>
       </div>
       <div class="format"><div class="format__row"><span class="format__key">require</span><span class="format__val">前置条件，调用方责任</span></div><div class="format__row"><span class="format__key">ensure</span><span class="format__val">后置条件，实现方责任</span></div><div class="format__row"><span class="format__key">invariant</span><span class="format__val">类不变式，每个公开操作前后成立</span></div><div class="format__row"><span class="format__key">old</span><span class="format__val">引用进入例程前的值</span></div></div>
@@ -239,7 +238,7 @@ EIF_REFERENCE _make (EIF_REFERENCE Current)
         <div class="code-actions">
           <button class="code-btn" type="button" data-copy>复制</button>
           
-          <span class="code-hint">文档重构 · 非实测输出</span>
+          <span class="code-hint">文档重构 · 示意输出</span>
         </div>
       </div>
       <div class="format"><div class="format__row"><span class="format__key">策略</span><span class="format__val">Eiffel → C → 本机编译器</span></div><div class="format__row"><span class="format__key">运行时</span><span class="format__val">EIF_REFERENCE、GC、异常</span></div><div class="format__row"><span class="format__key">契约</span><span class="format__val">require/ensure 生成检查代码</span></div><div class="format__row"><span class="format__key">项目</span><span class="format__val">.ecf 描述目标与库</span></div></div>
@@ -270,7 +269,7 @@ hello: ELF 64-bit LSB pie executable, x86-64 ...
         <div class="code-actions">
           <button class="code-btn" type="button" data-copy>复制</button>
           
-          <span class="code-hint">文档重构 · 非实测输出</span>
+          <span class="code-hint">文档重构 · 示意输出</span>
         </div>
       </div>
       <div class="format"><div class="format__row"><span class="format__key">产物</span><span class="format__val">原生可执行文件</span></div><div class="format__row"><span class="format__key">运行时</span><span class="format__val">GC、契约、异常、类型</span></div><div class="format__row"><span class="format__key">finalize</span><span class="format__val">关闭检查、优化、冻结系统</span></div><div class="format__row"><span class="format__key">melting</span><span class="format__val">只重编译改动过的类</span></div></div>
@@ -330,7 +329,6 @@ end</code></pre>
         <ol class="why-list"><li><strong>契约</strong>：require/ensure/invariant 把接口责任写成可执行断言。</li><li><strong>纯 OO</strong>：没有全局函数与静态方法，所有操作都属于某个对象。</li><li><strong>C 后端</strong>：先翻译成 C，复用系统工具链与平台 ABI。</li><li><strong>finalize</strong>：发布时关闭检查并冻结系统，减少运行时开销。</li></ol>
       </div>
     </div>
-    
   </section>
     <section class="block deep reveal" id="deep">
     <div class="block__head">
@@ -403,7 +401,7 @@ end</code></pre>
     <span class="next-card__arrow" aria-hidden="true">→</span>
   </a>
     <footer class="pagefoot">
-      <p class="stamp">本页所有文件样例为依据公开规范与文档重构的示意内容；具体地址、偏移与字节数为示例值，不代表任何特定编译器版本的实测输出。</p>
+      <p class="stamp">本页所有文件样例为依据公开规范与文档重构的示意内容；具体地址、偏移与字节数为示例值，不代表任何特定编译器版本的输出。</p>
       <p>第 1–23 批 · PLATE 24 / 78</p>
     </footer>
   </div>

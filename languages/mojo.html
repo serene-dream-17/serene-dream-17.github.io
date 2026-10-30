@@ -100,7 +100,6 @@ try {
     <a href="../scenarios.html">开发场景 →</a><br>
     <a href="../languages/formats.html">产物索引 →</a><br>
     <a href="../sources.html">来源索引 →</a><br>
-    <a href="../verified.html">实测记录 →</a>
   </div>
 </aside>
 <main class="page" id="main">
@@ -122,7 +121,7 @@ try {
       <div class="meta-item"><span class="meta-label">首次发布</span><span class="meta-value">2023</span></div>
       <div class="meta-item"><span class="meta-label">类型</span><span class="meta-value">编译型</span></div>
     </div>
-    <div class="tags"><span class="tag">Python 语法</span><span class="tag">系统编程</span><span class="tag">MLIR</span><span class="tag is-accent">编译型</span><span class="tag tag--level" title="产物链样例为文档重构，不是本机实测">文档重构</span></div>
+    <div class="tags"><span class="tag">Python 语法</span><span class="tag">系统编程</span><span class="tag">MLIR</span><span class="tag is-accent">编译型</span><span class="tag tag--level" title="产物链样例为依据公开文档重构，不是本机运行输出">文档重构</span></div>
     <a class="dossier__fwlink" href="../frameworks/mojo.html">框架与场景 →</a>
     <div class="lineage">
       <div><div class="lineage__label">源自 / From</div><p class="lineage__list">Python（语法） · Swift / Rust（类型与所有权） · MLIR / LLVM</p></div>
@@ -162,7 +161,7 @@ try {
         <div class="code-actions">
           <button class="code-btn" type="button" data-copy>复制</button>
           
-          <span class="code-hint">文档重构 · 非实测输出</span>
+          <span class="code-hint">文档重构 · 示意输出</span>
         </div>
       </div>
       <div class="format"><div class="format__row"><span class="format__key">扩展名</span><span class="format__val">.mojo / .🔥</span></div><div class="format__row"><span class="format__key">语法</span><span class="format__val">Python 风格缩进</span></div><div class="format__row"><span class="format__key">fn</span><span class="format__val">强类型函数；def 更动态</span></div><div class="format__row"><span class="format__key">内存</span><span class="format__val">所有权与借用</span></div></div>
@@ -194,7 +193,7 @@ try {
         <div class="code-actions">
           <button class="code-btn" type="button" data-copy>复制</button>
           
-          <span class="code-hint">文档重构 · 非实测输出</span>
+          <span class="code-hint">文档重构 · 示意输出</span>
         </div>
       </div>
       <div class="format"><div class="format__row"><span class="format__key">中间表示</span><span class="format__val">MLIR（Mojo 方言）</span></div><div class="format__row"><span class="format__key">优势</span><span class="format__val">多层 IR、可复用优化</span></div><div class="format__row"><span class="format__key">降级</span><span class="format__val">Mojo → LLVM 方言</span></div><div class="format__row"><span class="format__key">稳定</span><span class="format__val">方言仍在演进</span></div></div>
@@ -224,7 +223,7 @@ try {
         <div class="code-actions">
           <button class="code-btn" type="button" data-copy>复制</button>
           
-          <span class="code-hint">文档重构 · 非实测输出</span>
+          <span class="code-hint">文档重构 · 示意输出</span>
         </div>
       </div>
       <div class="format"><div class="format__row"><span class="format__key">中间表示</span><span class="format__val">LLVM IR</span></div><div class="format__row"><span class="format__key">降级</span><span class="format__val">MLIR → LLVM</span></div><div class="format__row"><span class="format__key">优化</span><span class="format__val">LLVM 管线</span></div><div class="format__row"><span class="format__key">平台</span><span class="format__val">x86-64 / ARM / GPU</span></div></div>
@@ -254,7 +253,7 @@ hello: ELF 64-bit LSB pie executable, x86-64 ...
         <div class="code-actions">
           <button class="code-btn" type="button" data-copy>复制</button>
           
-          <span class="code-hint">文档重构 · 非实测输出</span>
+          <span class="code-hint">文档重构 · 示意输出</span>
         </div>
       </div>
       <div class="format"><div class="format__row"><span class="format__key">格式</span><span class="format__val">ELF / Mach-O / PE</span></div><div class="format__row"><span class="format__key">运行时</span><span class="format__val">Mojo 运行时（无 GIL）</span></div><div class="format__row"><span class="format__key">互操作</span><span class="format__val">可调用 Python / C</span></div><div class="format__row"><span class="format__key">GPU</span><span class="format__val">可生成 kernel</span></div></div>
@@ -306,7 +305,6 @@ hello: ELF 64-bit LSB pie executable, x86-64 ...
         <ol class="why-list"><li><strong>MLIR</strong>：多层 IR 让 Python 语义与系统优化可以共存。</li><li><strong>fn/def</strong>：同一门语言里同时提供强类型与动态风格。</li><li><strong>无 GIL</strong>：原生线程与所有权模型，适合 AI 基础设施。</li><li><strong>Python 互操作</strong>：复用生态，而不是从零重建。</li></ol>
       </div>
     </div>
-    
   </section>
     <section class="block deep reveal" id="deep">
     <div class="block__head">
@@ -379,7 +377,7 @@ hello: ELF 64-bit LSB pie executable, x86-64 ...
     <span class="next-card__arrow" aria-hidden="true">→</span>
   </a>
     <footer class="pagefoot">
-      <p class="stamp">本页所有文件样例为依据公开规范与文档重构的示意内容；具体地址、偏移与字节数为示例值，不代表任何特定编译器版本的实测输出。</p>
+      <p class="stamp">本页所有文件样例为依据公开规范与文档重构的示意内容；具体地址、偏移与字节数为示例值，不代表任何特定编译器版本的输出。</p>
       <p>第 1–23 批 · PLATE 59 / 78</p>
     </footer>
   </div>

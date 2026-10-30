@@ -100,7 +100,6 @@ try {
     <a href="../scenarios.html">开发场景 →</a><br>
     <a href="../languages/formats.html">产物索引 →</a><br>
     <a href="../sources.html">来源索引 →</a><br>
-    <a href="../verified.html">实测记录 →</a>
   </div>
 </aside>
 <main class="page" id="main">
@@ -122,7 +121,7 @@ try {
       <div class="meta-item"><span class="meta-label">首次发布</span><span class="meta-value">1988</span></div>
       <div class="meta-item"><span class="meta-label">类型</span><span class="meta-value">解释 / 字节码</span></div>
     </div>
-    <div class="tags"><span class="tag">脚本</span><span class="tag">嵌入</span><span class="tag">事件驱动</span><span class="tag is-accent">解释 / 字节码</span><span class="tag tag--level" title="产物链样例为文档重构，不是本机实测">文档重构</span></div>
+    <div class="tags"><span class="tag">脚本</span><span class="tag">嵌入</span><span class="tag">事件驱动</span><span class="tag is-accent">解释 / 字节码</span><span class="tag tag--level" title="产物链样例为依据公开文档重构，不是本机运行输出">文档重构</span></div>
     <a class="dossier__fwlink" href="../frameworks/tcl.html">框架与场景 →</a>
     <div class="lineage">
       <div><div class="lineage__label">源自 / From</div><p class="lineage__list">shell 脚本 · Lisp（命令即数据） · C 嵌入需求</p></div>
@@ -165,7 +164,7 @@ hello</code></pre>
         <div class="code-actions">
           <button class="code-btn" type="button" data-copy>复制</button>
           
-          <span class="code-hint">文档重构 · 非实测输出</span>
+          <span class="code-hint">文档重构 · 示意输出</span>
         </div>
       </div>
       <div class="format"><div class="format__row"><span class="format__key">命令</span><span class="format__val">每行一条命令，空格分词</span></div><div class="format__row"><span class="format__key">引用</span><span class="format__val">{} 原样传递， 允许替换</span></div><div class="format__row"><span class="format__key">替换</span><span class="format__val">$变量 / [命令] 在求值前展开</span></div><div class="format__row"><span class="format__key">过程</span><span class="format__val">proc 定义命令</span></div></div>
@@ -200,7 +199,7 @@ Hello, world
         <div class="code-actions">
           <button class="code-btn" type="button" data-copy>复制</button>
           
-          <span class="code-hint">文档重构 · 非实测输出</span>
+          <span class="code-hint">文档重构 · 示意输出</span>
         </div>
       </div>
       <div class="format"><div class="format__row"><span class="format__key">单位</span><span class="format__val">命令 = 词列表</span></div><div class="format__row"><span class="format__key">解析</span><span class="format__val">分号/换行分隔命令</span></div><div class="format__row"><span class="format__key">替换</span><span class="format__val">变量与命令替换</span></div><div class="format__row"><span class="format__key">求值</span><span class="format__val">先替换，再调用命令</span></div></div>
@@ -231,7 +230,7 @@ ByteCode
         <div class="code-actions">
           <button class="code-btn" type="button" data-copy>复制</button>
           
-          <span class="code-hint">文档重构 · 非实测输出</span>
+          <span class="code-hint">文档重构 · 示意输出</span>
         </div>
       </div>
       <div class="format"><div class="format__row"><span class="format__key">编译</span><span class="format__val">脚本 → 内部字节码</span></div><div class="format__row"><span class="format__key">指令</span><span class="format__val">栈式，如 push1 / invokeStk1</span></div><div class="format__row"><span class="format__key">存储</span><span class="format__val">内存，不生成 .class 文件</span></div><div class="format__row"><span class="format__key">版本</span><span class="format__val">指令集随 Tcl 版本变化</span></div></div>
@@ -264,7 +263,7 @@ Hello, world
         <div class="code-actions">
           <button class="code-btn" type="button" data-copy>复制</button>
           
-          <span class="code-hint">文档重构 · 非实测输出</span>
+          <span class="code-hint">文档重构 · 示意输出</span>
         </div>
       </div>
       <div class="format"><div class="format__row"><span class="format__key">starkit</span><span class="format__val">zip 归档，内含 main.tcl 与库</span></div><div class="format__row"><span class="format__key">tclkit</span><span class="format__val">单文件运行时</span></div><div class="format__row"><span class="format__key">starpack</span><span class="format__val">运行时 + 脚本合成一个可执行</span></div><div class="format__row"><span class="format__key">挂载</span><span class="format__val">VFS 把 zip 当目录</span></div></div>
@@ -316,7 +315,6 @@ Hello, world
         <ol class="why-list"><li><strong>一切皆命令</strong>：if/while/proc 都是命令，语言可以被应用扩展。</li><li><strong>一切皆字符串</strong>：数据与代码之间没有硬边界，适合脚本与配置。</li><li><strong>字节码</strong>：8.0 后在内存中编译，提升循环性能。</li><li><strong>starkit</strong>：用 zip + VFS 打包，不发明新容器格式。</li></ol>
       </div>
     </div>
-    
   </section>
     <section class="block deep reveal" id="deep">
     <div class="block__head">
@@ -389,7 +387,7 @@ Hello, world
     <span class="next-card__arrow" aria-hidden="true">→</span>
   </a>
     <footer class="pagefoot">
-      <p class="stamp">本页所有文件样例为依据公开规范与文档重构的示意内容；具体地址、偏移与字节数为示例值，不代表任何特定编译器版本的实测输出。</p>
+      <p class="stamp">本页所有文件样例为依据公开规范与文档重构的示意内容；具体地址、偏移与字节数为示例值，不代表任何特定编译器版本的输出。</p>
       <p>第 1–23 批 · PLATE 27 / 78</p>
     </footer>
   </div>

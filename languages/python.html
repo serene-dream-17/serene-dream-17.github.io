@@ -100,7 +100,6 @@ try {
     <a href="../scenarios.html">开发场景 →</a><br>
     <a href="../languages/formats.html">产物索引 →</a><br>
     <a href="../sources.html">来源索引 →</a><br>
-    <a href="../verified.html">实测记录 →</a>
   </div>
 </aside>
 <main class="page" id="main">
@@ -122,7 +121,7 @@ try {
       <div class="meta-item"><span class="meta-label">首次发布</span><span class="meta-value">1991</span></div>
       <div class="meta-item"><span class="meta-label">类型</span><span class="meta-value">解释 / 字节码</span></div>
     </div>
-    <div class="tags"><span class="tag">命令式</span><span class="tag">动态类型</span><span class="tag">科学计算</span><span class="tag is-accent">解释 / 字节码</span><a class="tag tag--verified" href="#verify">已实测 Hello · Python 3.11.9</a></div>
+    <div class="tags"><span class="tag">命令式</span><span class="tag">动态类型</span><span class="tag">科学计算</span><span class="tag is-accent">解释 / 字节码</span><span class="tag tag--level" title="产物链样例为依据公开文档重构，不是本机运行输出">文档重构</span></div>
     <a class="dossier__fwlink" href="../frameworks/python.html">框架与场景 →</a>
     <div class="lineage">
       <div><div class="lineage__label">源自 / From</div><p class="lineage__list">ABC · Modula-3 · C</p></div>
@@ -164,7 +163,7 @@ hello()</code></pre>
         <div class="code-actions">
           <button class="code-btn" type="button" data-copy>复制</button>
           
-          <span class="code-hint">文档重构 · 非实测输出</span>
+          <span class="code-hint">文档重构 · 示意输出</span>
         </div>
       </div>
       <div class="format"><div class="format__row"><span class="format__key">扩展名</span><span class="format__val">.py / .pyw</span></div><div class="format__row"><span class="format__key">编码</span><span class="format__val">默认 UTF-8</span></div><div class="format__row"><span class="format__key">块</span><span class="format__val">缩进，不用大括号</span></div><div class="format__row"><span class="format__key">执行</span><span class="format__val">自上而下，函数定义也是语句</span></div></div>
@@ -200,7 +199,7 @@ hello()</code></pre>
         <div class="code-actions">
           <button class="code-btn" type="button" data-copy>复制</button>
           
-          <span class="code-hint">文档重构 · 非实测输出</span>
+          <span class="code-hint">文档重构 · 示意输出</span>
         </div>
       </div>
       <div class="format"><div class="format__row"><span class="format__key">AST</span><span class="format__val">抽象语法树，标准库 ast 可读</span></div><div class="format__row"><span class="format__key">节点</span><span class="format__val">Module / FunctionDef / Call / Constant</span></div><div class="format__row"><span class="format__key">用途</span><span class="format__val">静态分析、改写、代码生成</span></div><div class="format__row"><span class="format__key">编译</span><span class="format__val">AST → 字节码，发生在导入时</span></div></div>
@@ -234,7 +233,7 @@ $ python -m dis hello.py
         <div class="code-actions">
           <button class="code-btn" type="button" data-copy>复制</button>
           
-          <span class="code-hint">文档重构 · 非实测输出</span>
+          <span class="code-hint">文档重构 · 示意输出</span>
         </div>
       </div>
       <div class="format"><div class="format__row"><span class="format__key">魔数</span><span class="format__val">每个 Python 版本不同（示例 3.11）</span></div><div class="format__row"><span class="format__key">头</span><span class="format__val">flags / mtime / 源文件大小</span></div><div class="format__row"><span class="format__key">主体</span><span class="format__val">marshal 编码的 code object</span></div><div class="format__row"><span class="format__key">缓存</span><span class="format__val">__pycache__/*.cpython-311.pyc</span></div></div>
@@ -267,7 +266,7 @@ dist/hello: ELF 64-bit LSB executable, x86-64 ...
         <div class="code-actions">
           <button class="code-btn" type="button" data-copy>复制</button>
           
-          <span class="code-hint">文档重构 · 非实测输出</span>
+          <span class="code-hint">文档重构 · 示意输出</span>
         </div>
       </div>
       <div class="format"><div class="format__row"><span class="format__key">.pyz</span><span class="format__val">zip 归档 + __main__.py，需要 Python</span></div><div class="format__row"><span class="format__key">PyInstaller</span><span class="format__val">引导程序 + 打包的运行时</span></div><div class="format__row"><span class="format__key">体积</span><span class="format__val">单文件通常 6–15 MB</span></div><div class="format__row"><span class="format__key">解包</span><span class="format__val">运行时释放到临时目录（_MEIPASS）</span></div></div>
@@ -317,19 +316,6 @@ dist/hello: ELF 64-bit LSB executable, x86-64 ...
         <div class="footprint"><div class="footprint__row"><span class="footprint__stage">源码</span><span class="footprint__track"><span class="footprint__fill" data-w="4" style="width:4%"></span></span><span class="footprint__size">≈ 22 B</span></div><div class="footprint__row"><span class="footprint__stage">AST</span><span class="footprint__track"><span class="footprint__fill" data-w="10" style="width:10%"></span></span><span class="footprint__size">≈ 500 B</span></div><div class="footprint__row"><span class="footprint__stage">.pyc</span><span class="footprint__track"><span class="footprint__fill" data-w="9" style="width:9%"></span></span><span class="footprint__size">≈ 300 B</span></div><div class="footprint__row"><span class="footprint__stage">.pyz</span><span class="footprint__track"><span class="footprint__fill" data-w="12" style="width:12%"></span></span><span class="footprint__size">≈ 1 KB</span></div><div class="footprint__row"><span class="footprint__stage">PyInstaller</span><span class="footprint__track"><span class="footprint__fill" data-w="80" style="width:80%"></span></span><span class="footprint__size">≈ 8 MB</span></div><div class="footprint__row"><span class="footprint__stage">+ 解释器</span><span class="footprint__track"><span class="footprint__fill" data-w="100" style="width:100%"></span></span><span class="footprint__size">≈ 30 MB</span></div></div>
         <ol class="why-list"><li><strong>AST</strong>：公开的语法树，工具链在这一层做分析、改写与生成。</li><li><strong>字节码</strong>：导入时编译，缓存到 __pycache__，下次跳过解析。</li><li><strong>版本魔数</strong>：.pyc 绑定解释器版本，跨版本必须重新编译。</li><li><strong>打包</strong>：zipapp 只换容器；PyInstaller 连解释器一起带走。</li></ol>
       </div>
-    </div>
-    <div class="verify" id="verify">
-      <div class="verify__head">
-        <span class="verify__badge">已实测</span>
-        <b>本机复现记录</b>
-        <span class="verify__meta">2026-10-28 · Python 3.11.9</span>
-      </div>
-      <div class="verify__grid">
-        <div class="verify__item"><span class="verify__key">命令</span><code>python hello.py &amp;&amp; python -m py_compile hello.py</code></div>
-        <div class="verify__item"><span class="verify__key">输出</span><code>Hello, world</code></div>
-      </div>
-      <div class="verify__item"><span class="verify__key">产物 / 观察</span><ul class="verify__list"><li>__pycache__/hello.cpython-311.pyc · 169 B · 魔数 a7 0d 0d 0a</li></ul></div>
-      <p class="verify__note">.pyc 的魔数与解释器版本绑定，跨版本不兼容。</p>
     </div>
   </section>
     <section class="block deep reveal" id="deep">
@@ -410,7 +396,7 @@ dist/hello: ELF 64-bit LSB executable, x86-64 ...
     <span class="next-card__arrow" aria-hidden="true">→</span>
   </a>
     <footer class="pagefoot">
-      <p class="stamp">本页所有文件样例为依据公开规范与文档重构的示意内容；具体地址、偏移与字节数为示例值，不代表任何特定编译器版本的实测输出。</p>
+      <p class="stamp">本页所有文件样例为依据公开规范与文档重构的示意内容；具体地址、偏移与字节数为示例值，不代表任何特定编译器版本的输出。</p>
       <p>第 1–23 批 · PLATE 28 / 78</p>
     </footer>
   </div>

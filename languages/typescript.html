@@ -100,7 +100,6 @@ try {
     <a href="../scenarios.html">开发场景 →</a><br>
     <a href="../languages/formats.html">产物索引 →</a><br>
     <a href="../sources.html">来源索引 →</a><br>
-    <a href="../verified.html">实测记录 →</a>
   </div>
 </aside>
 <main class="page" id="main">
@@ -122,7 +121,7 @@ try {
       <div class="meta-item"><span class="meta-label">首次发布</span><span class="meta-value">2012</span></div>
       <div class="meta-item"><span class="meta-label">类型</span><span class="meta-value">解释 / 字节码</span></div>
     </div>
-    <div class="tags"><span class="tag">静态类型</span><span class="tag">JavaScript</span><span class="tag">编译期</span><span class="tag is-accent">解释 / 字节码</span><span class="tag tag--level" title="产物链样例为文档重构，不是本机实测">文档重构</span></div>
+    <div class="tags"><span class="tag">静态类型</span><span class="tag">JavaScript</span><span class="tag">编译期</span><span class="tag is-accent">解释 / 字节码</span><span class="tag tag--level" title="产物链样例为依据公开文档重构，不是本机运行输出">文档重构</span></div>
     <a class="dossier__fwlink" href="../frameworks/typescript.html">框架与场景 →</a>
     <div class="lineage">
       <div><div class="lineage__label">源自 / From</div><p class="lineage__list">JavaScript · C#（类型系统经验） · Java</p></div>
@@ -165,7 +164,7 @@ hello(&quot;world&quot;);</code></pre>
         <div class="code-actions">
           <button class="code-btn" type="button" data-copy>复制</button>
           
-          <span class="code-hint">文档重构 · 非实测输出</span>
+          <span class="code-hint">文档重构 · 示意输出</span>
         </div>
       </div>
       <div class="format"><div class="format__row"><span class="format__key">扩展名</span><span class="format__val">.ts / .tsx / .mts</span></div><div class="format__row"><span class="format__key">类型</span><span class="format__val">静态，仅编译期</span></div><div class="format__row"><span class="format__key">目标</span><span class="format__val">ES3 — ESNext</span></div><div class="format__row"><span class="format__key">配置</span><span class="format__val">tsconfig.json</span></div></div>
@@ -199,7 +198,7 @@ hello(&quot;world&quot;);</code></pre>
         <div class="code-actions">
           <button class="code-btn" type="button" data-copy>复制</button>
           
-          <span class="code-hint">文档重构 · 非实测输出</span>
+          <span class="code-hint">文档重构 · 示意输出</span>
         </div>
       </div>
       <div class="format"><div class="format__row"><span class="format__key">AST</span><span class="format__val">TypeScript AST</span></div><div class="format__row"><span class="format__key">接口</span><span class="format__val">typescript 包 / Compiler API</span></div><div class="format__row"><span class="format__key">类型检查</span><span class="format__val">绑定符号 + 推断 + 检查</span></div><div class="format__row"><span class="format__key">用途</span><span class="format__val">IDE、lint、代码生成</span></div></div>
@@ -230,7 +229,7 @@ hello(&quot;world&quot;);
         <div class="code-actions">
           <button class="code-btn" type="button" data-copy>复制</button>
           
-          <span class="code-hint">文档重构 · 非实测输出</span>
+          <span class="code-hint">文档重构 · 示意输出</span>
         </div>
       </div>
       <div class="format"><div class="format__row"><span class="format__key">输出</span><span class="format__val">JavaScript</span></div><div class="format__row"><span class="format__key">类型</span><span class="format__val">全部擦除</span></div><div class="format__row"><span class="format__key">降级</span><span class="format__val">按 target 转换语法</span></div><div class="format__row"><span class="format__key">sourcemap</span><span class="format__val">映射回 .ts 行号</span></div></div>
@@ -260,7 +259,7 @@ $ ls -lh hello.min.js
         <div class="code-actions">
           <button class="code-btn" type="button" data-copy>复制</button>
           
-          <span class="code-hint">文档重构 · 非实测输出</span>
+          <span class="code-hint">文档重构 · 示意输出</span>
         </div>
       </div>
       <div class="format"><div class="format__row"><span class="format__key">.d.ts</span><span class="format__val">类型声明，供其他项目使用</span></div><div class="format__row"><span class="format__key">打包</span><span class="format__val">esbuild / Vite / webpack</span></div><div class="format__row"><span class="format__key">类型检查</span><span class="format__val">与打包分离</span></div><div class="format__row"><span class="format__key">产物</span><span class="format__val">JS + 声明 + sourcemap</span></div></div>
@@ -314,7 +313,6 @@ hello(&quot;world&quot;);</code></pre>
         <ol class="why-list"><li><strong>类型擦除</strong>：类型只在编译期存在，运行时没有额外开销。</li><li><strong>AST</strong>：类型检查器与语言服务都在这棵树上工作。</li><li><strong>JS 输出</strong>：保持与浏览器/Node 兼容，不引入新运行时。</li><li><strong>.d.ts</strong>：把类型信息留给消费者，而不是运行环境。</li></ol>
       </div>
     </div>
-    
   </section>
     <section class="block deep reveal" id="deep">
     <div class="block__head">
@@ -394,7 +392,7 @@ hello(&quot;world&quot;);</code></pre>
     <span class="next-card__arrow" aria-hidden="true">→</span>
   </a>
     <footer class="pagefoot">
-      <p class="stamp">本页所有文件样例为依据公开规范与文档重构的示意内容；具体地址、偏移与字节数为示例值，不代表任何特定编译器版本的实测输出。</p>
+      <p class="stamp">本页所有文件样例为依据公开规范与文档重构的示意内容；具体地址、偏移与字节数为示例值，不代表任何特定编译器版本的输出。</p>
       <p>第 1–23 批 · PLATE 48 / 78</p>
     </footer>
   </div>

@@ -100,7 +100,6 @@ try {
     <a href="../scenarios.html">开发场景 →</a><br>
     <a href="../languages/formats.html">产物索引 →</a><br>
     <a href="../sources.html">来源索引 →</a><br>
-    <a href="../verified.html">实测记录 →</a>
   </div>
 </aside>
 <main class="page" id="main">
@@ -122,7 +121,7 @@ try {
       <div class="meta-item"><span class="meta-label">首次发布</span><span class="meta-value">2009</span></div>
       <div class="meta-item"><span class="meta-label">类型</span><span class="meta-value">编译型</span></div>
     </div>
-    <div class="tags"><span class="tag">并发</span><span class="tag">静态类型</span><span class="tag">云原生</span><span class="tag is-accent">编译型</span><a class="tag tag--verified" href="#verify">已实测 Hello · go version go1.26.2 windows/amd64</a></div>
+    <div class="tags"><span class="tag">并发</span><span class="tag">静态类型</span><span class="tag">云原生</span><span class="tag is-accent">编译型</span><span class="tag tag--level" title="产物链样例为依据公开文档重构，不是本机运行输出">文档重构</span></div>
     <a class="dossier__fwlink" href="../frameworks/go.html">框架与场景 →</a>
     <div class="lineage">
       <div><div class="lineage__label">源自 / From</div><p class="lineage__list">C · Pascal / Modula（语法） · CSP（并发） · Newsqueak</p></div>
@@ -167,7 +166,7 @@ func main() {
         <div class="code-actions">
           <button class="code-btn" type="button" data-copy>复制</button>
           
-          <span class="code-hint">文档重构 · 非实测输出</span>
+          <span class="code-hint">文档重构 · 示意输出</span>
         </div>
       </div>
       <div class="format"><div class="format__row"><span class="format__key">扩展名</span><span class="format__val">.go</span></div><div class="format__row"><span class="format__key">包</span><span class="format__val">package main + func main</span></div><div class="format__row"><span class="format__key">导入</span><span class="format__val">显式 import，不允许未使用</span></div><div class="format__row"><span class="format__key">格式</span><span class="format__val">gofmt 强制统一</span></div></div>
@@ -199,7 +198,7 @@ func main() {
         <div class="code-actions">
           <button class="code-btn" type="button" data-copy>复制</button>
           
-          <span class="code-hint">文档重构 · 非实测输出</span>
+          <span class="code-hint">文档重构 · 示意输出</span>
         </div>
       </div>
       <div class="format"><div class="format__row"><span class="format__key">中间表示</span><span class="format__val">SSA</span></div><div class="format__row"><span class="format__key">阶段</span><span class="format__val">lower → opt → regalloc</span></div><div class="format__row"><span class="format__key">查看</span><span class="format__val">GOSSAFUNC=name go build</span></div><div class="format__row"><span class="format__key">产物</span><span class="format__val">ssa.html（可视化）</span></div></div>
@@ -230,7 +229,7 @@ func main() {
         <div class="code-actions">
           <button class="code-btn" type="button" data-copy>复制</button>
           
-          <span class="code-hint">文档重构 · 非实测输出</span>
+          <span class="code-hint">文档重构 · 示意输出</span>
         </div>
       </div>
       <div class="format"><div class="format__row"><span class="format__key">语法</span><span class="format__val">Plan 9 汇编</span></div><div class="format__row"><span class="format__key">字符串</span><span class="format__val">go:string.&quot;...&quot; 符号</span></div><div class="format__row"><span class="format__key">调用</span><span class="format__val">CALL fmt.Println(SB)</span></div><div class="format__row"><span class="format__key">查看</span><span class="format__val">go tool compile -S / go tool objdump</span></div></div>
@@ -262,7 +261,7 @@ $ go tool nm hello.o | grep main
         <div class="code-actions">
           <button class="code-btn" type="button" data-copy>复制</button>
           
-          <span class="code-hint">文档重构 · 非实测输出</span>
+          <span class="code-hint">文档重构 · 示意输出</span>
         </div>
       </div>
       <div class="format"><div class="format__row"><span class="format__key">格式</span><span class="format__val">Go object（自定义）</span></div><div class="format__row"><span class="format__key">魔数</span><span class="format__val">go object &lt;os&gt; &lt;arch&gt; &lt;version&gt;</span></div><div class="format__row"><span class="format__key">符号</span><span class="format__val">main.main / fmt.Println</span></div><div class="format__row"><span class="format__key">链接</span><span class="format__val">go tool link</span></div></div>
@@ -299,7 +298,7 @@ hello: go1.22.0
         <div class="code-actions">
           <button class="code-btn" type="button" data-copy>复制</button>
           
-          <span class="code-hint">文档重构 · 非实测输出</span>
+          <span class="code-hint">文档重构 · 示意输出</span>
         </div>
       </div>
       <div class="format"><div class="format__row"><span class="format__key">格式</span><span class="format__val">ELF 可执行</span></div><div class="format__row"><span class="format__key">链接</span><span class="format__val">静态，默认无 libc</span></div><div class="format__row"><span class="format__key">运行时</span><span class="format__val">调度器 / GC / 栈管理</span></div><div class="format__row"><span class="format__key">体积</span><span class="format__val">hello ≈ 2 MB</span></div></div>
@@ -355,19 +354,6 @@ func main() {
         <div class="footprint"><div class="footprint__row"><span class="footprint__stage">源码</span><span class="footprint__track"><span class="footprint__fill" data-w="4" style="width:4%"></span></span><span class="footprint__size">≈ 80 B</span></div><div class="footprint__row"><span class="footprint__stage">SSA</span><span class="footprint__track"><span class="footprint__fill" data-w="10" style="width:10%"></span></span><span class="footprint__size">≈ 2 KB</span></div><div class="footprint__row"><span class="footprint__stage">汇编</span><span class="footprint__track"><span class="footprint__fill" data-w="9" style="width:9%"></span></span><span class="footprint__size">≈ 1.5 KB</span></div><div class="footprint__row"><span class="footprint__stage">hello.o</span><span class="footprint__track"><span class="footprint__fill" data-w="20" style="width:20%"></span></span><span class="footprint__size">≈ 20 KB</span></div><div class="footprint__row"><span class="footprint__stage">静态 ELF</span><span class="footprint__track"><span class="footprint__fill" data-w="90" style="width:90%"></span></span><span class="footprint__size">≈ 2.1 MB</span></div></div>
         <ol class="why-list"><li><strong>SSA</strong>：编译器内部表示，负责优化与寄存器分配。</li><li><strong>Go object</strong>：自定义目标格式，携带类型与导出信息。</li><li><strong>静态链接</strong>：运行时与标准库都进二进制，部署无依赖。</li><li><strong>自带运行时</strong>：goroutine 调度、GC、栈增长都由它提供。</li></ol>
       </div>
-    </div>
-    <div class="verify" id="verify">
-      <div class="verify__head">
-        <span class="verify__badge">已实测</span>
-        <b>本机复现记录</b>
-        <span class="verify__meta">2026-10-28 · go version go1.26.2 windows/amd64</span>
-      </div>
-      <div class="verify__grid">
-        <div class="verify__item"><span class="verify__key">命令</span><code>go run hello.go &amp;&amp; go build -o hello.exe hello.go</code></div>
-        <div class="verify__item"><span class="verify__key">输出</span><code>Hello, world</code></div>
-      </div>
-      <div class="verify__item"><span class="verify__key">产物 / 观察</span><ul class="verify__list"><li>hello.exe · 2458112 B · 首字节 4d 5a 90 00</li><li>hello.exe: go1.26.2</li></ul></div>
-      <p class="verify__note">Go 默认静态链接运行时与标准库；Windows 目标为 PE，Linux 目标为 ELF。</p>
     </div>
   </section>
     <section class="block deep reveal" id="deep">
@@ -448,7 +434,7 @@ func main() {
     <span class="next-card__arrow" aria-hidden="true">→</span>
   </a>
     <footer class="pagefoot">
-      <p class="stamp">本页所有文件样例为依据公开规范与文档重构的示意内容；具体地址、偏移与字节数为示例值，不代表任何特定编译器版本的实测输出。</p>
+      <p class="stamp">本页所有文件样例为依据公开规范与文档重构的示意内容；具体地址、偏移与字节数为示例值，不代表任何特定编译器版本的输出。</p>
       <p>第 1–23 批 · PLATE 44 / 78</p>
     </footer>
   </div>

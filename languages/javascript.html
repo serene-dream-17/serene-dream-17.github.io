@@ -100,7 +100,6 @@ try {
     <a href="../scenarios.html">开发场景 →</a><br>
     <a href="../languages/formats.html">产物索引 →</a><br>
     <a href="../sources.html">来源索引 →</a><br>
-    <a href="../verified.html">实测记录 →</a>
   </div>
 </aside>
 <main class="page" id="main">
@@ -122,7 +121,7 @@ try {
       <div class="meta-item"><span class="meta-label">首次发布</span><span class="meta-value">1995</span></div>
       <div class="meta-item"><span class="meta-label">类型</span><span class="meta-value">解释 / 字节码</span></div>
     </div>
-    <div class="tags"><span class="tag">动态类型</span><span class="tag">事件驱动</span><span class="tag">原型</span><span class="tag is-accent">解释 / 字节码</span><a class="tag tag--verified" href="#verify">已实测 Hello · v24.14.0</a></div>
+    <div class="tags"><span class="tag">动态类型</span><span class="tag">事件驱动</span><span class="tag">原型</span><span class="tag is-accent">解释 / 字节码</span><span class="tag tag--level" title="产物链样例为依据公开文档重构，不是本机运行输出">文档重构</span></div>
     <a class="dossier__fwlink" href="../frameworks/javascript.html">框架与场景 →</a>
     <div class="lineage">
       <div><div class="lineage__label">源自 / From</div><p class="lineage__list">Java（语法） · Scheme（函数） · Self（原型）</p></div>
@@ -165,7 +164,7 @@ hello();</code></pre>
         <div class="code-actions">
           <button class="code-btn" type="button" data-copy>复制</button>
           
-          <span class="code-hint">文档重构 · 非实测输出</span>
+          <span class="code-hint">文档重构 · 示意输出</span>
         </div>
       </div>
       <div class="format"><div class="format__row"><span class="format__key">扩展名</span><span class="format__val">.js / .mjs / .cjs</span></div><div class="format__row"><span class="format__key">类型</span><span class="format__val">动态、弱类型</span></div><div class="format__row"><span class="format__key">函数</span><span class="format__val">一等对象，可闭包</span></div><div class="format__row"><span class="format__key">标准</span><span class="format__val">ECMAScript（每年更新）</span></div></div>
@@ -201,7 +200,7 @@ hello();</code></pre>
         <div class="code-actions">
           <button class="code-btn" type="button" data-copy>复制</button>
           
-          <span class="code-hint">文档重构 · 非实测输出</span>
+          <span class="code-hint">文档重构 · 示意输出</span>
         </div>
       </div>
       <div class="format"><div class="format__row"><span class="format__key">标准</span><span class="format__val">ESTree（事实标准）</span></div><div class="format__row"><span class="format__key">节点</span><span class="format__val">Program / FunctionDeclaration / CallExpression</span></div><div class="format__row"><span class="format__key">用途</span><span class="format__val">Babel、ESLint、打包器、压缩器</span></div><div class="format__row"><span class="format__key">解析器</span><span class="format__val">Acorn、Babel、SWC、oxc</span></div></div>
@@ -235,7 +234,7 @@ Frame size 24
         <div class="code-actions">
           <button class="code-btn" type="button" data-copy>复制</button>
           
-          <span class="code-hint">文档重构 · 非实测输出</span>
+          <span class="code-hint">文档重构 · 示意输出</span>
         </div>
       </div>
       <div class="format"><div class="format__row"><span class="format__key">引擎</span><span class="format__val">V8 Ignition（解释器）</span></div><div class="format__row"><span class="format__key">形态</span><span class="format__val">寄存器/累加器式字节码</span></div><div class="format__row"><span class="format__key">存储</span><span class="format__val">内存，不生成标准文件</span></div><div class="format__row"><span class="format__key">热点</span><span class="format__val">TurboFan 编译为机器码</span></div></div>
@@ -266,7 +265,7 @@ $ node --snapshot-blob snapshot.blob
         <div class="code-actions">
           <button class="code-btn" type="button" data-copy>复制</button>
           
-          <span class="code-hint">文档重构 · 非实测输出</span>
+          <span class="code-hint">文档重构 · 示意输出</span>
         </div>
       </div>
       <div class="format"><div class="format__row"><span class="format__key">JIT</span><span class="format__val">TurboFan / Maglev / Sparkplug</span></div><div class="format__row"><span class="format__key">优化</span><span class="format__val">类型反馈、内联缓存、去优化</span></div><div class="format__row"><span class="format__key">快照</span><span class="format__val">V8 startup snapshot</span></div><div class="format__row"><span class="format__key">绑定</span><span class="format__val">版本与平台强相关</span></div></div>
@@ -316,19 +315,6 @@ $ node --snapshot-blob snapshot.blob
         <div class="footprint"><div class="footprint__row"><span class="footprint__stage">源码</span><span class="footprint__track"><span class="footprint__fill" data-w="4" style="width:4%"></span></span><span class="footprint__size">≈ 28 B</span></div><div class="footprint__row"><span class="footprint__stage">AST</span><span class="footprint__track"><span class="footprint__fill" data-w="14" style="width:14%"></span></span><span class="footprint__size">≈ 1.5 KB</span></div><div class="footprint__row"><span class="footprint__stage">字节码</span><span class="footprint__track"><span class="footprint__fill" data-w="10" style="width:10%"></span></span><span class="footprint__size">≈ 400 B</span></div><div class="footprint__row"><span class="footprint__stage">机器码</span><span class="footprint__track"><span class="footprint__fill" data-w="12" style="width:12%"></span></span><span class="footprint__size">≈ 1 KB</span></div><div class="footprint__row"><span class="footprint__stage">快照</span><span class="footprint__track"><span class="footprint__fill" data-w="90" style="width:90%"></span></span><span class="footprint__size">≈ 30 MB</span></div></div>
         <ol class="why-list"><li><strong>AST</strong>：跨引擎的事实标准，支撑 Babel/ESLint/打包器。</li><li><strong>字节码</strong>：引擎内部格式，不落盘、不跨引擎。</li><li><strong>JIT</strong>：用运行时类型反馈换性能，热点函数才编译。</li><li><strong>快照</strong>：把堆与已编译代码序列化，缩短启动时间。</li></ol>
       </div>
-    </div>
-    <div class="verify" id="verify">
-      <div class="verify__head">
-        <span class="verify__badge">已实测</span>
-        <b>本机复现记录</b>
-        <span class="verify__meta">2026-10-28 · v24.14.0</span>
-      </div>
-      <div class="verify__grid">
-        <div class="verify__item"><span class="verify__key">命令</span><code>node hello.js</code></div>
-        <div class="verify__item"><span class="verify__key">输出</span><code>Hello, world</code></div>
-      </div>
-      <div class="verify__item"><span class="verify__key">产物 / 观察</span><ul class="verify__list"><li>源码直接由 V8 解析执行；本机未落盘字节码。</li></ul></div>
-      <p class="verify__note">V8 的字节码是内存中的实现细节，不是可分发文件。</p>
     </div>
   </section>
     <section class="block deep reveal" id="deep">
@@ -409,7 +395,7 @@ $ node --snapshot-blob snapshot.blob
     <span class="next-card__arrow" aria-hidden="true">→</span>
   </a>
     <footer class="pagefoot">
-      <p class="stamp">本页所有文件样例为依据公开规范与文档重构的示意内容；具体地址、偏移与字节数为示例值，不代表任何特定编译器版本的实测输出。</p>
+      <p class="stamp">本页所有文件样例为依据公开规范与文档重构的示意内容；具体地址、偏移与字节数为示例值，不代表任何特定编译器版本的输出。</p>
       <p>第 1–23 批 · PLATE 30 / 78</p>
     </footer>
   </div>

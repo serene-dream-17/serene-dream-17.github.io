@@ -100,7 +100,6 @@ try {
     <a href="../scenarios.html">开发场景 →</a><br>
     <a href="../languages/formats.html">产物索引 →</a><br>
     <a href="../sources.html">来源索引 →</a><br>
-    <a href="../verified.html">实测记录 →</a>
   </div>
 </aside>
 <main class="page" id="main">
@@ -122,7 +121,7 @@ try {
       <div class="meta-item"><span class="meta-label">首次发布</span><span class="meta-value">2008</span></div>
       <div class="meta-item"><span class="meta-label">类型</span><span class="meta-value">编译型</span></div>
     </div>
-    <div class="tags"><span class="tag">系统编程</span><span class="tag">宏</span><span class="tag">编译到 C</span><span class="tag is-accent">编译型</span><span class="tag tag--level" title="产物链样例为文档重构，不是本机实测">文档重构</span></div>
+    <div class="tags"><span class="tag">系统编程</span><span class="tag">宏</span><span class="tag">编译到 C</span><span class="tag is-accent">编译型</span><span class="tag tag--level" title="产物链样例为依据公开文档重构，不是本机运行输出">文档重构</span></div>
     <a class="dossier__fwlink" href="../frameworks/nim.html">框架与场景 →</a>
     <div class="lineage">
       <div><div class="lineage__label">源自 / From</div><p class="lineage__list">Python（语法） · Ada（类型） · Lisp（宏） · C</p></div>
@@ -162,7 +161,7 @@ try {
         <div class="code-actions">
           <button class="code-btn" type="button" data-copy>复制</button>
           
-          <span class="code-hint">文档重构 · 非实测输出</span>
+          <span class="code-hint">文档重构 · 示意输出</span>
         </div>
       </div>
       <div class="format"><div class="format__row"><span class="format__key">扩展名</span><span class="format__val">.nim</span></div><div class="format__row"><span class="format__key">缩进</span><span class="format__val">Python 风格</span></div><div class="format__row"><span class="format__key">类型</span><span class="format__val">静态、推断</span></div><div class="format__row"><span class="format__key">编译期</span><span class="format__val">宏与 `when`</span></div></div>
@@ -193,7 +192,7 @@ N_LIB_PRIVATE N_NIMCALL(void, NimMain)(void) {
         <div class="code-actions">
           <button class="code-btn" type="button" data-copy>复制</button>
           
-          <span class="code-hint">文档重构 · 非实测输出</span>
+          <span class="code-hint">文档重构 · 示意输出</span>
         </div>
       </div>
       <div class="format"><div class="format__row"><span class="format__key">中间产物</span><span class="format__val">生成的 C 代码</span></div><div class="format__row"><span class="format__key">位置</span><span class="format__val">nimcache / --nimcache</span></div><div class="format__row"><span class="format__key">后端</span><span class="format__val">C / C++ / JS</span></div><div class="format__row"><span class="format__key">编译</span><span class="format__val">gcc / clang / vcc</span></div></div>
@@ -224,7 +223,7 @@ $ nm hello.o | grep -E &#x27;NimMain|echo&#x27;
         <div class="code-actions">
           <button class="code-btn" type="button" data-copy>复制</button>
           
-          <span class="code-hint">文档重构 · 非实测输出</span>
+          <span class="code-hint">文档重构 · 示意输出</span>
         </div>
       </div>
       <div class="format"><div class="format__row"><span class="format__key">格式</span><span class="format__val">平台对象文件</span></div><div class="format__row"><span class="format__key">生成</span><span class="format__val">C 编译器</span></div><div class="format__row"><span class="format__key">运行时</span><span class="format__val">Nim runtime</span></div><div class="format__row"><span class="format__key">互操作</span><span class="format__val">可链接 C/C++</span></div></div>
@@ -258,7 +257,7 @@ $ ldd hello
         <div class="code-actions">
           <button class="code-btn" type="button" data-copy>复制</button>
           
-          <span class="code-hint">文档重构 · 非实测输出</span>
+          <span class="code-hint">文档重构 · 示意输出</span>
         </div>
       </div>
       <div class="format"><div class="format__row"><span class="format__key">格式</span><span class="format__val">ELF / PE / Mach-O</span></div><div class="format__row"><span class="format__key">运行时</span><span class="format__val">Nim runtime + GC</span></div><div class="format__row"><span class="format__key">内存</span><span class="format__val">ARC / ORC / refc / none</span></div><div class="format__row"><span class="format__key">体积</span><span class="format__val">较小，接近 C</span></div></div>
@@ -310,7 +309,6 @@ $ ldd hello
         <ol class="why-list"><li><strong>C 后端</strong>：复用成熟 C 编译器，兼容 C ABI 与库。</li><li><strong>宏</strong>：编译期代码生成，能构造 DSL 与优化。</li><li><strong>可选 GC</strong>：ARC/ORC/none，按场景选择内存模型。</li><li><strong>静态运行时</strong>：默认把 Nim 运行时链接进可执行文件。</li></ol>
       </div>
     </div>
-    
   </section>
     <section class="block deep reveal" id="deep">
     <div class="block__head">
@@ -383,7 +381,7 @@ $ ldd hello
     <span class="next-card__arrow" aria-hidden="true">→</span>
   </a>
     <footer class="pagefoot">
-      <p class="stamp">本页所有文件样例为依据公开规范与文档重构的示意内容；具体地址、偏移与字节数为示例值，不代表任何特定编译器版本的实测输出。</p>
+      <p class="stamp">本页所有文件样例为依据公开规范与文档重构的示意内容；具体地址、偏移与字节数为示例值，不代表任何特定编译器版本的输出。</p>
       <p>第 1–23 批 · PLATE 55 / 78</p>
     </footer>
   </div>

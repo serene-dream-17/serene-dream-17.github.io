@@ -100,7 +100,6 @@ try {
     <a href="../scenarios.html">开发场景 →</a><br>
     <a href="../languages/formats.html">产物索引 →</a><br>
     <a href="../sources.html">来源索引 →</a><br>
-    <a href="../verified.html">实测记录 →</a>
   </div>
 </aside>
 <main class="page" id="main">
@@ -122,7 +121,7 @@ try {
       <div class="meta-item"><span class="meta-label">首次发布</span><span class="meta-value">2006</span></div>
       <div class="meta-item"><span class="meta-label">类型</span><span class="meta-value">标记 / 配置</span></div>
     </div>
-    <div class="tags"><span class="tag">CSS 预处理</span><span class="tag">变量</span><span class="tag">嵌套</span><span class="tag is-accent">标记 / 配置</span><a class="tag tag--verified" href="#verify">已实测 Hello · 1.86.0 compiled with dart2js 3.7.2</a></div>
+    <div class="tags"><span class="tag">CSS 预处理</span><span class="tag">变量</span><span class="tag">嵌套</span><span class="tag is-accent">标记 / 配置</span><span class="tag tag--level" title="产物链样例为依据公开文档重构，不是本机运行输出">文档重构</span></div>
     <a class="dossier__fwlink" href="../frameworks/sass.html">框架与场景 →</a>
     <div class="lineage">
       <div><div class="lineage__label">源自 / From</div><p class="lineage__list">CSS · Ruby（早期实现） · Haml 社区</p></div>
@@ -168,7 +167,7 @@ try {
         <div class="code-actions">
           <button class="code-btn" type="button" data-copy>复制</button>
           
-          <span class="code-hint">文档重构 · 非实测输出</span>
+          <span class="code-hint">文档重构 · 示意输出</span>
         </div>
       </div>
       <div class="format"><div class="format__row"><span class="format__key">扩展名</span><span class="format__val">.scss / .sass</span></div><div class="format__row"><span class="format__key">变量</span><span class="format__val">$name</span></div><div class="format__row"><span class="format__key">嵌套</span><span class="format__val">&amp; 表示父选择器</span></div><div class="format__row"><span class="format__key">模块</span><span class="format__val">@use / @forward</span></div></div>
@@ -199,7 +198,7 @@ try {
         <div class="code-actions">
           <button class="code-btn" type="button" data-copy>复制</button>
           
-          <span class="code-hint">文档重构 · 非实测输出</span>
+          <span class="code-hint">文档重构 · 示意输出</span>
         </div>
       </div>
       <div class="format"><div class="format__row"><span class="format__key">节点</span><span class="format__val">Stylesheet / Rule / Declaration</span></div><div class="format__row"><span class="format__key">变量</span><span class="format__val">编译期替换</span></div><div class="format__row"><span class="format__key">嵌套</span><span class="format__val">展开成后代选择器</span></div><div class="format__row"><span class="format__key">混入</span><span class="format__val">复制声明块</span></div></div>
@@ -230,7 +229,7 @@ try {
         <div class="code-actions">
           <button class="code-btn" type="button" data-copy>复制</button>
           
-          <span class="code-hint">文档重构 · 非实测输出</span>
+          <span class="code-hint">文档重构 · 示意输出</span>
         </div>
       </div>
       <div class="format"><div class="format__row"><span class="format__key">输出</span><span class="format__val">普通 CSS</span></div><div class="format__row"><span class="format__key">source map</span><span class="format__val">指回 .scss 行号</span></div><div class="format__row"><span class="format__key">压缩</span><span class="format__val">--style=compressed</span></div><div class="format__row"><span class="format__key">兼容</span><span class="format__val">autoprefixer / postcss</span></div></div>
@@ -260,7 +259,7 @@ try {
         <div class="code-actions">
           <button class="code-btn" type="button" data-copy>复制</button>
           
-          <span class="code-hint">文档重构 · 非实测输出</span>
+          <span class="code-hint">文档重构 · 示意输出</span>
         </div>
       </div>
       <div class="format"><div class="format__row"><span class="format__key">输入</span><span class="format__val">编译后的 CSS</span></div><div class="format__row"><span class="format__key">后续</span><span class="format__val">CSSOM → 布局 → 绘制</span></div><div class="format__row"><span class="format__key">调试</span><span class="format__val">source map</span></div><div class="format__row"><span class="format__key">产物</span><span class="format__val">像素</span></div></div>
@@ -314,27 +313,6 @@ try {
         <div class="footprint"><div class="footprint__row"><span class="footprint__stage">SCSS</span><span class="footprint__track"><span class="footprint__fill" data-w="4" style="width:4%"></span></span><span class="footprint__size">≈ 70 B</span></div><div class="footprint__row"><span class="footprint__stage">AST</span><span class="footprint__track"><span class="footprint__fill" data-w="6" style="width:6%"></span></span><span class="footprint__size">≈ 5 个节点</span></div><div class="footprint__row"><span class="footprint__stage">CSS</span><span class="footprint__track"><span class="footprint__fill" data-w="4" style="width:4%"></span></span><span class="footprint__size">≈ 55 B</span></div><div class="footprint__row"><span class="footprint__stage">CSSOM</span><span class="footprint__track"><span class="footprint__fill" data-w="5" style="width:5%"></span></span><span class="footprint__size">1 条规则</span></div><div class="footprint__row"><span class="footprint__stage">像素</span><span class="footprint__track"><span class="footprint__fill" data-w="55" style="width:55%"></span></span><span class="footprint__size">视口大小</span></div></div>
         <ol class="why-list"><li><strong>变量</strong>：颜色、字号、间距集中管理。</li><li><strong>嵌套</strong>：让选择器结构与 DOM 结构对应。</li><li><strong>混入 / 函数</strong>：复用声明块与计算。</li><li><strong>模块</strong>：@use 让大型样式表可拆分、可命名空间。</li></ol>
       </div>
-    </div>
-    <div class="verify" id="verify">
-      <div class="verify__head">
-        <span class="verify__badge">已实测</span>
-        <b>本机复现记录</b>
-        <span class="verify__meta">2026-10-28 · 1.86.0 compiled with dart2js 3.7.2</span>
-      </div>
-      <div class="verify__grid">
-        <div class="verify__item"><span class="verify__key">命令</span><code>sass hello.scss hello.css</code></div>
-        <div class="verify__item"><span class="verify__key">输出</span><code>.greeting::before {
-  content: &quot;Hello, world&quot;;
-}
-
-/*# sourceMappingURL=hello.css.map */</code></div>
-      </div>
-      <div class="verify__item"><span class="verify__key">产物 / 观察</span><ul class="verify__list"><li>hello.css · 88 B</li><li>编译结果：.greeting::before {
-  content: &quot;Hello, world&quot;;
-}
-
-/*# sourceMappingURL=hello.css.map */</li></ul></div>
-      <p class="verify__note">Sass 的产物是普通 CSS；浏览器不需要 Sass 运行时。</p>
     </div>
   </section>
     <section class="block deep reveal" id="deep">
@@ -408,7 +386,7 @@ try {
     <span class="next-card__arrow" aria-hidden="true">→</span>
   </a>
     <footer class="pagefoot">
-      <p class="stamp">本页所有文件样例为依据公开规范与文档重构的示意内容；具体地址、偏移与字节数为示例值，不代表任何特定编译器版本的实测输出。</p>
+      <p class="stamp">本页所有文件样例为依据公开规范与文档重构的示意内容；具体地址、偏移与字节数为示例值，不代表任何特定编译器版本的输出。</p>
       <p>第 1–23 批 · PLATE 77 / 78</p>
     </footer>
   </div>

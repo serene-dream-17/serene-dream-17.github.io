@@ -100,7 +100,6 @@ try {
     <a href="../scenarios.html">开发场景 →</a><br>
     <a href="../languages/formats.html">产物索引 →</a><br>
     <a href="../sources.html">来源索引 →</a><br>
-    <a href="../verified.html">实测记录 →</a>
   </div>
 </aside>
 <main class="page" id="main">
@@ -122,7 +121,7 @@ try {
       <div class="meta-item"><span class="meta-label">首次发布</span><span class="meta-value">2001</span></div>
       <div class="meta-item"><span class="meta-label">类型</span><span class="meta-value">标记 / 配置</span></div>
     </div>
-    <div class="tags"><span class="tag">数据序列化</span><span class="tag">配置</span><span class="tag">人类可读</span><span class="tag is-accent">标记 / 配置</span><a class="tag tag--verified" href="#verify">已实测 Hello · PyYAML 6.0.3</a></div>
+    <div class="tags"><span class="tag">数据序列化</span><span class="tag">配置</span><span class="tag">人类可读</span><span class="tag is-accent">标记 / 配置</span><span class="tag tag--level" title="产物链样例为依据公开文档重构，不是本机运行输出">文档重构</span></div>
     <a class="dossier__fwlink" href="../frameworks/yaml.html">框架与场景 →</a>
     <div class="lineage">
       <div><div class="lineage__label">源自 / From</div><p class="lineage__list">JSON · 配置文件需求 · Perl / Python 数据结构</p></div>
@@ -166,7 +165,7 @@ service:
         <div class="code-actions">
           <button class="code-btn" type="button" data-copy>复制</button>
           
-          <span class="code-hint">文档重构 · 非实测输出</span>
+          <span class="code-hint">文档重构 · 示意输出</span>
         </div>
       </div>
       <div class="format"><div class="format__row"><span class="format__key">扩展名</span><span class="format__val">.yaml / .yml</span></div><div class="format__row"><span class="format__key">缩进</span><span class="format__val">空格，不能用 Tab</span></div><div class="format__row"><span class="format__key">标量</span><span class="format__val">字符串 / 数字 / 布尔 / null</span></div><div class="format__row"><span class="format__key">多文档</span><span class="format__val">--- 分隔</span></div></div>
@@ -204,7 +203,7 @@ STREAM-END
         <div class="code-actions">
           <button class="code-btn" type="button" data-copy>复制</button>
           
-          <span class="code-hint">文档重构 · 非实测输出</span>
+          <span class="code-hint">文档重构 · 示意输出</span>
         </div>
       </div>
       <div class="format"><div class="format__row"><span class="format__key">模型</span><span class="format__val">事件流 → 节点树</span></div><div class="format__row"><span class="format__key">节点</span><span class="format__val">Scalar / Mapping / Sequence</span></div><div class="format__row"><span class="format__key">锚点</span><span class="format__val">&amp;anchor / *alias</span></div><div class="format__row"><span class="format__key">标签</span><span class="format__val">!!str / !!int 显式类型</span></div></div>
@@ -237,7 +236,7 @@ STREAM-END
         <div class="code-actions">
           <button class="code-btn" type="button" data-copy>复制</button>
           
-          <span class="code-hint">文档重构 · 非实测输出</span>
+          <span class="code-hint">文档重构 · 示意输出</span>
         </div>
       </div>
       <div class="format"><div class="format__row"><span class="format__key">等价</span><span class="format__val">YAML 1.2 ⊃ JSON</span></div><div class="format__row"><span class="format__key">映射</span><span class="format__val">object / dict</span></div><div class="format__row"><span class="format__key">序列</span><span class="format__val">array / list</span></div><div class="format__row"><span class="format__key">类型</span><span class="format__val">隐式推断，易踩坑</span></div></div>
@@ -272,7 +271,7 @@ spec:
         <div class="code-actions">
           <button class="code-btn" type="button" data-copy>复制</button>
           
-          <span class="code-hint">文档重构 · 非实测输出</span>
+          <span class="code-hint">文档重构 · 示意输出</span>
         </div>
       </div>
       <div class="format"><div class="format__row"><span class="format__key">消费者</span><span class="format__val">K8s / Actions / Compose / Ansible</span></div><div class="format__row"><span class="format__key">Schema</span><span class="format__val">由消费工具定义</span></div><div class="format__row"><span class="format__key">校验</span><span class="format__val">kubeconform / actionlint</span></div><div class="format__row"><span class="format__key">执行</span><span class="format__val">工具把对象应用到系统</span></div></div>
@@ -327,19 +326,6 @@ service:
         <div class="footprint"><div class="footprint__row"><span class="footprint__stage">YAML</span><span class="footprint__track"><span class="footprint__fill" data-w="5" style="width:5%"></span></span><span class="footprint__size">≈ 75 B</span></div><div class="footprint__row"><span class="footprint__stage">事件流</span><span class="footprint__track"><span class="footprint__fill" data-w="9" style="width:9%"></span></span><span class="footprint__size">≈ 20 个事件</span></div><div class="footprint__row"><span class="footprint__stage">对象</span><span class="footprint__track"><span class="footprint__fill" data-w="7" style="width:7%"></span></span><span class="footprint__size">≈ 4 个键</span></div><div class="footprint__row"><span class="footprint__stage">JSON</span><span class="footprint__track"><span class="footprint__fill" data-w="6" style="width:6%"></span></span><span class="footprint__size">≈ 100 B</span></div><div class="footprint__row"><span class="footprint__stage">应用</span><span class="footprint__track"><span class="footprint__fill" data-w="20" style="width:20%"></span></span><span class="footprint__size">由工具决定</span></div></div>
         <ol class="why-list"><li><strong>可读</strong>：缩进 + 简洁标量，适合人写配置。</li><li><strong>JSON 超集</strong>：能和 JSON 工具链互通。</li><li><strong>锚点 / 别名</strong>：复用重复配置，减少复制粘贴。</li><li><strong>生态</strong>：K8s、CI、Compose 把它变成基础设施的通用语。</li></ol>
       </div>
-    </div>
-    <div class="verify" id="verify">
-      <div class="verify__head">
-        <span class="verify__badge">已实测</span>
-        <b>本机复现记录</b>
-        <span class="verify__meta">2026-10-28 · PyYAML 6.0.3</span>
-      </div>
-      <div class="verify__grid">
-        <div class="verify__item"><span class="verify__key">命令</span><code>yaml.safe_load(hello.yaml)</code></div>
-        <div class="verify__item"><span class="verify__key">输出</span><code>Hello, world</code></div>
-      </div>
-      <div class="verify__item"><span class="verify__key">产物 / 观察</span><ul class="verify__list"><li>解析为对象：{&quot;message&quot;: &quot;Hello, world&quot;, &quot;service&quot;: {&quot;name&quot;: &quot;hello&quot;, &quot;replicas&quot;: 1}}</li></ul></div>
-      <p class="verify__note">YAML 本身不执行；产物是被工具消费的数据对象。</p>
     </div>
   </section>
     <section class="block deep reveal" id="deep">
@@ -420,7 +406,7 @@ service:
     <span class="next-card__arrow" aria-hidden="true">→</span>
   </a>
     <footer class="pagefoot">
-      <p class="stamp">本页所有文件样例为依据公开规范与文档重构的示意内容；具体地址、偏移与字节数为示例值，不代表任何特定编译器版本的实测输出。</p>
+      <p class="stamp">本页所有文件样例为依据公开规范与文档重构的示意内容；具体地址、偏移与字节数为示例值，不代表任何特定编译器版本的输出。</p>
       <p>第 1–23 批 · PLATE 75 / 78</p>
     </footer>
   </div>

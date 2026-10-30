@@ -100,7 +100,6 @@ try {
     <a href="../scenarios.html">开发场景 →</a><br>
     <a href="../languages/formats.html">产物索引 →</a><br>
     <a href="../sources.html">来源索引 →</a><br>
-    <a href="../verified.html">实测记录 →</a>
   </div>
 </aside>
 <main class="page" id="main">
@@ -122,7 +121,7 @@ try {
       <div class="meta-item"><span class="meta-label">首次发布</span><span class="meta-value">1991</span></div>
       <div class="meta-item"><span class="meta-label">类型</span><span class="meta-value">解释 / 字节码</span></div>
     </div>
-    <div class="tags"><span class="tag">事件驱动</span><span class="tag">快速应用</span><span class="tag">COM</span><span class="tag is-accent">解释 / 字节码</span><span class="tag tag--level" title="产物链样例为文档重构，不是本机实测">文档重构</span></div>
+    <div class="tags"><span class="tag">事件驱动</span><span class="tag">快速应用</span><span class="tag">COM</span><span class="tag is-accent">解释 / 字节码</span><span class="tag tag--level" title="产物链样例为依据公开文档重构，不是本机运行输出">文档重构</span></div>
     <a class="dossier__fwlink" href="../frameworks/vb.html">框架与场景 →</a>
     <div class="lineage">
       <div><div class="lineage__label">源自 / From</div><p class="lineage__list">BASIC · QuickBASIC · COM / ActiveX</p></div>
@@ -168,7 +167,7 @@ HelpContextID=&quot;0</code></pre>
         <div class="code-actions">
           <button class="code-btn" type="button" data-copy>复制</button>
           
-          <span class="code-hint">文档重构 · 非实测输出</span>
+          <span class="code-hint">文档重构 · 示意输出</span>
         </div>
       </div>
       <div class="format"><div class="format__row"><span class="format__key">扩展名</span><span class="format__val">.vbp</span></div><div class="format__row"><span class="format__key">内容</span><span class="format__val">窗体、引用、组件、启动对象</span></div><div class="format__row"><span class="format__key">控件</span><span class="format__val">OCX 以 GUID 引用</span></div><div class="format__row"><span class="format__key">入口</span><span class="format__val">Startup 指定启动窗体</span></div></div>
@@ -201,7 +200,7 @@ End Sub</code></pre>
         <div class="code-actions">
           <button class="code-btn" type="button" data-copy>复制</button>
           
-          <span class="code-hint">文档重构 · 非实测输出</span>
+          <span class="code-hint">文档重构 · 示意输出</span>
         </div>
       </div>
       <div class="format"><div class="format__row"><span class="format__key">窗体</span><span class="format__val">.frm，文本 + 控件属性</span></div><div class="format__row"><span class="format__key">资源</span><span class="format__val">.frx，二进制（图片、图标）</span></div><div class="format__row"><span class="format__key">事件</span><span class="format__val">Form_Load 等由运行时回调</span></div><div class="format__row"><span class="format__key">设计器</span><span class="format__val">属性窗口直接改 .frm</span></div></div>
@@ -232,7 +231,7 @@ Hello.exe: PE32 executable (GUI) Intel 80386, for MS Windows
         <div class="code-actions">
           <button class="code-btn" type="button" data-copy>复制</button>
           
-          <span class="code-hint">文档重构 · 非实测输出</span>
+          <span class="code-hint">文档重构 · 示意输出</span>
         </div>
       </div>
       <div class="format"><div class="format__row"><span class="format__key">格式</span><span class="format__val">PE32</span></div><div class="format__row"><span class="format__key">p-code</span><span class="format__val">默认，解释执行</span></div><div class="format__row"><span class="format__key">原生</span><span class="format__val">可切换到本机代码</span></div><div class="format__row"><span class="format__key">依赖</span><span class="format__val">MSVBVM60.DLL（VB6 运行时）</span></div></div>
@@ -262,7 +261,7 @@ Hello.exe: PE32 executable (GUI) Intel 80386, for MS Windows
         <div class="code-actions">
           <button class="code-btn" type="button" data-copy>复制</button>
           
-          <span class="code-hint">文档重构 · 非实测输出</span>
+          <span class="code-hint">文档重构 · 示意输出</span>
         </div>
       </div>
       <div class="format"><div class="format__row"><span class="format__key">运行时</span><span class="format__val">MSVBVM60.DLL</span></div><div class="format__row"><span class="format__key">作用</span><span class="format__val">解释 p-code、窗体、COM</span></div><div class="format__row"><span class="format__key">部署</span><span class="format__val">安装程序附带并注册</span></div><div class="format__row"><span class="format__key">兼容</span><span class="format__val">Windows 保留兼容层</span></div></div>
@@ -319,7 +318,6 @@ End Sub</code></pre>
         <ol class="why-list"><li><strong>事件驱动</strong>：代码由用户操作触发，而不是从 main 顺序执行。</li><li><strong>.frm/.frx</strong>：界面是资源，设计器与代码分离。</li><li><strong>p-code</strong>：默认编译为紧凑字节码，由运行时解释。</li><li><strong>COM</strong>：控件与组件通过 COM 接口组合，部署需要注册 DLL/OCX。</li></ol>
       </div>
     </div>
-    
   </section>
     <section class="block deep reveal" id="deep">
     <div class="block__head">
@@ -392,7 +390,7 @@ End Sub</code></pre>
     <span class="next-card__arrow" aria-hidden="true">→</span>
   </a>
     <footer class="pagefoot">
-      <p class="stamp">本页所有文件样例为依据公开规范与文档重构的示意内容；具体地址、偏移与字节数为示例值，不代表任何特定编译器版本的实测输出。</p>
+      <p class="stamp">本页所有文件样例为依据公开规范与文档重构的示意内容；具体地址、偏移与字节数为示例值，不代表任何特定编译器版本的输出。</p>
       <p>第 1–23 批 · PLATE 37 / 78</p>
     </footer>
   </div>

@@ -100,7 +100,6 @@ try {
     <a href="../scenarios.html">开发场景 →</a><br>
     <a href="../languages/formats.html">产物索引 →</a><br>
     <a href="../sources.html">来源索引 →</a><br>
-    <a href="../verified.html">实测记录 →</a>
   </div>
 </aside>
 <main class="page" id="main">
@@ -122,7 +121,7 @@ try {
       <div class="meta-item"><span class="meta-label">首次发布</span><span class="meta-value">1993</span></div>
       <div class="meta-item"><span class="meta-label">类型</span><span class="meta-value">解释 / 字节码</span></div>
     </div>
-    <div class="tags"><span class="tag">统计</span><span class="tag">向量化</span><span class="tag">交互式</span><span class="tag is-accent">解释 / 字节码</span><span class="tag tag--level" title="产物链样例为文档重构，不是本机实测">文档重构</span></div>
+    <div class="tags"><span class="tag">统计</span><span class="tag">向量化</span><span class="tag">交互式</span><span class="tag is-accent">解释 / 字节码</span><span class="tag tag--level" title="产物链样例为依据公开文档重构，不是本机运行输出">文档重构</span></div>
     <a class="dossier__fwlink" href="../frameworks/r.html">框架与场景 →</a>
     <div class="lineage">
       <div><div class="lineage__label">源自 / From</div><p class="lineage__list">S · Scheme（作用域） · Fortran（数值库）</p></div>
@@ -165,7 +164,7 @@ hello()</code></pre>
         <div class="code-actions">
           <button class="code-btn" type="button" data-copy>复制</button>
           
-          <span class="code-hint">文档重构 · 非实测输出</span>
+          <span class="code-hint">文档重构 · 示意输出</span>
         </div>
       </div>
       <div class="format"><div class="format__row"><span class="format__key">扩展名</span><span class="format__val">.R / .r</span></div><div class="format__row"><span class="format__key">赋值</span><span class="format__val">&lt;- 或 =</span></div><div class="format__row"><span class="format__key">向量</span><span class="format__val">默认向量化</span></div><div class="format__row"><span class="format__key">函数</span><span class="format__val">一等对象，闭包捕获环境</span></div></div>
@@ -198,7 +197,7 @@ Hello, world
         <div class="code-actions">
           <button class="code-btn" type="button" data-copy>复制</button>
           
-          <span class="code-hint">文档重构 · 非实测输出</span>
+          <span class="code-hint">文档重构 · 示意输出</span>
         </div>
       </div>
       <div class="format"><div class="format__row"><span class="format__key">解析</span><span class="format__val">parse() 返回 expression</span></div><div class="format__row"><span class="format__key">节点</span><span class="format__val">call / symbol / constant</span></div><div class="format__row"><span class="format__key">元编程</span><span class="format__val">代码即数据，可 eval</span></div><div class="format__row"><span class="format__key">环境</span><span class="format__val">词法作用域，函数携带环境</span></div></div>
@@ -227,7 +226,7 @@ list(cat(&quot;Hello, world\n&quot;))
         <div class="code-actions">
           <button class="code-btn" type="button" data-copy>复制</button>
           
-          <span class="code-hint">文档重构 · 非实测输出</span>
+          <span class="code-hint">文档重构 · 示意输出</span>
         </div>
       </div>
       <div class="format"><div class="format__row"><span class="format__key">编译器</span><span class="format__val">compiler 包（3.5+ 默认）</span></div><div class="format__row"><span class="format__key">字节码</span><span class="format__val">bc 对象，内存中</span></div><div class="format__row"><span class="format__key">JIT</span><span class="format__val">3.4+，热点循环</span></div><div class="format__row"><span class="format__key">查看</span><span class="format__val">disassemble / cmpfun</span></div></div>
@@ -258,7 +257,7 @@ $ ls hellopkg_0.1.0.tar.gz
         <div class="code-actions">
           <button class="code-btn" type="button" data-copy>复制</button>
           
-          <span class="code-hint">文档重构 · 非实测输出</span>
+          <span class="code-hint">文档重构 · 示意输出</span>
         </div>
       </div>
       <div class="format"><div class="format__row"><span class="format__key">RDS</span><span class="format__val">单对象序列化，RDX3 头</span></div><div class="format__row"><span class="format__key">RData</span><span class="format__val">工作区多对象</span></div><div class="format__row"><span class="format__key">包</span><span class="format__val">.tar.gz + DESCRIPTION/NAMESPACE</span></div><div class="format__row"><span class="format__key">分发</span><span class="format__val">CRAN / Bioconductor</span></div></div>
@@ -309,7 +308,6 @@ $ ls hellopkg_0.1.0.tar.gz
         <ol class="why-list"><li><strong>表达式树</strong>：代码是对象，支持 quote/eval 与统计建模 DSL。</li><li><strong>环境</strong>：词法作用域与闭包，函数携带定义环境。</li><li><strong>字节码</strong>：3.5+ 默认编译包函数，减少解释开销。</li><li><strong>RDS/包</strong>：分发的是数据对象与源码包，不是可执行文件。</li></ol>
       </div>
     </div>
-    
   </section>
     <section class="block deep reveal" id="deep">
     <div class="block__head">
@@ -389,7 +387,7 @@ $ ls hellopkg_0.1.0.tar.gz
     <span class="next-card__arrow" aria-hidden="true">→</span>
   </a>
     <footer class="pagefoot">
-      <p class="stamp">本页所有文件样例为依据公开规范与文档重构的示意内容；具体地址、偏移与字节数为示例值，不代表任何特定编译器版本的实测输出。</p>
+      <p class="stamp">本页所有文件样例为依据公开规范与文档重构的示意内容；具体地址、偏移与字节数为示例值，不代表任何特定编译器版本的输出。</p>
       <p>第 1–23 批 · PLATE 35 / 78</p>
     </footer>
   </div>

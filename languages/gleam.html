@@ -100,7 +100,6 @@ try {
     <a href="../scenarios.html">开发场景 →</a><br>
     <a href="../languages/formats.html">产物索引 →</a><br>
     <a href="../sources.html">来源索引 →</a><br>
-    <a href="../verified.html">实测记录 →</a>
   </div>
 </aside>
 <main class="page" id="main">
@@ -122,7 +121,7 @@ try {
       <div class="meta-item"><span class="meta-label">首次发布</span><span class="meta-value">2016</span></div>
       <div class="meta-item"><span class="meta-label">类型</span><span class="meta-value">解释 / 字节码</span></div>
     </div>
-    <div class="tags"><span class="tag">静态类型</span><span class="tag">BEAM</span><span class="tag">函数式</span><span class="tag is-accent">解释 / 字节码</span><span class="tag tag--level" title="产物链样例为文档重构，不是本机实测">文档重构</span></div>
+    <div class="tags"><span class="tag">静态类型</span><span class="tag">BEAM</span><span class="tag">函数式</span><span class="tag is-accent">解释 / 字节码</span><span class="tag tag--level" title="产物链样例为依据公开文档重构，不是本机运行输出">文档重构</span></div>
     <a class="dossier__fwlink" href="../frameworks/gleam.html">框架与场景 →</a>
     <div class="lineage">
       <div><div class="lineage__label">源自 / From</div><p class="lineage__list">Erlang / BEAM · Rust（类型系统） · Elm（无异常）</p></div>
@@ -165,7 +164,7 @@ pub fn main() {
         <div class="code-actions">
           <button class="code-btn" type="button" data-copy>复制</button>
           
-          <span class="code-hint">文档重构 · 非实测输出</span>
+          <span class="code-hint">文档重构 · 示意输出</span>
         </div>
       </div>
       <div class="format"><div class="format__row"><span class="format__key">扩展名</span><span class="format__val">.gleam</span></div><div class="format__row"><span class="format__key">类型</span><span class="format__val">静态、推断</span></div><div class="format__row"><span class="format__key">无 null</span><span class="format__val">用 Option 表示缺失</span></div><div class="format__row"><span class="format__key">无异常</span><span class="format__val">用 Result 表示失败</span></div></div>
@@ -195,7 +194,7 @@ main() -&gt;
         <div class="code-actions">
           <button class="code-btn" type="button" data-copy>复制</button>
           
-          <span class="code-hint">文档重构 · 非实测输出</span>
+          <span class="code-hint">文档重构 · 示意输出</span>
         </div>
       </div>
       <div class="format"><div class="format__row"><span class="format__key">后端</span><span class="format__val">Erlang / JavaScript</span></div><div class="format__row"><span class="format__key">中间</span><span class="format__val">Erlang 抽象语法</span></div><div class="format__row"><span class="format__key">构建</span><span class="format__val">gleam build</span></div><div class="format__row"><span class="format__key">互操作</span><span class="format__val">与 Erlang/Elixir 互相调用</span></div></div>
@@ -225,7 +224,7 @@ $ xxd -l 16 hello.beam
         <div class="code-actions">
           <button class="code-btn" type="button" data-copy>复制</button>
           
-          <span class="code-hint">文档重构 · 非实测输出</span>
+          <span class="code-hint">文档重构 · 示意输出</span>
         </div>
       </div>
       <div class="format"><div class="format__row"><span class="format__key">容器</span><span class="format__val">FOR1 / BEAM</span></div><div class="format__row"><span class="format__key">模块</span><span class="format__val">hello</span></div><div class="format__row"><span class="format__key">热加载</span><span class="format__val">BEAM 支持</span></div><div class="format__row"><span class="format__key">来源</span><span class="format__val">Erlang 编译器</span></div></div>
@@ -256,7 +255,7 @@ Hello, world
         <div class="code-actions">
           <button class="code-btn" type="button" data-copy>复制</button>
           
-          <span class="code-hint">文档重构 · 非实测输出</span>
+          <span class="code-hint">文档重构 · 示意输出</span>
         </div>
       </div>
       <div class="format"><div class="format__row"><span class="format__key">打包</span><span class="format__val">gleam export erlang-shipment</span></div><div class="format__row"><span class="format__key">内容</span><span class="format__val">ERTS + .beam + 脚本</span></div><div class="format__row"><span class="format__key">部署</span><span class="format__val">拷贝目录</span></div><div class="format__row"><span class="format__key">混合</span><span class="format__val">可与 Elixir release 合并</span></div></div>
@@ -311,7 +310,6 @@ pub fn main() {
         <ol class="why-list"><li><strong>生成 Erlang</strong>：复用成熟的 Erlang 编译器与 BEAM 生态。</li><li><strong>Result/Option</strong>：用类型取代 null 与异常。</li><li><strong>双后端</strong>：同一份代码可编译到 BEAM 或 JavaScript。</li><li><strong>shipment</strong>：与 Erlang/Elixir 共用 release 部署模型。</li></ol>
       </div>
     </div>
-    
   </section>
     <section class="block deep reveal" id="deep">
     <div class="block__head">
@@ -384,7 +382,7 @@ pub fn main() {
     <span class="next-card__arrow" aria-hidden="true">→</span>
   </a>
     <footer class="pagefoot">
-      <p class="stamp">本页所有文件样例为依据公开规范与文档重构的示意内容；具体地址、偏移与字节数为示例值，不代表任何特定编译器版本的实测输出。</p>
+      <p class="stamp">本页所有文件样例为依据公开规范与文档重构的示意内容；具体地址、偏移与字节数为示例值，不代表任何特定编译器版本的输出。</p>
       <p>第 1–23 批 · PLATE 60 / 78</p>
     </footer>
   </div>

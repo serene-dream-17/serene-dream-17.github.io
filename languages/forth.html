@@ -100,7 +100,6 @@ try {
     <a href="../scenarios.html">开发场景 →</a><br>
     <a href="../languages/formats.html">产物索引 →</a><br>
     <a href="../sources.html">来源索引 →</a><br>
-    <a href="../verified.html">实测记录 →</a>
   </div>
 </aside>
 <main class="page" id="main">
@@ -122,7 +121,7 @@ try {
       <div class="meta-item"><span class="meta-label">首次发布</span><span class="meta-value">1970</span></div>
       <div class="meta-item"><span class="meta-label">类型</span><span class="meta-value">编译型</span></div>
     </div>
-    <div class="tags"><span class="tag">栈式</span><span class="tag">元编程</span><span class="tag">嵌入式</span><span class="tag is-accent">编译型</span><span class="tag tag--level" title="产物链样例为文档重构，不是本机实测">文档重构</span></div>
+    <div class="tags"><span class="tag">栈式</span><span class="tag">元编程</span><span class="tag">嵌入式</span><span class="tag is-accent">编译型</span><span class="tag tag--level" title="产物链样例为依据公开文档重构，不是本机运行输出">文档重构</span></div>
     <a class="dossier__fwlink" href="../frameworks/forth.html">框架与场景 →</a>
     <div class="lineage">
       <div><div class="lineage__label">源自 / From</div><p class="lineage__list">汇编 · 栈式计算器 · Chuck Moore 的极简主义</p></div>
@@ -178,7 +177,7 @@ HELLO
         <div class="code-actions">
           <button class="code-btn" type="button" data-copy>复制</button>
           
-          <span class="code-hint">文档重构 · 非实测输出</span>
+          <span class="code-hint">文档重构 · 示意输出</span>
         </div>
       </div>
       <div class="format"><div class="format__row"><span class="format__key">单位</span><span class="format__val">1024 字节 block</span></div><div class="format__row"><span class="format__key">布局</span><span class="format__val">16 行 × 64 字符</span></div><div class="format__row"><span class="format__key">编辑</span><span class="format__val">按块读写，无换行概念</span></div><div class="format__row"><span class="format__key">注释</span><span class="format__val">\ 到行尾 / ( … )</span></div></div>
@@ -208,7 +207,7 @@ body:   LIT str TYPE CR EXIT
         <div class="code-actions">
           <button class="code-btn" type="button" data-copy>复制</button>
           
-          <span class="code-hint">文档重构 · 非实测输出</span>
+          <span class="code-hint">文档重构 · 示意输出</span>
         </div>
       </div>
       <div class="format"><div class="format__row"><span class="format__key">词典</span><span class="format__val">词名 + 链接 + 代码字段 + 体</span></div><div class="format__row"><span class="format__key">代码字段</span><span class="format__val">DOCOL / 原生代码 / 变量</span></div><div class="format__row"><span class="format__key">查找</span><span class="format__val">从最新词沿 link 回溯</span></div><div class="format__row"><span class="format__key">增长</span><span class="format__val">编译一个词就追加一条</span></div></div>
@@ -241,7 +240,7 @@ HELLO:
         <div class="code-actions">
           <button class="code-btn" type="button" data-copy>复制</button>
           
-          <span class="code-hint">文档重构 · 非实测输出</span>
+          <span class="code-hint">文档重构 · 示意输出</span>
         </div>
       </div>
       <div class="format"><div class="format__row"><span class="format__key">形态</span><span class="format__val">地址序列 + 内解释器</span></div><div class="format__row"><span class="format__key">IP</span><span class="format__val">指令指针遍历线程</span></div><div class="format__row"><span class="format__key">DOCOL</span><span class="format__val">开始执行冒号定义</span></div><div class="format__row"><span class="format__key">变体</span><span class="format__val">间接 / 直接 / 子程序线程</span></div></div>
@@ -271,7 +270,7 @@ Hello, world
         <div class="code-actions">
           <button class="code-btn" type="button" data-copy>复制</button>
           
-          <span class="code-hint">文档重构 · 非实测输出</span>
+          <span class="code-hint">文档重构 · 示意输出</span>
         </div>
       </div>
       <div class="format"><div class="format__row"><span class="format__key">镜像</span><span class="format__val">词典 + 启动词的二进制</span></div><div class="format__row"><span class="format__key">turnkey</span><span class="format__val">保存后开机直接执行</span></div><div class="format__row"><span class="format__key">嵌入式</span><span class="format__val">烧录 ROM / Flash</span></div><div class="format__row"><span class="format__key">体积</span><span class="format__val">通常几 KB</span></div></div>
@@ -323,7 +322,6 @@ HELLO</code></pre>
         <ol class="why-list"><li><strong>栈</strong>：参数与返回值都在数据栈上，调用约定极简。</li><li><strong>词典</strong>：符号表与运行时结构合一，编译与执行没有明显边界。</li><li><strong>线程码</strong>：程序是地址序列，内解释器逐条分发。</li><li><strong>镜像</strong>：保存词典即保存程序，适合 ROM 与嵌入式。</li></ol>
       </div>
     </div>
-    
   </section>
     <section class="block deep reveal" id="deep">
     <div class="block__head">
@@ -396,7 +394,7 @@ HELLO</code></pre>
     <span class="next-card__arrow" aria-hidden="true">→</span>
   </a>
     <footer class="pagefoot">
-      <p class="stamp">本页所有文件样例为依据公开规范与文档重构的示意内容；具体地址、偏移与字节数为示例值，不代表任何特定编译器版本的实测输出。</p>
+      <p class="stamp">本页所有文件样例为依据公开规范与文档重构的示意内容；具体地址、偏移与字节数为示例值，不代表任何特定编译器版本的输出。</p>
       <p>第 1–23 批 · PLATE 17 / 78</p>
     </footer>
   </div>

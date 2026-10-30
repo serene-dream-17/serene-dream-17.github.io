@@ -100,7 +100,6 @@ try {
     <a href="../scenarios.html">开发场景 →</a><br>
     <a href="../languages/formats.html">产物索引 →</a><br>
     <a href="../sources.html">来源索引 →</a><br>
-    <a href="../verified.html">实测记录 →</a>
   </div>
 </aside>
 <main class="page" id="main">
@@ -122,7 +121,7 @@ try {
       <div class="meta-item"><span class="meta-label">首次发布</span><span class="meta-value">1957</span></div>
       <div class="meta-item"><span class="meta-label">类型</span><span class="meta-value">编译型</span></div>
     </div>
-    <div class="tags"><span class="tag">命令式</span><span class="tag">科学计算</span><span class="tag">数组</span><span class="tag is-accent">编译型</span><a class="tag tag--verified" href="#verify">已实测 Hello · GNU Fortran (GCC) 16.2.0</a></div>
+    <div class="tags"><span class="tag">命令式</span><span class="tag">科学计算</span><span class="tag">数组</span><span class="tag is-accent">编译型</span><span class="tag tag--level" title="产物链样例为依据公开文档重构，不是本机运行输出">文档重构</span></div>
     <a class="dossier__fwlink" href="../frameworks/fortran.html">框架与场景 →</a>
     <div class="lineage">
       <div><div class="lineage__label">源自 / From</div><p class="lineage__list">汇编语言（IBM 704） · 数学公式记法</p></div>
@@ -169,7 +168,7 @@ C     COL 1-5 LABEL / COL 6 CONTINUATION / COL 7-72 STATEMENT / 73-80 SEQ
         <div class="code-actions">
           <button class="code-btn" type="button" data-copy>复制</button>
           
-          <span class="code-hint">文档重构 · 非实测输出</span>
+          <span class="code-hint">文档重构 · 示意输出</span>
         </div>
       </div>
       <div class="format"><div class="format__row"><span class="format__key">载体</span><span class="format__val">80 列穿孔卡，每卡一行</span></div><div class="format__row"><span class="format__key">编码</span><span class="format__val">IBM 704 六位 BCD 字符集</span></div><div class="format__row"><span class="format__key">列规则</span><span class="format__val">1–5 标号 · 6 续行 · 7–72 语句 · 73–80 序号</span></div><div class="format__row"><span class="format__key">注释</span><span class="format__val">第 1 列写 C 或 *</span></div><div class="format__row"><span class="format__key">标识符</span><span class="format__val">FORTRAN 66 仅前 6 个字符有效</span></div></div>
@@ -197,7 +196,7 @@ $END</code></pre>
         <div class="code-actions">
           <button class="code-btn" type="button" data-copy>复制</button>
           
-          <span class="code-hint">文档重构 · 非实测输出</span>
+          <span class="code-hint">文档重构 · 示意输出</span>
         </div>
       </div>
       <div class="format"><div class="format__row"><span class="format__key">作用</span><span class="format__val">告诉监控系统依次编译、装入、运行</span></div><div class="format__row"><span class="format__key">控制卡</span><span class="format__val">以 $ 开头，独占一张卡</span></div><div class="format__row"><span class="format__key">源卡</span><span class="format__val">夹在 $FORTRAN 与 $EXECUTE 之间</span></div><div class="format__row"><span class="format__key">数据</span><span class="format__val">$DATA 之后的卡供程序读取</span></div><div class="format__row"><span class="format__key">变体</span><span class="format__val">具体控制卡随机器与监控系统而异</span></div></div>
@@ -236,7 +235,7 @@ MAIN__:
         <div class="code-actions">
           <button class="code-btn" type="button" data-copy>复制</button>
           
-          <span class="code-hint">文档重构 · 非实测输出</span>
+          <span class="code-hint">文档重构 · 示意输出</span>
         </div>
       </div>
       <div class="format"><div class="format__row"><span class="format__key">语法</span><span class="format__val">GNU as（AT&amp;T 语法）</span></div><div class="format__row"><span class="format__key">入口</span><span class="format__val">MAIN__，由 Fortran 运行时调用</span></div><div class="format__row"><span class="format__key">字符串</span><span class="format__val">放进 .rodata，只读</span></div><div class="format__row"><span class="format__key">I/O</span><span class="format__val">全部委托给 libgfortran 的运行时函数</span></div></div>
@@ -272,7 +271,7 @@ $ ldd hello
         <div class="code-actions">
           <button class="code-btn" type="button" data-copy>复制</button>
           
-          <span class="code-hint">文档重构 · 非实测输出</span>
+          <span class="code-hint">文档重构 · 示意输出</span>
         </div>
       </div>
       <div class="format"><div class="format__row"><span class="format__key">目标文件</span><span class="format__val">ELF64 · ET_REL · 含重定位与符号表</span></div><div class="format__row"><span class="format__key">可执行</span><span class="format__val">ELF64 · ET_DYN（PIE）</span></div><div class="format__row"><span class="format__key">链接</span><span class="format__val">ld 合并段、解析 libgfortran / libc 符号</span></div><div class="format__row"><span class="format__key">运行时</span><span class="format__val">真正的格式化与输出在共享库里</span></div></div>
@@ -325,19 +324,6 @@ end program hello</code></pre>
         <div class="footprint"><div class="footprint__row"><span class="footprint__stage">源卡</span><span class="footprint__track"><span class="footprint__fill" data-w="8" style="width:8%"></span></span><span class="footprint__size">7 张卡 · 560 B</span></div><div class="footprint__row"><span class="footprint__stage">汇编</span><span class="footprint__track"><span class="footprint__fill" data-w="16" style="width:16%"></span></span><span class="footprint__size">≈ 0.9 KB</span></div><div class="footprint__row"><span class="footprint__stage">目标 .o</span><span class="footprint__track"><span class="footprint__fill" data-w="30" style="width:30%"></span></span><span class="footprint__size">≈ 3.2 KB</span></div><div class="footprint__row"><span class="footprint__stage">可执行</span><span class="footprint__track"><span class="footprint__fill" data-w="48" style="width:48%"></span></span><span class="footprint__size">≈ 17 KB</span></div><div class="footprint__row"><span class="footprint__stage">+ libgfortran</span><span class="footprint__track"><span class="footprint__fill" data-w="100" style="width:100%"></span></span><span class="footprint__size">≈ 3 MB</span></div></div>
         <ol class="why-list"><li><strong>固定列</strong>：让读卡器按物理列切分字段，编译器不必先做完整的词法分析。</li><li><strong>FORMAT 分离</strong>：把「数据长什么样」和「数据怎么算」分开，打印格式可以复用。</li><li><strong>运行时库</strong>：WRITE 的缓冲、格式化、设备处理都在 libgfortran 里，用户代码只负责传参。</li><li><strong>目标文件</strong>：让每个源文件可以独立编译，最后由链接器拼装。</li></ol>
       </div>
-    </div>
-    <div class="verify" id="verify">
-      <div class="verify__head">
-        <span class="verify__badge">已实测</span>
-        <b>本机复现记录</b>
-        <span class="verify__meta">2026-10-28 · GNU Fortran (GCC) 16.2.0</span>
-      </div>
-      <div class="verify__grid">
-        <div class="verify__item"><span class="verify__key">命令</span><code>gfortran -O0 hello.f90 -o hello.exe &amp;&amp; hello.exe</code></div>
-        <div class="verify__item"><span class="verify__key">输出</span><code>Hello, world</code></div>
-      </div>
-      <div class="verify__item"><span class="verify__key">产物 / 观察</span><ul class="verify__list"><li>hello.o · 1455 B · 首字节 64 86 07 00</li><li>hello.exe · 674288 B · 首字节 4d 5a 90 00</li></ul></div>
-      <p class="verify__note">Windows/MinGW 生成 PE/COFF；页面中的 ELF 样例是 Linux 口径。</p>
     </div>
   </section>
     <section class="block deep reveal" id="deep">
@@ -418,7 +404,7 @@ end program hello</code></pre>
     <span class="next-card__arrow" aria-hidden="true">→</span>
   </a>
     <footer class="pagefoot">
-      <p class="stamp">本页所有文件样例为依据公开规范与文档重构的示意内容；具体地址、偏移与字节数为示例值，不代表任何特定编译器版本的实测输出。</p>
+      <p class="stamp">本页所有文件样例为依据公开规范与文档重构的示意内容；具体地址、偏移与字节数为示例值，不代表任何特定编译器版本的输出。</p>
       <p>第 1–23 批 · PLATE 01 / 78</p>
     </footer>
   </div>

@@ -100,7 +100,6 @@ try {
     <a href="../scenarios.html">开发场景 →</a><br>
     <a href="../languages/formats.html">产物索引 →</a><br>
     <a href="../sources.html">来源索引 →</a><br>
-    <a href="../verified.html">实测记录 →</a>
   </div>
 </aside>
 <main class="page" id="main">
@@ -122,7 +121,7 @@ try {
       <div class="meta-item"><span class="meta-label">首次发布</span><span class="meta-value">1980</span></div>
       <div class="meta-item"><span class="meta-label">类型</span><span class="meta-value">编译型</span></div>
     </div>
-    <div class="tags"><span class="tag">强类型</span><span class="tag">并发</span><span class="tag">实时系统</span><span class="tag is-accent">编译型</span><span class="tag tag--level" title="产物链样例为文档重构，不是本机实测">文档重构</span></div>
+    <div class="tags"><span class="tag">强类型</span><span class="tag">并发</span><span class="tag">实时系统</span><span class="tag is-accent">编译型</span><span class="tag tag--level" title="产物链样例为依据公开文档重构，不是本机运行输出">文档重构</span></div>
     <a class="dossier__fwlink" href="../frameworks/ada.html">框架与场景 →</a>
     <div class="lineage">
       <div><div class="lineage__label">源自 / From</div><p class="lineage__list">Pascal · ALGOL 60 · Modula-2</p></div>
@@ -163,7 +162,7 @@ end Hello;</code></pre>
         <div class="code-actions">
           <button class="code-btn" type="button" data-copy>复制</button>
           
-          <span class="code-hint">文档重构 · 非实测输出</span>
+          <span class="code-hint">文档重构 · 示意输出</span>
         </div>
       </div>
       <div class="format"><div class="format__row"><span class="format__key">扩展名</span><span class="format__val">.ads（spec）</span></div><div class="format__row"><span class="format__key">内容</span><span class="format__val">只写接口与类型</span></div><div class="format__row"><span class="format__key">可见性</span><span class="format__val">包外可见的过程/类型</span></div><div class="format__row"><span class="format__key">对应物</span><span class="format__val">C 头文件 / Modula-2 .def</span></div></div>
@@ -192,7 +191,7 @@ end Hello;</code></pre>
         <div class="code-actions">
           <button class="code-btn" type="button" data-copy>复制</button>
           
-          <span class="code-hint">文档重构 · 非实测输出</span>
+          <span class="code-hint">文档重构 · 示意输出</span>
         </div>
       </div>
       <div class="format"><div class="format__row"><span class="format__key">扩展名</span><span class="format__val">.adb（body）</span></div><div class="format__row"><span class="format__key">with</span><span class="format__val">显式依赖其他包</span></div><div class="format__row"><span class="format__key">实现</span><span class="format__val">必须匹配规范中的签名</span></div><div class="format__row"><span class="format__key">检查</span><span class="format__val">编译器插入范围/越界检查</span></div></div>
@@ -227,7 +226,7 @@ A &quot;hello.adb&quot;
         <div class="code-actions">
           <button class="code-btn" type="button" data-copy>复制</button>
           
-          <span class="code-hint">文档重构 · 非实测输出</span>
+          <span class="code-hint">文档重构 · 示意输出</span>
         </div>
       </div>
       <div class="format"><div class="format__row"><span class="format__key">ALI</span><span class="format__val">Ada Library Information，文本</span></div><div class="format__row"><span class="format__key">作用</span><span class="format__val">依赖、版本、检查、初始化顺序</span></div><div class="format__row"><span class="format__key">目标</span><span class="format__val">平台对象文件（ELF/COFF）</span></div><div class="format__row"><span class="format__key">绑定</span><span class="format__val">gnatbind 读 ALI 生成 b~main.adb</span></div></div>
@@ -257,7 +256,7 @@ main: ELF 64-bit LSB pie executable, x86-64 ...
         <div class="code-actions">
           <button class="code-btn" type="button" data-copy>复制</button>
           
-          <span class="code-hint">文档重构 · 非实测输出</span>
+          <span class="code-hint">文档重构 · 示意输出</span>
         </div>
       </div>
       <div class="format"><div class="format__row"><span class="format__key">链接</span><span class="format__val">gnatlink + Ada 运行时</span></div><div class="format__row"><span class="format__key">运行时</span><span class="format__val">任务、异常、检查、受控类型</span></div><div class="format__row"><span class="format__key">产物</span><span class="format__val">原生可执行文件</span></div><div class="format__row"><span class="format__key">裁剪</span><span class="format__val">嵌入式可用 Ravenscar / ZFP</span></div></div>
@@ -312,7 +311,6 @@ end Main;</code></pre>
         <ol class="why-list"><li><strong>规范/实现分离</strong>：客户只依赖 .ads，实现可以替换。</li><li><strong>ALI</strong>：把依赖、版本与检查结果写进可审计的文本文件。</li><li><strong>绑定</strong>：gnatbind 根据 ALI 决定包的初始化顺序。</li><li><strong>默认检查</strong>：越界、范围、空指针在运行时被捕获，而不是静默未定义行为。</li></ol>
       </div>
     </div>
-    
   </section>
     <section class="block deep reveal" id="deep">
     <div class="block__head">
@@ -385,7 +383,7 @@ end Main;</code></pre>
     <span class="next-card__arrow" aria-hidden="true">→</span>
   </a>
     <footer class="pagefoot">
-      <p class="stamp">本页所有文件样例为依据公开规范与文档重构的示意内容；具体地址、偏移与字节数为示例值，不代表任何特定编译器版本的实测输出。</p>
+      <p class="stamp">本页所有文件样例为依据公开规范与文档重构的示意内容；具体地址、偏移与字节数为示例值，不代表任何特定编译器版本的输出。</p>
       <p>第 1–23 批 · PLATE 23 / 78</p>
     </footer>
   </div>

@@ -100,7 +100,6 @@ try {
     <a href="../scenarios.html">开发场景 →</a><br>
     <a href="../languages/formats.html">产物索引 →</a><br>
     <a href="../sources.html">来源索引 →</a><br>
-    <a href="../verified.html">实测记录 →</a>
   </div>
 </aside>
 <main class="page" id="main">
@@ -122,7 +121,7 @@ try {
       <div class="meta-item"><span class="meta-label">首次发布</span><span class="meta-value">2011</span></div>
       <div class="meta-item"><span class="meta-label">类型</span><span class="meta-value">解释 / 字节码</span></div>
     </div>
-    <div class="tags"><span class="tag">函数式</span><span class="tag">并发</span><span class="tag">BEAM</span><span class="tag is-accent">解释 / 字节码</span><span class="tag tag--level" title="产物链样例为文档重构，不是本机实测">文档重构</span></div>
+    <div class="tags"><span class="tag">函数式</span><span class="tag">并发</span><span class="tag">BEAM</span><span class="tag is-accent">解释 / 字节码</span><span class="tag tag--level" title="产物链样例为依据公开文档重构，不是本机运行输出">文档重构</span></div>
     <a class="dossier__fwlink" href="../frameworks/elixir.html">框架与场景 →</a>
     <div class="lineage">
       <div><div class="lineage__label">源自 / From</div><p class="lineage__list">Erlang · Ruby（语法） · Clojure（部分）</p></div>
@@ -167,7 +166,7 @@ Hello.world()</code></pre>
         <div class="code-actions">
           <button class="code-btn" type="button" data-copy>复制</button>
           
-          <span class="code-hint">文档重构 · 非实测输出</span>
+          <span class="code-hint">文档重构 · 示意输出</span>
         </div>
       </div>
       <div class="format"><div class="format__row"><span class="format__key">扩展名</span><span class="format__val">.ex / .exs</span></div><div class="format__row"><span class="format__key">模块</span><span class="format__val">defmodule</span></div><div class="format__row"><span class="format__key">函数</span><span class="format__val">def / defp</span></div><div class="format__row"><span class="format__key">编译</span><span class="format__val">elixirc / mix compile</span></div></div>
@@ -195,7 +194,7 @@ Hello.world()</code></pre>
         <div class="code-actions">
           <button class="code-btn" type="button" data-copy>复制</button>
           
-          <span class="code-hint">文档重构 · 非实测输出</span>
+          <span class="code-hint">文档重构 · 示意输出</span>
         </div>
       </div>
       <div class="format"><div class="format__row"><span class="format__key">AST</span><span class="format__val">quoted expression（三元组）</span></div><div class="format__row"><span class="format__key">宏</span><span class="format__val">编译期展开</span></div><div class="format__row"><span class="format__key">目标</span><span class="format__val">Erlang abstract format</span></div><div class="format__row"><span class="format__key">产物</span><span class="format__val">.beam</span></div></div>
@@ -224,7 +223,7 @@ Hello.world()</code></pre>
         <div class="code-actions">
           <button class="code-btn" type="button" data-copy>复制</button>
           
-          <span class="code-hint">文档重构 · 非实测输出</span>
+          <span class="code-hint">文档重构 · 示意输出</span>
         </div>
       </div>
       <div class="format"><div class="format__row"><span class="format__key">容器</span><span class="format__val">FOR1（同 Erlang）</span></div><div class="format__row"><span class="format__key">模块</span><span class="format__val">Elixir.Hello</span></div><div class="format__row"><span class="format__key">字节码</span><span class="format__val">BEAM 指令</span></div><div class="format__row"><span class="format__key">元数据</span><span class="format__val">Atom / StrT / Attr</span></div></div>
@@ -255,7 +254,7 @@ Hello, world
         <div class="code-actions">
           <button class="code-btn" type="button" data-copy>复制</button>
           
-          <span class="code-hint">文档重构 · 非实测输出</span>
+          <span class="code-hint">文档重构 · 示意输出</span>
         </div>
       </div>
       <div class="format"><div class="format__row"><span class="format__key">打包</span><span class="format__val">mix release</span></div><div class="format__row"><span class="format__key">内容</span><span class="format__val">ERTS + .beam + 配置 + 脚本</span></div><div class="format__row"><span class="format__key">体积</span><span class="format__val">通常 20–60 MB</span></div><div class="format__row"><span class="format__key">部署</span><span class="format__val">拷贝目录即可</span></div></div>
@@ -306,7 +305,6 @@ Hello, world
         <ol class="why-list"><li><strong>quoted AST</strong>：宏在编译期改写表达式，是 Elixir DSL 的基础。</li><li><strong>BEAM 容器</strong>：与 Erlang 共用 FOR1 块格式与字节码。</li><li><strong>release</strong>：把运行时与所有模块打包，目标机无需安装环境。</li><li><strong>热升级</strong>：BEAM 允许替换模块，release_handler 负责版本切换。</li></ol>
       </div>
     </div>
-    
   </section>
     <section class="block deep reveal" id="deep">
     <div class="block__head">
@@ -386,7 +384,7 @@ Hello, world
     <span class="next-card__arrow" aria-hidden="true">→</span>
   </a>
     <footer class="pagefoot">
-      <p class="stamp">本页所有文件样例为依据公开规范与文档重构的示意内容；具体地址、偏移与字节数为示例值，不代表任何特定编译器版本的实测输出。</p>
+      <p class="stamp">本页所有文件样例为依据公开规范与文档重构的示意内容；具体地址、偏移与字节数为示例值，不代表任何特定编译器版本的输出。</p>
       <p>第 1–23 批 · PLATE 51 / 78</p>
     </footer>
   </div>

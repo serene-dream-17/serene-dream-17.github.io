@@ -100,7 +100,6 @@ try {
     <a href="../scenarios.html">开发场景 →</a><br>
     <a href="../languages/formats.html">产物索引 →</a><br>
     <a href="../sources.html">来源索引 →</a><br>
-    <a href="../verified.html">实测记录 →</a>
   </div>
 </aside>
 <main class="page" id="main">
@@ -122,7 +121,7 @@ try {
       <div class="meta-item"><span class="meta-label">首次发布</span><span class="meta-value">1964</span></div>
       <div class="meta-item"><span class="meta-label">类型</span><span class="meta-value">编译型</span></div>
     </div>
-    <div class="tags"><span class="tag">多范式</span><span class="tag">商业数据</span><span class="tag">异常</span><span class="tag is-accent">编译型</span><span class="tag tag--level" title="产物链样例为文档重构，不是本机实测">文档重构</span></div>
+    <div class="tags"><span class="tag">多范式</span><span class="tag">商业数据</span><span class="tag">异常</span><span class="tag is-accent">编译型</span><span class="tag tag--level" title="产物链样例为依据公开文档重构，不是本机运行输出">文档重构</span></div>
     <a class="dossier__fwlink" href="../frameworks/pli.html">框架与场景 →</a>
     <div class="lineage">
       <div><div class="lineage__label">源自 / From</div><p class="lineage__list">FORTRAN · COBOL · ALGOL 60</p></div>
@@ -164,7 +163,7 @@ END HELLO;</code></pre>
         <div class="code-actions">
           <button class="code-btn" type="button" data-copy>复制</button>
           
-          <span class="code-hint">文档重构 · 非实测输出</span>
+          <span class="code-hint">文档重构 · 示意输出</span>
         </div>
       </div>
       <div class="format"><div class="format__row"><span class="format__key">过程</span><span class="format__val">PROCEDURE OPTIONS(MAIN)</span></div><div class="format__row"><span class="format__key">声明</span><span class="format__val">DCL 定义类型、长度、初值</span></div><div class="format__row"><span class="format__key">字符串</span><span class="format__val">CHAR(n)，定长</span></div><div class="format__row"><span class="format__key">关键字</span><span class="format__val">无保留字，按上下文解析</span></div></div>
@@ -196,7 +195,7 @@ END HELLO;
         <div class="code-actions">
           <button class="code-btn" type="button" data-copy>复制</button>
           
-          <span class="code-hint">文档重构 · 非实测输出</span>
+          <span class="code-hint">文档重构 · 示意输出</span>
         </div>
       </div>
       <div class="format"><div class="format__row"><span class="format__key">%INCLUDE</span><span class="format__val">把外部声明文本并入</span></div><div class="format__row"><span class="format__key">%MACRO</span><span class="format__val">定义编译期宏</span></div><div class="format__row"><span class="format__key">%变量</span><span class="format__val">在编译期求值，替换进源码</span></div><div class="format__row"><span class="format__key">阶段</span><span class="format__val">发生在语法分析之前</span></div></div>
@@ -228,7 +227,7 @@ END   HELLO
         <div class="code-actions">
           <button class="code-btn" type="button" data-copy>复制</button>
           
-          <span class="code-hint">文档重构 · 非实测输出</span>
+          <span class="code-hint">文档重构 · 示意输出</span>
         </div>
       </div>
       <div class="format"><div class="format__row"><span class="format__key">ESD</span><span class="format__val">外部符号与段定义</span></div><div class="format__row"><span class="format__key">RLD</span><span class="format__val">重定位信息</span></div><div class="format__row"><span class="format__key">TXT</span><span class="format__val">机器码文本记录</span></div><div class="format__row"><span class="format__key">END</span><span class="format__val">模块结束与入口</span></div></div>
@@ -255,7 +254,7 @@ END   HELLO
         <div class="code-actions">
           <button class="code-btn" type="button" data-copy>复制</button>
           
-          <span class="code-hint">文档重构 · 非实测输出</span>
+          <span class="code-hint">文档重构 · 示意输出</span>
         </div>
       </div>
       <div class="format"><div class="format__row"><span class="format__key">链接器</span><span class="format__val">IEWL（Linkage Editor）</span></div><div class="format__row"><span class="format__key">产物</span><span class="format__val">load module，PDS 成员</span></div><div class="format__row"><span class="format__key">符号</span><span class="format__val">全部解析完毕，无动态链接</span></div><div class="format__row"><span class="format__key">运行</span><span class="format__val">JCL 的 EXEC PGM=HELLO</span></div></div>
@@ -308,7 +307,6 @@ END HELLO;</code></pre>
         <ol class="why-list"><li><strong>多范式</strong>：一套语法同时服务科学与商业，声明与语句都很重。</li><li><strong>编译期设施</strong>：宏与包含在语法分析前展开，能力超过 C 预处理器。</li><li><strong>目标模块</strong>：用 ESD/RLD/TXT 记录描述符号与重定位。</li><li><strong>自包含装入</strong>：大型机没有动态链接，链接时就把一切固定下来。</li></ol>
       </div>
     </div>
-    
   </section>
     <section class="block deep reveal" id="deep">
     <div class="block__head">
@@ -381,7 +379,7 @@ END HELLO;</code></pre>
     <span class="next-card__arrow" aria-hidden="true">→</span>
   </a>
     <footer class="pagefoot">
-      <p class="stamp">本页所有文件样例为依据公开规范与文档重构的示意内容；具体地址、偏移与字节数为示例值，不代表任何特定编译器版本的实测输出。</p>
+      <p class="stamp">本页所有文件样例为依据公开规范与文档重构的示意内容；具体地址、偏移与字节数为示例值，不代表任何特定编译器版本的输出。</p>
       <p>第 1–23 批 · PLATE 07 / 78</p>
     </footer>
   </div>

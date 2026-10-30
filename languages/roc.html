@@ -100,7 +100,6 @@ try {
     <a href="../scenarios.html">开发场景 →</a><br>
     <a href="../languages/formats.html">产物索引 →</a><br>
     <a href="../sources.html">来源索引 →</a><br>
-    <a href="../verified.html">实测记录 →</a>
   </div>
 </aside>
 <main class="page" id="main">
@@ -122,7 +121,7 @@ try {
       <div class="meta-item"><span class="meta-label">首次发布</span><span class="meta-value">2022</span></div>
       <div class="meta-item"><span class="meta-label">类型</span><span class="meta-value">编译型</span></div>
     </div>
-    <div class="tags"><span class="tag">函数式</span><span class="tag">快速编译</span><span class="tag">平台</span><span class="tag is-accent">编译型</span><span class="tag tag--level" title="产物链样例为文档重构，不是本机实测">文档重构</span></div>
+    <div class="tags"><span class="tag">函数式</span><span class="tag">快速编译</span><span class="tag">平台</span><span class="tag is-accent">编译型</span><span class="tag tag--level" title="产物链样例为依据公开文档重构，不是本机运行输出">文档重构</span></div>
     <a class="dossier__fwlink" href="../frameworks/roc.html">框架与场景 →</a>
     <div class="lineage">
       <div><div class="lineage__label">源自 / From</div><p class="lineage__list">Elm · Haskell · Rust（工具链体验）</p></div>
@@ -168,7 +167,7 @@ main =
         <div class="code-actions">
           <button class="code-btn" type="button" data-copy>复制</button>
           
-          <span class="code-hint">文档重构 · 非实测输出</span>
+          <span class="code-hint">文档重构 · 示意输出</span>
         </div>
       </div>
       <div class="format"><div class="format__row"><span class="format__key">扩展名</span><span class="format__val">.roc</span></div><div class="format__row"><span class="format__key">app</span><span class="format__val">声明平台与依赖</span></div><div class="format__row"><span class="format__key">provides</span><span class="format__val">向平台提供 main</span></div><div class="format__row"><span class="format__key">纯函数</span><span class="format__val">副作用由平台执行</span></div></div>
@@ -198,7 +197,7 @@ main =
         <div class="code-actions">
           <button class="code-btn" type="button" data-copy>复制</button>
           
-          <span class="code-hint">文档重构 · 非实测输出</span>
+          <span class="code-hint">文档重构 · 示意输出</span>
         </div>
       </div>
       <div class="format"><div class="format__row"><span class="format__key">前端</span><span class="format__val">canonicalize + 类型检查</span></div><div class="format__row"><span class="format__key">单态化</span><span class="format__val">mono IR</span></div><div class="format__row"><span class="format__key">后端</span><span class="format__val">LLVM / Wasm</span></div><div class="format__row"><span class="format__key">稳定</span><span class="format__val">IR 非公开接口</span></div></div>
@@ -228,7 +227,7 @@ main =
         <div class="code-actions">
           <button class="code-btn" type="button" data-copy>复制</button>
           
-          <span class="code-hint">文档重构 · 非实测输出</span>
+          <span class="code-hint">文档重构 · 示意输出</span>
         </div>
       </div>
       <div class="format"><div class="format__row"><span class="format__key">中间表示</span><span class="format__val">LLVM IR</span></div><div class="format__row"><span class="format__key">平台</span><span class="format__val">host 接口</span></div><div class="format__row"><span class="format__key">后端</span><span class="format__val">LLVM</span></div><div class="format__row"><span class="format__key">备选</span><span class="format__val">Wasm</span></div></div>
@@ -258,7 +257,7 @@ hello: ELF 64-bit LSB pie executable, x86-64 ...
         <div class="code-actions">
           <button class="code-btn" type="button" data-copy>复制</button>
           
-          <span class="code-hint">文档重构 · 非实测输出</span>
+          <span class="code-hint">文档重构 · 示意输出</span>
         </div>
       </div>
       <div class="format"><div class="format__row"><span class="format__key">格式</span><span class="format__val">ELF / Wasm</span></div><div class="format__row"><span class="format__key">平台</span><span class="format__val">basic-cli / web / wasm</span></div><div class="format__row"><span class="format__key">运行时</span><span class="format__val">由平台决定</span></div><div class="format__row"><span class="format__key">编译</span><span class="format__val">强调速度</span></div></div>
@@ -316,7 +315,6 @@ main =
         <ol class="why-list"><li><strong>平台抽象</strong>：语言只描述任务，I/O 交给宿主平台。</li><li><strong>单态化</strong>：类型在编译期具体化，运行时无类型擦除。</li><li><strong>快速编译</strong>：工具链体验是设计目标，不只是运行性能。</li><li><strong>Wasm 后端</strong>：同一份应用可以换平台部署。</li></ol>
       </div>
     </div>
-    
   </section>
     <section class="block deep reveal" id="deep">
     <div class="block__head">
@@ -389,7 +387,7 @@ main =
     <span class="next-card__arrow" aria-hidden="true">→</span>
   </a>
     <footer class="pagefoot">
-      <p class="stamp">本页所有文件样例为依据公开规范与文档重构的示意内容；具体地址、偏移与字节数为示例值，不代表任何特定编译器版本的实测输出。</p>
+      <p class="stamp">本页所有文件样例为依据公开规范与文档重构的示意内容；具体地址、偏移与字节数为示例值，不代表任何特定编译器版本的输出。</p>
       <p>第 1–23 批 · PLATE 63 / 78</p>
     </footer>
   </div>

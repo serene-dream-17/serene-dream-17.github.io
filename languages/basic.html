@@ -100,7 +100,6 @@ try {
     <a href="../scenarios.html">开发场景 →</a><br>
     <a href="../languages/formats.html">产物索引 →</a><br>
     <a href="../sources.html">来源索引 →</a><br>
-    <a href="../verified.html">实测记录 →</a>
   </div>
 </aside>
 <main class="page" id="main">
@@ -122,7 +121,7 @@ try {
       <div class="meta-item"><span class="meta-label">首次发布</span><span class="meta-value">1964</span></div>
       <div class="meta-item"><span class="meta-label">类型</span><span class="meta-value">解释 / 字节码</span></div>
     </div>
-    <div class="tags"><span class="tag">命令式</span><span class="tag">交互式</span><span class="tag">教学</span><span class="tag is-accent">解释 / 字节码</span><span class="tag tag--level" title="产物链样例为文档重构，不是本机实测">文档重构</span></div>
+    <div class="tags"><span class="tag">命令式</span><span class="tag">交互式</span><span class="tag">教学</span><span class="tag is-accent">解释 / 字节码</span><span class="tag tag--level" title="产物链样例为依据公开文档重构，不是本机运行输出">文档重构</span></div>
     <a class="dossier__fwlink" href="../frameworks/basic.html">框架与场景 →</a>
     <div class="lineage">
       <div><div class="lineage__label">源自 / From</div><p class="lineage__list">FORTRAN · ALGOL 60 · 分时系统</p></div>
@@ -165,7 +164,7 @@ try {
         <div class="code-actions">
           <button class="code-btn" type="button" data-copy>复制</button>
           
-          <span class="code-hint">文档重构 · 非实测输出</span>
+          <span class="code-hint">文档重构 · 示意输出</span>
         </div>
       </div>
       <div class="format"><div class="format__row"><span class="format__key">行号</span><span class="format__val">每行必须编号，用于编辑与跳转</span></div><div class="format__row"><span class="format__key">语句</span><span class="format__val">PRINT / FOR / NEXT / END</span></div><div class="format__row"><span class="format__key">编辑</span><span class="format__val">按行号覆盖，LIST 列出，RUN 执行</span></div><div class="format__row"><span class="format__key">终端</span><span class="format__val">ASR-33 电传打字机，10 字符/秒</span></div></div>
@@ -195,7 +194,7 @@ try {
         <div class="code-actions">
           <button class="code-btn" type="button" data-copy>复制</button>
           
-          <span class="code-hint">文档重构 · 非实测输出</span>
+          <span class="code-hint">文档重构 · 示意输出</span>
         </div>
       </div>
       <div class="format"><div class="format__row"><span class="format__key">行结构</span><span class="format__val">行号（2 B）+ 长度 + token 流 + 0x00</span></div><div class="format__row"><span class="format__key">token</span><span class="format__val">关键词压成 1 字节，如 PRINT=0x99</span></div><div class="format__row"><span class="format__key">字符串</span><span class="format__val">原样保存，以 0x00 结束</span></div><div class="format__row"><span class="format__key">兼容性</span><span class="format__val">token 编号随实现而变，源码不通用</span></div></div>
@@ -226,7 +225,7 @@ main:
         <div class="code-actions">
           <button class="code-btn" type="button" data-copy>复制</button>
           
-          <span class="code-hint">文档重构 · 非实测输出</span>
+          <span class="code-hint">文档重构 · 示意输出</span>
         </div>
       </div>
       <div class="format"><div class="format__row"><span class="format__key">编译器</span><span class="format__val">FreeBASIC（自举，兼容 QuickBASIC）</span></div><div class="format__row"><span class="format__key">后端</span><span class="format__val">GNU as / binutils</span></div><div class="format__row"><span class="format__key">运行时</span><span class="format__val">fb 运行时库，提供 PRINT / 字符串</span></div><div class="format__row"><span class="format__key">输出</span><span class="format__val">COFF / ELF / PE，视目标平台</span></div></div>
@@ -255,7 +254,7 @@ $ xxd -l 64 HELLO.EXE
         <div class="code-actions">
           <button class="code-btn" type="button" data-copy>复制</button>
           
-          <span class="code-hint">文档重构 · 非实测输出</span>
+          <span class="code-hint">文档重构 · 示意输出</span>
         </div>
       </div>
       <div class="format"><div class="format__row"><span class="format__key">MZ</span><span class="format__val">DOS 可执行头，前两个字节 4D 5A</span></div><div class="format__row"><span class="format__key">e_lfanew</span><span class="format__val">0x3C 处的 4 字节指向 PE 头</span></div><div class="format__row"><span class="format__key">PE</span><span class="format__val">COFF 头 + 可选头 + 节表</span></div><div class="format__row"><span class="format__key">DOS 时代</span><span class="format__val">Turbo BASIC / QuickBASIC 生成 .EXE</span></div></div>
@@ -307,7 +306,6 @@ $ xxd -l 64 HELLO.EXE
         <ol class="why-list"><li><strong>行号</strong>：在没有全屏编辑器的年代，行号就是编辑器的索引。</li><li><strong>令牌化</strong>：把关键词压成字节，既省内存又加快解释。</li><li><strong>交互循环</strong>：READ–EVAL–PRINT 的雏形，改一行立即能跑。</li><li><strong>运行时</strong>：PRINT 的格式化与设备输出不在用户代码里。</li></ol>
       </div>
     </div>
-    
   </section>
     <section class="block deep reveal" id="deep">
     <div class="block__head">
@@ -380,7 +378,7 @@ $ xxd -l 64 HELLO.EXE
     <span class="next-card__arrow" aria-hidden="true">→</span>
   </a>
     <footer class="pagefoot">
-      <p class="stamp">本页所有文件样例为依据公开规范与文档重构的示意内容；具体地址、偏移与字节数为示例值，不代表任何特定编译器版本的实测输出。</p>
+      <p class="stamp">本页所有文件样例为依据公开规范与文档重构的示意内容；具体地址、偏移与字节数为示例值，不代表任何特定编译器版本的输出。</p>
       <p>第 1–23 批 · PLATE 05 / 78</p>
     </footer>
   </div>

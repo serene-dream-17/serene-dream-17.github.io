@@ -100,7 +100,6 @@ try {
     <a href="../scenarios.html">开发场景 →</a><br>
     <a href="../languages/formats.html">产物索引 →</a><br>
     <a href="../sources.html">来源索引 →</a><br>
-    <a href="../verified.html">实测记录 →</a>
   </div>
 </aside>
 <main class="page" id="main">
@@ -122,7 +121,7 @@ try {
       <div class="meta-item"><span class="meta-label">首次发布</span><span class="meta-value">2014</span></div>
       <div class="meta-item"><span class="meta-label">类型</span><span class="meta-value">编译型</span></div>
     </div>
-    <div class="tags"><span class="tag">面向对象</span><span class="tag">协议</span><span class="tag">ARC</span><span class="tag is-accent">编译型</span><span class="tag tag--level" title="产物链样例为文档重构，不是本机实测">文档重构</span></div>
+    <div class="tags"><span class="tag">面向对象</span><span class="tag">协议</span><span class="tag">ARC</span><span class="tag is-accent">编译型</span><span class="tag tag--level" title="产物链样例为依据公开文档重构，不是本机运行输出">文档重构</span></div>
     <a class="dossier__fwlink" href="../frameworks/swift.html">框架与场景 →</a>
     <div class="lineage">
       <div><div class="lineage__label">源自 / From</div><p class="lineage__list">Objective-C · Rust（语法/安全） · Haskell（部分） · LLVM</p></div>
@@ -164,7 +163,7 @@ try {
         <div class="code-actions">
           <button class="code-btn" type="button" data-copy>复制</button>
           
-          <span class="code-hint">文档重构 · 非实测输出</span>
+          <span class="code-hint">文档重构 · 示意输出</span>
         </div>
       </div>
       <div class="format"><div class="format__row"><span class="format__key">扩展名</span><span class="format__val">.swift</span></div><div class="format__row"><span class="format__key">类型</span><span class="format__val">静态、推断</span></div><div class="format__row"><span class="format__key">内存</span><span class="format__val">ARC（引用计数）</span></div><div class="format__row"><span class="format__key">入口</span><span class="format__val">顶层代码或 @main</span></div></div>
@@ -196,7 +195,7 @@ bb0(%0 : $Int32, %1 : $...):
         <div class="code-actions">
           <button class="code-btn" type="button" data-copy>复制</button>
           
-          <span class="code-hint">文档重构 · 非实测输出</span>
+          <span class="code-hint">文档重构 · 示意输出</span>
         </div>
       </div>
       <div class="format"><div class="format__row"><span class="format__key">中间语言</span><span class="format__val">SIL</span></div><div class="format__row"><span class="format__key">阶段</span><span class="format__val">raw → canonical → optimized</span></div><div class="format__row"><span class="format__key">职责</span><span class="format__val">ARC、泛型特化、协议</span></div><div class="format__row"><span class="format__key">查看</span><span class="format__val">swiftc -emit-sil</span></div></div>
@@ -228,7 +227,7 @@ entry:
         <div class="code-actions">
           <button class="code-btn" type="button" data-copy>复制</button>
           
-          <span class="code-hint">文档重构 · 非实测输出</span>
+          <span class="code-hint">文档重构 · 示意输出</span>
         </div>
       </div>
       <div class="format"><div class="format__row"><span class="format__key">中间表示</span><span class="format__val">LLVM IR</span></div><div class="format__row"><span class="format__key">ARC</span><span class="format__val">retain/release 已显式</span></div><div class="format__row"><span class="format__key">泛型</span><span class="format__val">特化或 witness table</span></div><div class="format__row"><span class="format__key">后端</span><span class="format__val">LLVM</span></div></div>
@@ -258,7 +257,7 @@ $ nm hello.o | grep main
         <div class="code-actions">
           <button class="code-btn" type="button" data-copy>复制</button>
           
-          <span class="code-hint">文档重构 · 非实测输出</span>
+          <span class="code-hint">文档重构 · 示意输出</span>
         </div>
       </div>
       <div class="format"><div class="format__row"><span class="format__key">格式</span><span class="format__val">Mach-O / ELF / COFF</span></div><div class="format__row"><span class="format__key">符号</span><span class="format__val">_main</span></div><div class="format__row"><span class="format__key">元数据</span><span class="format__val">类型、协议、反射</span></div><div class="format__row"><span class="format__key">运行时</span><span class="format__val">Swift runtime 引用</span></div></div>
@@ -292,7 +291,7 @@ $ otool -L hello
         <div class="code-actions">
           <button class="code-btn" type="button" data-copy>复制</button>
           
-          <span class="code-hint">文档重构 · 非实测输出</span>
+          <span class="code-hint">文档重构 · 示意输出</span>
         </div>
       </div>
       <div class="format"><div class="format__row"><span class="format__key">格式</span><span class="format__val">Mach-O / ELF</span></div><div class="format__row"><span class="format__key">运行时</span><span class="format__val">Swift runtime</span></div><div class="format__row"><span class="format__key">内存</span><span class="format__val">ARC</span></div><div class="format__row"><span class="format__key">部署</span><span class="format__val">Apple 平台自带运行时</span></div></div>
@@ -343,7 +342,6 @@ $ otool -L hello
         <ol class="why-list"><li><strong>SIL</strong>：保留 Swift 语义的中间语言，负责 ARC 与泛型特化。</li><li><strong>LLVM IR</strong>：retain/release 与 witness table 已展开。</li><li><strong>元数据</strong>：反射、协议与动态派发依赖目标文件里的类型信息。</li><li><strong>运行时</strong>：Apple 平台随系统，其他平台需要分发。</li></ol>
       </div>
     </div>
-    
   </section>
     <section class="block deep reveal" id="deep">
     <div class="block__head">
@@ -423,7 +421,7 @@ $ otool -L hello
     <span class="next-card__arrow" aria-hidden="true">→</span>
   </a>
     <footer class="pagefoot">
-      <p class="stamp">本页所有文件样例为依据公开规范与文档重构的示意内容；具体地址、偏移与字节数为示例值，不代表任何特定编译器版本的实测输出。</p>
+      <p class="stamp">本页所有文件样例为依据公开规范与文档重构的示意内容；具体地址、偏移与字节数为示例值，不代表任何特定编译器版本的输出。</p>
       <p>第 1–23 批 · PLATE 49 / 78</p>
     </footer>
   </div>

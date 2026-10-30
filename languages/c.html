@@ -100,7 +100,6 @@ try {
     <a href="../scenarios.html">开发场景 →</a><br>
     <a href="../languages/formats.html">产物索引 →</a><br>
     <a href="../sources.html">来源索引 →</a><br>
-    <a href="../verified.html">实测记录 →</a>
   </div>
 </aside>
 <main class="page" id="main">
@@ -122,7 +121,7 @@ try {
       <div class="meta-item"><span class="meta-label">首次发布</span><span class="meta-value">1972</span></div>
       <div class="meta-item"><span class="meta-label">类型</span><span class="meta-value">编译型</span></div>
     </div>
-    <div class="tags"><span class="tag">命令式</span><span class="tag">系统编程</span><span class="tag">静态类型</span><span class="tag is-accent">编译型</span><a class="tag tag--verified" href="#verify">已实测 Hello · gcc.EXE (GCC) 16.2.0</a></div>
+    <div class="tags"><span class="tag">命令式</span><span class="tag">系统编程</span><span class="tag">静态类型</span><span class="tag is-accent">编译型</span><span class="tag tag--level" title="产物链样例为依据公开文档重构，不是本机运行输出">文档重构</span></div>
     <a class="dossier__fwlink" href="../frameworks/c.html">框架与场景 →</a>
     <div class="lineage">
       <div><div class="lineage__label">源自 / From</div><p class="lineage__list">B · BCPL · ALGOL 60</p></div>
@@ -166,7 +165,7 @@ int main(void) {
         <div class="code-actions">
           <button class="code-btn" type="button" data-copy>复制</button>
           
-          <span class="code-hint">文档重构 · 非实测输出</span>
+          <span class="code-hint">文档重构 · 示意输出</span>
         </div>
       </div>
       <div class="format"><div class="format__row"><span class="format__key">编码</span><span class="format__val">UTF-8 / ASCII，文本</span></div><div class="format__row"><span class="format__key">预处理</span><span class="format__val">以 # 开头的行交给 cpp</span></div><div class="format__row"><span class="format__key">翻译单元</span><span class="format__val">一个 .c + 它包含的头文件</span></div><div class="format__row"><span class="format__key">入口</span><span class="format__val">main，由 C 运行时调用</span></div></div>
@@ -202,7 +201,7 @@ int main(void) {
         <div class="code-actions">
           <button class="code-btn" type="button" data-copy>复制</button>
           
-          <span class="code-hint">文档重构 · 非实测输出</span>
+          <span class="code-hint">文档重构 · 示意输出</span>
         </div>
       </div>
       <div class="format"><div class="format__row"><span class="format__key">扩展名</span><span class="format__val">.i，纯 C 文本</span></div><div class="format__row"><span class="format__key">行标记</span><span class="format__val"># 行号 &quot;文件&quot; 标志，供调试定位</span></div><div class="format__row"><span class="format__key">宏</span><span class="format__val">全部展开，条件编译已决定</span></div><div class="format__row"><span class="format__key">头文件</span><span class="format__val">被原地并入，可能几万行</span></div></div>
@@ -248,7 +247,7 @@ main:
         <div class="code-actions">
           <button class="code-btn" type="button" data-copy>复制</button>
           <button class="code-btn" type="button" data-expand aria-expanded="false">展开全部</button>
-          <span class="code-hint">文档重构 · 非实测输出</span>
+          <span class="code-hint">文档重构 · 示意输出</span>
         </div>
       </div>
       <div class="format"><div class="format__row"><span class="format__key">语法</span><span class="format__val">GNU as（AT&amp;T：源在左，目标在右）</span></div><div class="format__row"><span class="format__key">段</span><span class="format__val">.text 代码 · .rodata 只读数据</span></div><div class="format__row"><span class="format__key">调用</span><span class="format__val">printf@PLT，经过程序链接表</span></div><div class="format__row"><span class="format__key">CFI</span><span class="format__val">调用帧信息，供调试与异常回溯</span></div></div>
@@ -290,7 +289,7 @@ $ nm hello.o
         <div class="code-actions">
           <button class="code-btn" type="button" data-copy>复制</button>
           <button class="code-btn" type="button" data-expand aria-expanded="false">展开全部</button>
-          <span class="code-hint">文档重构 · 非实测输出</span>
+          <span class="code-hint">文档重构 · 示意输出</span>
         </div>
       </div>
       <div class="format"><div class="format__row"><span class="format__key">魔数</span><span class="format__val">7f 45 4c 46 = \x7fELF</span></div><div class="format__row"><span class="format__key">类型</span><span class="format__val">ET_REL（可重定位目标）</span></div><div class="format__row"><span class="format__key">机器</span><span class="format__val">EM_X86_64 = 0x3e</span></div><div class="format__row"><span class="format__key">段</span><span class="format__val">.text / .rodata / .rela.text / .symtab</span></div><div class="format__row"><span class="format__key">符号</span><span class="format__val">main 已定义，printf 未定义（U）</span></div></div>
@@ -328,7 +327,7 @@ Hello, world</code></pre>
         <div class="code-actions">
           <button class="code-btn" type="button" data-copy>复制</button>
           
-          <span class="code-hint">文档重构 · 非实测输出</span>
+          <span class="code-hint">文档重构 · 示意输出</span>
         </div>
       </div>
       <div class="format"><div class="format__row"><span class="format__key">类型</span><span class="format__val">ET_DYN（PIE，位置无关可执行）</span></div><div class="format__row"><span class="format__key">解释器</span><span class="format__val">/lib64/ld-linux-x86-64.so.2</span></div><div class="format__row"><span class="format__key">依赖</span><span class="format__val">libc.so.6</span></div><div class="format__row"><span class="format__key">动态表</span><span class="format__val">.dynamic / .got.plt / .plt</span></div><div class="format__row"><span class="format__key">入口</span><span class="format__val">0x1050，先跑 _start 再调 main</span></div></div>
@@ -383,19 +382,6 @@ int main(void) {
         <div class="footprint"><div class="footprint__row"><span class="footprint__stage">hello.c</span><span class="footprint__track"><span class="footprint__fill" data-w="5" style="width:5%"></span></span><span class="footprint__size">78 B</span></div><div class="footprint__row"><span class="footprint__stage">hello.i</span><span class="footprint__track"><span class="footprint__fill" data-w="24" style="width:24%"></span></span><span class="footprint__size">≈ 18 KB</span></div><div class="footprint__row"><span class="footprint__stage">hello.s</span><span class="footprint__track"><span class="footprint__fill" data-w="12" style="width:12%"></span></span><span class="footprint__size">≈ 1.3 KB</span></div><div class="footprint__row"><span class="footprint__stage">hello.o</span><span class="footprint__track"><span class="footprint__fill" data-w="13" style="width:13%"></span></span><span class="footprint__size">≈ 1.5 KB</span></div><div class="footprint__row"><span class="footprint__stage">hello</span><span class="footprint__track"><span class="footprint__fill" data-w="46" style="width:46%"></span></span><span class="footprint__size">≈ 16 KB</span></div><div class="footprint__row"><span class="footprint__stage">+ libc</span><span class="footprint__track"><span class="footprint__fill" data-w="100" style="width:100%"></span></span><span class="footprint__size">≈ 2 MB</span></div></div>
         <ol class="why-list"><li><strong>预处理</strong>：把宏、条件编译、头文件展开成编译器能直接处理的一个翻译单元。</li><li><strong>汇编</strong>：把与机器无关的 C 降到具体指令集，保留符号与段信息。</li><li><strong>目标文件</strong>：允许分别编译；未解析的符号留给链接器。</li><li><strong>链接</strong>：把多个 .o 与库合并，解析 printf，生成可加载的段表。</li><li><strong>动态链接</strong>：printf 的代码不在 hello 里，而在 libc.so；运行时由 ld.so 绑定。</li></ol>
       </div>
-    </div>
-    <div class="verify" id="verify">
-      <div class="verify__head">
-        <span class="verify__badge">已实测</span>
-        <b>本机复现记录</b>
-        <span class="verify__meta">2026-10-28 · gcc.EXE (GCC) 16.2.0</span>
-      </div>
-      <div class="verify__grid">
-        <div class="verify__item"><span class="verify__key">命令</span><code>gcc -O0 hello.c -o hello.exe &amp;&amp; hello.exe</code></div>
-        <div class="verify__item"><span class="verify__key">输出</span><code>Hello, world</code></div>
-      </div>
-      <div class="verify__item"><span class="verify__key">产物 / 观察</span><ul class="verify__list"><li>hello.exe · 49876 B · 首字节 4d 5a 90 00</li><li>hello.o · 866 B · 首字节 64 86 07 00</li></ul></div>
-      <p class="verify__note">本机为 Windows/MinGW，目标格式是 PE/COFF；页面中的 ELF 样例是 Linux 口径。</p>
     </div>
   </section>
     <section class="block deep reveal" id="deep">
@@ -458,7 +444,7 @@ int main(void) {
       <h2 class="block__title">用到它的技术栈<em>Stacks</em></h2>
       <span class="block__rule"></span>
     </div>
-    <div class="stack-grid"><a class="stack-card" href="../stacks/rtos-firmware.html"><span class="stack-top"><span class="stack-lang">嵌入式</span><span class="stack-type">技术栈</span></span><span class="stack-fw">RTOS 固件</span><span class="stack-why">C 与实时内核构成的固件栈：任务优先级、中断延迟与资源上限是设计约束。</span></a></div>
+    <div class="stack-grid"><a class="stack-card" href="../stacks/rtos-firmware.html"><span class="stack-top"><span class="stack-lang">嵌入式</span><span class="stack-type">技术栈</span></span><span class="stack-fw">RTOS 固件</span><span class="stack-why">C 与实时内核构成的固件栈：任务优先级、中断延迟与资源上限是设计约束。</span></a><a class="stack-card" href="../stacks/vuln-research-lab.html"><span class="stack-top"><span class="stack-lang">安全</span><span class="stack-type">技术栈</span></span><span class="stack-fw">漏洞挖掘与逆向</span><span class="stack-why">C/C++ 目标上的 Fuzz + 消毒器 + 反汇编分析，把崩溃变成可复现的漏洞报告。</span></a></div>
   </section>
     <section class="sources" id="sources" aria-label="参考来源">
     <h3 class="sources__title">参考来源 <span>References</span></h3>
@@ -476,7 +462,7 @@ int main(void) {
     <span class="next-card__arrow" aria-hidden="true">→</span>
   </a>
     <footer class="pagefoot">
-      <p class="stamp">本页所有文件样例为依据公开规范与文档重构的示意内容；具体地址、偏移与字节数为示例值，不代表任何特定编译器版本的实测输出。</p>
+      <p class="stamp">本页所有文件样例为依据公开规范与文档重构的示意内容；具体地址、偏移与字节数为示例值，不代表任何特定编译器版本的输出。</p>
       <p>第 1–23 批 · PLATE 11 / 78</p>
     </footer>
   </div>

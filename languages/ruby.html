@@ -100,7 +100,6 @@ try {
     <a href="../scenarios.html">开发场景 →</a><br>
     <a href="../languages/formats.html">产物索引 →</a><br>
     <a href="../sources.html">来源索引 →</a><br>
-    <a href="../verified.html">实测记录 →</a>
   </div>
 </aside>
 <main class="page" id="main">
@@ -122,7 +121,7 @@ try {
       <div class="meta-item"><span class="meta-label">首次发布</span><span class="meta-value">1995</span></div>
       <div class="meta-item"><span class="meta-label">类型</span><span class="meta-value">解释 / 字节码</span></div>
     </div>
-    <div class="tags"><span class="tag">面向对象</span><span class="tag">动态类型</span><span class="tag">元编程</span><span class="tag is-accent">解释 / 字节码</span><span class="tag tag--level" title="产物链样例为文档重构，不是本机实测">文档重构</span></div>
+    <div class="tags"><span class="tag">面向对象</span><span class="tag">动态类型</span><span class="tag">元编程</span><span class="tag is-accent">解释 / 字节码</span><span class="tag tag--level" title="产物链样例为依据公开文档重构，不是本机运行输出">文档重构</span></div>
     <a class="dossier__fwlink" href="../frameworks/ruby.html">框架与场景 →</a>
     <div class="lineage">
       <div><div class="lineage__label">源自 / From</div><p class="lineage__list">Smalltalk · Perl · Lisp · Python（部分）</p></div>
@@ -165,7 +164,7 @@ hello</code></pre>
         <div class="code-actions">
           <button class="code-btn" type="button" data-copy>复制</button>
           
-          <span class="code-hint">文档重构 · 非实测输出</span>
+          <span class="code-hint">文档重构 · 示意输出</span>
         </div>
       </div>
       <div class="format"><div class="format__row"><span class="format__key">扩展名</span><span class="format__val">.rb / .rake / Gemfile</span></div><div class="format__row"><span class="format__key">对象</span><span class="format__val">一切皆对象，包括数字与 nil</span></div><div class="format__row"><span class="format__key">块</span><span class="format__val">do…end 或 {…}</span></div><div class="format__row"><span class="format__key">元编程</span><span class="format__val">方法可动态定义、可打开类</span></div></div>
@@ -202,7 +201,7 @@ hello</code></pre>
         <div class="code-actions">
           <button class="code-btn" type="button" data-copy>复制</button>
           
-          <span class="code-hint">文档重构 · 非实测输出</span>
+          <span class="code-hint">文档重构 · 示意输出</span>
         </div>
       </div>
       <div class="format"><div class="format__row"><span class="format__key">工具</span><span class="format__val">Ripper（标准库）</span></div><div class="format__row"><span class="format__key">形式</span><span class="format__val">S 表达式数组</span></div><div class="format__row"><span class="format__key">用途</span><span class="format__val">语法分析、代码转换、工具链</span></div><div class="format__row"><span class="format__key">下一层</span><span class="format__val">YARV 字节码</span></div></div>
@@ -234,7 +233,7 @@ hello</code></pre>
         <div class="code-actions">
           <button class="code-btn" type="button" data-copy>复制</button>
           
-          <span class="code-hint">文档重构 · 非实测输出</span>
+          <span class="code-hint">文档重构 · 示意输出</span>
         </div>
       </div>
       <div class="format"><div class="format__row"><span class="format__key">虚拟机</span><span class="format__val">YARV（Ruby 1.9+）</span></div><div class="format__row"><span class="format__key">指令</span><span class="format__val">putself / putstring / send / leave</span></div><div class="format__row"><span class="format__key">存储</span><span class="format__val">内存中的 ISeq 对象</span></div><div class="format__row"><span class="format__key">查看</span><span class="format__val">RubyVM::InstructionSequence.disasm</span></div></div>
@@ -264,7 +263,7 @@ Hello, world</code></pre>
         <div class="code-actions">
           <button class="code-btn" type="button" data-copy>复制</button>
           
-          <span class="code-hint">文档重构 · 非实测输出</span>
+          <span class="code-hint">文档重构 · 示意输出</span>
         </div>
       </div>
       <div class="format"><div class="format__row"><span class="format__key">魔数</span><span class="format__val">YARB + 版本</span></div><div class="format__row"><span class="format__key">内容</span><span class="format__val">序列化的指令序列</span></div><div class="format__row"><span class="format__key">兼容</span><span class="format__val">不保证跨版本</span></div><div class="format__row"><span class="format__key">打包</span><span class="format__val">ruby-packer / rubyc 内嵌解释器</span></div></div>
@@ -316,7 +315,6 @@ Hello, world</code></pre>
         <ol class="why-list"><li><strong>YARV</strong>：源码编译成栈式字节码，保留动态派发。</li><li><strong>ISeq</strong>：字节码、常量、行号、异常表一起构成可执行单元。</li><li><strong>不落盘</strong>：默认只在内存中，二进制格式不保证跨版本。</li><li><strong>打包</strong>：ruby-packer 把解释器与代码一起带上。</li></ol>
       </div>
     </div>
-    
   </section>
     <section class="block deep reveal" id="deep">
     <div class="block__head">
@@ -396,7 +394,7 @@ Hello, world</code></pre>
     <span class="next-card__arrow" aria-hidden="true">→</span>
   </a>
     <footer class="pagefoot">
-      <p class="stamp">本页所有文件样例为依据公开规范与文档重构的示意内容；具体地址、偏移与字节数为示例值，不代表任何特定编译器版本的实测输出。</p>
+      <p class="stamp">本页所有文件样例为依据公开规范与文档重构的示意内容；具体地址、偏移与字节数为示例值，不代表任何特定编译器版本的输出。</p>
       <p>第 1–23 批 · PLATE 32 / 78</p>
     </footer>
   </div>

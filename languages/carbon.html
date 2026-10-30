@@ -100,7 +100,6 @@ try {
     <a href="../scenarios.html">开发场景 →</a><br>
     <a href="../languages/formats.html">产物索引 →</a><br>
     <a href="../sources.html">来源索引 →</a><br>
-    <a href="../verified.html">实测记录 →</a>
   </div>
 </aside>
 <main class="page" id="main">
@@ -122,7 +121,7 @@ try {
       <div class="meta-item"><span class="meta-label">首次发布</span><span class="meta-value">2022</span></div>
       <div class="meta-item"><span class="meta-label">类型</span><span class="meta-value">编译型</span></div>
     </div>
-    <div class="tags"><span class="tag">系统编程</span><span class="tag">C++ 互操作</span><span class="tag">泛型</span><span class="tag is-accent">编译型</span><span class="tag tag--level" title="产物链样例为文档重构，不是本机实测">文档重构</span></div>
+    <div class="tags"><span class="tag">系统编程</span><span class="tag">C++ 互操作</span><span class="tag">泛型</span><span class="tag is-accent">编译型</span><span class="tag tag--level" title="产物链样例为依据公开文档重构，不是本机运行输出">文档重构</span></div>
     <a class="dossier__fwlink" href="../frameworks/carbon.html">框架与场景 →</a>
     <div class="lineage">
       <div><div class="lineage__label">源自 / From</div><p class="lineage__list">C++ · Rust（部分安全性） · Swift（泛型） · LLVM</p></div>
@@ -169,7 +168,7 @@ fn Main() -&gt; i32 {
         <div class="code-actions">
           <button class="code-btn" type="button" data-copy>复制</button>
           
-          <span class="code-hint">文档重构 · 非实测输出</span>
+          <span class="code-hint">文档重构 · 示意输出</span>
         </div>
       </div>
       <div class="format"><div class="format__row"><span class="format__key">扩展名</span><span class="format__val">.carbon</span></div><div class="format__row"><span class="format__key">包</span><span class="format__val">package … api</span></div><div class="format__row"><span class="format__key">入口</span><span class="format__val">fn Main() -&gt; i32</span></div><div class="format__row"><span class="format__key">互操作</span><span class="format__val">可直接调用 C++</span></div></div>
@@ -199,7 +198,7 @@ fn Main() -&gt; i32 {
         <div class="code-actions">
           <button class="code-btn" type="button" data-copy>复制</button>
           
-          <span class="code-hint">文档重构 · 非实测输出</span>
+          <span class="code-hint">文档重构 · 示意输出</span>
         </div>
       </div>
       <div class="format"><div class="format__row"><span class="format__key">中间表示</span><span class="format__val">Carbon Semantics IR</span></div><div class="format__row"><span class="format__key">检查</span><span class="format__val">类型、泛型、生命周期</span></div><div class="format__row"><span class="format__key">输出</span><span class="format__val">文本 IR（实验性）</span></div><div class="format__row"><span class="format__key">稳定</span><span class="format__val">格式未固定</span></div></div>
@@ -229,7 +228,7 @@ entry:
         <div class="code-actions">
           <button class="code-btn" type="button" data-copy>复制</button>
           
-          <span class="code-hint">文档重构 · 非实测输出</span>
+          <span class="code-hint">文档重构 · 示意输出</span>
         </div>
       </div>
       <div class="format"><div class="format__row"><span class="format__key">中间表示</span><span class="format__val">LLVM IR</span></div><div class="format__row"><span class="format__key">泛型</span><span class="format__val">单态化</span></div><div class="format__row"><span class="format__key">后端</span><span class="format__val">LLVM</span></div><div class="format__row"><span class="format__key">互操作</span><span class="format__val">C++ ABI</span></div></div>
@@ -259,7 +258,7 @@ hello: ELF 64-bit LSB pie executable, x86-64 ...
         <div class="code-actions">
           <button class="code-btn" type="button" data-copy>复制</button>
           
-          <span class="code-hint">文档重构 · 非实测输出</span>
+          <span class="code-hint">文档重构 · 示意输出</span>
         </div>
       </div>
       <div class="format"><div class="format__row"><span class="format__key">格式</span><span class="format__val">ELF / Mach-O / PE</span></div><div class="format__row"><span class="format__key">运行时</span><span class="format__val">接近 C++</span></div><div class="format__row"><span class="format__key">链接</span><span class="format__val">可与 C++ 互操作</span></div><div class="format__row"><span class="format__key">状态</span><span class="format__val">实验性</span></div></div>
@@ -315,7 +314,6 @@ fn Main() -&gt; i32 {
         <ol class="why-list"><li><strong>语义 IR</strong>：在降级到 LLVM 前完成类型与泛型检查。</li><li><strong>单态化</strong>：泛型在编译期展开，没有运行时类型擦除。</li><li><strong>C++ 互操作</strong>：直接复用 C++ 的类型与 ABI，而不是通过 C 边界。</li><li><strong>实验性</strong>：工具链与标准库仍在变化，产物格式不保证稳定。</li></ol>
       </div>
     </div>
-    
   </section>
     <section class="block deep reveal" id="deep">
     <div class="block__head">
@@ -388,7 +386,7 @@ fn Main() -&gt; i32 {
     <span class="next-card__arrow" aria-hidden="true">→</span>
   </a>
     <footer class="pagefoot">
-      <p class="stamp">本页所有文件样例为依据公开规范与文档重构的示意内容；具体地址、偏移与字节数为示例值，不代表任何特定编译器版本的实测输出。</p>
+      <p class="stamp">本页所有文件样例为依据公开规范与文档重构的示意内容；具体地址、偏移与字节数为示例值，不代表任何特定编译器版本的输出。</p>
       <p>第 1–23 批 · PLATE 61 / 78</p>
     </footer>
   </div>

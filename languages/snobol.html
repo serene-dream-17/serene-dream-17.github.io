@@ -100,7 +100,6 @@ try {
     <a href="../scenarios.html">开发场景 →</a><br>
     <a href="../languages/formats.html">产物索引 →</a><br>
     <a href="../sources.html">来源索引 →</a><br>
-    <a href="../verified.html">实测记录 →</a>
   </div>
 </aside>
 <main class="page" id="main">
@@ -122,7 +121,7 @@ try {
       <div class="meta-item"><span class="meta-label">首次发布</span><span class="meta-value">1962</span></div>
       <div class="meta-item"><span class="meta-label">类型</span><span class="meta-value">解释 / 字节码</span></div>
     </div>
-    <div class="tags"><span class="tag">模式匹配</span><span class="tag">字符串</span><span class="tag">动态类型</span><span class="tag is-accent">解释 / 字节码</span><span class="tag tag--level" title="产物链样例为文档重构，不是本机实测">文档重构</span></div>
+    <div class="tags"><span class="tag">模式匹配</span><span class="tag">字符串</span><span class="tag">动态类型</span><span class="tag is-accent">解释 / 字节码</span><span class="tag tag--level" title="产物链样例为依据公开文档重构，不是本机运行输出">文档重构</span></div>
     <a class="dossier__fwlink" href="../frameworks/snobol.html">框架与场景 →</a>
     <div class="lineage">
       <div><div class="lineage__label">源自 / From</div><p class="lineage__list">COMIT · 字符串处理需求</p></div>
@@ -165,7 +164,7 @@ END</code></pre>
         <div class="code-actions">
           <button class="code-btn" type="button" data-copy>复制</button>
           
-          <span class="code-hint">文档重构 · 非实测输出</span>
+          <span class="code-hint">文档重构 · 示意输出</span>
         </div>
       </div>
       <div class="format"><div class="format__row"><span class="format__key">语句</span><span class="format__val">模式匹配 + 赋值，靠成功/失败驱动</span></div><div class="format__row"><span class="format__key">模式</span><span class="format__val">SPAN / ARB / BREAK / LEN 等原语</span></div><div class="format__row"><span class="format__key">绑定</span><span class="format__val">. 变量 把匹配到的子串保存下来</span></div><div class="format__row"><span class="format__key">锚点</span><span class="format__val">&amp;ANCHOR 控制是否从开头匹配</span></div></div>
@@ -197,7 +196,7 @@ FAIL:
         <div class="code-actions">
           <button class="code-btn" type="button" data-copy>复制</button>
           
-          <span class="code-hint">文档重构 · 非实测输出</span>
+          <span class="code-hint">文档重构 · 示意输出</span>
         </div>
       </div>
       <div class="format"><div class="format__row"><span class="format__key">编译</span><span class="format__val">模式被编译成匹配指令序列</span></div><div class="format__row"><span class="format__key">回溯</span><span class="format__val">失败时回到保存点，尝试更短/更长</span></div><div class="format__row"><span class="format__key">绑定</span><span class="format__val">ASSIGN 把子串写入变量</span></div><div class="format__row"><span class="format__key">运行时</span><span class="format__val">解释执行匹配指令</span></div></div>
@@ -223,7 +222,7 @@ FAIL:
         <div class="code-actions">
           <button class="code-btn" type="button" data-copy>复制</button>
           
-          <span class="code-hint">文档重构 · 非实测输出</span>
+          <span class="code-hint">文档重构 · 示意输出</span>
         </div>
       </div>
       <div class="format"><div class="format__row"><span class="format__key">SIL</span><span class="format__val">SNOBOL Implementation Language</span></div><div class="format__row"><span class="format__key">层次</span><span class="format__val">SNOBOL → SIL → 汇编</span></div><div class="format__row"><span class="format__key">自举</span><span class="format__val">SNOBOL4 编译器用 SIL 实现</span></div><div class="format__row"><span class="format__key">移植</span><span class="format__val">换机器主要重写 SIL 后端</span></div></div>
@@ -254,7 +253,7 @@ hello.o: ELF 64-bit LSB relocatable, x86-64
         <div class="code-actions">
           <button class="code-btn" type="button" data-copy>复制</button>
           
-          <span class="code-hint">文档重构 · 非实测输出</span>
+          <span class="code-hint">文档重构 · 示意输出</span>
         </div>
       </div>
       <div class="format"><div class="format__row"><span class="format__key">目标</span><span class="format__val">ELF64 · ET_REL</span></div><div class="format__row"><span class="format__key">运行时</span><span class="format__val">模式引擎 + 动态字符串</span></div><div class="format__row"><span class="format__key">执行</span><span class="format__val">解释器或编译后程序</span></div><div class="format__row"><span class="format__key">输出</span><span class="format__val">OUTPUT 变量绑定到标准输出</span></div></div>
@@ -306,7 +305,6 @@ END</code></pre>
         <ol class="why-list"><li><strong>模式即数据</strong>：模式可以拼接、赋值、传递，语言因此能描述「结构」而不只是「值」。</li><li><strong>成功/失败驱动</strong>：匹配失败不是异常，而是控制流的一部分。</li><li><strong>SIL</strong>：用实现语言写编译器，把前端与后端分开。</li><li><strong>回溯引擎</strong>：运行时保存匹配状态，失败时恢复。</li></ol>
       </div>
     </div>
-    
   </section>
     <section class="block deep reveal" id="deep">
     <div class="block__head">
@@ -379,7 +377,7 @@ END</code></pre>
     <span class="next-card__arrow" aria-hidden="true">→</span>
   </a>
     <footer class="pagefoot">
-      <p class="stamp">本页所有文件样例为依据公开规范与文档重构的示意内容；具体地址、偏移与字节数为示例值，不代表任何特定编译器版本的实测输出。</p>
+      <p class="stamp">本页所有文件样例为依据公开规范与文档重构的示意内容；具体地址、偏移与字节数为示例值，不代表任何特定编译器版本的输出。</p>
       <p>第 1–23 批 · PLATE 09 / 78</p>
     </footer>
   </div>

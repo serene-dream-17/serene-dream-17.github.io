@@ -100,7 +100,6 @@ try {
     <a href="../scenarios.html">开发场景 →</a><br>
     <a href="../languages/formats.html">产物索引 →</a><br>
     <a href="../sources.html">来源索引 →</a><br>
-    <a href="../verified.html">实测记录 →</a>
   </div>
 </aside>
 <main class="page" id="main">
@@ -122,7 +121,7 @@ try {
       <div class="meta-item"><span class="meta-label">首次发布</span><span class="meta-value">1974</span></div>
       <div class="meta-item"><span class="meta-label">类型</span><span class="meta-value">领域专用</span></div>
     </div>
-    <div class="tags"><span class="tag">声明式</span><span class="tag">关系模型</span><span class="tag">查询</span><span class="tag is-accent">领域专用</span><a class="tag tag--verified" href="#verify">已实测 Hello · sqlite3 3.45.1（Python 3.11.9）</a></div>
+    <div class="tags"><span class="tag">声明式</span><span class="tag">关系模型</span><span class="tag">查询</span><span class="tag is-accent">领域专用</span><span class="tag tag--level" title="产物链样例为依据公开文档重构，不是本机运行输出">文档重构</span></div>
     <a class="dossier__fwlink" href="../frameworks/sql.html">框架与场景 →</a>
     <div class="lineage">
       <div><div class="lineage__label">源自 / From</div><p class="lineage__list">关系代数 · Codd 关系模型 · SEQUEL</p></div>
@@ -161,7 +160,7 @@ try {
         <div class="code-actions">
           <button class="code-btn" type="button" data-copy>复制</button>
           
-          <span class="code-hint">文档重构 · 非实测输出</span>
+          <span class="code-hint">文档重构 · 示意输出</span>
         </div>
       </div>
       <div class="format"><div class="format__row"><span class="format__key">扩展名</span><span class="format__val">.sql</span></div><div class="format__row"><span class="format__key">类型</span><span class="format__val">声明式</span></div><div class="format__row"><span class="format__key">标准</span><span class="format__val">SQL-92 / SQL:2016 …</span></div><div class="format__row"><span class="format__key">方言</span><span class="format__val">PostgreSQL / MySQL / SQLite</span></div></div>
@@ -200,7 +199,7 @@ try {
         <div class="code-actions">
           <button class="code-btn" type="button" data-copy>复制</button>
           
-          <span class="code-hint">文档重构 · 非实测输出</span>
+          <span class="code-hint">文档重构 · 示意输出</span>
         </div>
       </div>
       <div class="format"><div class="format__row"><span class="format__key">工具</span><span class="format__val">libpg_query / 数据库前端</span></div><div class="format__row"><span class="format__key">内容</span><span class="format__val">SelectStmt / ResTarget / A_Const</span></div><div class="format__row"><span class="format__key">下一步</span><span class="format__val">语义分析 + 重写</span></div><div class="format__row"><span class="format__key">稳定</span><span class="format__val">随数据库版本变化</span></div></div>
@@ -227,7 +226,7 @@ try {
         <div class="code-actions">
           <button class="code-btn" type="button" data-copy>复制</button>
           
-          <span class="code-hint">文档重构 · 非实测输出</span>
+          <span class="code-hint">文档重构 · 示意输出</span>
         </div>
       </div>
       <div class="format"><div class="format__row"><span class="format__key">产物</span><span class="format__val">执行计划</span></div><div class="format__row"><span class="format__key">节点</span><span class="format__val">Result / Scan / Join / Aggregate</span></div><div class="format__row"><span class="format__key">优化</span><span class="format__val">基于代价（CBO）</span></div><div class="format__row"><span class="format__key">查看</span><span class="format__val">EXPLAIN / EXPLAIN ANALYZE</span></div></div>
@@ -256,7 +255,7 @@ try {
         <div class="code-actions">
           <button class="code-btn" type="button" data-copy>复制</button>
           
-          <span class="code-hint">文档重构 · 非实测输出</span>
+          <span class="code-hint">文档重构 · 示意输出</span>
         </div>
       </div>
       <div class="format"><div class="format__row"><span class="format__key">形态</span><span class="format__val">关系 / 结果集</span></div><div class="format__row"><span class="format__key">协议</span><span class="format__val">PostgreSQL wire protocol</span></div><div class="format__row"><span class="format__key">类型</span><span class="format__val">列类型由查询与 schema 决定</span></div><div class="format__row"><span class="format__key">输出</span><span class="format__val">表格 / JSON / 游标</span></div></div>
@@ -306,19 +305,6 @@ try {
         <div class="footprint"><div class="footprint__row"><span class="footprint__stage">SQL</span><span class="footprint__track"><span class="footprint__fill" data-w="4" style="width:4%"></span></span><span class="footprint__size">≈ 38 B</span></div><div class="footprint__row"><span class="footprint__stage">语法树</span><span class="footprint__track"><span class="footprint__fill" data-w="12" style="width:12%"></span></span><span class="footprint__size">≈ 500 B</span></div><div class="footprint__row"><span class="footprint__stage">计划</span><span class="footprint__track"><span class="footprint__fill" data-w="6" style="width:6%"></span></span><span class="footprint__size">≈ 100 B</span></div><div class="footprint__row"><span class="footprint__stage">结果</span><span class="footprint__track"><span class="footprint__fill" data-w="5" style="width:5%"></span></span><span class="footprint__size">1 行</span></div><div class="footprint__row"><span class="footprint__stage">+ 优化器</span><span class="footprint__track"><span class="footprint__fill" data-w="90" style="width:90%"></span></span><span class="footprint__size">≈ 数十 MB</span></div></div>
         <ol class="why-list"><li><strong>声明式</strong>：只描述结果，不描述执行步骤。</li><li><strong>优化器</strong>：根据统计信息选择扫描、连接与聚合方式。</li><li><strong>计划</strong>：数据库的编译产物，随版本与数据分布变化。</li><li><strong>结果集</strong>：最终交付的是关系，不是文件。</li></ol>
       </div>
-    </div>
-    <div class="verify" id="verify">
-      <div class="verify__head">
-        <span class="verify__badge">已实测</span>
-        <b>本机复现记录</b>
-        <span class="verify__meta">2026-10-28 · sqlite3 3.45.1（Python 3.11.9）</span>
-      </div>
-      <div class="verify__grid">
-        <div class="verify__item"><span class="verify__key">命令</span><code>SELECT &#x27;Hello, world&#x27;;</code></div>
-        <div class="verify__item"><span class="verify__key">输出</span><code>Hello, world</code></div>
-      </div>
-      <div class="verify__item"><span class="verify__key">产物 / 观察</span><ul class="verify__list"><li>内存数据库；查询计划与结果集由 SQLite 生成。</li></ul></div>
-      <p class="verify__note">SQL 的产物是结果集与执行计划，不是可执行文件。</p>
     </div>
   </section>
     <section class="block deep reveal" id="deep">
@@ -399,7 +385,7 @@ try {
     <span class="next-card__arrow" aria-hidden="true">→</span>
   </a>
     <footer class="pagefoot">
-      <p class="stamp">本页所有文件样例为依据公开规范与文档重构的示意内容；具体地址、偏移与字节数为示例值，不代表任何特定编译器版本的实测输出。</p>
+      <p class="stamp">本页所有文件样例为依据公开规范与文档重构的示意内容；具体地址、偏移与字节数为示例值，不代表任何特定编译器版本的输出。</p>
       <p>第 1–23 批 · PLATE 65 / 78</p>
     </footer>
   </div>

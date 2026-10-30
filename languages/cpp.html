@@ -100,7 +100,6 @@ try {
     <a href="../scenarios.html">开发场景 →</a><br>
     <a href="../languages/formats.html">产物索引 →</a><br>
     <a href="../sources.html">来源索引 →</a><br>
-    <a href="../verified.html">实测记录 →</a>
   </div>
 </aside>
 <main class="page" id="main">
@@ -122,7 +121,7 @@ try {
       <div class="meta-item"><span class="meta-label">首次发布</span><span class="meta-value">1985</span></div>
       <div class="meta-item"><span class="meta-label">类型</span><span class="meta-value">编译型</span></div>
     </div>
-    <div class="tags"><span class="tag">面向对象</span><span class="tag">泛型</span><span class="tag">系统编程</span><span class="tag is-accent">编译型</span><a class="tag tag--verified" href="#verify">已实测 Hello · g++.EXE (GCC) 16.2.0</a></div>
+    <div class="tags"><span class="tag">面向对象</span><span class="tag">泛型</span><span class="tag">系统编程</span><span class="tag is-accent">编译型</span><span class="tag tag--level" title="产物链样例为依据公开文档重构，不是本机运行输出">文档重构</span></div>
     <a class="dossier__fwlink" href="../frameworks/cpp.html">框架与场景 →</a>
     <div class="lineage">
       <div><div class="lineage__label">源自 / From</div><p class="lineage__list">C · Simula 67 · ALGOL 68</p></div>
@@ -166,7 +165,7 @@ int main() {
         <div class="code-actions">
           <button class="code-btn" type="button" data-copy>复制</button>
           
-          <span class="code-hint">文档重构 · 非实测输出</span>
+          <span class="code-hint">文档重构 · 示意输出</span>
         </div>
       </div>
       <div class="format"><div class="format__row"><span class="format__key">扩展名</span><span class="format__val">.cpp / .cc / .cxx</span></div><div class="format__row"><span class="format__key">头文件</span><span class="format__val">&lt;iostream&gt;，标准库模板</span></div><div class="format__row"><span class="format__key">命名空间</span><span class="format__val">std::</span></div><div class="format__row"><span class="format__key">入口</span><span class="format__val">main，由 C++ 运行时调用</span></div></div>
@@ -203,7 +202,7 @@ int main() {
         <div class="code-actions">
           <button class="code-btn" type="button" data-copy>复制</button>
           
-          <span class="code-hint">文档重构 · 非实测输出</span>
+          <span class="code-hint">文档重构 · 示意输出</span>
         </div>
       </div>
       <div class="format"><div class="format__row"><span class="format__key">扩展名</span><span class="format__val">.ii，预处理后的 C++ 文本</span></div><div class="format__row"><span class="format__key">体量</span><span class="format__val">一个 hello 可展开到 1 MB 以上</span></div><div class="format__row"><span class="format__key">内容</span><span class="format__val">模板定义、内联函数、声明全部就位</span></div><div class="format__row"><span class="format__key">行标记</span><span class="format__val">指回原始头文件与行号</span></div></div>
@@ -241,7 +240,7 @@ main:
         <div class="code-actions">
           <button class="code-btn" type="button" data-copy>复制</button>
           
-          <span class="code-hint">文档重构 · 非实测输出</span>
+          <span class="code-hint">文档重构 · 示意输出</span>
         </div>
       </div>
       <div class="format"><div class="format__row"><span class="format__key">名字修饰</span><span class="format__val">operator&lt;&lt; 被编码成 _ZStlsISt11...</span></div><div class="format__row"><span class="format__key">结果</span><span class="format__val">返回 ostream 引用，可继续 &lt;&lt;</span></div><div class="format__row"><span class="format__key">静态初始化</span><span class="format__val">.init_array 指向全局构造函数</span></div><div class="format__row"><span class="format__key">异常</span><span class="format__val">汇编里还会生成 .eh_frame 展开表</span></div></div>
@@ -274,7 +273,7 @@ $ readelf -S hello.o | grep -E &#x27;eh_frame|init_array|rela&#x27;
         <div class="code-actions">
           <button class="code-btn" type="button" data-copy>复制</button>
           
-          <span class="code-hint">文档重构 · 非实测输出</span>
+          <span class="code-hint">文档重构 · 示意输出</span>
         </div>
       </div>
       <div class="format"><div class="format__row"><span class="format__key">符号</span><span class="format__val">main 已定义，operator&lt;&lt; 未定义（U）</span></div><div class="format__row"><span class="format__key">异常表</span><span class="format__val">.eh_frame 记录栈展开信息</span></div><div class="format__row"><span class="format__key">静态初始化</span><span class="format__val">.init_array 调用全局构造</span></div><div class="format__row"><span class="format__key">重定位</span><span class="format__val">.rela.text 交给链接器解析</span></div></div>
@@ -307,7 +306,7 @@ Hello, world</code></pre>
         <div class="code-actions">
           <button class="code-btn" type="button" data-copy>复制</button>
           
-          <span class="code-hint">文档重构 · 非实测输出</span>
+          <span class="code-hint">文档重构 · 示意输出</span>
         </div>
       </div>
       <div class="format"><div class="format__row"><span class="format__key">类型</span><span class="format__val">ELF64 · ET_DYN（PIE）</span></div><div class="format__row"><span class="format__key">依赖</span><span class="format__val">libstdc++ / libgcc_s / libc</span></div><div class="format__row"><span class="format__key">启动</span><span class="format__val">_start → __libc_start_main → main</span></div><div class="format__row"><span class="format__key">全局构造</span><span class="format__val">main 之前执行 .init_array</span></div></div>
@@ -361,19 +360,6 @@ int main() {
         <div class="footprint"><div class="footprint__row"><span class="footprint__stage">hello.cpp</span><span class="footprint__track"><span class="footprint__fill" data-w="4" style="width:4%"></span></span><span class="footprint__size">≈ 100 B</span></div><div class="footprint__row"><span class="footprint__stage">hello.ii</span><span class="footprint__track"><span class="footprint__fill" data-w="80" style="width:80%"></span></span><span class="footprint__size">≈ 1.1 MB</span></div><div class="footprint__row"><span class="footprint__stage">hello.s</span><span class="footprint__track"><span class="footprint__fill" data-w="12" style="width:12%"></span></span><span class="footprint__size">≈ 2.3 KB</span></div><div class="footprint__row"><span class="footprint__stage">hello.o</span><span class="footprint__track"><span class="footprint__fill" data-w="14" style="width:14%"></span></span><span class="footprint__size">≈ 3.1 KB</span></div><div class="footprint__row"><span class="footprint__stage">hello</span><span class="footprint__track"><span class="footprint__fill" data-w="28" style="width:28%"></span></span><span class="footprint__size">≈ 18 KB</span></div><div class="footprint__row"><span class="footprint__stage">+ libstdc++</span><span class="footprint__track"><span class="footprint__fill" data-w="100" style="width:100%"></span></span><span class="footprint__size">≈ 2 MB</span></div></div>
         <ol class="why-list"><li><strong>头文件与模板</strong>：iostream 的实现大量在头文件里，预处理器把它们全部倒进编译单元。</li><li><strong>名字修饰</strong>：重载、命名空间、模板需要把类型信息编码进符号名，链接器才能区分。</li><li><strong>静态初始化</strong>：全局对象必须在 main 之前构造，编译器生成 .init_array 项。</li><li><strong>异常与 RTTI</strong>：.eh_frame、类型信息表让栈展开与 dynamic_cast 成为可能。</li></ol>
       </div>
-    </div>
-    <div class="verify" id="verify">
-      <div class="verify__head">
-        <span class="verify__badge">已实测</span>
-        <b>本机复现记录</b>
-        <span class="verify__meta">2026-10-28 · g++.EXE (GCC) 16.2.0</span>
-      </div>
-      <div class="verify__grid">
-        <div class="verify__item"><span class="verify__key">命令</span><code>g++ -O0 hello.cpp -o hello.exe &amp;&amp; hello.exe</code></div>
-        <div class="verify__item"><span class="verify__key">输出</span><code>Hello, world</code></div>
-      </div>
-      <div class="verify__item"><span class="verify__key">产物 / 观察</span><ul class="verify__list"><li>hello.exe · 2594870 B · 首字节 4d 5a 90 00</li></ul></div>
-      <p class="verify__note">Windows/MinGW 生成 PE；与页面中的 Linux ELF 阶段对应，但目标格式不同。</p>
     </div>
   </section>
     <section class="block deep reveal" id="deep">
@@ -436,7 +422,7 @@ int main() {
       <h2 class="block__title">用到它的技术栈<em>Stacks</em></h2>
       <span class="block__rule"></span>
     </div>
-    <div class="stack-grid"><a class="stack-card" href="../stacks/qt-desktop.html"><span class="stack-top"><span class="stack-lang">桌面</span><span class="stack-type">技术栈</span></span><span class="stack-fw">Qt 桌面</span><span class="stack-why">成熟的跨平台原生控件与工具链，适合需要系统集成、长生命周期的桌面软件。</span></a><a class="stack-card" href="../stacks/unreal-game.html"><span class="stack-top"><span class="stack-lang">游戏</span><span class="stack-type">技术栈</span></span><span class="stack-fw">Unreal 游戏</span><span class="stack-why">高端 3D 渲染与完整工具链，蓝图降低门槛，C++ 负责性能与底层扩展。</span></a></div>
+    <div class="stack-grid"><a class="stack-card" href="../stacks/qt-desktop.html"><span class="stack-top"><span class="stack-lang">桌面</span><span class="stack-type">技术栈</span></span><span class="stack-fw">Qt 桌面</span><span class="stack-why">成熟的跨平台原生控件与工具链，适合需要系统集成、长生命周期的桌面软件。</span></a><a class="stack-card" href="../stacks/unreal-game.html"><span class="stack-top"><span class="stack-lang">游戏</span><span class="stack-type">技术栈</span></span><span class="stack-fw">Unreal 游戏</span><span class="stack-why">高端 3D 渲染与完整工具链，蓝图降低门槛，C++ 负责性能与底层扩展。</span></a><a class="stack-card" href="../stacks/vuln-research-lab.html"><span class="stack-top"><span class="stack-lang">安全</span><span class="stack-type">技术栈</span></span><span class="stack-fw">漏洞挖掘与逆向</span><span class="stack-why">C/C++ 目标上的 Fuzz + 消毒器 + 反汇编分析，把崩溃变成可复现的漏洞报告。</span></a></div>
   </section>
     <section class="sources" id="sources" aria-label="参考来源">
     <h3 class="sources__title">参考来源 <span>References</span></h3>
@@ -454,7 +440,7 @@ int main() {
     <span class="next-card__arrow" aria-hidden="true">→</span>
   </a>
     <footer class="pagefoot">
-      <p class="stamp">本页所有文件样例为依据公开规范与文档重构的示意内容；具体地址、偏移与字节数为示例值，不代表任何特定编译器版本的实测输出。</p>
+      <p class="stamp">本页所有文件样例为依据公开规范与文档重构的示意内容；具体地址、偏移与字节数为示例值，不代表任何特定编译器版本的输出。</p>
       <p>第 1–23 批 · PLATE 19 / 78</p>
     </footer>
   </div>
