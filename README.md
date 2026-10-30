@@ -85,7 +85,7 @@ languages/*.html        78 个语言页（含语言深读）
 frameworks/index.html   框架总览（142 张决策卡，可筛选）
 frameworks/*.html       78 个框架页
 frameworks/security.html 安全工具（20 个，按类别筛选）
-stacks/index.html       技术栈总览（40 个栈 / 12 个领域）
+stacks/index.html       技术栈总览（42 个栈 / 12 个领域）
 stacks/*.html           42 个技术栈详情页（含四段工程化深度）
 scenarios.html          开发场景 → 架构模式 → 语言/框架
 languages/formats.html  产物索引（42 种格式 + 320 个阶段产物）
@@ -143,7 +143,7 @@ python tools/build.py
 python tools/audit.py
 python tools/check_sources.py   # 可选，需要网络
 python tests/smoke.py           # 全站冒烟测试，约 1 分钟
-python tests/smoke.py --quick   # 跳过 164 页扫描，只跑交互
+python tests/smoke.py --quick   # 跳过 207 页扫描，只跑交互
 ```
 
 审计覆盖：页面结构、h1、重复 id、内部链接/锚点、来源覆盖、框架元信息、深读完整性、对比度、移动端与字体控制器。
