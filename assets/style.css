@@ -3257,7 +3257,52 @@ html[data-line] .prose { line-height: var(--leading); }
   line-height: 1.7;
   color: var(--muted);
 }
+.dev-arch__pattern {
+  flex: none;
+  padding: 2px 8px;
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: .03em;
+  color: var(--moss);
+  border: 1px dashed rgba(47, 74, 60, .38);
+  border-radius: 999px;
+  white-space: nowrap;
+}
 .dev-arch .stack-grid { margin-top: 12px; }
+
+.dev-legend {
+  margin: 26px 0 18px;
+  padding: 18px 20px 16px;
+  border: 1px solid var(--rule-soft);
+  border-radius: 6px;
+  background: rgba(255, 255, 255, .018);
+}
+.dev-legend__head {
+  margin: 0 0 12px;
+  font-family: var(--mono);
+  font-size: 10.5px;
+  letter-spacing: .06em;
+  color: var(--faint);
+}
+.dev-legend__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+  gap: 10px 22px;
+}
+.dev-legend__item {
+  display: block;
+  font-size: 11.5px;
+  line-height: 1.65;
+  color: var(--muted);
+}
+.dev-legend__item b {
+  display: block;
+  margin-bottom: 2px;
+  font-family: var(--serif);
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--ink);
+}
 
 .sec-points {
   max-width: 78ch;

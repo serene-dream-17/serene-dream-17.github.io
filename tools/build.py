@@ -992,14 +992,17 @@ def write_search_js():
             "desc": sc["desc"],
             "href": f"scenarios.html#dev-{sc['key']}", "kind": "开发场景",
             "keywords": [sc["title"], sc["en"]]
-                        + [a["title"] for a in sc["architectures"]],
+                        + [a["title"] for a in sc["architectures"]]
+                        + [dev_scenarios.PATTERN_BY_KEY[a["pattern"]]["title"]
+                           for a in sc["architectures"]],
         })
         for arch in sc["architectures"]:
+            pattern = dev_scenarios.PATTERN_BY_KEY[arch["pattern"]]
             items.append({
                 "title": f"{sc['title']} · {arch['title']}", "group": "开发场景",
-                "desc": arch["desc"],
+                "desc": f"{arch['desc']}（模式：{pattern['title']}）",
                 "href": f"scenarios.html#dev-{sc['key']}", "kind": "架构组合",
-                "keywords": [sc["title"], arch["title"]]
+                "keywords": [sc["title"], arch["title"], pattern["title"]]
                             + [entry[1] for entry in arch["entries"]],
             })
 
@@ -1175,10 +1178,19 @@ def validate():
                 if fw_name not in names:
                     errors.append(f"矩阵场景 {sc['key']} 引用未知框架 {slug}/{fw_name}")
 
+    patterns = {p["key"]: p for p in dev_scenarios.PATTERNS}
+    if len(dev_scenarios.PATTERNS) != 12:
+        errors.append(f"统一架构模式不是 12 种：{len(dev_scenarios.PATTERNS)}")
+    used_patterns = set()
     for sc in dev_scenarios.SCENARIOS:
         if not sc.get("architectures"):
             errors.append(f"开发场景 {sc['key']} 缺少架构模式")
         for arch in sc["architectures"]:
+            pattern_key = arch.get("pattern", "")
+            if pattern_key not in patterns:
+                errors.append(f"开发场景 {sc['key']}/{arch['key']} 引用未知模式 {pattern_key}")
+            else:
+                used_patterns.add(pattern_key)
             if not arch.get("entries"):
                 errors.append(f"开发场景 {sc['key']}/{arch['key']} 缺少条目")
             for entry in arch["entries"]:
@@ -1203,6 +1215,10 @@ def validate():
                         errors.append(
                             f"开发场景 {sc['key']}/{arch['key']} 引用未知短页工具 {slug}/{fw_name}"
                         )
+
+    unused = set(patterns) - used_patterns
+    if unused:
+        errors.append("统一架构模式未被使用：" + ", ".join(sorted(unused)))
 
     return errors
 

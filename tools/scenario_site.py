@@ -35,10 +35,12 @@ def _card(entry, scenario, arch, frameworks):
             card = next((c for c in detail["cards"] if c["name"] == fw), None)
         href = f"langs/{slug}-frameworks.html" + (f"#{slugify(fw)}" if card else "")
         ftype = card["type"] if card else "生态 / 工具"
+    pattern = dev_scenarios.PATTERN_BY_KEY[arch["pattern"]]
     search = " ".join([
-        lang_name, slug, fw, why, scenario["title"], arch["title"], ftype,
+        lang_name, slug, fw, why, scenario["title"], arch["title"],
+        pattern["title"], ftype,
     ]).lower()
-    return f"""<a class="stack-card dev-card" href="{e(href)}" data-search="{e(search)}" data-scenario="{e(scenario["key"])}" data-arch="{e(arch["key"])}">
+    return f"""<a class="stack-card dev-card" href="{e(href)}" data-search="{e(search)}" data-scenario="{e(scenario["key"])}" data-arch="{e(pattern["key"])}">
         <span class="stack-top"><span class="stack-lang">{e(lang_name)}</span><span class="stack-type">{e(arch["title"])}</span></span>
         <span class="stack-fw">{e(fw)}</span>
         <span class="stack-why">{e(why)}</span>
@@ -59,9 +61,11 @@ def render_scenarios(catalog_html, frameworks, batch_label):
                 lang_count.add(entry[0])
                 entry_count += 1
                 cards.append(_card(entry, scenario, arch, frameworks))
-            arch_html.append(f"""<div class="dev-arch" data-arch="{e(arch["key"])}">
+            pattern = dev_scenarios.PATTERN_BY_KEY[arch["pattern"]]
+            arch_html.append(f"""<div class="dev-arch" data-pattern="{e(pattern["key"])}">
         <div class="dev-arch__head">
           <h3 class="dev-arch__title">{e(arch["title"])}</h3>
+          <span class="dev-arch__pattern" title="{e(pattern["desc"])}">模式 · {e(pattern["title"])}</span>
           <span class="dev-arch__desc">{e(arch["desc"])}</span>
           <span class="era-head__count">{len(cards)} 组</span>
         </div>
@@ -82,17 +86,14 @@ def render_scenarios(catalog_html, frameworks, batch_label):
         f'<option value="{e(sc["key"])}">{e(sc["title"])}</option>'
         for sc in dev_scenarios.SCENARIOS
     )
-    arch_options = []
-    seen = set()
-    for sc in dev_scenarios.SCENARIOS:
-        for arch in sc["architectures"]:
-            if arch["key"] in seen:
-                continue
-            seen.add(arch["key"])
-            arch_options.append(
-                f'<option value="{e(arch["key"])}">{e(arch["title"])}</option>'
-            )
-    arch_options = "".join(arch_options)
+    arch_options = "".join(
+        f'<option value="{e(p["key"])}">{e(p["title"])}</option>'
+        for p in dev_scenarios.PATTERNS
+    )
+    legend = "".join(
+        f"""<span class="dev-legend__item"><b>{idx:02d} {e(p["title"])}</b>{e(p["desc"])}</span>"""
+        for idx, p in enumerate(dev_scenarios.PATTERNS, start=1)
+    )
 
     return f"""<!doctype html>
 <html lang="zh-CN">
@@ -109,7 +110,7 @@ try {{
 }} catch (e) {{}}
 </script>
 <title>开发场景 — 场景 × 架构 × 语言</title>
-<meta name="description" content="按开发场景浏览：后端、前端、移动、桌面、游戏、数据 AI、嵌入式、系统基础设施、安全、区块链、科学计算、硬件 GPU；每个场景下再按架构模式组合语言与框架。">
+<meta name="description" content="按开发场景浏览：后端、前端、移动、桌面、游戏、数据 AI、嵌入式、系统基础设施、安全、区块链、科学计算、硬件 GPU；每个场景下按 12 种统一架构模式组合语言与框架。">
 <link rel="stylesheet" href="assets/style.css">
 </head>
 <body data-page="scenarios">
@@ -149,7 +150,7 @@ try {{
     <header class="hero">
       <p class="hero__kicker">DEVELOPMENT MAP · 场景 → 架构 → 语言</p>
       <h1 class="hero__title">开发<br><em>场景</em></h1>
-      <p class="hero__sub">先选开发场景，再看架构模式，最后落到语言与框架。场景不是语言分类，而是「你要做什么」；同一个框架可以出现在多个场景里，但取舍不同。</p>
+      <p class="hero__sub">先选开发场景，再看架构模式，最后落到语言与框架。场景不是语言分类，而是「你要做什么」；同一个框架可以出现在多个场景里，但取舍不同。每个场景的架构分组都归入 12 种统一模式，便于跨场景比较。</p>
       <div class="hero__meta">
         <div class="stat"><span class="stat__num">{len(dev_scenarios.SCENARIOS)}</span><span class="stat__label">个开发场景</span></div>
         <div class="stat"><span class="stat__num">{arch_count}</span><span class="stat__label">个架构组合</span></div>
@@ -157,6 +158,11 @@ try {{
         <div class="stat"><span class="stat__num">{len(lang_count)}</span><span class="stat__label">门语言</span></div>
       </div>
     </header>
+
+    <div class="dev-legend" aria-label="12 种统一架构模式">
+      <p class="dev-legend__head">12 种统一架构模式 · 场景保留各自焦点，模式用于跨场景比较</p>
+      <div class="dev-legend__grid">{legend}</div>
+    </div>
 
     <div class="index-tools matrix-tools">
       <label class="index-search" for="devSearch">
@@ -178,7 +184,7 @@ try {{
     <p class="index-empty" id="devEmpty">没有匹配的组合。试试「后端」「微服务」「Rust」，或把场景切回全部。</p>
 
     <footer class="pagefoot">
-      <p class="stamp">开发场景与架构模式为策展视角，不是官方分类；学习/生态为编者判断，许可与事实以官方文档为准。最后核对 2026-10-29。</p>
+      <p class="stamp">开发场景与架构模式为策展视角，不是官方分类；学习/生态为编者判断，许可与事实以官方文档为准。最后核对 2026-10-30。</p>
       <p>{batch_label} · 开发场景</p>
     </footer>
   </div>
