@@ -3,7 +3,7 @@
 
 用法：
     python tests/smoke.py
-    python tests/smoke.py --quick     # 跳过 207 页全量扫描
+    python tests/smoke.py --quick     # 跳过 221 页全量扫描
 
 依赖：playwright（已安装），Chrome。可用 CHROME_PATH 指定浏览器。
 """
@@ -165,10 +165,10 @@ def frameworks_index_test(page):
 def stacks_test(page):
     page.goto((ROOT / "stacks" / "index.html").as_uri())
     page.wait_for_timeout(150)
-    assert_(page.locator(".stack-entry").count() == 42, "技术栈不是 42 个")
+    assert_(page.locator(".stack-entry").count() == 56, "技术栈不是 56 个")
     page.select_option("#stackDomain", "mobile")
     page.wait_for_timeout(150)
-    assert_(page.locator(".stack-entry:not([hidden])").count() == 3, "移动领域栈不是 3 个")
+    assert_(page.locator(".stack-entry:not([hidden])").count() == 4, "移动领域栈不是 4 个")
     assert_("d=mobile" in page.url, "技术栈领域筛选未写入 URL")
     page.goto((ROOT / "stacks" / "flutter-cross.html").as_uri())
     page.wait_for_timeout(150)
@@ -177,7 +177,7 @@ def stacks_test(page):
     assert_(rows == 4, f"栈构成表应为 4 层，实际 {rows}")
     assert_(page.locator('a[href="../frameworks/dart.html#flutter"]').count() == 1,
             "栈页缺少框架链接")
-    assert_(page.locator(".depth-block").count() == 4, "栈页深度段不是 4 个")
+    assert_(page.locator(".depth-block").count() == 8, "栈页深度段不是 8 个")
 
 
 def sectools_test(page):
