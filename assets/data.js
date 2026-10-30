@@ -5,7 +5,7 @@ window.ARCHIVE = {
   "frameworks": 142,
   "scenarios": 14,
   "dev_scenarios": 12,
-  "security_tools": 12,
+  "security_tools": 15,
   "languages": [
     {
       "plate": 1,

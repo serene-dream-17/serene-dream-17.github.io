@@ -13,7 +13,7 @@ try {
 } catch (e) {}
 </script>
 <title>开发场景 — 场景 × 架构 × 语言</title>
-<meta name="description" content="按开发场景浏览：后端、前端、移动、桌面、游戏、数据 AI、嵌入式、系统基础设施、安全、区块链、科学计算、硬件 GPU；每个场景下再按架构模式组合语言与框架。">
+<meta name="description" content="按开发场景浏览：后端、前端、移动、桌面、游戏、数据 AI、嵌入式、系统基础设施、安全、区块链、科学计算、硬件 GPU；每个场景下按 12 种统一架构模式组合语言与框架。">
 <link rel="stylesheet" href="assets/style.css">
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
 <meta name="theme-color" content="#f3ede1">
@@ -21,11 +21,11 @@ try {
 <meta property="og:locale" content="zh_CN">
 <meta property="og:site_name" content="语言的产物链">
 <meta property="og:title" content="开发场景 — 场景 × 架构 × 语言">
-<meta property="og:description" content="按开发场景浏览：后端、前端、移动、桌面、游戏、数据 AI、嵌入式、系统基础设施、安全、区块链、科学计算、硬件 GPU；每个场景下再按架构模式组合语言与框架。">
+<meta property="og:description" content="按开发场景浏览：后端、前端、移动、桌面、游戏、数据 AI、嵌入式、系统基础设施、安全、区块链、科学计算、硬件 GPU；每个场景下按 12 种统一架构模式组合语言与框架。">
 <meta property="og:image" content="assets/og.png">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="开发场景 — 场景 × 架构 × 语言">
-<meta name="twitter:description" content="按开发场景浏览：后端、前端、移动、桌面、游戏、数据 AI、嵌入式、系统基础设施、安全、区块链、科学计算、硬件 GPU；每个场景下再按架构模式组合语言与框架。">
+<meta name="twitter:description" content="按开发场景浏览：后端、前端、移动、桌面、游戏、数据 AI、嵌入式、系统基础设施、安全、区块链、科学计算、硬件 GPU；每个场景下按 12 种统一架构模式组合语言与框架。">
 <meta name="twitter:image" content="assets/og.png">
 </head>
 <body data-page="scenarios">
@@ -96,14 +96,19 @@ try {
     <header class="hero">
       <p class="hero__kicker">DEVELOPMENT MAP · 场景 → 架构 → 语言</p>
       <h1 class="hero__title">开发<br><em>场景</em></h1>
-      <p class="hero__sub">先选开发场景，再看架构模式，最后落到语言与框架。场景不是语言分类，而是「你要做什么」；同一个框架可以出现在多个场景里，但取舍不同。</p>
+      <p class="hero__sub">先选开发场景，再看架构模式，最后落到语言与框架。场景不是语言分类，而是「你要做什么」；同一个框架可以出现在多个场景里，但取舍不同。每个场景的架构分组都归入 12 种统一模式，便于跨场景比较。</p>
       <div class="hero__meta">
         <div class="stat"><span class="stat__num">12</span><span class="stat__label">个开发场景</span></div>
         <div class="stat"><span class="stat__num">36</span><span class="stat__label">个架构组合</span></div>
-        <div class="stat"><span class="stat__num">116</span><span class="stat__label">组推荐</span></div>
+        <div class="stat"><span class="stat__num">119</span><span class="stat__label">组推荐</span></div>
         <div class="stat"><span class="stat__num">35</span><span class="stat__label">门语言</span></div>
       </div>
     </header>
+
+    <div class="dev-legend" aria-label="12 种统一架构模式">
+      <p class="dev-legend__head">12 种统一架构模式 · 场景保留各自焦点，模式用于跨场景比较</p>
+      <div class="dev-legend__grid"><span class="dev-legend__item"><b>01 分层 / MVC</b>请求 → 控制器 → 服务 → 数据层；约定清晰，适合大多数业务系统。</span><span class="dev-legend__item"><b>02 微服务 / 服务化</b>按业务边界拆服务或模块，独立部署与团队自治优先，代价是运维与一致性。</span><span class="dev-legend__item"><b>03 事件驱动 / Actor</b>通过消息与事件解耦，或用 Actor 封装状态；适合实时、长流程与高并发。</span><span class="dev-legend__item"><b>04 组件化 / 响应式 UI</b>以组件树组织界面，状态与副作用显式管理；声明式 UI 也归入这一类。</span><span class="dev-legend__item"><b>05 同构渲染 / SSR</b>服务端渲染首屏，客户端接管交互；内容站与 SEO 敏感场景优先。</span><span class="dev-legend__item"><b>06 网关 / BFF</b>统一入口、协议转换与接口聚合；让客户端只面对一个边界。</span><span class="dev-legend__item"><b>07 原生 / 平台绑定</b>直接使用平台 API、控件或系统库；兼容性与系统能力最完整。</span><span class="dev-legend__item"><b>08 跨平台 / Web 外壳</b>一套代码覆盖多平台，或以内嵌 Web 运行时承载界面；复用优先。</span><span class="dev-legend__item"><b>09 微内核 / 插件化</b>核心保持小，能力通过插件或脚本扩展；适合编辑器、IDE 与平台型工具。</span><span class="dev-legend__item"><b>10 ECS / 数据导向</b>按组件与系统组织数据，缓存友好；适合大量实体、数组式计算与数据并行。</span><span class="dev-legend__item"><b>11 管线 / 批流</b>分阶段转换与批流处理，强调可重跑、可测试与可观测。</span><span class="dev-legend__item"><b>12 控制面 / 编排</b>声明期望状态，由控制器收敛；适合基础设施、部署与升级流程。</span></div>
+    </div>
 
     <div class="index-tools matrix-tools">
       <label class="index-search" for="devSearch">
@@ -116,9 +121,9 @@ try {
       </label>
       <label class="matrix-select" for="devArch">
         <span>架构</span>
-        <select id="devArch"><option value="all">全部架构</option><option value="layered">分层 / MVC</option><option value="microservices">微服务</option><option value="event-driven">事件驱动</option><option value="component">组件化 / 响应式</option><option value="ssr">SSR / 同构</option><option value="bff">BFF / 全栈</option><option value="declarative">声明式 UI</option><option value="native">原生控件</option><option value="service">服务端配套</option><option value="cross-platform">跨平台 GUI</option><option value="plugin">微内核 / 插件化</option><option value="engine">引擎驱动</option><option value="ecs">ECS / 数据导向</option><option value="scripting">脚本层</option><option value="batch">批处理 / 数仓</option><option value="serving">模型服务</option><option value="experiment">实验 / 分析</option><option value="rtos">RTOS / 实时调度</option><option value="gateway">网关 / 协议接入</option><option value="device-ui">设备 UI</option><option value="control-plane">控制面 / 编排</option><option value="automation">自动化 / IaC</option><option value="appsec">应用安全</option><option value="crypto">密码学 / TLS</option><option value="audit">审计 / 供应链</option><option value="contract">合约开发</option><option value="testing">测试与审计</option><option value="deploy">部署与升级</option><option value="numerical">数值内核</option><option value="simulation">仿真 / 数据</option><option value="reporting">可重复报告</option><option value="rtl">芯片 / RTL</option><option value="gpu">GPU 并行</option><option value="shader">图形 / 着色器</option></select>
+        <select id="devArch"><option value="all">全部架构</option><option value="layered">分层 / MVC</option><option value="microservices">微服务 / 服务化</option><option value="event-driven">事件驱动 / Actor</option><option value="component">组件化 / 响应式 UI</option><option value="ssr">同构渲染 / SSR</option><option value="gateway">网关 / BFF</option><option value="native">原生 / 平台绑定</option><option value="cross-platform">跨平台 / Web 外壳</option><option value="plugin">微内核 / 插件化</option><option value="ecs">ECS / 数据导向</option><option value="pipeline">管线 / 批流</option><option value="control-plane">控制面 / 编排</option></select>
       </label>
-      <span class="era-head__count" id="devCount">116 组</span>
+      <span class="era-head__count" id="devCount">119 组</span>
     </div>
 
     <div class="matrix-grid" id="devSections"><section class="dev-section matrix-section" id="dev-backend" data-scenario="backend">
@@ -129,71 +134,74 @@ try {
         <span class="era-head__count">3 种架构</span>
       </div>
       <p class="matrix-desc">先确定团队规模、交付节奏与集成边界，再在分层、微服务与事件驱动之间选择。</p>
-      <div class="dev-arch" data-arch="layered">
+      <div class="dev-arch" data-pattern="layered">
         <div class="dev-arch__head">
           <h3 class="dev-arch__title">分层 / MVC</h3>
+          <span class="dev-arch__pattern" title="请求 → 控制器 → 服务 → 数据层；约定清晰，适合大多数业务系统。">模式 · 分层 / MVC</span>
           <span class="dev-arch__desc">请求 → 控制器 → 服务 → 数据层；约定清晰，适合大多数业务系统。</span>
           <span class="era-head__count">4 组</span>
         </div>
-        <div class="stack-grid"><a class="stack-card dev-card" href="langs/python-frameworks.html#django" data-search="python python django 全栈约定、orm 与后台一体 后端开发 分层 / mvc web 全栈" data-scenario="backend" data-arch="layered">
+        <div class="stack-grid"><a class="stack-card dev-card" href="langs/python-frameworks.html#django" data-search="python python django 全栈约定、orm 与后台一体 后端开发 分层 / mvc 分层 / mvc web 全栈" data-scenario="backend" data-arch="layered">
         <span class="stack-top"><span class="stack-lang">Python</span><span class="stack-type">分层 / MVC</span></span>
         <span class="stack-fw">Django</span>
         <span class="stack-why">全栈约定、ORM 与后台一体</span>
-      </a><a class="stack-card dev-card" href="langs/java-frameworks.html#spring-boot" data-search="java java spring boot 企业生态与招聘面最大 后端开发 分层 / mvc 企业 web 后端" data-scenario="backend" data-arch="layered">
+      </a><a class="stack-card dev-card" href="langs/java-frameworks.html#spring-boot" data-search="java java spring boot 企业生态与招聘面最大 后端开发 分层 / mvc 分层 / mvc 企业 web 后端" data-scenario="backend" data-arch="layered">
         <span class="stack-top"><span class="stack-lang">Java</span><span class="stack-type">分层 / MVC</span></span>
         <span class="stack-fw">Spring Boot</span>
         <span class="stack-why">企业生态与招聘面最大</span>
-      </a><a class="stack-card dev-card" href="langs/csharp-frameworks.html#asp-net-core" data-search="c# csharp asp.net core .net 企业栈、跨平台 后端开发 分层 / mvc web 后端" data-scenario="backend" data-arch="layered">
+      </a><a class="stack-card dev-card" href="langs/csharp-frameworks.html#asp-net-core" data-search="c# csharp asp.net core .net 企业栈、跨平台 后端开发 分层 / mvc 分层 / mvc web 后端" data-scenario="backend" data-arch="layered">
         <span class="stack-top"><span class="stack-lang">C#</span><span class="stack-type">分层 / MVC</span></span>
         <span class="stack-fw">ASP.NET Core</span>
         <span class="stack-why">.NET 企业栈、跨平台</span>
-      </a><a class="stack-card dev-card" href="langs/ruby-frameworks.html#rails" data-search="ruby ruby rails 约定优于配置、迭代快 后端开发 分层 / mvc web 全栈" data-scenario="backend" data-arch="layered">
+      </a><a class="stack-card dev-card" href="langs/ruby-frameworks.html#rails" data-search="ruby ruby rails 约定优于配置、迭代快 后端开发 分层 / mvc 分层 / mvc web 全栈" data-scenario="backend" data-arch="layered">
         <span class="stack-top"><span class="stack-lang">Ruby</span><span class="stack-type">分层 / MVC</span></span>
         <span class="stack-fw">Rails</span>
         <span class="stack-why">约定优于配置、迭代快</span>
       </a></div>
-      </div><div class="dev-arch" data-arch="microservices">
+      </div><div class="dev-arch" data-pattern="microservices">
         <div class="dev-arch__head">
           <h3 class="dev-arch__title">微服务</h3>
+          <span class="dev-arch__pattern" title="按业务边界拆服务或模块，独立部署与团队自治优先，代价是运维与一致性。">模式 · 微服务 / 服务化</span>
           <span class="dev-arch__desc">按业务边界拆服务；独立部署与团队自治优先，代价是运维与一致性。</span>
           <span class="era-head__count">4 组</span>
         </div>
-        <div class="stack-grid"><a class="stack-card dev-card" href="langs/go-frameworks.html#gin" data-search="go go gin 静态二进制、部署简单 后端开发 微服务 web 后端" data-scenario="backend" data-arch="microservices">
+        <div class="stack-grid"><a class="stack-card dev-card" href="langs/go-frameworks.html#gin" data-search="go go gin 静态二进制、部署简单 后端开发 微服务 微服务 / 服务化 web 后端" data-scenario="backend" data-arch="microservices">
         <span class="stack-top"><span class="stack-lang">Go</span><span class="stack-type">微服务</span></span>
         <span class="stack-fw">Gin</span>
         <span class="stack-why">静态二进制、部署简单</span>
-      </a><a class="stack-card dev-card" href="langs/typescript-frameworks.html#nestjs" data-search="typescript typescript nestjs 结构化、di、适合大团队 后端开发 微服务 web 后端" data-scenario="backend" data-arch="microservices">
+      </a><a class="stack-card dev-card" href="langs/typescript-frameworks.html#nestjs" data-search="typescript typescript nestjs 结构化、di、适合大团队 后端开发 微服务 微服务 / 服务化 web 后端" data-scenario="backend" data-arch="microservices">
         <span class="stack-top"><span class="stack-lang">TypeScript</span><span class="stack-type">微服务</span></span>
         <span class="stack-fw">NestJS</span>
         <span class="stack-why">结构化、DI、适合大团队</span>
-      </a><a class="stack-card dev-card" href="langs/java-frameworks.html#quarkus" data-search="java java quarkus 云原生、快启动 后端开发 微服务 云原生 java" data-scenario="backend" data-arch="microservices">
+      </a><a class="stack-card dev-card" href="langs/java-frameworks.html#quarkus" data-search="java java quarkus 云原生、快启动 后端开发 微服务 微服务 / 服务化 云原生 java" data-scenario="backend" data-arch="microservices">
         <span class="stack-top"><span class="stack-lang">Java</span><span class="stack-type">微服务</span></span>
         <span class="stack-fw">Quarkus</span>
         <span class="stack-why">云原生、快启动</span>
-      </a><a class="stack-card dev-card" href="langs/kotlin-frameworks.html#spring-boot" data-search="kotlin kotlin spring boot kotlin 企业后端 后端开发 微服务 企业后端" data-scenario="backend" data-arch="microservices">
+      </a><a class="stack-card dev-card" href="langs/kotlin-frameworks.html#spring-boot" data-search="kotlin kotlin spring boot kotlin 企业后端 后端开发 微服务 微服务 / 服务化 企业后端" data-scenario="backend" data-arch="microservices">
         <span class="stack-top"><span class="stack-lang">Kotlin</span><span class="stack-type">微服务</span></span>
         <span class="stack-fw">Spring Boot</span>
         <span class="stack-why">Kotlin 企业后端</span>
       </a></div>
-      </div><div class="dev-arch" data-arch="event-driven">
+      </div><div class="dev-arch" data-pattern="event-driven">
         <div class="dev-arch__head">
           <h3 class="dev-arch__title">事件驱动</h3>
+          <span class="dev-arch__pattern" title="通过消息与事件解耦，或用 Actor 封装状态；适合实时、长流程与高并发。">模式 · 事件驱动 / Actor</span>
           <span class="dev-arch__desc">通过消息与事件解耦；适合实时、长流程与高并发场景。</span>
           <span class="era-head__count">4 组</span>
         </div>
-        <div class="stack-grid"><a class="stack-card dev-card" href="langs/elixir-frameworks.html#phoenix" data-search="elixir elixir phoenix 实时与高并发 后端开发 事件驱动 web 全栈" data-scenario="backend" data-arch="event-driven">
+        <div class="stack-grid"><a class="stack-card dev-card" href="langs/elixir-frameworks.html#phoenix" data-search="elixir elixir phoenix 实时与高并发 后端开发 事件驱动 事件驱动 / actor web 全栈" data-scenario="backend" data-arch="event-driven">
         <span class="stack-top"><span class="stack-lang">Elixir</span><span class="stack-type">事件驱动</span></span>
         <span class="stack-fw">Phoenix</span>
         <span class="stack-why">实时与高并发</span>
-      </a><a class="stack-card dev-card" href="langs/erlang-frameworks.html#otp" data-search="erlang erlang otp 容错与热升级 后端开发 事件驱动 并发 / 容错框架" data-scenario="backend" data-arch="event-driven">
+      </a><a class="stack-card dev-card" href="langs/erlang-frameworks.html#otp" data-search="erlang erlang otp 容错与热升级 后端开发 事件驱动 事件驱动 / actor 并发 / 容错框架" data-scenario="backend" data-arch="event-driven">
         <span class="stack-top"><span class="stack-lang">Erlang</span><span class="stack-type">事件驱动</span></span>
         <span class="stack-fw">OTP</span>
         <span class="stack-why">容错与热升级</span>
-      </a><a class="stack-card dev-card" href="langs/scala-frameworks.html#akka" data-search="scala scala akka actor 与集群 后端开发 事件驱动 分布式 / actor" data-scenario="backend" data-arch="event-driven">
+      </a><a class="stack-card dev-card" href="langs/scala-frameworks.html#akka" data-search="scala scala akka actor 与集群 后端开发 事件驱动 事件驱动 / actor 分布式 / actor" data-scenario="backend" data-arch="event-driven">
         <span class="stack-top"><span class="stack-lang">Scala</span><span class="stack-type">事件驱动</span></span>
         <span class="stack-fw">Akka</span>
         <span class="stack-why">Actor 与集群</span>
-      </a><a class="stack-card dev-card" href="langs/rust-frameworks.html#axum" data-search="rust rust axum 类型安全与性能、生态较新 后端开发 事件驱动 web 后端" data-scenario="backend" data-arch="event-driven">
+      </a><a class="stack-card dev-card" href="langs/rust-frameworks.html#axum" data-search="rust rust axum 类型安全与性能、生态较新 后端开发 事件驱动 事件驱动 / actor web 后端" data-scenario="backend" data-arch="event-driven">
         <span class="stack-top"><span class="stack-lang">Rust</span><span class="stack-type">事件驱动</span></span>
         <span class="stack-fw">Axum</span>
         <span class="stack-why">类型安全与性能、生态较新</span>
@@ -207,71 +215,74 @@ try {
         <span class="era-head__count">3 种架构</span>
       </div>
       <p class="matrix-desc">组件化是默认起点；是否上 SSR、BFF 取决于首屏、SEO 与前后端协作方式。</p>
-      <div class="dev-arch" data-arch="component">
+      <div class="dev-arch" data-pattern="component">
         <div class="dev-arch__head">
           <h3 class="dev-arch__title">组件化 / 响应式</h3>
+          <span class="dev-arch__pattern" title="以组件树组织界面，状态与副作用显式管理；声明式 UI 也归入这一类。">模式 · 组件化 / 响应式 UI</span>
           <span class="dev-arch__desc">以组件树组织 UI，状态与副作用显式管理；适合大多数交互应用。</span>
           <span class="era-head__count">4 组</span>
         </div>
-        <div class="stack-grid"><a class="stack-card dev-card" href="langs/javascript-frameworks.html#react" data-search="javascript javascript react 生态最大、组件化 前端开发 组件化 / 响应式 web 前端" data-scenario="frontend" data-arch="component">
+        <div class="stack-grid"><a class="stack-card dev-card" href="langs/javascript-frameworks.html#react" data-search="javascript javascript react 生态最大、组件化 前端开发 组件化 / 响应式 组件化 / 响应式 ui web 前端" data-scenario="frontend" data-arch="component">
         <span class="stack-top"><span class="stack-lang">JavaScript</span><span class="stack-type">组件化 / 响应式</span></span>
         <span class="stack-fw">React</span>
         <span class="stack-why">生态最大、组件化</span>
-      </a><a class="stack-card dev-card" href="langs/javascript-frameworks.html#vue" data-search="javascript javascript vue 渐进式、模板直观 前端开发 组件化 / 响应式 web 前端" data-scenario="frontend" data-arch="component">
+      </a><a class="stack-card dev-card" href="langs/javascript-frameworks.html#vue" data-search="javascript javascript vue 渐进式、模板直观 前端开发 组件化 / 响应式 组件化 / 响应式 ui web 前端" data-scenario="frontend" data-arch="component">
         <span class="stack-top"><span class="stack-lang">JavaScript</span><span class="stack-type">组件化 / 响应式</span></span>
         <span class="stack-fw">Vue</span>
         <span class="stack-why">渐进式、模板直观</span>
-      </a><a class="stack-card dev-card" href="langs/typescript-frameworks.html#angular" data-search="typescript typescript angular 大型团队、di 与约定 前端开发 组件化 / 响应式 web 前端" data-scenario="frontend" data-arch="component">
+      </a><a class="stack-card dev-card" href="langs/typescript-frameworks.html#angular" data-search="typescript typescript angular 大型团队、di 与约定 前端开发 组件化 / 响应式 组件化 / 响应式 ui web 前端" data-scenario="frontend" data-arch="component">
         <span class="stack-top"><span class="stack-lang">TypeScript</span><span class="stack-type">组件化 / 响应式</span></span>
         <span class="stack-fw">Angular</span>
         <span class="stack-why">大型团队、DI 与约定</span>
-      </a><a class="stack-card dev-card" href="langs/html-frameworks.html#web-components" data-search="html html web components 原生跨框架组件 前端开发 组件化 / 响应式 组件模型" data-scenario="frontend" data-arch="component">
+      </a><a class="stack-card dev-card" href="langs/html-frameworks.html#web-components" data-search="html html web components 原生跨框架组件 前端开发 组件化 / 响应式 组件化 / 响应式 ui 组件模型" data-scenario="frontend" data-arch="component">
         <span class="stack-top"><span class="stack-lang">HTML</span><span class="stack-type">组件化 / 响应式</span></span>
         <span class="stack-fw">Web Components</span>
         <span class="stack-why">原生跨框架组件</span>
       </a></div>
-      </div><div class="dev-arch" data-arch="ssr">
+      </div><div class="dev-arch" data-pattern="ssr">
         <div class="dev-arch__head">
           <h3 class="dev-arch__title">SSR / 同构</h3>
+          <span class="dev-arch__pattern" title="服务端渲染首屏，客户端接管交互；内容站与 SEO 敏感场景优先。">模式 · 同构渲染 / SSR</span>
           <span class="dev-arch__desc">服务端渲染首屏，客户端接管交互；内容站与 SEO 敏感场景优先。</span>
           <span class="era-head__count">4 组</span>
         </div>
-        <div class="stack-grid"><a class="stack-card dev-card" href="langs/typescript-frameworks.html#next-js" data-search="typescript typescript next.js 全栈 react、ssr/ssg 前端开发 ssr / 同构 全栈 / ssr" data-scenario="frontend" data-arch="ssr">
+        <div class="stack-grid"><a class="stack-card dev-card" href="langs/typescript-frameworks.html#next-js" data-search="typescript typescript next.js 全栈 react、ssr/ssg 前端开发 ssr / 同构 同构渲染 / ssr 全栈 / ssr" data-scenario="frontend" data-arch="ssr">
         <span class="stack-top"><span class="stack-lang">TypeScript</span><span class="stack-type">SSR / 同构</span></span>
         <span class="stack-fw">Next.js</span>
         <span class="stack-why">全栈 React、SSR/SSG</span>
-      </a><a class="stack-card dev-card" href="langs/javascript-frameworks.html#next-js" data-search="javascript javascript next.js react 全栈 / ssr 前端开发 ssr / 同构 全栈 / ssr" data-scenario="frontend" data-arch="ssr">
+      </a><a class="stack-card dev-card" href="langs/javascript-frameworks.html#next-js" data-search="javascript javascript next.js react 全栈 / ssr 前端开发 ssr / 同构 同构渲染 / ssr 全栈 / ssr" data-scenario="frontend" data-arch="ssr">
         <span class="stack-top"><span class="stack-lang">JavaScript</span><span class="stack-type">SSR / 同构</span></span>
         <span class="stack-fw">Next.js</span>
         <span class="stack-why">React 全栈 / SSR</span>
-      </a><a class="stack-card dev-card" href="langs/csharp-frameworks.html#blazor" data-search="c# csharp blazor c# 写 web ui 前端开发 ssr / 同构 web ui" data-scenario="frontend" data-arch="ssr">
+      </a><a class="stack-card dev-card" href="langs/csharp-frameworks.html#blazor" data-search="c# csharp blazor c# 写 web ui 前端开发 ssr / 同构 同构渲染 / ssr web ui" data-scenario="frontend" data-arch="ssr">
         <span class="stack-top"><span class="stack-lang">C#</span><span class="stack-type">SSR / 同构</span></span>
         <span class="stack-fw">Blazor</span>
         <span class="stack-why">C# 写 Web UI</span>
-      </a><a class="stack-card dev-card" href="langs/elixir-frameworks.html#liveview" data-search="elixir elixir liveview 服务端实时 ui 前端开发 ssr / 同构 实时 ui" data-scenario="frontend" data-arch="ssr">
+      </a><a class="stack-card dev-card" href="langs/elixir-frameworks.html#liveview" data-search="elixir elixir liveview 服务端实时 ui 前端开发 ssr / 同构 同构渲染 / ssr 实时 ui" data-scenario="frontend" data-arch="ssr">
         <span class="stack-top"><span class="stack-lang">Elixir</span><span class="stack-type">SSR / 同构</span></span>
         <span class="stack-fw">LiveView</span>
         <span class="stack-why">服务端实时 UI</span>
       </a></div>
-      </div><div class="dev-arch" data-arch="bff">
+      </div><div class="dev-arch" data-pattern="gateway">
         <div class="dev-arch__head">
           <h3 class="dev-arch__title">BFF / 全栈</h3>
+          <span class="dev-arch__pattern" title="统一入口、协议转换与接口聚合；让客户端只面对一个边界。">模式 · 网关 / BFF</span>
           <span class="dev-arch__desc">前后端共享类型与部署单元，减少接口往返；适合内部系统与单体团队。</span>
           <span class="era-head__count">4 组</span>
         </div>
-        <div class="stack-grid"><a class="stack-card dev-card" href="langs/typescript-frameworks.html#trpc" data-search="typescript typescript trpc 端到端类型安全 api 前端开发 bff / 全栈 类型化 api" data-scenario="frontend" data-arch="bff">
+        <div class="stack-grid"><a class="stack-card dev-card" href="langs/typescript-frameworks.html#trpc" data-search="typescript typescript trpc 端到端类型安全 api 前端开发 bff / 全栈 网关 / bff 类型化 api" data-scenario="frontend" data-arch="gateway">
         <span class="stack-top"><span class="stack-lang">TypeScript</span><span class="stack-type">BFF / 全栈</span></span>
         <span class="stack-fw">tRPC</span>
         <span class="stack-why">端到端类型安全 API</span>
-      </a><a class="stack-card dev-card" href="langs/javascript-frameworks.html#express" data-search="javascript javascript express node 生态、上手快 前端开发 bff / 全栈 web 后端" data-scenario="frontend" data-arch="bff">
+      </a><a class="stack-card dev-card" href="langs/javascript-frameworks.html#express" data-search="javascript javascript express node 生态、上手快 前端开发 bff / 全栈 网关 / bff web 后端" data-scenario="frontend" data-arch="gateway">
         <span class="stack-top"><span class="stack-lang">JavaScript</span><span class="stack-type">BFF / 全栈</span></span>
         <span class="stack-fw">Express</span>
         <span class="stack-why">Node 生态、上手快</span>
-      </a><a class="stack-card dev-card" href="langs/fsharp-frameworks.html#giraffe" data-search="f# fsharp giraffe 函数式 http 组合 前端开发 bff / 全栈 web 后端" data-scenario="frontend" data-arch="bff">
+      </a><a class="stack-card dev-card" href="langs/fsharp-frameworks.html#giraffe" data-search="f# fsharp giraffe 函数式 http 组合 前端开发 bff / 全栈 网关 / bff web 后端" data-scenario="frontend" data-arch="gateway">
         <span class="stack-top"><span class="stack-lang">F#</span><span class="stack-type">BFF / 全栈</span></span>
         <span class="stack-fw">Giraffe</span>
         <span class="stack-why">函数式 HTTP 组合</span>
-      </a><a class="stack-card dev-card" href="langs/clojure-frameworks.html#ring-compojure" data-search="clojure clojure ring + compojure 中间件模型、极简路由 前端开发 bff / 全栈 web 后端" data-scenario="frontend" data-arch="bff">
+      </a><a class="stack-card dev-card" href="langs/clojure-frameworks.html#ring-compojure" data-search="clojure clojure ring + compojure 中间件模型、极简路由 前端开发 bff / 全栈 网关 / bff web 后端" data-scenario="frontend" data-arch="gateway">
         <span class="stack-top"><span class="stack-lang">Clojure</span><span class="stack-type">BFF / 全栈</span></span>
         <span class="stack-fw">Ring + Compojure</span>
         <span class="stack-why">中间件模型、极简路由</span>
@@ -285,59 +296,62 @@ try {
         <span class="era-head__count">3 种架构</span>
       </div>
       <p class="matrix-desc">原生能力、跨平台复用与 UI 一致性不可兼得；先确定平台优先级。</p>
-      <div class="dev-arch" data-arch="declarative">
+      <div class="dev-arch" data-pattern="component">
         <div class="dev-arch__head">
           <h3 class="dev-arch__title">声明式 UI</h3>
+          <span class="dev-arch__pattern" title="以组件树组织界面，状态与副作用显式管理；声明式 UI 也归入这一类。">模式 · 组件化 / 响应式 UI</span>
           <span class="dev-arch__desc">用状态描述界面，框架负责差量更新；新项目的主流选择。</span>
           <span class="era-head__count">3 组</span>
         </div>
-        <div class="stack-grid"><a class="stack-card dev-card" href="langs/swift-frameworks.html#swiftui" data-search="swift swift swiftui apple 平台声明式 ui 移动开发 声明式 ui apple ui" data-scenario="mobile" data-arch="declarative">
+        <div class="stack-grid"><a class="stack-card dev-card" href="langs/swift-frameworks.html#swiftui" data-search="swift swift swiftui apple 平台声明式 ui 移动开发 声明式 ui 组件化 / 响应式 ui apple ui" data-scenario="mobile" data-arch="component">
         <span class="stack-top"><span class="stack-lang">Swift</span><span class="stack-type">声明式 UI</span></span>
         <span class="stack-fw">SwiftUI</span>
         <span class="stack-why">Apple 平台声明式 UI</span>
-      </a><a class="stack-card dev-card" href="langs/kotlin-frameworks.html#jetpack-compose" data-search="kotlin kotlin jetpack compose android 官方声明式 ui 移动开发 声明式 ui android ui" data-scenario="mobile" data-arch="declarative">
+      </a><a class="stack-card dev-card" href="langs/kotlin-frameworks.html#jetpack-compose" data-search="kotlin kotlin jetpack compose android 官方声明式 ui 移动开发 声明式 ui 组件化 / 响应式 ui android ui" data-scenario="mobile" data-arch="component">
         <span class="stack-top"><span class="stack-lang">Kotlin</span><span class="stack-type">声明式 UI</span></span>
         <span class="stack-fw">Jetpack Compose</span>
         <span class="stack-why">Android 官方声明式 UI</span>
-      </a><a class="stack-card dev-card" href="langs/dart-frameworks.html#flutter" data-search="dart dart flutter 一套代码跨移动/桌面/web 移动开发 声明式 ui 跨平台 ui" data-scenario="mobile" data-arch="declarative">
+      </a><a class="stack-card dev-card" href="langs/dart-frameworks.html#flutter" data-search="dart dart flutter 一套代码跨移动/桌面/web 移动开发 声明式 ui 组件化 / 响应式 ui 跨平台 ui" data-scenario="mobile" data-arch="component">
         <span class="stack-top"><span class="stack-lang">Dart</span><span class="stack-type">声明式 UI</span></span>
         <span class="stack-fw">Flutter</span>
         <span class="stack-why">一套代码跨移动/桌面/Web</span>
       </a></div>
-      </div><div class="dev-arch" data-arch="native">
+      </div><div class="dev-arch" data-pattern="native">
         <div class="dev-arch__head">
           <h3 class="dev-arch__title">原生控件</h3>
+          <span class="dev-arch__pattern" title="直接使用平台 API、控件或系统库；兼容性与系统能力最完整。">模式 · 原生 / 平台绑定</span>
           <span class="dev-arch__desc">直接使用平台 API 与控件；兼容性与系统能力最完整。</span>
           <span class="era-head__count">3 组</span>
         </div>
-        <div class="stack-grid"><a class="stack-card dev-card" href="langs/swift-frameworks.html#uikit" data-search="swift swift uikit 成熟 ios 控件与兼容性 移动开发 原生控件 apple ui" data-scenario="mobile" data-arch="native">
+        <div class="stack-grid"><a class="stack-card dev-card" href="langs/swift-frameworks.html#uikit" data-search="swift swift uikit 成熟 ios 控件与兼容性 移动开发 原生控件 原生 / 平台绑定 apple ui" data-scenario="mobile" data-arch="native">
         <span class="stack-top"><span class="stack-lang">Swift</span><span class="stack-type">原生控件</span></span>
         <span class="stack-fw">UIKit</span>
         <span class="stack-why">成熟 iOS 控件与兼容性</span>
-      </a><a class="stack-card dev-card" href="langs/java-frameworks.html#android-sdk" data-search="java java android sdk android 原生 api 与 jetpack 移动开发 原生控件 移动" data-scenario="mobile" data-arch="native">
+      </a><a class="stack-card dev-card" href="langs/java-frameworks.html#android-sdk" data-search="java java android sdk android 原生 api 与 jetpack 移动开发 原生控件 原生 / 平台绑定 移动" data-scenario="mobile" data-arch="native">
         <span class="stack-top"><span class="stack-lang">Java</span><span class="stack-type">原生控件</span></span>
         <span class="stack-fw">Android SDK</span>
         <span class="stack-why">Android 原生 API 与 Jetpack</span>
-      </a><a class="stack-card dev-card" href="langs/objectivec-frameworks.html#cocoa-cocoa-touch" data-search="objective-c objectivec cocoa / cocoa touch 维护旧 ios/macos 项目 移动开发 原生控件 apple 原生" data-scenario="mobile" data-arch="native">
+      </a><a class="stack-card dev-card" href="langs/objectivec-frameworks.html#cocoa-cocoa-touch" data-search="objective-c objectivec cocoa / cocoa touch 维护旧 ios/macos 项目 移动开发 原生控件 原生 / 平台绑定 apple 原生" data-scenario="mobile" data-arch="native">
         <span class="stack-top"><span class="stack-lang">Objective-C</span><span class="stack-type">原生控件</span></span>
         <span class="stack-fw">Cocoa / Cocoa Touch</span>
         <span class="stack-why">维护旧 iOS/macOS 项目</span>
       </a></div>
-      </div><div class="dev-arch" data-arch="service">
+      </div><div class="dev-arch" data-pattern="microservices">
         <div class="dev-arch__head">
           <h3 class="dev-arch__title">服务端配套</h3>
+          <span class="dev-arch__pattern" title="按业务边界拆服务或模块，独立部署与团队自治优先，代价是运维与一致性。">模式 · 微服务 / 服务化</span>
           <span class="dev-arch__desc">为移动端提供 API、推送与同步；常与客户端同栈或同团队维护。</span>
           <span class="era-head__count">3 组</span>
         </div>
-        <div class="stack-grid"><a class="stack-card dev-card" href="langs/swift-frameworks.html#vapor" data-search="swift swift vapor swift 服务端 移动开发 服务端配套 服务端" data-scenario="mobile" data-arch="service">
+        <div class="stack-grid"><a class="stack-card dev-card" href="langs/swift-frameworks.html#vapor" data-search="swift swift vapor swift 服务端 移动开发 服务端配套 微服务 / 服务化 服务端" data-scenario="mobile" data-arch="microservices">
         <span class="stack-top"><span class="stack-lang">Swift</span><span class="stack-type">服务端配套</span></span>
         <span class="stack-fw">Vapor</span>
         <span class="stack-why">Swift 服务端</span>
-      </a><a class="stack-card dev-card" href="langs/kotlin-frameworks.html#ktor" data-search="kotlin kotlin ktor 协程、kotlin 原生 移动开发 服务端配套 服务端" data-scenario="mobile" data-arch="service">
+      </a><a class="stack-card dev-card" href="langs/kotlin-frameworks.html#ktor" data-search="kotlin kotlin ktor 协程、kotlin 原生 移动开发 服务端配套 微服务 / 服务化 服务端" data-scenario="mobile" data-arch="microservices">
         <span class="stack-top"><span class="stack-lang">Kotlin</span><span class="stack-type">服务端配套</span></span>
         <span class="stack-fw">Ktor</span>
         <span class="stack-why">协程、Kotlin 原生</span>
-      </a><a class="stack-card dev-card" href="langs/dart-frameworks.html#shelf" data-search="dart dart shelf dart http 中间件 移动开发 服务端配套 服务端微框架" data-scenario="mobile" data-arch="service">
+      </a><a class="stack-card dev-card" href="langs/dart-frameworks.html#shelf" data-search="dart dart shelf dart http 中间件 移动开发 服务端配套 微服务 / 服务化 服务端微框架" data-scenario="mobile" data-arch="microservices">
         <span class="stack-top"><span class="stack-lang">Dart</span><span class="stack-type">服务端配套</span></span>
         <span class="stack-fw">shelf</span>
         <span class="stack-why">Dart HTTP 中间件</span>
@@ -351,63 +365,66 @@ try {
         <span class="era-head__count">3 种架构</span>
       </div>
       <p class="matrix-desc">原生控件、跨平台框架与 Web 外壳三条路线；看发布渠道与系统集成深度。</p>
-      <div class="dev-arch" data-arch="native">
+      <div class="dev-arch" data-pattern="native">
         <div class="dev-arch__head">
           <h3 class="dev-arch__title">原生控件</h3>
+          <span class="dev-arch__pattern" title="直接使用平台 API、控件或系统库；兼容性与系统能力最完整。">模式 · 原生 / 平台绑定</span>
           <span class="dev-arch__desc">使用平台原生控件与系统集成；体验最好，跨平台成本最高。</span>
           <span class="era-head__count">4 组</span>
         </div>
-        <div class="stack-grid"><a class="stack-card dev-card" href="langs/cpp-frameworks.html#qt" data-search="c++ cpp qt 跨平台原生控件与工具链 桌面开发 原生控件 桌面 gui / 跨平台" data-scenario="desktop" data-arch="native">
+        <div class="stack-grid"><a class="stack-card dev-card" href="langs/cpp-frameworks.html#qt" data-search="c++ cpp qt 跨平台原生控件与工具链 桌面开发 原生控件 原生 / 平台绑定 桌面 gui / 跨平台" data-scenario="desktop" data-arch="native">
         <span class="stack-top"><span class="stack-lang">C++</span><span class="stack-type">原生控件</span></span>
         <span class="stack-fw">Qt</span>
         <span class="stack-why">跨平台原生控件与工具链</span>
-      </a><a class="stack-card dev-card" href="langs/csharp-frameworks.html#wpf" data-search="c# csharp wpf windows 企业桌面 桌面开发 原生控件 windows 桌面" data-scenario="desktop" data-arch="native">
+      </a><a class="stack-card dev-card" href="langs/csharp-frameworks.html#wpf" data-search="c# csharp wpf windows 企业桌面 桌面开发 原生控件 原生 / 平台绑定 windows 桌面" data-scenario="desktop" data-arch="native">
         <span class="stack-top"><span class="stack-lang">C#</span><span class="stack-type">原生控件</span></span>
         <span class="stack-fw">WPF</span>
         <span class="stack-why">Windows 企业桌面</span>
-      </a><a class="stack-card dev-card" href="langs/c-frameworks.html#gtk" data-search="c c gtk linux 原生桌面 桌面开发 原生控件 桌面 gui" data-scenario="desktop" data-arch="native">
+      </a><a class="stack-card dev-card" href="langs/c-frameworks.html#gtk" data-search="c c gtk linux 原生桌面 桌面开发 原生控件 原生 / 平台绑定 桌面 gui" data-scenario="desktop" data-arch="native">
         <span class="stack-top"><span class="stack-lang">C</span><span class="stack-type">原生控件</span></span>
         <span class="stack-fw">GTK</span>
         <span class="stack-why">Linux 原生桌面</span>
-      </a><a class="stack-card dev-card" href="langs/delphi-frameworks.html#vcl" data-search="delphi delphi vcl windows 快速桌面 桌面开发 原生控件 windows 桌面" data-scenario="desktop" data-arch="native">
+      </a><a class="stack-card dev-card" href="langs/delphi-frameworks.html#vcl" data-search="delphi delphi vcl windows 快速桌面 桌面开发 原生控件 原生 / 平台绑定 windows 桌面" data-scenario="desktop" data-arch="native">
         <span class="stack-top"><span class="stack-lang">Delphi</span><span class="stack-type">原生控件</span></span>
         <span class="stack-fw">VCL</span>
         <span class="stack-why">Windows 快速桌面</span>
       </a></div>
-      </div><div class="dev-arch" data-arch="cross-platform">
+      </div><div class="dev-arch" data-pattern="cross-platform">
         <div class="dev-arch__head">
           <h3 class="dev-arch__title">跨平台 GUI</h3>
+          <span class="dev-arch__pattern" title="一套代码覆盖多平台，或以内嵌 Web 运行时承载界面；复用优先。">模式 · 跨平台 / Web 外壳</span>
           <span class="dev-arch__desc">一套代码覆盖多平台；适合工具类与内部应用。</span>
           <span class="era-head__count">3 组</span>
         </div>
-        <div class="stack-grid"><a class="stack-card dev-card" href="langs/cpp-frameworks.html#qt" data-search="c++ cpp qt 跨平台原生控件与工具链 桌面开发 跨平台 gui 桌面 gui / 跨平台" data-scenario="desktop" data-arch="cross-platform">
+        <div class="stack-grid"><a class="stack-card dev-card" href="langs/cpp-frameworks.html#qt" data-search="c++ cpp qt 跨平台原生控件与工具链 桌面开发 跨平台 gui 跨平台 / web 外壳 桌面 gui / 跨平台" data-scenario="desktop" data-arch="cross-platform">
         <span class="stack-top"><span class="stack-lang">C++</span><span class="stack-type">跨平台 GUI</span></span>
         <span class="stack-fw">Qt</span>
         <span class="stack-why">跨平台原生控件与工具链</span>
-      </a><a class="stack-card dev-card" href="langs/delphi-frameworks.html#firemonkey" data-search="delphi delphi firemonkey 跨平台 gui 桌面开发 跨平台 gui 跨平台 gui" data-scenario="desktop" data-arch="cross-platform">
+      </a><a class="stack-card dev-card" href="langs/delphi-frameworks.html#firemonkey" data-search="delphi delphi firemonkey 跨平台 gui 桌面开发 跨平台 gui 跨平台 / web 外壳 跨平台 gui" data-scenario="desktop" data-arch="cross-platform">
         <span class="stack-top"><span class="stack-lang">Delphi</span><span class="stack-type">跨平台 GUI</span></span>
         <span class="stack-fw">FireMonkey</span>
         <span class="stack-why">跨平台 GUI</span>
-      </a><a class="stack-card dev-card" href="langs/delphi-frameworks.html#lazarus-lcl" data-search="delphi delphi lazarus lcl 开源跨平台 gui 桌面开发 跨平台 gui 开源跨平台 gui" data-scenario="desktop" data-arch="cross-platform">
+      </a><a class="stack-card dev-card" href="langs/delphi-frameworks.html#lazarus-lcl" data-search="delphi delphi lazarus lcl 开源跨平台 gui 桌面开发 跨平台 gui 跨平台 / web 外壳 开源跨平台 gui" data-scenario="desktop" data-arch="cross-platform">
         <span class="stack-top"><span class="stack-lang">Delphi</span><span class="stack-type">跨平台 GUI</span></span>
         <span class="stack-fw">Lazarus LCL</span>
         <span class="stack-why">开源跨平台 GUI</span>
       </a></div>
-      </div><div class="dev-arch" data-arch="plugin">
+      </div><div class="dev-arch" data-pattern="plugin">
         <div class="dev-arch__head">
           <h3 class="dev-arch__title">微内核 / 插件化</h3>
+          <span class="dev-arch__pattern" title="核心保持小，能力通过插件或脚本扩展；适合编辑器、IDE 与平台型工具。">模式 · 微内核 / 插件化</span>
           <span class="dev-arch__desc">核心保持小，能力通过插件扩展；适合编辑器、IDE 与平台型工具。</span>
           <span class="era-head__count">3 组</span>
         </div>
-        <div class="stack-grid"><a class="stack-card dev-card" href="langs/cpp-frameworks.html#qt" data-search="c++ cpp qt 插件机制与跨平台 桌面开发 微内核 / 插件化 桌面 gui / 跨平台" data-scenario="desktop" data-arch="plugin">
+        <div class="stack-grid"><a class="stack-card dev-card" href="langs/cpp-frameworks.html#qt" data-search="c++ cpp qt 插件机制与跨平台 桌面开发 微内核 / 插件化 微内核 / 插件化 桌面 gui / 跨平台" data-scenario="desktop" data-arch="plugin">
         <span class="stack-top"><span class="stack-lang">C++</span><span class="stack-type">微内核 / 插件化</span></span>
         <span class="stack-fw">Qt</span>
         <span class="stack-why">插件机制与跨平台</span>
-      </a><a class="stack-card dev-card" href="langs/smalltalk-frameworks.html#glamorous-toolkit" data-search="smalltalk smalltalk glamorous toolkit 可编程开发环境 桌面开发 微内核 / 插件化 开发环境" data-scenario="desktop" data-arch="plugin">
+      </a><a class="stack-card dev-card" href="langs/smalltalk-frameworks.html#glamorous-toolkit" data-search="smalltalk smalltalk glamorous toolkit 可编程开发环境 桌面开发 微内核 / 插件化 微内核 / 插件化 开发环境" data-scenario="desktop" data-arch="plugin">
         <span class="stack-top"><span class="stack-lang">Smalltalk</span><span class="stack-type">微内核 / 插件化</span></span>
         <span class="stack-fw">Glamorous Toolkit</span>
         <span class="stack-why">可编程开发环境</span>
-      </a><a class="stack-card dev-card" href="langs/rust-frameworks.html#tauri" data-search="rust rust tauri web 前端 + rust 后端、体积小 桌面开发 微内核 / 插件化 桌面应用" data-scenario="desktop" data-arch="plugin">
+      </a><a class="stack-card dev-card" href="langs/rust-frameworks.html#tauri" data-search="rust rust tauri web 前端 + rust 后端、体积小 桌面开发 微内核 / 插件化 微内核 / 插件化 桌面应用" data-scenario="desktop" data-arch="plugin">
         <span class="stack-top"><span class="stack-lang">Rust</span><span class="stack-type">微内核 / 插件化</span></span>
         <span class="stack-fw">Tauri</span>
         <span class="stack-why">Web 前端 + Rust 后端、体积小</span>
@@ -421,59 +438,62 @@ try {
         <span class="era-head__count">3 种架构</span>
       </div>
       <p class="matrix-desc">引擎决定美术与工具链，脚本层决定迭代速度；先看团队与目标平台。</p>
-      <div class="dev-arch" data-arch="engine">
+      <div class="dev-arch" data-pattern="ecs">
         <div class="dev-arch__head">
           <h3 class="dev-arch__title">引擎驱动</h3>
+          <span class="dev-arch__pattern" title="按组件与系统组织数据，缓存友好；适合大量实体、数组式计算与数据并行。">模式 · ECS / 数据导向</span>
           <span class="dev-arch__desc">使用成熟引擎的渲染、物理与编辑器；把精力放在玩法与内容。</span>
           <span class="era-head__count">3 组</span>
         </div>
-        <div class="stack-grid"><a class="stack-card dev-card" href="langs/cpp-frameworks.html#unreal-engine" data-search="c++ cpp unreal engine 高端 3d 与完整工具链 游戏开发 引擎驱动 游戏引擎" data-scenario="game" data-arch="engine">
+        <div class="stack-grid"><a class="stack-card dev-card" href="langs/cpp-frameworks.html#unreal-engine" data-search="c++ cpp unreal engine 高端 3d 与完整工具链 游戏开发 引擎驱动 ecs / 数据导向 游戏引擎" data-scenario="game" data-arch="ecs">
         <span class="stack-top"><span class="stack-lang">C++</span><span class="stack-type">引擎驱动</span></span>
         <span class="stack-fw">Unreal Engine</span>
         <span class="stack-why">高端 3D 与完整工具链</span>
-      </a><a class="stack-card dev-card" href="langs/csharp-frameworks.html#unity" data-search="c# csharp unity 跨平台与快速迭代 游戏开发 引擎驱动 游戏引擎" data-scenario="game" data-arch="engine">
+      </a><a class="stack-card dev-card" href="langs/csharp-frameworks.html#unity" data-search="c# csharp unity 跨平台与快速迭代 游戏开发 引擎驱动 ecs / 数据导向 游戏引擎" data-scenario="game" data-arch="ecs">
         <span class="stack-top"><span class="stack-lang">C#</span><span class="stack-type">引擎驱动</span></span>
         <span class="stack-fw">Unity</span>
         <span class="stack-why">跨平台与快速迭代</span>
-      </a><a class="stack-card dev-card" href="langs/rust-frameworks.html#bevy" data-search="rust rust bevy ecs、代码驱动 游戏开发 引擎驱动 游戏引擎" data-scenario="game" data-arch="engine">
+      </a><a class="stack-card dev-card" href="langs/rust-frameworks.html#bevy" data-search="rust rust bevy ecs、代码驱动 游戏开发 引擎驱动 ecs / 数据导向 游戏引擎" data-scenario="game" data-arch="ecs">
         <span class="stack-top"><span class="stack-lang">Rust</span><span class="stack-type">引擎驱动</span></span>
         <span class="stack-fw">Bevy</span>
         <span class="stack-why">ECS、代码驱动</span>
       </a></div>
-      </div><div class="dev-arch" data-arch="ecs">
+      </div><div class="dev-arch" data-pattern="ecs">
         <div class="dev-arch__head">
           <h3 class="dev-arch__title">ECS / 数据导向</h3>
+          <span class="dev-arch__pattern" title="按组件与系统组织数据，缓存友好；适合大量实体、数组式计算与数据并行。">模式 · ECS / 数据导向</span>
           <span class="dev-arch__desc">按组件与系统组织数据，缓存友好；适合大量实体与规则化玩法。</span>
           <span class="era-head__count">3 组</span>
         </div>
-        <div class="stack-grid"><a class="stack-card dev-card" href="langs/rust-frameworks.html#bevy" data-search="rust rust bevy ecs、代码驱动 游戏开发 ecs / 数据导向 游戏引擎" data-scenario="game" data-arch="ecs">
+        <div class="stack-grid"><a class="stack-card dev-card" href="langs/rust-frameworks.html#bevy" data-search="rust rust bevy ecs、代码驱动 游戏开发 ecs / 数据导向 ecs / 数据导向 游戏引擎" data-scenario="game" data-arch="ecs">
         <span class="stack-top"><span class="stack-lang">Rust</span><span class="stack-type">ECS / 数据导向</span></span>
         <span class="stack-fw">Bevy</span>
         <span class="stack-why">ECS、代码驱动</span>
-      </a><a class="stack-card dev-card" href="langs/c-frameworks.html#sdl2" data-search="c c sdl2 窗口、输入、音频与帧循环 游戏开发 ecs / 数据导向 游戏 / 多媒体" data-scenario="game" data-arch="ecs">
+      </a><a class="stack-card dev-card" href="langs/c-frameworks.html#sdl2" data-search="c c sdl2 窗口、输入、音频与帧循环 游戏开发 ecs / 数据导向 ecs / 数据导向 游戏 / 多媒体" data-scenario="game" data-arch="ecs">
         <span class="stack-top"><span class="stack-lang">C</span><span class="stack-type">ECS / 数据导向</span></span>
         <span class="stack-fw">SDL2</span>
         <span class="stack-why">窗口、输入、音频与帧循环</span>
-      </a><a class="stack-card dev-card" href="langs/cpp-frameworks.html#unreal-engine" data-search="c++ cpp unreal engine 高端 3d 与完整工具链 游戏开发 ecs / 数据导向 游戏引擎" data-scenario="game" data-arch="ecs">
+      </a><a class="stack-card dev-card" href="langs/cpp-frameworks.html#unreal-engine" data-search="c++ cpp unreal engine 高端 3d 与完整工具链 游戏开发 ecs / 数据导向 ecs / 数据导向 游戏引擎" data-scenario="game" data-arch="ecs">
         <span class="stack-top"><span class="stack-lang">C++</span><span class="stack-type">ECS / 数据导向</span></span>
         <span class="stack-fw">Unreal Engine</span>
         <span class="stack-why">高端 3D 与完整工具链</span>
       </a></div>
-      </div><div class="dev-arch" data-arch="scripting">
+      </div><div class="dev-arch" data-pattern="plugin">
         <div class="dev-arch__head">
           <h3 class="dev-arch__title">脚本层</h3>
+          <span class="dev-arch__pattern" title="核心保持小，能力通过插件或脚本扩展；适合编辑器、IDE 与平台型工具。">模式 · 微内核 / 插件化</span>
           <span class="dev-arch__desc">用脚本描述关卡、UI 与玩法；引擎宿主提供运行时与热更新。</span>
           <span class="era-head__count">3 组</span>
         </div>
-        <div class="stack-grid"><a class="stack-card dev-card" href="langs/lua-frameworks.html#l-ve" data-search="lua lua löve 轻量 2d 游戏开发 脚本层 2d 游戏" data-scenario="game" data-arch="scripting">
+        <div class="stack-grid"><a class="stack-card dev-card" href="langs/lua-frameworks.html#l-ve" data-search="lua lua löve 轻量 2d 游戏开发 脚本层 微内核 / 插件化 2d 游戏" data-scenario="game" data-arch="plugin">
         <span class="stack-top"><span class="stack-lang">Lua</span><span class="stack-type">脚本层</span></span>
         <span class="stack-fw">LÖVE</span>
         <span class="stack-why">轻量 2D</span>
-      </a><a class="stack-card dev-card" href="langs/lua-frameworks.html#roblox" data-search="lua lua roblox 平台化 ugc 游戏开发 脚本层 平台 / 游戏" data-scenario="game" data-arch="scripting">
+      </a><a class="stack-card dev-card" href="langs/lua-frameworks.html#roblox" data-search="lua lua roblox 平台化 ugc 游戏开发 脚本层 微内核 / 插件化 平台 / 游戏" data-scenario="game" data-arch="plugin">
         <span class="stack-top"><span class="stack-lang">Lua</span><span class="stack-type">脚本层</span></span>
         <span class="stack-fw">Roblox</span>
         <span class="stack-why">平台化 UGC</span>
-      </a><a class="stack-card dev-card" href="langs/c-frameworks.html#sdl2" data-search="c c sdl2 窗口、输入、音频与帧循环 游戏开发 脚本层 游戏 / 多媒体" data-scenario="game" data-arch="scripting">
+      </a><a class="stack-card dev-card" href="langs/c-frameworks.html#sdl2" data-search="c c sdl2 窗口、输入、音频与帧循环 游戏开发 脚本层 微内核 / 插件化 游戏 / 多媒体" data-scenario="game" data-arch="plugin">
         <span class="stack-top"><span class="stack-lang">C</span><span class="stack-type">脚本层</span></span>
         <span class="stack-fw">SDL2</span>
         <span class="stack-why">窗口、输入、音频与帧循环</span>
@@ -487,59 +507,62 @@ try {
         <span class="era-head__count">3 种架构</span>
       </div>
       <p class="matrix-desc">批处理、模型服务与实验是三套工具链；不要用一个框架硬套全流程。</p>
-      <div class="dev-arch" data-arch="batch">
+      <div class="dev-arch" data-pattern="pipeline">
         <div class="dev-arch__head">
           <h3 class="dev-arch__title">批处理 / 数仓</h3>
+          <span class="dev-arch__pattern" title="分阶段转换与批流处理，强调可重跑、可测试与可观测。">模式 · 管线 / 批流</span>
           <span class="dev-arch__desc">按批次转换与建模，强调可重跑、可测试与血缘。</span>
           <span class="era-head__count">3 组</span>
         </div>
-        <div class="stack-grid"><a class="stack-card dev-card" href="langs/scala-frameworks.html#apache-spark" data-search="scala scala apache spark 大规模数据处理 数据 / ai 批处理 / 数仓 大数据" data-scenario="data-ai" data-arch="batch">
+        <div class="stack-grid"><a class="stack-card dev-card" href="langs/scala-frameworks.html#apache-spark" data-search="scala scala apache spark 大规模数据处理 数据 / ai 批处理 / 数仓 管线 / 批流 大数据" data-scenario="data-ai" data-arch="pipeline">
         <span class="stack-top"><span class="stack-lang">Scala</span><span class="stack-type">批处理 / 数仓</span></span>
         <span class="stack-fw">Apache Spark</span>
         <span class="stack-why">大规模数据处理</span>
-      </a><a class="stack-card dev-card" href="langs/sql-frameworks.html#dbt" data-search="sql sql dbt 数仓转换与测试 数据 / ai 批处理 / 数仓 分析工程" data-scenario="data-ai" data-arch="batch">
+      </a><a class="stack-card dev-card" href="langs/sql-frameworks.html#dbt" data-search="sql sql dbt 数仓转换与测试 数据 / ai 批处理 / 数仓 管线 / 批流 分析工程" data-scenario="data-ai" data-arch="pipeline">
         <span class="stack-top"><span class="stack-lang">SQL</span><span class="stack-type">批处理 / 数仓</span></span>
         <span class="stack-fw">dbt</span>
         <span class="stack-why">数仓转换与测试</span>
-      </a><a class="stack-card dev-card" href="langs/sql-frameworks.html#sqlalchemy" data-search="sql sql sqlalchemy python orm 与 sql 工具 数据 / ai 批处理 / 数仓 orm（python）" data-scenario="data-ai" data-arch="batch">
+      </a><a class="stack-card dev-card" href="langs/sql-frameworks.html#sqlalchemy" data-search="sql sql sqlalchemy python orm 与 sql 工具 数据 / ai 批处理 / 数仓 管线 / 批流 orm（python）" data-scenario="data-ai" data-arch="pipeline">
         <span class="stack-top"><span class="stack-lang">SQL</span><span class="stack-type">批处理 / 数仓</span></span>
         <span class="stack-fw">SQLAlchemy</span>
         <span class="stack-why">Python ORM 与 SQL 工具</span>
       </a></div>
-      </div><div class="dev-arch" data-arch="serving">
+      </div><div class="dev-arch" data-pattern="microservices">
         <div class="dev-arch__head">
           <h3 class="dev-arch__title">模型服务</h3>
+          <span class="dev-arch__pattern" title="按业务边界拆服务或模块，独立部署与团队自治优先，代价是运维与一致性。">模式 · 微服务 / 服务化</span>
           <span class="dev-arch__desc">把模型封装成 API，关注延迟、并发与版本回滚。</span>
           <span class="era-head__count">3 组</span>
         </div>
-        <div class="stack-grid"><a class="stack-card dev-card" href="langs/python-frameworks.html#fastapi" data-search="python python fastapi 模型服务与 api 数据 / ai 模型服务 api" data-scenario="data-ai" data-arch="serving">
+        <div class="stack-grid"><a class="stack-card dev-card" href="langs/python-frameworks.html#fastapi" data-search="python python fastapi 模型服务与 api 数据 / ai 模型服务 微服务 / 服务化 api" data-scenario="data-ai" data-arch="microservices">
         <span class="stack-top"><span class="stack-lang">Python</span><span class="stack-type">模型服务</span></span>
         <span class="stack-fw">FastAPI</span>
         <span class="stack-why">模型服务与 API</span>
-      </a><a class="stack-card dev-card" href="langs/python-frameworks.html#flask" data-search="python python flask 微框架、自由组合 数据 / ai 模型服务 微框架" data-scenario="data-ai" data-arch="serving">
+      </a><a class="stack-card dev-card" href="langs/python-frameworks.html#flask" data-search="python python flask 微框架、自由组合 数据 / ai 模型服务 微服务 / 服务化 微框架" data-scenario="data-ai" data-arch="microservices">
         <span class="stack-top"><span class="stack-lang">Python</span><span class="stack-type">模型服务</span></span>
         <span class="stack-fw">Flask</span>
         <span class="stack-why">微框架、自由组合</span>
-      </a><a class="stack-card dev-card" href="langs/julia-frameworks.html#genie" data-search="julia julia genie julia 全栈 web 数据 / ai 模型服务 web 全栈" data-scenario="data-ai" data-arch="serving">
+      </a><a class="stack-card dev-card" href="langs/julia-frameworks.html#genie" data-search="julia julia genie julia 全栈 web 数据 / ai 模型服务 微服务 / 服务化 web 全栈" data-scenario="data-ai" data-arch="microservices">
         <span class="stack-top"><span class="stack-lang">Julia</span><span class="stack-type">模型服务</span></span>
         <span class="stack-fw">Genie</span>
         <span class="stack-why">Julia 全栈 Web</span>
       </a></div>
-      </div><div class="dev-arch" data-arch="experiment">
+      </div><div class="dev-arch" data-pattern="pipeline">
         <div class="dev-arch__head">
           <h3 class="dev-arch__title">实验 / 分析</h3>
+          <span class="dev-arch__pattern" title="分阶段转换与批流处理，强调可重跑、可测试与可观测。">模式 · 管线 / 批流</span>
           <span class="dev-arch__desc">交互式探索与可重复分析；优先看库生态与可视化能力。</span>
           <span class="era-head__count">3 组</span>
         </div>
-        <div class="stack-grid"><a class="stack-card dev-card" href="langs/python-frameworks.html#pytorch" data-search="python python pytorch 训练与研究的主流 数据 / ai 实验 / 分析 数据 / ai（库）" data-scenario="data-ai" data-arch="experiment">
+        <div class="stack-grid"><a class="stack-card dev-card" href="langs/python-frameworks.html#pytorch" data-search="python python pytorch 训练与研究的主流 数据 / ai 实验 / 分析 管线 / 批流 数据 / ai（库）" data-scenario="data-ai" data-arch="pipeline">
         <span class="stack-top"><span class="stack-lang">Python</span><span class="stack-type">实验 / 分析</span></span>
         <span class="stack-fw">PyTorch</span>
         <span class="stack-why">训练与研究的主流</span>
-      </a><a class="stack-card dev-card" href="langs/julia-frameworks.html#flux" data-search="julia julia flux julia 科学机器学习 数据 / ai 实验 / 分析 机器学习" data-scenario="data-ai" data-arch="experiment">
+      </a><a class="stack-card dev-card" href="langs/julia-frameworks.html#flux" data-search="julia julia flux julia 科学机器学习 数据 / ai 实验 / 分析 管线 / 批流 机器学习" data-scenario="data-ai" data-arch="pipeline">
         <span class="stack-top"><span class="stack-lang">Julia</span><span class="stack-type">实验 / 分析</span></span>
         <span class="stack-fw">Flux</span>
         <span class="stack-why">Julia 科学机器学习</span>
-      </a><a class="stack-card dev-card" href="langs/r-frameworks.html#tidyverse" data-search="r r tidyverse 数据整理与可视化 数据 / ai 实验 / 分析 数据整理 / 可视化" data-scenario="data-ai" data-arch="experiment">
+      </a><a class="stack-card dev-card" href="langs/r-frameworks.html#tidyverse" data-search="r r tidyverse 数据整理与可视化 数据 / ai 实验 / 分析 管线 / 批流 数据整理 / 可视化" data-scenario="data-ai" data-arch="pipeline">
         <span class="stack-top"><span class="stack-lang">R</span><span class="stack-type">实验 / 分析</span></span>
         <span class="stack-fw">tidyverse</span>
         <span class="stack-why">数据整理与可视化</span>
@@ -553,59 +576,62 @@ try {
         <span class="era-head__count">3 种架构</span>
       </div>
       <p class="matrix-desc">资源、实时性与工具链成熟度优先；生态通常比语言特性更重要。</p>
-      <div class="dev-arch" data-arch="rtos">
+      <div class="dev-arch" data-pattern="native">
         <div class="dev-arch__head">
           <h3 class="dev-arch__title">RTOS / 实时调度</h3>
+          <span class="dev-arch__pattern" title="直接使用平台 API、控件或系统库；兼容性与系统能力最完整。">模式 · 原生 / 平台绑定</span>
           <span class="dev-arch__desc">任务、优先级与中断延迟是核心约束；不要套用通用服务端架构。</span>
           <span class="era-head__count">3 组</span>
         </div>
-        <div class="stack-grid"><a class="stack-card dev-card" href="langs/c-frameworks.html#freertos" data-search="c c freertos mcu 实时调度 嵌入式 / iot rtos / 实时调度 嵌入式 rtos" data-scenario="embedded" data-arch="rtos">
+        <div class="stack-grid"><a class="stack-card dev-card" href="langs/c-frameworks.html#freertos" data-search="c c freertos mcu 实时调度 嵌入式 / iot rtos / 实时调度 原生 / 平台绑定 嵌入式 rtos" data-scenario="embedded" data-arch="native">
         <span class="stack-top"><span class="stack-lang">C</span><span class="stack-type">RTOS / 实时调度</span></span>
         <span class="stack-fw">FreeRTOS</span>
         <span class="stack-why">MCU 实时调度</span>
-      </a><a class="stack-card dev-card" href="langs/ocaml-frameworks.html#mirageos" data-search="ocaml ocaml mirageos unikernel 构建 嵌入式 / iot rtos / 实时调度 unikernel 框架" data-scenario="embedded" data-arch="rtos">
+      </a><a class="stack-card dev-card" href="langs/ocaml-frameworks.html#mirageos" data-search="ocaml ocaml mirageos unikernel 构建 嵌入式 / iot rtos / 实时调度 原生 / 平台绑定 unikernel 框架" data-scenario="embedded" data-arch="native">
         <span class="stack-top"><span class="stack-lang">OCaml</span><span class="stack-type">RTOS / 实时调度</span></span>
         <span class="stack-fw">MirageOS</span>
         <span class="stack-why">unikernel 构建</span>
-      </a><a class="stack-card dev-card" href="langs/cpp-frameworks.html#qt" data-search="c++ cpp qt 嵌入式 gui 嵌入式 / iot rtos / 实时调度 桌面 gui / 跨平台" data-scenario="embedded" data-arch="rtos">
+      </a><a class="stack-card dev-card" href="langs/cpp-frameworks.html#qt" data-search="c++ cpp qt 嵌入式 gui 嵌入式 / iot rtos / 实时调度 原生 / 平台绑定 桌面 gui / 跨平台" data-scenario="embedded" data-arch="native">
         <span class="stack-top"><span class="stack-lang">C++</span><span class="stack-type">RTOS / 实时调度</span></span>
         <span class="stack-fw">Qt</span>
         <span class="stack-why">嵌入式 GUI</span>
       </a></div>
-      </div><div class="dev-arch" data-arch="gateway">
+      </div><div class="dev-arch" data-pattern="gateway">
         <div class="dev-arch__head">
           <h3 class="dev-arch__title">网关 / 协议接入</h3>
+          <span class="dev-arch__pattern" title="统一入口、协议转换与接口聚合；让客户端只面对一个边界。">模式 · 网关 / BFF</span>
           <span class="dev-arch__desc">设备协议转换、消息路由与边缘缓存；强调稳定与可观测。</span>
           <span class="era-head__count">3 组</span>
         </div>
-        <div class="stack-grid"><a class="stack-card dev-card" href="langs/lua-frameworks.html#openresty" data-search="lua lua openresty nginx + lua 网关 嵌入式 / iot 网关 / 协议接入 网关 / 服务端" data-scenario="embedded" data-arch="gateway">
+        <div class="stack-grid"><a class="stack-card dev-card" href="langs/lua-frameworks.html#openresty" data-search="lua lua openresty nginx + lua 网关 嵌入式 / iot 网关 / 协议接入 网关 / bff 网关 / 服务端" data-scenario="embedded" data-arch="gateway">
         <span class="stack-top"><span class="stack-lang">Lua</span><span class="stack-type">网关 / 协议接入</span></span>
         <span class="stack-fw">OpenResty</span>
         <span class="stack-why">Nginx + Lua 网关</span>
-      </a><a class="stack-card dev-card" href="langs/go-frameworks.html#grpc-go" data-search="go go grpc-go protobuf rpc 嵌入式 / iot 网关 / 协议接入 rpc" data-scenario="embedded" data-arch="gateway">
+      </a><a class="stack-card dev-card" href="langs/go-frameworks.html#grpc-go" data-search="go go grpc-go protobuf rpc 嵌入式 / iot 网关 / 协议接入 网关 / bff rpc" data-scenario="embedded" data-arch="gateway">
         <span class="stack-top"><span class="stack-lang">Go</span><span class="stack-type">网关 / 协议接入</span></span>
         <span class="stack-fw">gRPC-Go</span>
         <span class="stack-why">Protobuf RPC</span>
-      </a><a class="stack-card dev-card" href="langs/erlang-frameworks.html#cowboy" data-search="erlang erlang cowboy erlang http / websocket 嵌入式 / iot 网关 / 协议接入 web / http" data-scenario="embedded" data-arch="gateway">
+      </a><a class="stack-card dev-card" href="langs/erlang-frameworks.html#cowboy" data-search="erlang erlang cowboy erlang http / websocket 嵌入式 / iot 网关 / 协议接入 网关 / bff web / http" data-scenario="embedded" data-arch="gateway">
         <span class="stack-top"><span class="stack-lang">Erlang</span><span class="stack-type">网关 / 协议接入</span></span>
         <span class="stack-fw">Cowboy</span>
         <span class="stack-why">Erlang HTTP / WebSocket</span>
       </a></div>
-      </div><div class="dev-arch" data-arch="device-ui">
+      </div><div class="dev-arch" data-pattern="component">
         <div class="dev-arch__head">
           <h3 class="dev-arch__title">设备 UI</h3>
+          <span class="dev-arch__pattern" title="以组件树组织界面，状态与副作用显式管理；声明式 UI 也归入这一类。">模式 · 组件化 / 响应式 UI</span>
           <span class="dev-arch__desc">本地界面与远程控制并存；看屏幕资源与渲染能力。</span>
           <span class="era-head__count">3 组</span>
         </div>
-        <div class="stack-grid"><a class="stack-card dev-card" href="langs/cpp-frameworks.html#qt" data-search="c++ cpp qt 嵌入式 gui 嵌入式 / iot 设备 ui 桌面 gui / 跨平台" data-scenario="embedded" data-arch="device-ui">
+        <div class="stack-grid"><a class="stack-card dev-card" href="langs/cpp-frameworks.html#qt" data-search="c++ cpp qt 嵌入式 gui 嵌入式 / iot 设备 ui 组件化 / 响应式 ui 桌面 gui / 跨平台" data-scenario="embedded" data-arch="component">
         <span class="stack-top"><span class="stack-lang">C++</span><span class="stack-type">设备 UI</span></span>
         <span class="stack-fw">Qt</span>
         <span class="stack-why">嵌入式 GUI</span>
-      </a><a class="stack-card dev-card" href="langs/c-frameworks.html#gtk" data-search="c c gtk linux 原生桌面 嵌入式 / iot 设备 ui 桌面 gui" data-scenario="embedded" data-arch="device-ui">
+      </a><a class="stack-card dev-card" href="langs/c-frameworks.html#gtk" data-search="c c gtk linux 原生桌面 嵌入式 / iot 设备 ui 组件化 / 响应式 ui 桌面 gui" data-scenario="embedded" data-arch="component">
         <span class="stack-top"><span class="stack-lang">C</span><span class="stack-type">设备 UI</span></span>
         <span class="stack-fw">GTK</span>
         <span class="stack-why">Linux 原生桌面</span>
-      </a><a class="stack-card dev-card" href="langs/c-frameworks.html#freertos" data-search="c c freertos mcu 实时调度 嵌入式 / iot 设备 ui 嵌入式 rtos" data-scenario="embedded" data-arch="device-ui">
+      </a><a class="stack-card dev-card" href="langs/c-frameworks.html#freertos" data-search="c c freertos mcu 实时调度 嵌入式 / iot 设备 ui 组件化 / 响应式 ui 嵌入式 rtos" data-scenario="embedded" data-arch="component">
         <span class="stack-top"><span class="stack-lang">C</span><span class="stack-type">设备 UI</span></span>
         <span class="stack-fw">FreeRTOS</span>
         <span class="stack-why">MCU 实时调度</span>
@@ -619,59 +645,62 @@ try {
         <span class="era-head__count">3 种架构</span>
       </div>
       <p class="matrix-desc">控制面、自动化与网关是三类不同工作；优先看可运维性与故障恢复。</p>
-      <div class="dev-arch" data-arch="control-plane">
+      <div class="dev-arch" data-pattern="control-plane">
         <div class="dev-arch__head">
           <h3 class="dev-arch__title">控制面 / 编排</h3>
+          <span class="dev-arch__pattern" title="声明期望状态，由控制器收敛；适合基础设施、部署与升级流程。">模式 · 控制面 / 编排</span>
           <span class="dev-arch__desc">声明期望状态，由控制器收敛；Kubernetes 生态的默认模型。</span>
           <span class="era-head__count">3 组</span>
         </div>
-        <div class="stack-grid"><a class="stack-card dev-card" href="langs/go-frameworks.html#controller-runtime" data-search="go go controller-runtime kubernetes 控制面 系统与基础设施 控制面 / 编排 云原生" data-scenario="systems" data-arch="control-plane">
+        <div class="stack-grid"><a class="stack-card dev-card" href="langs/go-frameworks.html#controller-runtime" data-search="go go controller-runtime kubernetes 控制面 系统与基础设施 控制面 / 编排 控制面 / 编排 云原生" data-scenario="systems" data-arch="control-plane">
         <span class="stack-top"><span class="stack-lang">Go</span><span class="stack-type">控制面 / 编排</span></span>
         <span class="stack-fw">controller-runtime</span>
         <span class="stack-why">Kubernetes 控制面</span>
-      </a><a class="stack-card dev-card" href="langs/yaml-frameworks.html#kubernetes" data-search="yaml yaml kubernetes 容器编排清单 系统与基础设施 控制面 / 编排 容器编排平台" data-scenario="systems" data-arch="control-plane">
+      </a><a class="stack-card dev-card" href="langs/yaml-frameworks.html#kubernetes" data-search="yaml yaml kubernetes 容器编排清单 系统与基础设施 控制面 / 编排 控制面 / 编排 容器编排平台" data-scenario="systems" data-arch="control-plane">
         <span class="stack-top"><span class="stack-lang">YAML</span><span class="stack-type">控制面 / 编排</span></span>
         <span class="stack-fw">Kubernetes</span>
         <span class="stack-why">容器编排清单</span>
-      </a><a class="stack-card dev-card" href="langs/go-frameworks.html#grpc-go" data-search="go go grpc-go protobuf rpc 系统与基础设施 控制面 / 编排 rpc" data-scenario="systems" data-arch="control-plane">
+      </a><a class="stack-card dev-card" href="langs/go-frameworks.html#grpc-go" data-search="go go grpc-go protobuf rpc 系统与基础设施 控制面 / 编排 控制面 / 编排 rpc" data-scenario="systems" data-arch="control-plane">
         <span class="stack-top"><span class="stack-lang">Go</span><span class="stack-type">控制面 / 编排</span></span>
         <span class="stack-fw">gRPC-Go</span>
         <span class="stack-why">Protobuf RPC</span>
       </a></div>
-      </div><div class="dev-arch" data-arch="automation">
+      </div><div class="dev-arch" data-pattern="control-plane">
         <div class="dev-arch__head">
           <h3 class="dev-arch__title">自动化 / IaC</h3>
+          <span class="dev-arch__pattern" title="声明期望状态，由控制器收敛；适合基础设施、部署与升级流程。">模式 · 控制面 / 编排</span>
           <span class="dev-arch__desc">用声明式配置描述基础设施与流程；可审计、可回滚优先。</span>
           <span class="era-head__count">3 组</span>
         </div>
-        <div class="stack-grid"><a class="stack-card dev-card" href="langs/shell-frameworks.html#ansible" data-search="shell shell ansible 配置管理与自动化 系统与基础设施 自动化 / iac 自动化 / 配置管理" data-scenario="systems" data-arch="automation">
+        <div class="stack-grid"><a class="stack-card dev-card" href="langs/shell-frameworks.html#ansible" data-search="shell shell ansible 配置管理与自动化 系统与基础设施 自动化 / iac 控制面 / 编排 自动化 / 配置管理" data-scenario="systems" data-arch="control-plane">
         <span class="stack-top"><span class="stack-lang">Shell</span><span class="stack-type">自动化 / IaC</span></span>
         <span class="stack-fw">Ansible</span>
         <span class="stack-why">配置管理与自动化</span>
-      </a><a class="stack-card dev-card" href="langs/yaml-frameworks.html#github-actions" data-search="yaml yaml github actions 仓库 ci/cd 工作流 系统与基础设施 自动化 / iac ci/cd" data-scenario="systems" data-arch="automation">
+      </a><a class="stack-card dev-card" href="langs/yaml-frameworks.html#github-actions" data-search="yaml yaml github actions 仓库 ci/cd 工作流 系统与基础设施 自动化 / iac 控制面 / 编排 ci/cd" data-scenario="systems" data-arch="control-plane">
         <span class="stack-top"><span class="stack-lang">YAML</span><span class="stack-type">自动化 / IaC</span></span>
         <span class="stack-fw">GitHub Actions</span>
         <span class="stack-why">仓库 CI/CD 工作流</span>
-      </a><a class="stack-card dev-card" href="langs/yaml-frameworks.html#docker-compose" data-search="yaml yaml docker compose 本地多容器编排 系统与基础设施 自动化 / iac 本地多容器" data-scenario="systems" data-arch="automation">
+      </a><a class="stack-card dev-card" href="langs/yaml-frameworks.html#docker-compose" data-search="yaml yaml docker compose 本地多容器编排 系统与基础设施 自动化 / iac 控制面 / 编排 本地多容器" data-scenario="systems" data-arch="control-plane">
         <span class="stack-top"><span class="stack-lang">YAML</span><span class="stack-type">自动化 / IaC</span></span>
         <span class="stack-fw">Docker Compose</span>
         <span class="stack-why">本地多容器编排</span>
       </a></div>
-      </div><div class="dev-arch" data-arch="gateway">
+      </div><div class="dev-arch" data-pattern="gateway">
         <div class="dev-arch__head">
           <h3 class="dev-arch__title">网关 / 可观测</h3>
+          <span class="dev-arch__pattern" title="统一入口、协议转换与接口聚合；让客户端只面对一个边界。">模式 · 网关 / BFF</span>
           <span class="dev-arch__desc">统一入口、限流与日志；强调低延迟与配置热更新。</span>
           <span class="era-head__count">3 组</span>
         </div>
-        <div class="stack-grid"><a class="stack-card dev-card" href="langs/lua-frameworks.html#openresty" data-search="lua lua openresty nginx + lua 网关 系统与基础设施 网关 / 可观测 网关 / 服务端" data-scenario="systems" data-arch="gateway">
+        <div class="stack-grid"><a class="stack-card dev-card" href="langs/lua-frameworks.html#openresty" data-search="lua lua openresty nginx + lua 网关 系统与基础设施 网关 / 可观测 网关 / bff 网关 / 服务端" data-scenario="systems" data-arch="gateway">
         <span class="stack-top"><span class="stack-lang">Lua</span><span class="stack-type">网关 / 可观测</span></span>
         <span class="stack-fw">OpenResty</span>
         <span class="stack-why">Nginx + Lua 网关</span>
-      </a><a class="stack-card dev-card" href="langs/go-frameworks.html#echo" data-search="go go echo 轻量 api、文档友好 系统与基础设施 网关 / 可观测 web 后端" data-scenario="systems" data-arch="gateway">
+      </a><a class="stack-card dev-card" href="langs/go-frameworks.html#echo" data-search="go go echo 轻量 api、文档友好 系统与基础设施 网关 / 可观测 网关 / bff web 后端" data-scenario="systems" data-arch="gateway">
         <span class="stack-top"><span class="stack-lang">Go</span><span class="stack-type">网关 / 可观测</span></span>
         <span class="stack-fw">Echo</span>
         <span class="stack-why">轻量 API、文档友好</span>
-      </a><a class="stack-card dev-card" href="langs/go-frameworks.html#grpc-go" data-search="go go grpc-go protobuf rpc 系统与基础设施 网关 / 可观测 rpc" data-scenario="systems" data-arch="gateway">
+      </a><a class="stack-card dev-card" href="langs/go-frameworks.html#grpc-go" data-search="go go grpc-go protobuf rpc 系统与基础设施 网关 / 可观测 网关 / bff rpc" data-scenario="systems" data-arch="gateway">
         <span class="stack-top"><span class="stack-lang">Go</span><span class="stack-type">网关 / 可观测</span></span>
         <span class="stack-fw">gRPC-Go</span>
         <span class="stack-why">Protobuf RPC</span>
@@ -685,74 +714,89 @@ try {
         <span class="era-head__count">3 种架构</span>
       </div>
       <p class="matrix-desc">安全贯穿应用、密码学与供应链；工具选型优先看默认安全、维护状态与合规要求。</p>
-      <div class="dev-arch" data-arch="appsec">
+      <div class="dev-arch" data-pattern="layered">
         <div class="dev-arch__head">
           <h3 class="dev-arch__title">应用安全</h3>
+          <span class="dev-arch__pattern" title="请求 → 控制器 → 服务 → 数据层；约定清晰，适合大多数业务系统。">模式 · 分层 / MVC</span>
           <span class="dev-arch__desc">认证授权、安全响应头与静态检查是应用层的第一道基线。</span>
           <span class="era-head__count">3 组</span>
         </div>
-        <div class="stack-grid"><a class="stack-card dev-card" href="security.html#spring-security" data-search="java java spring security spring 应用的认证与授权基线 安全 应用安全 应用安全" data-scenario="security" data-arch="appsec">
+        <div class="stack-grid"><a class="stack-card dev-card" href="security.html#spring-security" data-search="java java spring security spring 应用的认证与授权基线 安全 应用安全 分层 / mvc 应用安全" data-scenario="security" data-arch="layered">
         <span class="stack-top"><span class="stack-lang">Java</span><span class="stack-type">应用安全</span></span>
         <span class="stack-fw">Spring Security</span>
         <span class="stack-why">Spring 应用的认证与授权基线</span>
-      </a><a class="stack-card dev-card" href="security.html#helmet" data-search="javascript javascript helmet node 服务安全响应头基线 安全 应用安全 应用安全" data-scenario="security" data-arch="appsec">
+      </a><a class="stack-card dev-card" href="security.html#helmet" data-search="javascript javascript helmet node 服务安全响应头基线 安全 应用安全 分层 / mvc 应用安全" data-scenario="security" data-arch="layered">
         <span class="stack-top"><span class="stack-lang">JavaScript</span><span class="stack-type">应用安全</span></span>
         <span class="stack-fw">Helmet</span>
         <span class="stack-why">Node 服务安全响应头基线</span>
-      </a><a class="stack-card dev-card" href="security.html#bandit" data-search="python python bandit python 项目静态安全检查 安全 应用安全 应用安全" data-scenario="security" data-arch="appsec">
+      </a><a class="stack-card dev-card" href="security.html#bandit" data-search="python python bandit python 项目静态安全检查 安全 应用安全 分层 / mvc 应用安全" data-scenario="security" data-arch="layered">
         <span class="stack-top"><span class="stack-lang">Python</span><span class="stack-type">应用安全</span></span>
         <span class="stack-fw">Bandit</span>
         <span class="stack-why">Python 项目静态安全检查</span>
       </a></div>
-      </div><div class="dev-arch" data-arch="crypto">
+      </div><div class="dev-arch" data-pattern="native">
         <div class="dev-arch__head">
           <h3 class="dev-arch__title">密码学 / TLS</h3>
+          <span class="dev-arch__pattern" title="直接使用平台 API、控件或系统库；兼容性与系统能力最完整。">模式 · 原生 / 平台绑定</span>
           <span class="dev-arch__desc">选成熟库与安全默认值；不要自己发明密码学协议。</span>
-          <span class="era-head__count">3 组</span>
+          <span class="era-head__count">5 组</span>
         </div>
-        <div class="stack-grid"><a class="stack-card dev-card" href="security.html#openssl" data-search="c c openssl tls 与密码学基础库、生态最广 安全 密码学 / tls 密码学 / tls" data-scenario="security" data-arch="crypto">
+        <div class="stack-grid"><a class="stack-card dev-card" href="security.html#openssl" data-search="c c openssl tls 与密码学基础库、生态最广 安全 密码学 / tls 原生 / 平台绑定 密码学 / tls" data-scenario="security" data-arch="native">
         <span class="stack-top"><span class="stack-lang">C</span><span class="stack-type">密码学 / TLS</span></span>
         <span class="stack-fw">OpenSSL</span>
         <span class="stack-why">TLS 与密码学基础库、生态最广</span>
-      </a><a class="stack-card dev-card" href="security.html#libsodium" data-search="c c libsodium 易用、默认安全的现代密码学库 安全 密码学 / tls 密码学 / tls" data-scenario="security" data-arch="crypto">
+      </a><a class="stack-card dev-card" href="security.html#libsodium" data-search="c c libsodium 易用、默认安全的现代密码学库 安全 密码学 / tls 原生 / 平台绑定 密码学 / tls" data-scenario="security" data-arch="native">
         <span class="stack-top"><span class="stack-lang">C</span><span class="stack-type">密码学 / TLS</span></span>
         <span class="stack-fw">libsodium</span>
         <span class="stack-why">易用、默认安全的现代密码学库</span>
-      </a><a class="stack-card dev-card" href="security.html#rustls" data-search="rust rust rustls 内存安全的 tls 实现 安全 密码学 / tls 密码学 / tls" data-scenario="security" data-arch="crypto">
+      </a><a class="stack-card dev-card" href="security.html#rustls" data-search="rust rust rustls 内存安全的 tls 实现 安全 密码学 / tls 原生 / 平台绑定 密码学 / tls" data-scenario="security" data-arch="native">
         <span class="stack-top"><span class="stack-lang">Rust</span><span class="stack-type">密码学 / TLS</span></span>
         <span class="stack-fw">rustls</span>
         <span class="stack-why">内存安全的 TLS 实现</span>
+      </a><a class="stack-card dev-card" href="security.html#gnutls" data-search="c c gnutls lgpl 许可的 tls / dtls 实现 安全 密码学 / tls 原生 / 平台绑定 密码学 / tls" data-scenario="security" data-arch="native">
+        <span class="stack-top"><span class="stack-lang">C</span><span class="stack-type">密码学 / TLS</span></span>
+        <span class="stack-fw">GnuTLS</span>
+        <span class="stack-why">LGPL 许可的 TLS / DTLS 实现</span>
+      </a><a class="stack-card dev-card" href="security.html#age" data-search="go go age 现代文件加密工具与格式 安全 密码学 / tls 原生 / 平台绑定 密码学 / tls" data-scenario="security" data-arch="native">
+        <span class="stack-top"><span class="stack-lang">Go</span><span class="stack-type">密码学 / TLS</span></span>
+        <span class="stack-fw">age</span>
+        <span class="stack-why">现代文件加密工具与格式</span>
       </a></div>
-      </div><div class="dev-arch" data-arch="audit">
+      </div><div class="dev-arch" data-pattern="pipeline">
         <div class="dev-arch__head">
           <h3 class="dev-arch__title">审计 / 供应链</h3>
+          <span class="dev-arch__pattern" title="分阶段转换与批流处理，强调可重跑、可测试与可观测。">模式 · 管线 / 批流</span>
           <span class="dev-arch__desc">静态与动态扫描、镜像与依赖、策略与暴露面，构成持续审计链。</span>
-          <span class="era-head__count">6 组</span>
+          <span class="era-head__count">7 组</span>
         </div>
-        <div class="stack-grid"><a class="stack-card dev-card" href="security.html#semgrep" data-search="python python semgrep 多语言静态审计、规则可读 安全 审计 / 供应链 审计 / 供应链" data-scenario="security" data-arch="audit">
+        <div class="stack-grid"><a class="stack-card dev-card" href="security.html#semgrep" data-search="python python semgrep 多语言静态审计、规则可读 安全 审计 / 供应链 管线 / 批流 审计 / 供应链" data-scenario="security" data-arch="pipeline">
         <span class="stack-top"><span class="stack-lang">Python</span><span class="stack-type">审计 / 供应链</span></span>
         <span class="stack-fw">Semgrep</span>
         <span class="stack-why">多语言静态审计、规则可读</span>
-      </a><a class="stack-card dev-card" href="security.html#trivy" data-search="go go trivy 镜像、依赖与 iac 漏洞扫描 安全 审计 / 供应链 审计 / 供应链" data-scenario="security" data-arch="audit">
+      </a><a class="stack-card dev-card" href="security.html#trivy" data-search="go go trivy 镜像、依赖与 iac 漏洞扫描 安全 审计 / 供应链 管线 / 批流 审计 / 供应链" data-scenario="security" data-arch="pipeline">
         <span class="stack-top"><span class="stack-lang">Go</span><span class="stack-type">审计 / 供应链</span></span>
         <span class="stack-fw">Trivy</span>
         <span class="stack-why">镜像、依赖与 IaC 漏洞扫描</span>
-      </a><a class="stack-card dev-card" href="security.html#opa" data-search="go go open policy agent 策略即代码、统一授权 安全 审计 / 供应链 审计 / 供应链" data-scenario="security" data-arch="audit">
+      </a><a class="stack-card dev-card" href="security.html#opa" data-search="go go open policy agent 策略即代码、统一授权 安全 审计 / 供应链 管线 / 批流 审计 / 供应链" data-scenario="security" data-arch="pipeline">
         <span class="stack-top"><span class="stack-lang">Go</span><span class="stack-type">审计 / 供应链</span></span>
         <span class="stack-fw">Open Policy Agent</span>
         <span class="stack-why">策略即代码、统一授权</span>
-      </a><a class="stack-card dev-card" href="security.html#owasp-zap" data-search="java java owasp zap web 动态扫描与渗透辅助 安全 审计 / 供应链 审计 / 供应链" data-scenario="security" data-arch="audit">
+      </a><a class="stack-card dev-card" href="security.html#owasp-zap" data-search="java java owasp zap web 动态扫描与渗透辅助 安全 审计 / 供应链 管线 / 批流 审计 / 供应链" data-scenario="security" data-arch="pipeline">
         <span class="stack-top"><span class="stack-lang">Java</span><span class="stack-type">审计 / 供应链</span></span>
         <span class="stack-fw">OWASP ZAP</span>
         <span class="stack-why">Web 动态扫描与渗透辅助</span>
-      </a><a class="stack-card dev-card" href="security.html#keycloak" data-search="java java keycloak 自托管 iam、oidc / saml 单点登录 安全 审计 / 供应链 审计 / 供应链" data-scenario="security" data-arch="audit">
+      </a><a class="stack-card dev-card" href="security.html#keycloak" data-search="java java keycloak 自托管 iam、oidc / saml 单点登录 安全 审计 / 供应链 管线 / 批流 审计 / 供应链" data-scenario="security" data-arch="pipeline">
         <span class="stack-top"><span class="stack-lang">Java</span><span class="stack-type">审计 / 供应链</span></span>
         <span class="stack-fw">Keycloak</span>
         <span class="stack-why">自托管 IAM、OIDC / SAML 单点登录</span>
-      </a><a class="stack-card dev-card" href="security.html#nuclei" data-search="go go nuclei 模板化暴露面与漏洞扫描 安全 审计 / 供应链 审计 / 供应链" data-scenario="security" data-arch="audit">
+      </a><a class="stack-card dev-card" href="security.html#nuclei" data-search="go go nuclei 模板化暴露面与漏洞扫描 安全 审计 / 供应链 管线 / 批流 审计 / 供应链" data-scenario="security" data-arch="pipeline">
         <span class="stack-top"><span class="stack-lang">Go</span><span class="stack-type">审计 / 供应链</span></span>
         <span class="stack-fw">Nuclei</span>
         <span class="stack-why">模板化暴露面与漏洞扫描</span>
+      </a><a class="stack-card dev-card" href="security.html#slither" data-search="python python slither solidity 合约静态分析与审计辅助 安全 审计 / 供应链 管线 / 批流 审计 / 供应链" data-scenario="security" data-arch="pipeline">
+        <span class="stack-top"><span class="stack-lang">Python</span><span class="stack-type">审计 / 供应链</span></span>
+        <span class="stack-fw">Slither</span>
+        <span class="stack-why">Solidity 合约静态分析与审计辅助</span>
       </a></div>
       </div>
     </section><section class="dev-section matrix-section" id="dev-blockchain" data-scenario="blockchain">
@@ -763,59 +807,62 @@ try {
         <span class="era-head__count">3 种架构</span>
       </div>
       <p class="matrix-desc">合约不可轻易修改；开发、测试与部署都要把审计与升级路径纳入设计。</p>
-      <div class="dev-arch" data-arch="contract">
+      <div class="dev-arch" data-pattern="native">
         <div class="dev-arch__head">
           <h3 class="dev-arch__title">合约开发</h3>
+          <span class="dev-arch__pattern" title="直接使用平台 API、控件或系统库；兼容性与系统能力最完整。">模式 · 原生 / 平台绑定</span>
           <span class="dev-arch__desc">用标准库与成熟模式实现代币、权限与升级；优先复用审计过的代码。</span>
           <span class="era-head__count">3 组</span>
         </div>
-        <div class="stack-grid"><a class="stack-card dev-card" href="langs/solidity-frameworks.html#openzeppelin" data-search="solidity solidity openzeppelin 审计过的合约库 区块链 / 合约 合约开发 合约库" data-scenario="blockchain" data-arch="contract">
+        <div class="stack-grid"><a class="stack-card dev-card" href="langs/solidity-frameworks.html#openzeppelin" data-search="solidity solidity openzeppelin 审计过的合约库 区块链 / 合约 合约开发 原生 / 平台绑定 合约库" data-scenario="blockchain" data-arch="native">
         <span class="stack-top"><span class="stack-lang">Solidity</span><span class="stack-type">合约开发</span></span>
         <span class="stack-fw">OpenZeppelin</span>
         <span class="stack-why">审计过的合约库</span>
-      </a><a class="stack-card dev-card" href="langs/solidity-frameworks.html#foundry" data-search="solidity solidity foundry solidity 原生测试与部署 区块链 / 合约 合约开发 测试 / 部署" data-scenario="blockchain" data-arch="contract">
+      </a><a class="stack-card dev-card" href="langs/solidity-frameworks.html#foundry" data-search="solidity solidity foundry solidity 原生测试与部署 区块链 / 合约 合约开发 原生 / 平台绑定 测试 / 部署" data-scenario="blockchain" data-arch="native">
         <span class="stack-top"><span class="stack-lang">Solidity</span><span class="stack-type">合约开发</span></span>
         <span class="stack-fw">Foundry</span>
         <span class="stack-why">Solidity 原生测试与部署</span>
-      </a><a class="stack-card dev-card" href="langs/solidity-frameworks.html#hardhat" data-search="solidity solidity hardhat js/ts 合约开发环境 区块链 / 合约 合约开发 开发环境" data-scenario="blockchain" data-arch="contract">
+      </a><a class="stack-card dev-card" href="langs/solidity-frameworks.html#hardhat" data-search="solidity solidity hardhat js/ts 合约开发环境 区块链 / 合约 合约开发 原生 / 平台绑定 开发环境" data-scenario="blockchain" data-arch="native">
         <span class="stack-top"><span class="stack-lang">Solidity</span><span class="stack-type">合约开发</span></span>
         <span class="stack-fw">Hardhat</span>
         <span class="stack-why">JS/TS 合约开发环境</span>
       </a></div>
-      </div><div class="dev-arch" data-arch="testing">
+      </div><div class="dev-arch" data-pattern="pipeline">
         <div class="dev-arch__head">
           <h3 class="dev-arch__title">测试与审计</h3>
+          <span class="dev-arch__pattern" title="分阶段转换与批流处理，强调可重跑、可测试与可观测。">模式 · 管线 / 批流</span>
           <span class="dev-arch__desc">单元测试、模糊测试与静态分析组合使用；主网前必须独立审计。</span>
           <span class="era-head__count">3 组</span>
         </div>
-        <div class="stack-grid"><a class="stack-card dev-card" href="langs/solidity-frameworks.html#foundry" data-search="solidity solidity foundry solidity 原生测试与部署 区块链 / 合约 测试与审计 测试 / 部署" data-scenario="blockchain" data-arch="testing">
+        <div class="stack-grid"><a class="stack-card dev-card" href="langs/solidity-frameworks.html#foundry" data-search="solidity solidity foundry solidity 原生测试与部署 区块链 / 合约 测试与审计 管线 / 批流 测试 / 部署" data-scenario="blockchain" data-arch="pipeline">
         <span class="stack-top"><span class="stack-lang">Solidity</span><span class="stack-type">测试与审计</span></span>
         <span class="stack-fw">Foundry</span>
         <span class="stack-why">Solidity 原生测试与部署</span>
-      </a><a class="stack-card dev-card" href="langs/solidity-frameworks.html#hardhat" data-search="solidity solidity hardhat js/ts 合约开发环境 区块链 / 合约 测试与审计 开发环境" data-scenario="blockchain" data-arch="testing">
+      </a><a class="stack-card dev-card" href="langs/solidity-frameworks.html#hardhat" data-search="solidity solidity hardhat js/ts 合约开发环境 区块链 / 合约 测试与审计 管线 / 批流 开发环境" data-scenario="blockchain" data-arch="pipeline">
         <span class="stack-top"><span class="stack-lang">Solidity</span><span class="stack-type">测试与审计</span></span>
         <span class="stack-fw">Hardhat</span>
         <span class="stack-why">JS/TS 合约开发环境</span>
-      </a><a class="stack-card dev-card" href="langs/solidity-frameworks.html#openzeppelin" data-search="solidity solidity openzeppelin 审计过的合约库 区块链 / 合约 测试与审计 合约库" data-scenario="blockchain" data-arch="testing">
+      </a><a class="stack-card dev-card" href="langs/solidity-frameworks.html#openzeppelin" data-search="solidity solidity openzeppelin 审计过的合约库 区块链 / 合约 测试与审计 管线 / 批流 合约库" data-scenario="blockchain" data-arch="pipeline">
         <span class="stack-top"><span class="stack-lang">Solidity</span><span class="stack-type">测试与审计</span></span>
         <span class="stack-fw">OpenZeppelin</span>
         <span class="stack-why">审计过的合约库</span>
       </a></div>
-      </div><div class="dev-arch" data-arch="deploy">
+      </div><div class="dev-arch" data-pattern="control-plane">
         <div class="dev-arch__head">
           <h3 class="dev-arch__title">部署与升级</h3>
+          <span class="dev-arch__pattern" title="声明期望状态，由控制器收敛；适合基础设施、部署与升级流程。">模式 · 控制面 / 编排</span>
           <span class="dev-arch__desc">脚本化部署、验证源码与升级权限；把密钥与多签流程写进运维手册。</span>
           <span class="era-head__count">3 组</span>
         </div>
-        <div class="stack-grid"><a class="stack-card dev-card" href="langs/solidity-frameworks.html#hardhat" data-search="solidity solidity hardhat js/ts 合约开发环境 区块链 / 合约 部署与升级 开发环境" data-scenario="blockchain" data-arch="deploy">
+        <div class="stack-grid"><a class="stack-card dev-card" href="langs/solidity-frameworks.html#hardhat" data-search="solidity solidity hardhat js/ts 合约开发环境 区块链 / 合约 部署与升级 控制面 / 编排 开发环境" data-scenario="blockchain" data-arch="control-plane">
         <span class="stack-top"><span class="stack-lang">Solidity</span><span class="stack-type">部署与升级</span></span>
         <span class="stack-fw">Hardhat</span>
         <span class="stack-why">JS/TS 合约开发环境</span>
-      </a><a class="stack-card dev-card" href="langs/solidity-frameworks.html#foundry" data-search="solidity solidity foundry solidity 原生测试与部署 区块链 / 合约 部署与升级 测试 / 部署" data-scenario="blockchain" data-arch="deploy">
+      </a><a class="stack-card dev-card" href="langs/solidity-frameworks.html#foundry" data-search="solidity solidity foundry solidity 原生测试与部署 区块链 / 合约 部署与升级 控制面 / 编排 测试 / 部署" data-scenario="blockchain" data-arch="control-plane">
         <span class="stack-top"><span class="stack-lang">Solidity</span><span class="stack-type">部署与升级</span></span>
         <span class="stack-fw">Foundry</span>
         <span class="stack-why">Solidity 原生测试与部署</span>
-      </a><a class="stack-card dev-card" href="langs/solidity-frameworks.html#openzeppelin" data-search="solidity solidity openzeppelin 审计过的合约库 区块链 / 合约 部署与升级 合约库" data-scenario="blockchain" data-arch="deploy">
+      </a><a class="stack-card dev-card" href="langs/solidity-frameworks.html#openzeppelin" data-search="solidity solidity openzeppelin 审计过的合约库 区块链 / 合约 部署与升级 控制面 / 编排 合约库" data-scenario="blockchain" data-arch="control-plane">
         <span class="stack-top"><span class="stack-lang">Solidity</span><span class="stack-type">部署与升级</span></span>
         <span class="stack-fw">OpenZeppelin</span>
         <span class="stack-why">审计过的合约库</span>
@@ -829,59 +876,62 @@ try {
         <span class="era-head__count">3 种架构</span>
       </div>
       <p class="matrix-desc">数值库、并行通信与数据格式往往比「框架」更重要；先确定精度与规模。</p>
-      <div class="dev-arch" data-arch="numerical">
+      <div class="dev-arch" data-pattern="ecs">
         <div class="dev-arch__head">
           <h3 class="dev-arch__title">数值内核</h3>
+          <span class="dev-arch__pattern" title="按组件与系统组织数据，缓存友好；适合大量实体、数组式计算与数据并行。">模式 · ECS / 数据导向</span>
           <span class="dev-arch__desc">线性代数、微分方程与并行通信；性能与数值稳定性优先。</span>
           <span class="era-head__count">3 组</span>
         </div>
-        <div class="stack-grid"><a class="stack-card dev-card" href="langs/fortran-frameworks.html#lapack-blas" data-search="fortran fortran lapack / blas 线性代数底座 科学计算 数值内核 数值库" data-scenario="science" data-arch="numerical">
+        <div class="stack-grid"><a class="stack-card dev-card" href="langs/fortran-frameworks.html#lapack-blas" data-search="fortran fortran lapack / blas 线性代数底座 科学计算 数值内核 ecs / 数据导向 数值库" data-scenario="science" data-arch="ecs">
         <span class="stack-top"><span class="stack-lang">FORTRAN</span><span class="stack-type">数值内核</span></span>
         <span class="stack-fw">LAPACK / BLAS</span>
         <span class="stack-why">线性代数底座</span>
-      </a><a class="stack-card dev-card" href="langs/fortran-frameworks.html#mpi" data-search="fortran fortran mpi hpc 多节点 科学计算 数值内核 并行通信" data-scenario="science" data-arch="numerical">
+      </a><a class="stack-card dev-card" href="langs/fortran-frameworks.html#mpi" data-search="fortran fortran mpi hpc 多节点 科学计算 数值内核 ecs / 数据导向 并行通信" data-scenario="science" data-arch="ecs">
         <span class="stack-top"><span class="stack-lang">FORTRAN</span><span class="stack-type">数值内核</span></span>
         <span class="stack-fw">MPI</span>
         <span class="stack-why">HPC 多节点</span>
-      </a><a class="stack-card dev-card" href="langs/julia-frameworks.html#differentialequations-jl" data-search="julia julia differentialequations.jl 微分方程 科学计算 数值内核 科学计算" data-scenario="science" data-arch="numerical">
+      </a><a class="stack-card dev-card" href="langs/julia-frameworks.html#differentialequations-jl" data-search="julia julia differentialequations.jl 微分方程 科学计算 数值内核 ecs / 数据导向 科学计算" data-scenario="science" data-arch="ecs">
         <span class="stack-top"><span class="stack-lang">Julia</span><span class="stack-type">数值内核</span></span>
         <span class="stack-fw">DifferentialEquations.jl</span>
         <span class="stack-why">微分方程</span>
       </a></div>
-      </div><div class="dev-arch" data-arch="simulation">
+      </div><div class="dev-arch" data-pattern="pipeline">
         <div class="dev-arch__head">
           <h3 class="dev-arch__title">仿真 / 数据</h3>
+          <span class="dev-arch__pattern" title="分阶段转换与批流处理，强调可重跑、可测试与可观测。">模式 · 管线 / 批流</span>
           <span class="dev-arch__desc">系统仿真与科学数据格式；关注可复现与跨平台交换。</span>
           <span class="era-head__count">3 组</span>
         </div>
-        <div class="stack-grid"><a class="stack-card dev-card" href="langs/matlab-frameworks.html#simulink" data-search="matlab matlab simulink 系统仿真 科学计算 仿真 / 数据 系统仿真" data-scenario="science" data-arch="simulation">
+        <div class="stack-grid"><a class="stack-card dev-card" href="langs/matlab-frameworks.html#simulink" data-search="matlab matlab simulink 系统仿真 科学计算 仿真 / 数据 管线 / 批流 系统仿真" data-scenario="science" data-arch="pipeline">
         <span class="stack-top"><span class="stack-lang">MATLAB</span><span class="stack-type">仿真 / 数据</span></span>
         <span class="stack-fw">Simulink</span>
         <span class="stack-why">系统仿真</span>
-      </a><a class="stack-card dev-card" href="langs/fortran-frameworks.html#netcdf" data-search="fortran fortran netcdf 科学数据格式 科学计算 仿真 / 数据 科学数据格式" data-scenario="science" data-arch="simulation">
+      </a><a class="stack-card dev-card" href="langs/fortran-frameworks.html#netcdf" data-search="fortran fortran netcdf 科学数据格式 科学计算 仿真 / 数据 管线 / 批流 科学数据格式" data-scenario="science" data-arch="pipeline">
         <span class="stack-top"><span class="stack-lang">FORTRAN</span><span class="stack-type">仿真 / 数据</span></span>
         <span class="stack-fw">NetCDF</span>
         <span class="stack-why">科学数据格式</span>
-      </a><a class="stack-card dev-card" href="langs/fortran-frameworks.html#mpi" data-search="fortran fortran mpi hpc 多节点 科学计算 仿真 / 数据 并行通信" data-scenario="science" data-arch="simulation">
+      </a><a class="stack-card dev-card" href="langs/fortran-frameworks.html#mpi" data-search="fortran fortran mpi hpc 多节点 科学计算 仿真 / 数据 管线 / 批流 并行通信" data-scenario="science" data-arch="pipeline">
         <span class="stack-top"><span class="stack-lang">FORTRAN</span><span class="stack-type">仿真 / 数据</span></span>
         <span class="stack-fw">MPI</span>
         <span class="stack-why">HPC 多节点</span>
       </a></div>
-      </div><div class="dev-arch" data-arch="reporting">
+      </div><div class="dev-arch" data-pattern="pipeline">
         <div class="dev-arch__head">
           <h3 class="dev-arch__title">可重复报告</h3>
+          <span class="dev-arch__pattern" title="分阶段转换与批流处理，强调可重跑、可测试与可观测。">模式 · 管线 / 批流</span>
           <span class="dev-arch__desc">代码、数据与图表同源；报告可重跑，结论可追溯。</span>
           <span class="era-head__count">3 组</span>
         </div>
-        <div class="stack-grid"><a class="stack-card dev-card" href="langs/r-frameworks.html#rmarkdown" data-search="r r rmarkdown 可重复报告 科学计算 可重复报告 可重复报告" data-scenario="science" data-arch="reporting">
+        <div class="stack-grid"><a class="stack-card dev-card" href="langs/r-frameworks.html#rmarkdown" data-search="r r rmarkdown 可重复报告 科学计算 可重复报告 管线 / 批流 可重复报告" data-scenario="science" data-arch="pipeline">
         <span class="stack-top"><span class="stack-lang">R</span><span class="stack-type">可重复报告</span></span>
         <span class="stack-fw">RMarkdown</span>
         <span class="stack-why">可重复报告</span>
-      </a><a class="stack-card dev-card" href="langs/r-frameworks.html#shiny" data-search="r r shiny 数据应用与仪表盘 科学计算 可重复报告 数据应用 / web" data-scenario="science" data-arch="reporting">
+      </a><a class="stack-card dev-card" href="langs/r-frameworks.html#shiny" data-search="r r shiny 数据应用与仪表盘 科学计算 可重复报告 管线 / 批流 数据应用 / web" data-scenario="science" data-arch="pipeline">
         <span class="stack-top"><span class="stack-lang">R</span><span class="stack-type">可重复报告</span></span>
         <span class="stack-fw">Shiny</span>
         <span class="stack-why">数据应用与仪表盘</span>
-      </a><a class="stack-card dev-card" href="langs/r-frameworks.html#tidyverse" data-search="r r tidyverse 数据整理与可视化 科学计算 可重复报告 数据整理 / 可视化" data-scenario="science" data-arch="reporting">
+      </a><a class="stack-card dev-card" href="langs/r-frameworks.html#tidyverse" data-search="r r tidyverse 数据整理与可视化 科学计算 可重复报告 管线 / 批流 数据整理 / 可视化" data-scenario="science" data-arch="pipeline">
         <span class="stack-top"><span class="stack-lang">R</span><span class="stack-type">可重复报告</span></span>
         <span class="stack-fw">tidyverse</span>
         <span class="stack-why">数据整理与可视化</span>
@@ -895,51 +945,54 @@ try {
         <span class="era-head__count">3 种架构</span>
       </div>
       <p class="matrix-desc">仿真、综合、GPU 编程各有独立的产物链，不能套用软件框架思维。</p>
-      <div class="dev-arch" data-arch="rtl">
+      <div class="dev-arch" data-pattern="pipeline">
         <div class="dev-arch__head">
           <h3 class="dev-arch__title">芯片 / RTL</h3>
+          <span class="dev-arch__pattern" title="分阶段转换与批流处理，强调可重跑、可测试与可观测。">模式 · 管线 / 批流</span>
           <span class="dev-arch__desc">硬件描述、验证方法学与综合工具链；正确性验证占大头。</span>
           <span class="era-head__count">2 组</span>
         </div>
-        <div class="stack-grid"><a class="stack-card dev-card" href="langs/verilog-frameworks.html" data-search="verilog verilog uvm 芯片验证方法学 硬件 / gpu 芯片 / rtl 生态 / 工具" data-scenario="hardware" data-arch="rtl">
+        <div class="stack-grid"><a class="stack-card dev-card" href="langs/verilog-frameworks.html" data-search="verilog verilog uvm 芯片验证方法学 硬件 / gpu 芯片 / rtl 管线 / 批流 生态 / 工具" data-scenario="hardware" data-arch="pipeline">
         <span class="stack-top"><span class="stack-lang">Verilog</span><span class="stack-type">芯片 / RTL</span></span>
         <span class="stack-fw">UVM</span>
         <span class="stack-why">芯片验证方法学</span>
-      </a><a class="stack-card dev-card" href="langs/verilog-frameworks.html" data-search="verilog verilog yosys 开源综合 硬件 / gpu 芯片 / rtl 生态 / 工具" data-scenario="hardware" data-arch="rtl">
+      </a><a class="stack-card dev-card" href="langs/verilog-frameworks.html" data-search="verilog verilog yosys 开源综合 硬件 / gpu 芯片 / rtl 管线 / 批流 生态 / 工具" data-scenario="hardware" data-arch="pipeline">
         <span class="stack-top"><span class="stack-lang">Verilog</span><span class="stack-type">芯片 / RTL</span></span>
         <span class="stack-fw">Yosys</span>
         <span class="stack-why">开源综合</span>
       </a></div>
-      </div><div class="dev-arch" data-arch="gpu">
+      </div><div class="dev-arch" data-pattern="ecs">
         <div class="dev-arch__head">
           <h3 class="dev-arch__title">GPU 并行</h3>
+          <span class="dev-arch__pattern" title="按组件与系统组织数据，缓存友好；适合大量实体、数组式计算与数据并行。">模式 · ECS / 数据导向</span>
           <span class="dev-arch__desc">核函数、库与推理引擎；看显存、算力与目标硬件。</span>
           <span class="era-head__count">2 组</span>
         </div>
-        <div class="stack-grid"><a class="stack-card dev-card" href="langs/cuda-frameworks.html" data-search="cuda cuda cudnn 深度学习 gpu 库 硬件 / gpu gpu 并行 生态 / 工具" data-scenario="hardware" data-arch="gpu">
+        <div class="stack-grid"><a class="stack-card dev-card" href="langs/cuda-frameworks.html" data-search="cuda cuda cudnn 深度学习 gpu 库 硬件 / gpu gpu 并行 ecs / 数据导向 生态 / 工具" data-scenario="hardware" data-arch="ecs">
         <span class="stack-top"><span class="stack-lang">CUDA</span><span class="stack-type">GPU 并行</span></span>
         <span class="stack-fw">cuDNN</span>
         <span class="stack-why">深度学习 GPU 库</span>
-      </a><a class="stack-card dev-card" href="langs/cuda-frameworks.html" data-search="cuda cuda tensorrt 推理优化 硬件 / gpu gpu 并行 生态 / 工具" data-scenario="hardware" data-arch="gpu">
+      </a><a class="stack-card dev-card" href="langs/cuda-frameworks.html" data-search="cuda cuda tensorrt 推理优化 硬件 / gpu gpu 并行 ecs / 数据导向 生态 / 工具" data-scenario="hardware" data-arch="ecs">
         <span class="stack-top"><span class="stack-lang">CUDA</span><span class="stack-type">GPU 并行</span></span>
         <span class="stack-fw">TensorRT</span>
         <span class="stack-why">推理优化</span>
       </a></div>
-      </div><div class="dev-arch" data-arch="shader">
+      </div><div class="dev-arch" data-pattern="pipeline">
         <div class="dev-arch__head">
           <h3 class="dev-arch__title">图形 / 着色器</h3>
+          <span class="dev-arch__pattern" title="分阶段转换与批流处理，强调可重跑、可测试与可观测。">模式 · 管线 / 批流</span>
           <span class="dev-arch__desc">着色器编译、中间表示与调试；跨 API 时优先 SPIR-V。</span>
           <span class="era-head__count">3 组</span>
         </div>
-        <div class="stack-grid"><a class="stack-card dev-card" href="langs/glsl-frameworks.html" data-search="glsl glsl spirv-tools 着色器中间表示 硬件 / gpu 图形 / 着色器 生态 / 工具" data-scenario="hardware" data-arch="shader">
+        <div class="stack-grid"><a class="stack-card dev-card" href="langs/glsl-frameworks.html" data-search="glsl glsl spirv-tools 着色器中间表示 硬件 / gpu 图形 / 着色器 管线 / 批流 生态 / 工具" data-scenario="hardware" data-arch="pipeline">
         <span class="stack-top"><span class="stack-lang">GLSL</span><span class="stack-type">图形 / 着色器</span></span>
         <span class="stack-fw">SPIRV-Tools</span>
         <span class="stack-why">着色器中间表示</span>
-      </a><a class="stack-card dev-card" href="langs/cuda-frameworks.html" data-search="cuda cuda tensorrt 推理优化 硬件 / gpu 图形 / 着色器 生态 / 工具" data-scenario="hardware" data-arch="shader">
+      </a><a class="stack-card dev-card" href="langs/cuda-frameworks.html" data-search="cuda cuda tensorrt 推理优化 硬件 / gpu 图形 / 着色器 管线 / 批流 生态 / 工具" data-scenario="hardware" data-arch="pipeline">
         <span class="stack-top"><span class="stack-lang">CUDA</span><span class="stack-type">图形 / 着色器</span></span>
         <span class="stack-fw">TensorRT</span>
         <span class="stack-why">推理优化</span>
-      </a><a class="stack-card dev-card" href="langs/cuda-frameworks.html" data-search="cuda cuda cudnn 深度学习 gpu 库 硬件 / gpu 图形 / 着色器 生态 / 工具" data-scenario="hardware" data-arch="shader">
+      </a><a class="stack-card dev-card" href="langs/cuda-frameworks.html" data-search="cuda cuda cudnn 深度学习 gpu 库 硬件 / gpu 图形 / 着色器 管线 / 批流 生态 / 工具" data-scenario="hardware" data-arch="pipeline">
         <span class="stack-top"><span class="stack-lang">CUDA</span><span class="stack-type">图形 / 着色器</span></span>
         <span class="stack-fw">cuDNN</span>
         <span class="stack-why">深度学习 GPU 库</span>
@@ -949,7 +1002,7 @@ try {
     <p class="index-empty" id="devEmpty">没有匹配的组合。试试「后端」「微服务」「Rust」，或把场景切回全部。</p>
 
     <footer class="pagefoot">
-      <p class="stamp">开发场景与架构模式为策展视角，不是官方分类；学习/生态为编者判断，许可与事实以官方文档为准。最后核对 2026-10-29。</p>
+      <p class="stamp">开发场景与架构模式为策展视角，不是官方分类；学习/生态为编者判断，许可与事实以官方文档为准。最后核对 2026-10-30。</p>
       <p>第 1–18 批 · 开发场景</p>
     </footer>
   </div>

@@ -99,9 +99,9 @@ try {
       <p class="hero__sub">安全不是上线前的一道扫描，而是从输入边界、密钥管理、依赖供应链到审计日志的一整条链。这里按主题整理原则、工具与按语言的选型。</p>
       <div class="hero__meta">
         <div class="stat"><span class="stat__num">8</span><span class="stat__label">个主题</span></div>
-        <div class="stat"><span class="stat__num">12</span><span class="stat__label">个工具</span></div>
+        <div class="stat"><span class="stat__num">15</span><span class="stat__label">个工具</span></div>
         <div class="stat"><span class="stat__num">6</span><span class="stat__label">门语言</span></div>
-        <div class="stat"><span class="stat__num">12</span><span class="stat__label">条官方来源</span></div>
+        <div class="stat"><span class="stat__num">15</span><span class="stat__label">条官方来源</span></div>
       </div>
     </header>
 
@@ -172,7 +172,7 @@ try {
       <table class="pick-table">
         <caption>语言 → 安全工具 → 类别</caption>
         <thead><tr><th scope="col">语言</th><th scope="col">工具</th><th scope="col">类别</th></tr></thead>
-        <tbody><tr><td>C</td><td><a href="#openssl">OpenSSL</a>、<a href="#libsodium">libsodium</a></td><td>密码学 / TLS、现代密码学</td></tr><tr><td>Go</td><td><a href="#opa">Open Policy Agent</a>、<a href="#trivy">Trivy</a>、<a href="#nuclei">Nuclei</a></td><td>策略即代码、供应链 / 镜像扫描、漏洞扫描模板</td></tr><tr><td>Java</td><td><a href="#spring-security">Spring Security</a>、<a href="#keycloak">Keycloak</a>、<a href="#owasp-zap">OWASP ZAP</a></td><td>认证授权、身份与访问管理、DAST 动态扫描</td></tr><tr><td>JavaScript</td><td><a href="#helmet">Helmet</a></td><td>HTTP 安全头</td></tr><tr><td>Python</td><td><a href="#semgrep">Semgrep</a>、<a href="#bandit">Bandit</a></td><td>SAST 静态审计、Python 安全检查</td></tr><tr><td>Rust</td><td><a href="#rustls">rustls</a></td><td>内存安全 TLS</td></tr></tbody>
+        <tbody><tr><td>C</td><td><a href="#openssl">OpenSSL</a>、<a href="#libsodium">libsodium</a>、<a href="#gnutls">GnuTLS</a></td><td>密码学 / TLS、现代密码学、密码学 / TLS</td></tr><tr><td>Go</td><td><a href="#opa">Open Policy Agent</a>、<a href="#trivy">Trivy</a>、<a href="#nuclei">Nuclei</a>、<a href="#age">age</a></td><td>策略即代码、供应链 / 镜像扫描、漏洞扫描模板、文件加密</td></tr><tr><td>Java</td><td><a href="#spring-security">Spring Security</a>、<a href="#keycloak">Keycloak</a>、<a href="#owasp-zap">OWASP ZAP</a></td><td>认证授权、身份与访问管理、DAST 动态扫描</td></tr><tr><td>JavaScript</td><td><a href="#helmet">Helmet</a></td><td>HTTP 安全头</td></tr><tr><td>Python</td><td><a href="#semgrep">Semgrep</a>、<a href="#bandit">Bandit</a>、<a href="#slither">Slither</a></td><td>SAST 静态审计、Python 安全检查、智能合约静态分析</td></tr><tr><td>Rust</td><td><a href="#rustls">rustls</a></td><td>内存安全 TLS</td></tr></tbody>
       </table>
     </div>
     <p class="table-hint">表格可横向滑动 →</p>
@@ -191,9 +191,9 @@ try {
         </label>
         <label class="matrix-select" for="secCategory">
           <span>类别</span>
-          <select id="secCategory"><option value="all">全部类别</option><option value="DAST 动态扫描">DAST 动态扫描</option><option value="HTTP 安全头">HTTP 安全头</option><option value="Python 安全检查">Python 安全检查</option><option value="SAST 静态审计">SAST 静态审计</option><option value="供应链 / 镜像扫描">供应链 / 镜像扫描</option><option value="内存安全 TLS">内存安全 TLS</option><option value="密码学 / TLS">密码学 / TLS</option><option value="漏洞扫描模板">漏洞扫描模板</option><option value="现代密码学">现代密码学</option><option value="策略即代码">策略即代码</option><option value="认证授权">认证授权</option><option value="身份与访问管理">身份与访问管理</option></select>
+          <select id="secCategory"><option value="all">全部类别</option><option value="DAST 动态扫描">DAST 动态扫描</option><option value="HTTP 安全头">HTTP 安全头</option><option value="Python 安全检查">Python 安全检查</option><option value="SAST 静态审计">SAST 静态审计</option><option value="供应链 / 镜像扫描">供应链 / 镜像扫描</option><option value="内存安全 TLS">内存安全 TLS</option><option value="密码学 / TLS">密码学 / TLS</option><option value="文件加密">文件加密</option><option value="智能合约静态分析">智能合约静态分析</option><option value="漏洞扫描模板">漏洞扫描模板</option><option value="现代密码学">现代密码学</option><option value="策略即代码">策略即代码</option><option value="认证授权">认证授权</option><option value="身份与访问管理">身份与访问管理</option></select>
         </label>
-        <span class="era-head__count" id="secCount">12 个工具</span>
+        <span class="era-head__count" id="secCount">15 个工具</span>
       </div>
       <div class="stack-grid sec-grid"><article class="stack-card sec-tool" id="openssl" data-search="openssl c 密码学 / tls 最广泛部署的 tls 与密码学工具库，提供协议实现、证书与命令行工具。 apache-2.0 需要 tls / 证书处理 系统级密码学基础 与 c/c++ 服务集成" data-cat="密码学 / TLS">
         <span class="stack-top"><span class="stack-lang">C</span><span class="stack-type">密码学 / TLS</span></span>
@@ -255,6 +255,21 @@ try {
         <span class="stack-fw">Helmet</span>
         <span class="stack-why">Express / Node 中间件，集中设置 CSP、HSTS、X-Frame-Options 等安全响应头。</span>
         <span class="sec-tool__meta">许可 MIT · Express 应用 → Helmet 中间件 → 响应头 → 浏览器</span>
+      </article><article class="stack-card sec-tool" id="slither" data-search="slither python 智能合约静态分析 solidity 智能合约静态分析框架，提供检测器、继承图与可视化，常与模糊测试配合。 agpl-2.0 evm 合约审计 ci 中的合约检查 审计报告辅助" data-cat="智能合约静态分析">
+        <span class="stack-top"><span class="stack-lang">Python</span><span class="stack-type">智能合约静态分析</span></span>
+        <span class="stack-fw">Slither</span>
+        <span class="stack-why">Solidity 智能合约静态分析框架，提供检测器、继承图与可视化，常与模糊测试配合。</span>
+        <span class="sec-tool__meta">许可 AGPL-2.0 · Solidity 源码 → slither 检测器 → 报告 / 继承图 → 审计与 CI</span>
+      </article><article class="stack-card sec-tool" id="gnutls" data-search="gnutls c 密码学 / tls gnu 项目的 tls / dtls 协议库，许可清晰，广泛用于 gnu/linux 发行版栈。 lgpl-2.1+ 需要 lgpl 许可的 tls 集成 gnu/linux 发行版栈 c 服务端 tls" data-cat="密码学 / TLS">
+        <span class="stack-top"><span class="stack-lang">C</span><span class="stack-type">密码学 / TLS</span></span>
+        <span class="stack-fw">GnuTLS</span>
+        <span class="stack-why">GNU 项目的 TLS / DTLS 协议库，许可清晰，广泛用于 GNU/Linux 发行版栈。</span>
+        <span class="sec-tool__meta">许可 LGPL-2.1+ · C 调用 → libgnutls → 动态库 → 服务或工具</span>
+      </article><article class="stack-card sec-tool" id="age" data-search="age go 文件加密 现代文件加密工具与格式，密钥与命令都很简单，规范小而可审计。 bsd-3-clause 文件与备份加密 密钥轮换简单 脚本化加密流程" data-cat="文件加密">
+        <span class="stack-top"><span class="stack-lang">Go</span><span class="stack-type">文件加密</span></span>
+        <span class="stack-fw">age</span>
+        <span class="stack-why">现代文件加密工具与格式，密钥与命令都很简单，规范小而可审计。</span>
+        <span class="sec-tool__meta">许可 BSD-3-Clause · age 密钥 → age 加密 → 加密文件 → 解密与存储</span>
       </article></div>
       <p class="index-empty" id="secEmpty">没有匹配的工具。试试「TLS」「Java」「扫描」。</p>
     </section>
@@ -265,8 +280,8 @@ try {
         <h2 class="block__title">参考来源<em>Sources</em></h2>
         <span class="block__rule"></span>
       </div>
-      <p class="prose">安全工具与规范变化很快；下列为各工具官方文档入口，最后核对 2026-10-29。具体版本、默认配置与许可请以官方文档为准。</p>
-      <ul class="sec-sources"><li><a href="https://docs.openssl.org/" target="_blank" rel="noopener noreferrer">OpenSSL 官方文档</a><span>OpenSSL</span></li><li><a href="https://doc.libsodium.org/" target="_blank" rel="noopener noreferrer">libsodium 文档</a><span>libsodium</span></li><li><a href="https://docs.rs/rustls/latest/rustls/" target="_blank" rel="noopener noreferrer">rustls 文档</a><span>rustls</span></li><li><a href="https://docs.spring.io/spring-security/reference/" target="_blank" rel="noopener noreferrer">Spring Security 参考文档</a><span>Spring Security</span></li><li><a href="https://www.keycloak.org/documentation" target="_blank" rel="noopener noreferrer">Keycloak 文档</a><span>Keycloak</span></li><li><a href="https://www.zaproxy.org/docs/" target="_blank" rel="noopener noreferrer">OWASP ZAP 文档</a><span>OWASP ZAP</span></li><li><a href="https://semgrep.dev/docs/" target="_blank" rel="noopener noreferrer">Semgrep 文档</a><span>Semgrep</span></li><li><a href="https://bandit.readthedocs.io/" target="_blank" rel="noopener noreferrer">Bandit 文档</a><span>Bandit</span></li><li><a href="https://www.openpolicyagent.org/docs/latest/" target="_blank" rel="noopener noreferrer">OPA 文档</a><span>Open Policy Agent</span></li><li><a href="https://trivy.dev/latest/docs/" target="_blank" rel="noopener noreferrer">Trivy 文档</a><span>Trivy</span></li><li><a href="https://docs.projectdiscovery.io/tools/nuclei/overview" target="_blank" rel="noopener noreferrer">Nuclei 文档</a><span>Nuclei</span></li><li><a href="https://helmetjs.github.io/" target="_blank" rel="noopener noreferrer">Helmet 文档</a><span>Helmet</span></li></ul>
+      <p class="prose">安全工具与规范变化很快；下列为各工具官方文档入口，最后核对 2026-10-30。具体版本、默认配置与许可请以官方文档为准。</p>
+      <ul class="sec-sources"><li><a href="https://docs.openssl.org/" target="_blank" rel="noopener noreferrer">OpenSSL 官方文档</a><span>OpenSSL</span></li><li><a href="https://doc.libsodium.org/" target="_blank" rel="noopener noreferrer">libsodium 文档</a><span>libsodium</span></li><li><a href="https://docs.rs/rustls/latest/rustls/" target="_blank" rel="noopener noreferrer">rustls 文档</a><span>rustls</span></li><li><a href="https://docs.spring.io/spring-security/reference/" target="_blank" rel="noopener noreferrer">Spring Security 参考文档</a><span>Spring Security</span></li><li><a href="https://www.keycloak.org/documentation" target="_blank" rel="noopener noreferrer">Keycloak 文档</a><span>Keycloak</span></li><li><a href="https://www.zaproxy.org/docs/" target="_blank" rel="noopener noreferrer">OWASP ZAP 文档</a><span>OWASP ZAP</span></li><li><a href="https://semgrep.dev/docs/" target="_blank" rel="noopener noreferrer">Semgrep 文档</a><span>Semgrep</span></li><li><a href="https://bandit.readthedocs.io/" target="_blank" rel="noopener noreferrer">Bandit 文档</a><span>Bandit</span></li><li><a href="https://www.openpolicyagent.org/docs/latest/" target="_blank" rel="noopener noreferrer">OPA 文档</a><span>Open Policy Agent</span></li><li><a href="https://trivy.dev/latest/docs/" target="_blank" rel="noopener noreferrer">Trivy 文档</a><span>Trivy</span></li><li><a href="https://docs.projectdiscovery.io/tools/nuclei/overview" target="_blank" rel="noopener noreferrer">Nuclei 文档</a><span>Nuclei</span></li><li><a href="https://helmetjs.github.io/" target="_blank" rel="noopener noreferrer">Helmet 文档</a><span>Helmet</span></li><li><a href="https://github.com/crytic/slither/wiki" target="_blank" rel="noopener noreferrer">Slither 文档</a><span>Slither</span></li><li><a href="https://gnutls.org/" target="_blank" rel="noopener noreferrer">GnuTLS 官方文档</a><span>GnuTLS</span></li><li><a href="https://age-encryption.org/" target="_blank" rel="noopener noreferrer">age 规范与文档</a><span>age</span></li></ul>
     </section>
 
     <footer class="pagefoot">
