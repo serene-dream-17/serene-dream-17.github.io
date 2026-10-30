@@ -169,7 +169,8 @@ def matrix_test(page):
     hrefs = page.eval_on_selector_all(
         "#security .stack-card", "els => els.map(e => e.getAttribute('href'))"
     )
-    for anchor in ("security.html#slither", "security.html#gnutls", "security.html#age"):
+    for anchor in ("security.html#slither", "security.html#gnutls", "security.html#age",
+                   "security.html#metasploit", "security.html#ghidra", "security.html#kube-bench"):
         assert_(anchor in hrefs, f"矩阵缺少新增安全工具链接 {anchor}")
 
 
@@ -181,7 +182,8 @@ def scenarios_test(page):
     patterns = page.locator("#devArch option").count()
     assert_(patterns == 13, f"统一模式选项不是 12 + 全部（{patterns}）")
     assert_(page.locator(".dev-legend__item").count() == 12, "架构模式图例不是 12 项")
-    assert_(page.locator(".dev-arch__pattern").count() == 36, "架构分组模式徽标不是 36 个")
+    assert_(page.locator(".dev-arch__pattern").count() == 37, "架构分组模式徽标不是 37 个")
+    assert_(page.locator("#dev-security .dev-arch").count() == 4, "安全场景不是 4 个分组")
     page.fill("#devSearch", "微服务")
     page.select_option("#devScenario", "backend")
     page.wait_for_timeout(150)
@@ -198,12 +200,12 @@ def scenarios_test(page):
     page.select_option("#devArch", "pipeline")
     page.wait_for_timeout(150)
     shown = page.locator(".dev-card:not([hidden])").count()
-    assert_(shown == 27, f"管线 / 批流模式应为 27 组，实际 {shown}")
+    assert_(shown == 31, f"管线 / 批流模式应为 31 组，实际 {shown}")
     assert_("a=pipeline" in page.url, "模式筛选未写入 URL")
     page.reload()
     page.wait_for_timeout(180)
     assert_(page.input_value("#devArch") == "pipeline", "模式筛选刷新后未恢复")
-    assert_(page.locator(".dev-card:not([hidden])").count() == 27, "刷新后模式筛选结果不一致")
+    assert_(page.locator(".dev-card:not([hidden])").count() == 31, "刷新后模式筛选结果不一致")
 
     page.select_option("#devScenario", "security")
     page.select_option("#devArch", "native")
@@ -218,7 +220,7 @@ def scenarios_test(page):
 def security_test(page):
     page.goto((ROOT / "security.html").as_uri())
     page.wait_for_timeout(150)
-    assert_(page.locator(".sec-tool").count() == 15, "安全工具不是 15 个")
+    assert_(page.locator(".sec-tool").count() == 41, "安全工具不是 41 个")
     page.fill("#secSearch", "tls")
     page.wait_for_timeout(150)
     assert_("q=tls" in page.url, "安全搜索未写入 URL")
@@ -231,10 +233,13 @@ def security_test(page):
                 f"安全搜索未命中 {term}")
     page.fill("#secSearch", "")
     page.wait_for_timeout(120)
-    page.select_option("#secCategory", "供应链 / 镜像扫描")
+    page.select_option("#secDirection", "pentest")
     page.wait_for_timeout(150)
-    assert_("c=" in page.url, "安全类别未写入 URL")
-    assert_(page.locator(".sec-tool:not([hidden])").count() == 1, "安全类别过滤异常")
+    assert_("d=pentest" in page.url, "安全方向未写入 URL")
+    assert_(page.locator(".sec-tool:not([hidden])").count() == 7, "渗透测试方向条目不是 7")
+    page.select_option("#secDirection", "incident")
+    page.wait_for_timeout(150)
+    assert_(page.locator(".sec-tool:not([hidden])").count() == 2, "应急取证方向条目不是 2")
 
 
 def sources_test(page):
