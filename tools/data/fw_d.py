@@ -551,6 +551,9 @@ SCENARIOS.extend([
             ("go", "Trivy", "镜像、依赖与 IaC 漏洞扫描"),
             ("go", "Nuclei", "模板化暴露面与漏洞扫描"),
             ("javascript", "Helmet", "Node 服务安全响应头基线"),
+            ("python", "Slither", "Solidity 合约静态分析"),
+            ("c", "GnuTLS", "LGPL 许可的 TLS / DTLS 实现"),
+            ("go", "age", "现代文件加密工具与格式"),
         ],
     },
 ])

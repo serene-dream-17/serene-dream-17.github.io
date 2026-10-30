@@ -4,7 +4,7 @@
 所有工具条目均为策展信息；许可证与事实以官方文档为准。
 """
 
-LAST_VERIFIED = "2026-10-29"
+LAST_VERIFIED = "2026-10-30"
 
 TOPICS = [
     {
@@ -215,6 +215,33 @@ TOOLS = [
         "avoid": ["非 Node 服务", "需要完整的 WAF 能力"],
         "chain": ["Express 应用", "Helmet 中间件", "响应头", "浏览器"],
         "source": ("Helmet 文档", "https://helmetjs.github.io/"),
+    },
+    {
+        "name": "Slither", "slug": "slither", "lang": "Python", "lang_slug": "python",
+        "category": "智能合约静态分析", "license": "AGPL-2.0",
+        "summary": "Solidity 智能合约静态分析框架，提供检测器、继承图与可视化，常与模糊测试配合。",
+        "fit": ["EVM 合约审计", "CI 中的合约检查", "审计报告辅助"],
+        "avoid": ["非 EVM 代码", "需要运行时验证（应配合模糊测试）"],
+        "chain": ["Solidity 源码", "slither 检测器", "报告 / 继承图", "审计与 CI"],
+        "source": ("Slither 文档", "https://github.com/crytic/slither/wiki"),
+    },
+    {
+        "name": "GnuTLS", "slug": "gnutls", "lang": "C", "lang_slug": "c",
+        "category": "密码学 / TLS", "license": "LGPL-2.1+",
+        "summary": "GNU 项目的 TLS / DTLS 协议库，许可清晰，广泛用于 GNU/Linux 发行版栈。",
+        "fit": ["需要 LGPL 许可的 TLS 集成", "GNU/Linux 发行版栈", "C 服务端 TLS"],
+        "avoid": ["需要 OpenSSL 引擎兼容", "只想要高层封装"],
+        "chain": ["C 调用", "libgnutls", "动态库", "服务或工具"],
+        "source": ("GnuTLS 官方文档", "https://gnutls.org/"),
+    },
+    {
+        "name": "age", "slug": "age", "lang": "Go", "lang_slug": "go",
+        "category": "文件加密", "license": "BSD-3-Clause",
+        "summary": "现代文件加密工具与格式，密钥与命令都很简单，规范小而可审计。",
+        "fit": ["文件与备份加密", "密钥轮换简单", "脚本化加密流程"],
+        "avoid": ["需要 PKI / 证书体系", "必须兼容旧 PGP 工作流"],
+        "chain": ["age 密钥", "age 加密", "加密文件", "解密与存储"],
+        "source": ("age 规范与文档", "https://age-encryption.org/"),
     },
 ]
 
