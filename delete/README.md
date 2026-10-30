@@ -18,6 +18,8 @@
 | `compare.html`、`tools/compare_index.py`、`assets/compare.js`、`assets/compare-data.js` | 第 23 批 | 对比器下线 |
 | `laravel-stack.html` | 第 23 批 | 第 22 批删栈后遗留的旧生成页 |
 | `view-source_https___serene-dream-17.github.io.html` | 第 23 批 | 早期网页快照，无站内入链 |
+| `verified.html`、`tools/verified_site.py`、`tools/data/verified.py`、`tools/verify.py` | 第 24 批 | 实测记录整条线下线 |
+| `tools/data/appsec_stack.py`、`appsec-baseline.html` | 第 24 批 | 应用安全基线栈改为渗透栈 |
 
 ## 恢复方式
 
