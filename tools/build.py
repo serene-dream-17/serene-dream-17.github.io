@@ -66,7 +66,7 @@ for _mod in (depth_1, depth_2, depth_3):
     DEEP.update(_mod.DEEP)
 
 BATCH_DONE = 23
-BATCH_LABEL = "第 1–23 批"
+BATCH_LABEL = "第 1–25 批"
 BATCH_RANGE = "1950s–2020s"
 TOTAL = len(LANGUAGES)
 OPEN = len(BUILT)
@@ -1362,6 +1362,9 @@ def validate():
     for st in stacks.STACKS:
         if st["domain"] not in domain_keys:
             errors.append(f"技术栈 {st['key']} 引用未知领域 {st['domain']}")
+        for field in ("baseline", "testing", "ops", "team", "chain", "perf", "observe", "secure"):
+            if not st.get(field):
+                errors.append(f"技术栈 {st['key']} 缺少深度字段 {field}")
         for layer in st["layers"]:
             for item in layer["items"]:
                 if not isinstance(item, tuple):

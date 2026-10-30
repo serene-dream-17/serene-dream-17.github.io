@@ -181,8 +181,8 @@ def main():
         text = page.read_text(encoding="utf-8")
         if 'class="pick-table stack-table"' not in text:
             failures.append(f"技术栈 {st['key']} 缺少构成表")
-        if text.count('class="depth-block"') != 4:
-            failures.append(f"技术栈 {st['key']} 深度段不是 4 个")
+        if text.count('class="depth-block"') != 8:
+            failures.append(f"技术栈 {st['key']} 深度段不是 8 个")
         if st["source"][1] not in text:
             failures.append(f"技术栈 {st['key']} 缺少官方来源")
 

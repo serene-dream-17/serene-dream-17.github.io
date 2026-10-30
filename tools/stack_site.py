@@ -192,6 +192,10 @@ def render_stack(stack, catalog_html, batch_label):
             ("测试与 CI", "Testing", "testing"),
             ("部署与运维", "Operations", "ops"),
             ("团队与成本", "Team", "team"),
+            ("数据与请求链路", "Flow", "chain"),
+            ("性能与容量", "Capacity", "perf"),
+            ("可观测性与 SLO", "Observability", "observe"),
+            ("安全与合规", "Security", "secure"),
         )
     )
     sec_link = ('<a class="matrix-link" href="../frameworks/security.html">安全工具 →</a>'
@@ -272,7 +276,7 @@ def render_stack(stack, catalog_html, batch_label):
 
     <section class="block reveal" id="depth">
       <div class="block__head"><span class="block__num">05</span><h2 class="block__title">工程化深度<em>Engineering</em></h2><span class="block__rule"></span></div>
-      <p class="prose">版本是策展建议线（LTS 或当前稳定线），具体小版本与可用性以官方文档为准。</p>
+      <p class="prose">版本是策展建议线（LTS 或当前稳定线）；链路、容量与 SLO 为示意口径，具体数值需按实测与官方文档校准。</p>
       <div class="stack-depth">{depth_blocks}</div>
     </section>
 
