@@ -299,7 +299,7 @@ SCENARIOS = [
     },
     {
         "key": "security", "title": "安全", "en": "Security",
-        "desc": "安全贯穿应用、密码学与供应链；工具选型优先看默认安全、维护状态与合规要求。",
+        "desc": "安全贯穿应用、密码学、攻防与供应链；工具选型优先看默认安全、授权边界与合规要求。",
         "architectures": [
             {
                 "key": "appsec", "pattern": "layered",
@@ -319,6 +319,16 @@ SCENARIOS = [
                     ("rust", "rustls", "内存安全的 TLS 实现", "security.html#rustls"),
                     ("c", "GnuTLS", "LGPL 许可的 TLS / DTLS 实现", "security.html#gnutls"),
                     ("go", "age", "现代文件加密工具与格式", "security.html#age"),
+                ],
+            },
+            {
+                "key": "offense", "pattern": "pipeline",
+                "title": "攻防与渗透", "desc": "侦察、验证、逆向与漏洞挖掘；只在自有资产或书面授权范围内使用。",
+                "entries": [
+                    ("ruby", "Metasploit Framework", "授权渗透的漏洞验证框架", "security.html#metasploit"),
+                    ("java", "Burp Suite", "Web / API 渗透测试工作台", "security.html#burp-suite"),
+                    ("java", "Ghidra", "二进制与固件反编译", "security.html#ghidra"),
+                    ("c", "AFL++", "覆盖率引导的漏洞挖掘", "security.html#aflplusplus"),
                 ],
             },
             {
