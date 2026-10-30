@@ -3,7 +3,7 @@
 
 用法：
     python tests/smoke.py
-    python tests/smoke.py --quick     # 跳过 163 页全量扫描
+    python tests/smoke.py --quick     # 跳过 207 页全量扫描
 
 依赖：playwright（已安装），Chrome。可用 CHROME_PATH 指定浏览器。
 """
