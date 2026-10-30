@@ -977,12 +977,15 @@ def write_search_js():
                 "keywords": [sc["title"], fw, slug, why],
             })
 
+    sec_dirs = {t["key"]: t["title"] for t in security.TOPICS}
     for tool in security.TOOLS:
+        direction = sec_dirs.get(tool["direction"], "")
         items.append({
             "title": tool["name"], "group": "安全",
-            "desc": f"{tool['category']} · {tool['lang']} · {tool['summary']}",
+            "desc": f"{direction} · {tool['category']} · {tool['lang']} · {tool['summary']}",
             "href": f"security.html#{tool['slug']}", "kind": "安全工具",
-            "keywords": [tool["lang"], tool["category"], tool["license"], tool["summary"]]
+            "keywords": [tool["lang"], tool["category"], tool["license"],
+                         tool["summary"], direction]
                         + tool["fit"],
         })
 
@@ -1166,6 +1169,12 @@ def validate():
             errors.append(f"{slug} 深读: features 不是 4 项")
 
     security_names = {t["name"] for t in security.TOOLS}
+    security_dirs = {t["key"] for t in security.TOPICS if t["key"] != "by-language"}
+    for tool in security.TOOLS:
+        if tool.get("direction") not in security_dirs:
+            errors.append(f"安全工具 {tool['name']} 的方向未知：{tool.get('direction')}")
+        if not tool.get("source"):
+            errors.append(f"安全工具 {tool['name']} 缺少官方来源")
     for sc in SCENARIOS:
         for slug, fw_name, _why in sc["entries"]:
             if slug not in BUILT_SLUGS:

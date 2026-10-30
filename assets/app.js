@@ -298,14 +298,14 @@
 
   /* ---------------- 安全工具 ---------------- */
   var secSearch = document.getElementById("secSearch");
-  var secCategory = document.getElementById("secCategory");
+  var secDirection = document.getElementById("secDirection");
   var secCount = document.getElementById("secCount");
   var secEmpty = document.getElementById("secEmpty");
 
   function applySecFilter() {
     if (!secSearch) return;
     var q = normalize(secSearch.value.trim());
-    var cat = secCategory ? secCategory.value : "all";
+    var dir = secDirection ? secDirection.value : "all";
     var cards = document.querySelectorAll(".sec-tool");
     var total = cards.length;
     var shown = 0;
@@ -313,8 +313,8 @@
     cards.forEach(function (card) {
       var hay = normalize(card.dataset.search || card.textContent);
       var okQ = !q || hay.indexOf(q) !== -1;
-      var okC = cat === "all" || card.dataset.cat === cat;
-      var show = okQ && okC;
+      var okD = dir === "all" || card.dataset.dir === dir;
+      var show = okQ && okD;
       card.hidden = !show;
       if (show) shown++;
     });
@@ -333,7 +333,7 @@
       clearTimeout(ts);
       ts = setTimeout(applySecFilter, 70);
     });
-    if (secCategory) secCategory.addEventListener("change", applySecFilter);
+    if (secDirection) secDirection.addEventListener("change", applySecFilter);
     applySecFilter();
   }
 
@@ -501,17 +501,17 @@
     }
   } else if (page === "security") {
     setSearchValue(secSearch, "q", params.get("q"));
-    if (params.get("c") && secCategory) {
-      secCategory.value = params.get("c");
-      secCategory.dispatchEvent(new Event("change"));
+    if (params.get("d") && secDirection) {
+      secDirection.value = params.get("d");
+      secDirection.dispatchEvent(new Event("change"));
     }
     if (secSearch) {
       secSearch.addEventListener("input", function () {
         syncParam("q", secSearch.value.trim(), false);
       });
     }
-    if (secCategory) {
-      secCategory.addEventListener("change", function () { syncParam("c", secCategory.value, true); });
+    if (secDirection) {
+      secDirection.addEventListener("change", function () { syncParam("d", secDirection.value, true); });
     }
   } else if (page === "sources") {
     setSearchValue(srcSearch, "q", params.get("q"));

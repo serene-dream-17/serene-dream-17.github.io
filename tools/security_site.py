@@ -6,8 +6,24 @@ import html
 from data import security
 
 
+TOPIC_BY_KEY = {t["key"]: t for t in security.TOPICS}
+
+# 攻防类方向在卡片上标注授权前提。
+AUTH_DIRECTIONS = {"pentest", "network", "reversing", "vuln-research", "mobile", "iot"}
+
+
 def e(value):
     return html.escape(str(value), quote=True)
+
+
+def _topic_tools(topic):
+    tools = security.BY_DIRECTION.get(topic["key"], [])
+    if not tools:
+        return ""
+    links = " · ".join(
+        f'<a href="#{e(t["slug"])}">{e(t["name"])}</a>' for t in tools
+    )
+    return f'<p class="sec-topic-tools">代表工具：{links}</p>'
 
 
 def _topic_points(topic):
@@ -34,13 +50,16 @@ def _by_language_table():
 def _tool_cards():
     cards = []
     for tool in security.TOOLS:
+        direction = TOPIC_BY_KEY.get(tool["direction"], {})
         search = " ".join([
             tool["name"], tool["lang"], tool["category"], tool["summary"],
-            tool["license"], " ".join(tool["fit"]),
+            tool["license"], direction.get("title", ""), " ".join(tool["fit"]),
         ]).lower()
-        cards.append(f"""<article class="stack-card sec-tool" id="{e(tool["slug"])}" data-search="{e(search)}" data-cat="{e(tool["category"])}">
+        flag = ('<span class="sec-tool__flag">仅限授权测试</span>'
+                if tool["direction"] in AUTH_DIRECTIONS else "")
+        cards.append(f"""<article class="stack-card sec-tool" id="{e(tool["slug"])}" data-search="{e(search)}" data-dir="{e(tool["direction"])}">
         <span class="stack-top"><span class="stack-lang">{e(tool["lang"])}</span><span class="stack-type">{e(tool["category"])}</span></span>
-        <span class="stack-fw">{e(tool["name"])}</span>
+        <span class="stack-fw">{e(tool["name"])}{flag}</span>
         <span class="stack-why">{e(tool["summary"])}</span>
         <span class="sec-tool__meta">许可 {e(tool["license"])} · {' → '.join(e(x) for x in tool["chain"])}</span>
       </article>""")
@@ -80,12 +99,15 @@ def render_security(catalog_html, batch_label):
       </div>
       <p class="prose">{e(topic["desc"])}</p>
       {extra}
+      {_topic_tools(topic)}
     </section>""")
 
-    categories = sorted({t["category"] for t in security.TOOLS})
-    options = "".join(
-        f'<option value="{e(c)}">{e(c)}</option>' for c in categories
+    direction_options = "".join(
+        f'<option value="{e(t["key"])}">{e(t["title"])}</option>'
+        for t in security.TOPICS if t["key"] in security.BY_DIRECTION
     )
+    tools_num = len(security.TOPICS) + 1
+    sources_num = len(security.TOPICS) + 2
 
     return f"""<!doctype html>
 <html lang="zh-CN">
@@ -101,8 +123,8 @@ try {{
   if (r.line) h.dataset.line = r.line;
 }} catch (e) {{}}
 </script>
-<title>安全专题 — 从编码到审计</title>
-<meta name="description" content="应用安全、安全编码、密码学、身份与访问、供应链、安全测试、审计合规，以及按语言的安全工具选型。">
+<title>安全专题 — 方向 × 工具 × 来源</title>
+<meta name="description" content="按安全大类方向浏览：渗透测试与红队、网络与流量、逆向与二进制、漏洞挖掘、云原生、移动、嵌入式与工控、数据隐私、应急取证、威胁情报，以及应用安全、密码学、供应链与合规。">
 <link rel="stylesheet" href="assets/style.css">
 </head>
 <body data-page="security">
@@ -140,9 +162,9 @@ try {{
 <main class="page" id="main">
   <div class="page__inner">
     <header class="hero" id="security">
-      <p class="hero__kicker">SECURITY · 从编码到审计</p>
+      <p class="hero__kicker">SECURITY · 方向 × 工具</p>
       <h1 class="hero__title">安全<br><em>专题</em></h1>
-      <p class="hero__sub">安全不是上线前的一道扫描，而是从输入边界、密钥管理、依赖供应链到审计日志的一整条链。这里按主题整理原则、工具与按语言的选型。</p>
+      <p class="hero__sub">安全不只有应用安全：渗透测试与红队、网络与流量、逆向与二进制、漏洞挖掘、云原生、移动、嵌入式与工控、数据隐私、应急取证、威胁情报，各有各的工具链与前置条件。攻防类工具仅用于自有资产或书面授权测试。</p>
       <div class="hero__meta">
         <div class="stat"><span class="stat__num">{len(security.TOPICS)}</span><span class="stat__label">个主题</span></div>
         <div class="stat"><span class="stat__num">{len(security.TOOLS)}</span><span class="stat__label">个工具</span></div>
@@ -155,28 +177,28 @@ try {{
 
     <section class="block reveal" id="tools">
       <div class="block__head">
-        <span class="block__num">09</span>
+        <span class="block__num">{tools_num:02d}</span>
         <h2 class="block__title">安全工具<em>Toolkit</em></h2>
         <span class="block__rule"></span>
       </div>
       <div class="index-tools matrix-tools">
         <label class="index-search" for="secSearch">
           <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><circle cx="7" cy="7" r="4.5"></circle><path d="M10.5 10.5 14 14"></path></svg>
-          <input id="secSearch" type="search" placeholder="搜索工具、语言或类别（按 / 聚焦）" autocomplete="off" spellcheck="false" aria-label="搜索安全工具">
+          <input id="secSearch" type="search" placeholder="搜索工具、语言、方向或类别（按 / 聚焦）" autocomplete="off" spellcheck="false" aria-label="搜索安全工具">
         </label>
-        <label class="matrix-select" for="secCategory">
-          <span>类别</span>
-          <select id="secCategory"><option value="all">全部类别</option>{options}</select>
+        <label class="matrix-select" for="secDirection">
+          <span>方向</span>
+          <select id="secDirection"><option value="all">全部方向</option>{direction_options}</select>
         </label>
         <span class="era-head__count" id="secCount">{len(security.TOOLS)} 个工具</span>
       </div>
       <div class="stack-grid sec-grid">{_tool_cards()}</div>
-      <p class="index-empty" id="secEmpty">没有匹配的工具。试试「TLS」「Java」「扫描」。</p>
+      <p class="index-empty" id="secEmpty">没有匹配的工具。试试「TLS」「Ghidra」「渗透」。</p>
     </section>
 
     <section class="block reveal" id="sources">
       <div class="block__head">
-        <span class="block__num">10</span>
+        <span class="block__num">{sources_num:02d}</span>
         <h2 class="block__title">参考来源<em>Sources</em></h2>
         <span class="block__rule"></span>
       </div>
@@ -185,7 +207,7 @@ try {{
     </section>
 
     <footer class="pagefoot">
-      <p class="stamp">安全建议为编者整理，不构成针对具体系统的安全保证；涉及生产系统请结合威胁建模、代码审计与授权测试。</p>
+      <p class="stamp">安全建议为编者整理，不构成针对具体系统的安全保证；涉及生产系统请结合威胁建模、代码审计与授权测试。渗透、逆向与扫描类工具仅用于自有资产或取得书面授权的目标。</p>
       <p>{batch_label} · 安全专题</p>
     </footer>
   </div>

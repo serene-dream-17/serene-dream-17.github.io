@@ -3314,6 +3314,31 @@ html[data-line] .prose { line-height: var(--leading); }
 }
 .sec-points li { margin: 0 0 6px; }
 .sec-points li::marker { color: var(--oxide); }
+.sec-topic-tools {
+  margin: 14px 0 0;
+  font-size: 12.5px;
+  line-height: 1.8;
+  color: var(--faint);
+}
+.sec-topic-tools a {
+  color: var(--moss);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(47, 74, 60, .3);
+}
+.sec-topic-tools a:hover { border-bottom-color: var(--moss); }
+.sec-tool__flag {
+  display: inline-block;
+  margin-left: 8px;
+  padding: 1px 6px;
+  font-family: var(--mono);
+  font-size: 9px;
+  font-weight: 400;
+  letter-spacing: .02em;
+  color: var(--oxide);
+  border: 1px dashed rgba(139, 74, 48, .45);
+  border-radius: 999px;
+  vertical-align: middle;
+}
 .sec-tool__meta {
   margin-top: 8px;
   padding-top: 8px;
