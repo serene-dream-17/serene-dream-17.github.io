@@ -1,0 +1,866 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script>
+try {
+  var r = JSON.parse(localStorage.getItem("archive-reading") || "{}");
+  var h = document.documentElement;
+  if (r.font) h.dataset.font = r.font;
+  if (r.size) h.dataset.size = r.size;
+  if (r.line) h.dataset.line = r.line;
+} catch (e) {}
+</script>
+<title>框架总览 — 142 张决策卡</title>
+<meta name="description" content="按语言与类型浏览 48 门语言的 142 个框架与应用框架：适用、不适用、最小产物链与许可。">
+<link rel="stylesheet" href="../assets/style.css">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<meta name="theme-color" content="#f3ede1">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:site_name" content="语言的产物链">
+<meta property="og:title" content="框架总览 — 142 张决策卡">
+<meta property="og:description" content="按语言与类型浏览 48 门语言的 142 个框架与应用框架：适用、不适用、最小产物链与许可。">
+<meta property="og:image" content="../assets/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="框架总览 — 142 张决策卡">
+<meta name="twitter:description" content="按语言与类型浏览 48 门语言的 142 个框架与应用框架：适用、不适用、最小产物链与许可。">
+<meta name="twitter:image" content="../assets/og.png">
+</head>
+<body data-page="frameworks" data-root="../">
+<a class="skip-link" href="#main">跳到正文</a>
+<div class="progress" aria-hidden="true"><span></span></div>
+<button class="menu-toggle" type="button" aria-label="打开目录" aria-expanded="false" aria-controls="catalog"><span></span></button>
+<div class="scrim"></div>
+<button class="font-toggle" type="button" aria-label="阅读设置" aria-expanded="false" aria-controls="fontPanel">Aa</button>
+<div class="font-panel" id="fontPanel" hidden>
+  <div class="font-panel__head">
+    <strong>阅读设置</strong>
+    <button class="font-panel__close" type="button" data-font-close aria-label="关闭">×</button>
+  </div>
+  <div class="font-panel__group">
+    <span class="font-panel__label">字体</span>
+    <div class="font-panel__opts">
+      <button type="button" data-font="sans" aria-pressed="true">思源黑体</button>
+      <button type="button" data-font="serif" aria-pressed="false">思源宋体</button>
+      <button type="button" data-font="system" aria-pressed="false">系统字体</button>
+    </div>
+  </div>
+  <div class="font-panel__group">
+    <span class="font-panel__label">字号</span>
+    <div class="font-panel__opts">
+      <button type="button" data-size="s" aria-pressed="false">小</button>
+      <button type="button" data-size="m" aria-pressed="true">标准</button>
+      <button type="button" data-size="l" aria-pressed="false">大</button>
+      <button type="button" data-size="xl" aria-pressed="false">特大</button>
+    </div>
+  </div>
+  <div class="font-panel__group">
+    <span class="font-panel__label">行距</span>
+    <div class="font-panel__opts">
+      <button type="button" data-line="tight" aria-pressed="false">紧凑</button>
+      <button type="button" data-line="normal" aria-pressed="true">标准</button>
+      <button type="button" data-line="loose" aria-pressed="false">宽松</button>
+    </div>
+  </div>
+  <button class="font-panel__reset" type="button" data-font-reset>恢复默认</button>
+</div>
+<button class="cmdk-btn" type="button" data-cmdk aria-label="全站搜索">搜索全站 <kbd>⌘K</kbd></button>
+<aside class="catalog" id="catalog" aria-label="全站目录">
+  <div class="catalog__head">
+    <p class="catalog__kicker">Catalogue · 1957 — 2026</p>
+    <h2 class="catalog__title">语言产物链<span>Languages &amp; Their Artifacts</span></h2>
+    <p class="catalog__meta"><b>78</b> / 78 已开放 · 第 23 批</p>
+  </div>
+  <nav class="catalog__levels" aria-label="层级导航">
+    <a href="../languages/index.html">编程语言</a>
+    <a href="../frameworks/index.html">框架</a>
+    <a href="../stacks/index.html">技术栈</a>
+  </nav>
+  <div class="catalog__tools">
+    <label class="search" for="catalogSearch">
+      <svg class="search__icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><circle cx="7" cy="7" r="4.5"></circle><path d="M10.5 10.5 14 14"></path></svg>
+      <input id="catalogSearch" type="search" placeholder="搜索语言 / 年代 / 关键词"
+             autocomplete="off" spellcheck="false" aria-label="搜索语言">
+      <kbd>/</kbd>
+    </label>
+    <div class="filters" role="group" aria-label="按实现方式筛选"><button class="filter" type="button" data-filter="all" aria-pressed="true">全部</button><button class="filter" type="button" data-filter="compiled" aria-pressed="false">编译</button><button class="filter" type="button" data-filter="interpreted" aria-pressed="false">解释</button><button class="filter" type="button" data-filter="domain" aria-pressed="false">领域</button><button class="filter" type="button" data-filter="markup" aria-pressed="false">标记</button></div>
+  </div>
+  <div class="catalog__body">
+    <section class="catalog__group" data-era="1950s-1960s"><div class="catalog__grouphead"><span>1950s–1960s</span><em>10/10</em></div><ul class="catalog__list"><li><a class="catalog__link " href="../languages/fortran.html" data-search="fortran 公式翻译系统 1957 科学计算的起点；固定列卡片与 ibm 704 编译器 编译型 fortran 命令式 科学计算 数组" data-family="compiled" data-year="1957" data-name="FORTRAN"><span class="catalog__num">01</span><span class="catalog__name">FORTRAN</span><span class="catalog__year">1957</span></a></li><li><a class="catalog__link " href="../languages/lisp.html" data-search="lisp 表处理语言 1958 代码即数据；ai 的第一门母语 解释 / 字节码 lisp 函数式 符号计算 宏" data-family="interpreted" data-year="1958" data-name="LISP"><span class="catalog__num">02</span><span class="catalog__name">LISP</span><span class="catalog__year">1958</span></a></li><li><a class="catalog__link " href="../languages/algol60.html" data-search="algol 60 算法语言 1960 几乎所有现代语法记法的祖先 编译型 algol60 命令式 结构化 块作用域" data-family="compiled" data-year="1960" data-name="ALGOL 60"><span class="catalog__num">03</span><span class="catalog__name">ALGOL 60</span><span class="catalog__year">1960</span></a></li><li><a class="catalog__link " href="../languages/cobol.html" data-search="cobol 通用商业语言 1959 银行、保险与政府的账本语言 编译型 cobol 命令式 商业数据 记录" data-family="compiled" data-year="1959" data-name="COBOL"><span class="catalog__num">04</span><span class="catalog__name">COBOL</span><span class="catalog__year">1959</span></a></li><li><a class="catalog__link " href="../languages/basic.html" data-search="basic 初学者通用符号指令代码 1964 把编程带到个人电脑与课堂 解释 / 字节码 basic 命令式 交互式 教学" data-family="interpreted" data-year="1964" data-name="BASIC"><span class="catalog__num">05</span><span class="catalog__name">BASIC</span><span class="catalog__year">1964</span></a></li><li><a class="catalog__link " href="../languages/simula.html" data-search="simula 67 仿真语言 1967 class 与对象概念的源头 编译型 simula 面向对象 仿真 协程" data-family="compiled" data-year="1967" data-name="Simula 67"><span class="catalog__num">06</span><span class="catalog__name">Simula 67</span><span class="catalog__year">1967</span></a></li><li><a class="catalog__link " href="../languages/pli.html" data-search="pl/i 编程语言一号 1964 大型机上的「万能语言」 编译型 pli 多范式 商业数据 异常" data-family="compiled" data-year="1964" data-name="PL/I"><span class="catalog__num">07</span><span class="catalog__name">PL/I</span><span class="catalog__year">1964</span></a></li><li><a class="catalog__link " href="../languages/apl.html" data-search="apl 数组编程语言 1966 数组与符号的极简记法 解释 / 字节码 apl 数组 函数式 交互式" data-family="interpreted" data-year="1966" data-name="APL"><span class="catalog__num">08</span><span class="catalog__name">APL</span><span class="catalog__year">1966</span></a></li><li><a class="catalog__link " href="../languages/snobol.html" data-search="snobol 字符串操作语言 1962 字符串模式匹配的先驱 解释 / 字节码 snobol 模式匹配 字符串 动态类型" data-family="interpreted" data-year="1962" data-name="SNOBOL"><span class="catalog__num">09</span><span class="catalog__name">SNOBOL</span><span class="catalog__year">1962</span></a></li><li><a class="catalog__link " href="../languages/b.html" data-search="b b 语言 1969 c 的前身，unix 的第一种实现语言 编译型 b 命令式 无类型 系统编程" data-family="compiled" data-year="1969" data-name="B"><span class="catalog__num">10</span><span class="catalog__name">B</span><span class="catalog__year">1969</span></a></li></ul></section><section class="catalog__group" data-era="1970s"><div class="catalog__grouphead"><span>1970s</span><em>8/8</em></div><ul class="catalog__list"><li><a class="catalog__link " href="../languages/c.html" data-search="c c 语言 1972 unix 内核与系统软件的通用语 编译型 c 命令式 系统编程 静态类型" data-family="compiled" data-year="1972" data-name="C"><span class="catalog__num">11</span><span class="catalog__name">C</span><span class="catalog__year">1972</span></a></li><li><a class="catalog__link " href="../languages/pascal.html" data-search="pascal 帕斯卡语言 1970 结构化教学与 turbo 时代 编译型 pascal 命令式 结构化 教学" data-family="compiled" data-year="1970" data-name="Pascal"><span class="catalog__num">12</span><span class="catalog__name">Pascal</span><span class="catalog__year">1970</span></a></li><li><a class="catalog__link " href="../languages/smalltalk.html" data-search="smalltalk 面向对象环境 1972 图形界面、字节码与活的镜像 解释 / 字节码 smalltalk 面向对象 消息传递 动态类型" data-family="interpreted" data-year="1972" data-name="Smalltalk"><span class="catalog__num">13</span><span class="catalog__name">Smalltalk</span><span class="catalog__year">1972</span></a></li><li><a class="catalog__link " href="../languages/prolog.html" data-search="prolog 逻辑编程 1972 逻辑即程序，wam 即产物 解释 / 字节码 prolog 逻辑 声明式 回溯" data-family="interpreted" data-year="1972" data-name="Prolog"><span class="catalog__num">14</span><span class="catalog__name">Prolog</span><span class="catalog__year">1972</span></a></li><li><a class="catalog__link " href="../languages/ml.html" data-search="ml 元语言 1973 类型推断与函数式语言的底座 编译型 ml 函数式 类型推断 模式匹配" data-family="compiled" data-year="1973" data-name="ML"><span class="catalog__num">15</span><span class="catalog__name">ML</span><span class="catalog__year">1973</span></a></li><li><a class="catalog__link " href="../languages/scheme.html" data-search="scheme scheme 1975 极简 lisp，sicp 的课堂语言 解释 / 字节码 scheme 函数式 尾调用 续延" data-family="interpreted" data-year="1975" data-name="Scheme"><span class="catalog__num">16</span><span class="catalog__name">Scheme</span><span class="catalog__year">1975</span></a></li><li><a class="catalog__link " href="../languages/forth.html" data-search="forth forth 1970 线程码、词典与望远镜控制台 编译型 forth 栈式 元编程 嵌入式" data-family="compiled" data-year="1970" data-name="Forth"><span class="catalog__num">17</span><span class="catalog__name">Forth</span><span class="catalog__year">1970</span></a></li><li><a class="catalog__link " href="../languages/modula2.html" data-search="modula-2 模块化语言 1978 定义模块与实现模块的分离 编译型 modula2 模块化 系统编程 强类型" data-family="compiled" data-year="1978" data-name="Modula-2"><span class="catalog__num">18</span><span class="catalog__name">Modula-2</span><span class="catalog__year">1978</span></a></li></ul></section><section class="catalog__group" data-era="1980s"><div class="catalog__grouphead"><span>1980s</span><em>9/9</em></div><ul class="catalog__list"><li><a class="catalog__link " href="../languages/cpp.html" data-search="c++ c++ 1985 c 的对象化，性能与复杂度并存 编译型 cpp 面向对象 泛型 系统编程" data-family="compiled" data-year="1985" data-name="C++"><span class="catalog__num">19</span><span class="catalog__name">C++</span><span class="catalog__year">1985</span></a></li><li><a class="catalog__link " href="../languages/objectivec.html" data-search="objective-c objective-c 1984 next 与 apple 生态的底座 编译型 objectivec 面向对象 消息传递 apple 生态" data-family="compiled" data-year="1984" data-name="Objective-C"><span class="catalog__num">20</span><span class="catalog__name">Objective-C</span><span class="catalog__year">1984</span></a></li><li><a class="catalog__link " href="../languages/perl.html" data-search="perl 实用报表提取语言 1987 cgi 时代的系统胶水 解释 / 字节码 perl 脚本 文本处理 正则" data-family="interpreted" data-year="1987" data-name="Perl"><span class="catalog__num">21</span><span class="catalog__name">Perl</span><span class="catalog__year">1987</span></a></li><li><a class="catalog__link " href="../languages/erlang.html" data-search="erlang erlang 1986 电信级并发与容错 解释 / 字节码 erlang 并发 容错 函数式" data-family="interpreted" data-year="1986" data-name="Erlang"><span class="catalog__num">22</span><span class="catalog__name">Erlang</span><span class="catalog__year">1986</span></a></li><li><a class="catalog__link " href="../languages/ada.html" data-search="ada ada 1980 军工与关键系统的语言 编译型 ada 强类型 并发 实时系统" data-family="compiled" data-year="1980" data-name="Ada"><span class="catalog__num">23</span><span class="catalog__name">Ada</span><span class="catalog__year">1980</span></a></li><li><a class="catalog__link " href="../languages/eiffel.html" data-search="eiffel eiffel 1986 契约式设计 编译型 eiffel 面向对象 契约式设计 静态类型" data-family="compiled" data-year="1986" data-name="Eiffel"><span class="catalog__num">24</span><span class="catalog__name">Eiffel</span><span class="catalog__year">1986</span></a></li><li><a class="catalog__link " href="../languages/matlab.html" data-search="matlab 矩阵实验室 1984 工程仿真与矩阵计算 解释 / 字节码 matlab 数组 数值计算 交互式" data-family="interpreted" data-year="1984" data-name="MATLAB"><span class="catalog__num">25</span><span class="catalog__name">MATLAB</span><span class="catalog__year">1984</span></a></li><li><a class="catalog__link " href="../languages/commonlisp.html" data-search="common lisp 通用 lisp 1984 标准化的大型 lisp 解释 / 字节码 commonlisp 函数式 宏 clos" data-family="interpreted" data-year="1984" data-name="Common Lisp"><span class="catalog__num">26</span><span class="catalog__name">Common Lisp</span><span class="catalog__year">1984</span></a></li><li><a class="catalog__link " href="../languages/tcl.html" data-search="tcl 工具命令语言 1988 嵌入脚本与 eda 工具 解释 / 字节码 tcl 脚本 嵌入 事件驱动" data-family="interpreted" data-year="1988" data-name="Tcl"><span class="catalog__num">27</span><span class="catalog__name">Tcl</span><span class="catalog__year">1988</span></a></li></ul></section><section class="catalog__group" data-era="1990s"><div class="catalog__grouphead"><span>1990s</span><em>11/11</em></div><ul class="catalog__list"><li><a class="catalog__link " href="../languages/python.html" data-search="python python 1991 可读性优先，科学计算的默认语言 解释 / 字节码 python 命令式 动态类型 科学计算" data-family="interpreted" data-year="1991" data-name="Python"><span class="catalog__num">28</span><span class="catalog__name">Python</span><span class="catalog__year">1991</span></a></li><li><a class="catalog__link " href="../languages/java.html" data-search="java java 1995 一次编写，到处运行 解释 / 字节码 java 面向对象 字节码 企业应用" data-family="interpreted" data-year="1995" data-name="Java"><span class="catalog__num">29</span><span class="catalog__name">Java</span><span class="catalog__year">1995</span></a></li><li><a class="catalog__link " href="../languages/javascript.html" data-search="javascript javascript 1995 浏览器里的唯一通用语 解释 / 字节码 javascript 动态类型 事件驱动 原型" data-family="interpreted" data-year="1995" data-name="JavaScript"><span class="catalog__num">30</span><span class="catalog__name">JavaScript</span><span class="catalog__year">1995</span></a></li><li><a class="catalog__link " href="../languages/php.html" data-search="php php 1995 动态网站的草根语言 解释 / 字节码 php 脚本 web 动态类型" data-family="interpreted" data-year="1995" data-name="PHP"><span class="catalog__num">31</span><span class="catalog__name">PHP</span><span class="catalog__year">1995</span></a></li><li><a class="catalog__link " href="../languages/ruby.html" data-search="ruby ruby 1995 为开发者快乐而设计 解释 / 字节码 ruby 面向对象 动态类型 元编程" data-family="interpreted" data-year="1995" data-name="Ruby"><span class="catalog__num">32</span><span class="catalog__name">Ruby</span><span class="catalog__year">1995</span></a></li><li><a class="catalog__link " href="../languages/haskell.html" data-search="haskell haskell 1990 纯函数式与类型系统试验田 编译型 haskell 纯函数式 惰性 类型系统" data-family="compiled" data-year="1990" data-name="Haskell"><span class="catalog__num">33</span><span class="catalog__name">Haskell</span><span class="catalog__year">1990</span></a></li><li><a class="catalog__link " href="../languages/lua.html" data-search="lua lua 1993 游戏与嵌入式的轻量脚本 解释 / 字节码 lua 脚本 嵌入 轻量" data-family="interpreted" data-year="1993" data-name="Lua"><span class="catalog__num">34</span><span class="catalog__name">Lua</span><span class="catalog__year">1993</span></a></li><li><a class="catalog__link " href="../languages/r.html" data-search="r r 1993 统计学家的工作台 解释 / 字节码 r 统计 向量化 交互式" data-family="interpreted" data-year="1993" data-name="R"><span class="catalog__num">35</span><span class="catalog__name">R</span><span class="catalog__year">1993</span></a></li><li><a class="catalog__link " href="../languages/delphi.html" data-search="delphi object pascal 1995 windows 桌面的快速应用 编译型 delphi 面向对象 快速应用 windows" data-family="compiled" data-year="1995" data-name="Delphi"><span class="catalog__num">36</span><span class="catalog__name">Delphi</span><span class="catalog__year">1995</span></a></li><li><a class="catalog__link " href="../languages/vb.html" data-search="visual basic visual basic 1991 让业务人员也能写程序 解释 / 字节码 vb 事件驱动 快速应用 com" data-family="interpreted" data-year="1991" data-name="Visual Basic"><span class="catalog__num">37</span><span class="catalog__name">Visual Basic</span><span class="catalog__year">1991</span></a></li><li><a class="catalog__link " href="../languages/ocaml.html" data-search="ocaml ocaml 1996 类型安全的函数式系统语言 编译型 ocaml 函数式 类型推断 模块" data-family="compiled" data-year="1996" data-name="OCaml"><span class="catalog__num">38</span><span class="catalog__name">OCaml</span><span class="catalog__year">1996</span></a></li></ul></section><section class="catalog__group" data-era="2000s"><div class="catalog__grouphead"><span>2000s</span><em>8/8</em></div><ul class="catalog__list"><li><a class="catalog__link " href="../languages/csharp.html" data-search="c# c# 2000 .net 生态的主力 解释 / 字节码 csharp 面向对象 托管运行时 linq" data-family="interpreted" data-year="2000" data-name="C#"><span class="catalog__num">39</span><span class="catalog__name">C#</span><span class="catalog__year">2000</span></a></li><li><a class="catalog__link " href="../languages/scala.html" data-search="scala scala 2004 jvm 上的函数式与大数据 解释 / 字节码 scala 函数式 面向对象 jvm" data-family="interpreted" data-year="2004" data-name="Scala"><span class="catalog__num">40</span><span class="catalog__name">Scala</span><span class="catalog__year">2004</span></a></li><li><a class="catalog__link " href="../languages/fsharp.html" data-search="f# f# 2005 .net 上的函数式 解释 / 字节码 fsharp 函数式 .net 类型推断" data-family="interpreted" data-year="2005" data-name="F#"><span class="catalog__num">41</span><span class="catalog__name">F#</span><span class="catalog__year">2005</span></a></li><li><a class="catalog__link " href="../languages/clojure.html" data-search="clojure clojure 2007 jvm 上的 lisp 解释 / 字节码 clojure 函数式 lisp 持久化数据" data-family="interpreted" data-year="2007" data-name="Clojure"><span class="catalog__num">42</span><span class="catalog__name">Clojure</span><span class="catalog__year">2007</span></a></li><li><a class="catalog__link " href="../languages/groovy.html" data-search="groovy groovy 2003 构建脚本与 jvm 动态语言 解释 / 字节码 groovy 动态类型 jvm 脚本" data-family="interpreted" data-year="2003" data-name="Groovy"><span class="catalog__num">43</span><span class="catalog__name">Groovy</span><span class="catalog__year">2003</span></a></li><li><a class="catalog__link " href="../languages/go.html" data-search="go go 2009 云原生基础设施的语言 编译型 go 并发 静态类型 云原生" data-family="compiled" data-year="2009" data-name="Go"><span class="catalog__num">44</span><span class="catalog__name">Go</span><span class="catalog__year">2009</span></a></li><li><a class="catalog__link " href="../languages/d.html" data-search="d d 2001 c++ 的现代化尝试 编译型 d 系统编程 模板 gc" data-family="compiled" data-year="2001" data-name="D"><span class="catalog__num">45</span><span class="catalog__name">D</span><span class="catalog__year">2001</span></a></li><li><a class="catalog__link " href="../languages/actionscript.html" data-search="actionscript actionscript 1998 flash 时代的前端 解释 / 字节码 actionscript 面向对象 flash avm2" data-family="interpreted" data-year="1998" data-name="ActionScript"><span class="catalog__num">46</span><span class="catalog__name">ActionScript</span><span class="catalog__year">1998</span></a></li></ul></section><section class="catalog__group" data-era="2010s"><div class="catalog__grouphead"><span>2010s</span><em>12/12</em></div><ul class="catalog__list"><li><a class="catalog__link " href="../languages/rust.html" data-search="rust rust 2010 无 gc 的内存安全 编译型 rust 系统编程 所有权 无 gc" data-family="compiled" data-year="2010" data-name="Rust"><span class="catalog__num">47</span><span class="catalog__name">Rust</span><span class="catalog__year">2010</span></a></li><li><a class="catalog__link " href="../languages/typescript.html" data-search="typescript typescript 2012 给 javascript 加上类型 解释 / 字节码 typescript 静态类型 javascript 编译期" data-family="interpreted" data-year="2012" data-name="TypeScript"><span class="catalog__num">48</span><span class="catalog__name">TypeScript</span><span class="catalog__year">2012</span></a></li><li><a class="catalog__link " href="../languages/swift.html" data-search="swift swift 2014 apple 平台的新语言 编译型 swift 面向对象 协议 arc" data-family="compiled" data-year="2014" data-name="Swift"><span class="catalog__num">49</span><span class="catalog__name">Swift</span><span class="catalog__year">2014</span></a></li><li><a class="catalog__link " href="../languages/kotlin.html" data-search="kotlin kotlin 2011 android 的现代选择 解释 / 字节码 kotlin 面向对象 空安全 jvm" data-family="interpreted" data-year="2011" data-name="Kotlin"><span class="catalog__num">50</span><span class="catalog__name">Kotlin</span><span class="catalog__year">2011</span></a></li><li><a class="catalog__link " href="../languages/elixir.html" data-search="elixir elixir 2011 beam 上的现代函数式 解释 / 字节码 elixir 函数式 并发 beam" data-family="interpreted" data-year="2011" data-name="Elixir"><span class="catalog__num">51</span><span class="catalog__name">Elixir</span><span class="catalog__year">2011</span></a></li><li><a class="catalog__link " href="../languages/julia.html" data-search="julia julia 2012 科学计算的性能新解 解释 / 字节码 julia 多重派发 科学计算 jit" data-family="interpreted" data-year="2012" data-name="Julia"><span class="catalog__num">52</span><span class="catalog__name">Julia</span><span class="catalog__year">2012</span></a></li><li><a class="catalog__link " href="../languages/dart.html" data-search="dart dart 2011 flutter 的 ui 语言 解释 / 字节码 dart 面向对象 flutter 空安全" data-family="interpreted" data-year="2011" data-name="Dart"><span class="catalog__num">53</span><span class="catalog__name">Dart</span><span class="catalog__year">2011</span></a></li><li><a class="catalog__link " href="../languages/zig.html" data-search="zig zig 2016 c 的克制替代品 编译型 zig 系统编程 comptime 无隐藏分配" data-family="compiled" data-year="2016" data-name="Zig"><span class="catalog__num">54</span><span class="catalog__name">Zig</span><span class="catalog__year">2016</span></a></li><li><a class="catalog__link " href="../languages/nim.html" data-search="nim nim 2008 python 式语法的系统语言 编译型 nim 系统编程 宏 编译到 c" data-family="compiled" data-year="2008" data-name="Nim"><span class="catalog__num">55</span><span class="catalog__name">Nim</span><span class="catalog__year">2008</span></a></li><li><a class="catalog__link " href="../languages/crystal.html" data-search="crystal crystal 2014 ruby 语法，c 性能 编译型 crystal 静态类型 ruby 语法 llvm" data-family="compiled" data-year="2014" data-name="Crystal"><span class="catalog__num">56</span><span class="catalog__name">Crystal</span><span class="catalog__year">2014</span></a></li><li><a class="catalog__link " href="../languages/elm.html" data-search="elm elm 2012 前端的类型化架构 编译型 elm 函数式 前端 无运行时异常" data-family="compiled" data-year="2012" data-name="Elm"><span class="catalog__num">57</span><span class="catalog__name">Elm</span><span class="catalog__year">2012</span></a></li><li><a class="catalog__link " href="../languages/solidity.html" data-search="solidity solidity 2014 以太坊智能合约 领域专用 solidity 智能合约 evm 静态类型" data-family="domain" data-year="2014" data-name="Solidity"><span class="catalog__num">58</span><span class="catalog__name">Solidity</span><span class="catalog__year">2014</span></a></li></ul></section><section class="catalog__group" data-era="2020s"><div class="catalog__grouphead"><span>2020s</span><em>6/6</em></div><ul class="catalog__list"><li><a class="catalog__link " href="../languages/mojo.html" data-search="mojo mojo 2023 ai 时代的 python 超集 编译型 mojo python 语法 系统编程 mlir" data-family="compiled" data-year="2023" data-name="Mojo"><span class="catalog__num">59</span><span class="catalog__name">Mojo</span><span class="catalog__year">2023</span></a></li><li><a class="catalog__link " href="../languages/gleam.html" data-search="gleam gleam 2016 beam 上的类型化语言 解释 / 字节码 gleam 静态类型 beam 函数式" data-family="interpreted" data-year="2016" data-name="Gleam"><span class="catalog__num">60</span><span class="catalog__name">Gleam</span><span class="catalog__year">2016</span></a></li><li><a class="catalog__link " href="../languages/carbon.html" data-search="carbon carbon 2022 google 的 c++ 后继实验 编译型 carbon 系统编程 c++ 互操作 泛型" data-family="compiled" data-year="2022" data-name="Carbon"><span class="catalog__num">61</span><span class="catalog__name">Carbon</span><span class="catalog__year">2022</span></a></li><li><a class="catalog__link " href="../languages/odin.html" data-search="odin odin 2016 游戏与图形编程 编译型 odin 系统编程 数据导向 游戏" data-family="compiled" data-year="2016" data-name="Odin"><span class="catalog__num">62</span><span class="catalog__name">Odin</span><span class="catalog__year">2016</span></a></li><li><a class="catalog__link " href="../languages/roc.html" data-search="roc roc 2022 函数式与快速编译 编译型 roc 函数式 快速编译 平台" data-family="compiled" data-year="2022" data-name="Roc"><span class="catalog__num">63</span><span class="catalog__name">Roc</span><span class="catalog__year">2022</span></a></li><li><a class="catalog__link " href="../languages/v.html" data-search="v v 2019 极简快速的系统语言 编译型 v 系统编程 编译到 c 简洁" data-family="compiled" data-year="2019" data-name="V"><span class="catalog__num">64</span><span class="catalog__name">V</span><span class="catalog__year">2019</span></a></li></ul></section><section class="catalog__group" data-era="domain"><div class="catalog__grouphead"><span>领域专用</span><em>6/6</em></div><ul class="catalog__list"><li><a class="catalog__link " href="../languages/sql.html" data-search="sql 结构化查询语言 1974 关系数据库的通用查询语言 领域专用 sql 声明式 关系模型 查询" data-family="domain" data-year="1974" data-name="SQL"><span class="catalog__num">65</span><span class="catalog__name">SQL</span><span class="catalog__year">1974</span></a></li><li><a class="catalog__link " href="../languages/assembly.html" data-search="assembly 汇编语言 1949 机器码之上的第一层 领域专用 assembly 低级 机器相关 符号" data-family="domain" data-year="1949" data-name="Assembly"><span class="catalog__num">66</span><span class="catalog__name">Assembly</span><span class="catalog__year">1949</span></a></li><li><a class="catalog__link " href="../languages/shell.html" data-search="shell 命令解释器 1971 操作系统的胶水 领域专用 shell 脚本 管道 进程" data-family="domain" data-year="1971" data-name="Shell"><span class="catalog__num">67</span><span class="catalog__name">Shell</span><span class="catalog__year">1971</span></a></li><li><a class="catalog__link " href="../languages/verilog.html" data-search="verilog verilog 1984 芯片设计的硬件描述语言 领域专用 verilog 硬件描述 并发 仿真" data-family="domain" data-year="1984" data-name="Verilog"><span class="catalog__num">68</span><span class="catalog__name">Verilog</span><span class="catalog__year">1984</span></a></li><li><a class="catalog__link " href="../languages/cuda.html" data-search="cuda cuda 2007 gpu 并行计算 领域专用 cuda gpu 并行 simt" data-family="domain" data-year="2007" data-name="CUDA"><span class="catalog__num">69</span><span class="catalog__name">CUDA</span><span class="catalog__year">2007</span></a></li><li><a class="catalog__link " href="../languages/glsl.html" data-search="glsl glsl 2002 着色器与图形管线 领域专用 glsl 着色器 gpu 图形管线" data-family="domain" data-year="2002" data-name="GLSL"><span class="catalog__num">70</span><span class="catalog__name">GLSL</span><span class="catalog__year">2002</span></a></li></ul></section><section class="catalog__group" data-era="markup"><div class="catalog__grouphead"><span>标记与配置</span><em>8/8</em></div><ul class="catalog__list"><li><a class="catalog__link " href="../languages/html.html" data-search="html 超文本标记语言 1991 文档结构、dom 与渲染流水线 标记 / 配置 html 标记 文档结构 超文本" data-family="markup" data-year="1991" data-name="HTML"><span class="catalog__num">71</span><span class="catalog__name">HTML</span><span class="catalog__year">1991</span></a></li><li><a class="catalog__link " href="../languages/css.html" data-search="css 层叠样式表 1996 层叠、盒模型与布局 标记 / 配置 css 样式 层叠 声明式" data-family="markup" data-year="1996" data-name="CSS"><span class="catalog__num">72</span><span class="catalog__name">CSS</span><span class="catalog__year">1996</span></a></li><li><a class="catalog__link " href="../languages/xml.html" data-search="xml 可扩展标记语言 1998 可扩展标记与数据交换 标记 / 配置 xml 标记 数据交换 可扩展" data-family="markup" data-year="1998" data-name="XML"><span class="catalog__num">73</span><span class="catalog__name">XML</span><span class="catalog__year">1998</span></a></li><li><a class="catalog__link " href="../languages/svg.html" data-search="svg 可缩放矢量图形 2001 矢量图形、xml 与 dom 标记 / 配置 svg 矢量图形 xml 声明式" data-family="markup" data-year="2001" data-name="SVG"><span class="catalog__num">74</span><span class="catalog__name">SVG</span><span class="catalog__year">2001</span></a></li><li><a class="catalog__link " href="../languages/yaml.html" data-search="yaml yaml 2001 配置与基础设施清单 标记 / 配置 yaml 数据序列化 配置 人类可读" data-family="markup" data-year="2001" data-name="YAML"><span class="catalog__num">75</span><span class="catalog__name">YAML</span><span class="catalog__year">2001</span></a></li><li><a class="catalog__link " href="../languages/markdown.html" data-search="markdown markdown 2004 纯文本文档与静态站点 标记 / 配置 markdown 标记 纯文本 文档" data-family="markup" data-year="2004" data-name="Markdown"><span class="catalog__num">76</span><span class="catalog__name">Markdown</span><span class="catalog__year">2004</span></a></li><li><a class="catalog__link " href="../languages/sass.html" data-search="sass scss 2006 css 预处理器与设计系统 标记 / 配置 sass css 预处理 变量 嵌套" data-family="markup" data-year="2006" data-name="Sass"><span class="catalog__num">77</span><span class="catalog__name">Sass</span><span class="catalog__year">2006</span></a></li><li><a class="catalog__link " href="../languages/less.html" data-search="less less 2009 css 预处理器与遗留项目 标记 / 配置 less css 预处理 变量 混入" data-family="markup" data-year="2009" data-name="Less"><span class="catalog__num">78</span><span class="catalog__name">Less</span><span class="catalog__year">2009</span></a></li></ul></section>
+    <p class="catalog__empty" data-visible="false">没有匹配的条目。<br>试试「c」「1972」「字节码」。</p>
+  </div>
+  <div class="catalog__foot">
+    第 1–23 批 · 1950s–2020s<br>
+    <a href="../index.html">← 首页</a><br>
+    <a href="../languages/index.html">编程语言 →</a><br>
+    <a href="../frameworks/index.html">框架 →</a><br>
+    <a href="../stacks/index.html">技术栈 →</a><br>
+    <a href="../scenarios.html">开发场景 →</a><br>
+    <a href="../languages/formats.html">产物索引 →</a><br>
+    <a href="../sources.html">来源索引 →</a><br>
+    <a href="../verified.html">实测记录 →</a>
+  </div>
+</aside>
+<main class="page" id="main">
+  <div class="page__inner">
+    <nav class="plate-nav" aria-label="框架总览导航">
+      <a class="plate-nav__link" href="../index.html">← <span>首页</span></a>
+      <span class="plate-nav__counter">FRAMEWORKS · 48 门语言</span>
+      <a class="plate-nav__link" href="../scenarios.html"><span>开发场景</span> →</a>
+    </nav>
+    <header class="hero">
+      <p class="hero__kicker">FRAMEWORKS · 语言 → 框架 → 栈</p>
+      <h1 class="hero__title">框架<br><em>总览</em></h1>
+      <p class="hero__sub">同一个框架在不同语言与场景里的取舍不同。这里按语言与类型汇总全部决策卡，点进去看完整对比与来源。</p>
+      <div class="hero__meta">
+        <div class="stat"><span class="stat__num">142</span><span class="stat__label">张决策卡</span></div>
+        <div class="stat"><span class="stat__num">48</span><span class="stat__label">门语言</span></div>
+        <div class="stat"><span class="stat__num">100</span><span class="stat__label">种类型</span></div>
+        <div class="stat"><span class="stat__num">48</span><span class="stat__label">个框架页</span></div>
+      </div>
+    </header>
+
+    <div class="index-tools matrix-tools">
+      <label class="index-search" for="fwIndexSearch">
+        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><circle cx="7" cy="7" r="4.5"></circle><path d="M10.5 10.5 14 14"></path></svg>
+        <input id="fwIndexSearch" type="search" placeholder="搜索框架、语言、类型或关键词（按 / 聚焦）" autocomplete="off" spellcheck="false" aria-label="搜索框架">
+      </label>
+      <label class="matrix-select" for="fwIndexLang">
+        <span>语言</span>
+        <select id="fwIndexLang"><option value="all">全部语言</option><option value="c">C</option><option value="csharp">C#</option><option value="cpp">C++</option><option value="cobol">COBOL</option><option value="css">CSS</option><option value="clojure">Clojure</option><option value="commonlisp">Common Lisp</option><option value="crystal">Crystal</option><option value="d">D</option><option value="dart">Dart</option><option value="delphi">Delphi</option><option value="elixir">Elixir</option><option value="erlang">Erlang</option><option value="fsharp">F#</option><option value="fortran">FORTRAN</option><option value="go">Go</option><option value="groovy">Groovy</option><option value="html">HTML</option><option value="haskell">Haskell</option><option value="java">Java</option><option value="javascript">JavaScript</option><option value="julia">Julia</option><option value="kotlin">Kotlin</option><option value="less">Less</option><option value="lua">Lua</option><option value="matlab">MATLAB</option><option value="markdown">Markdown</option><option value="nim">Nim</option><option value="ocaml">OCaml</option><option value="objectivec">Objective-C</option><option value="php">PHP</option><option value="perl">Perl</option><option value="python">Python</option><option value="r">R</option><option value="ruby">Ruby</option><option value="rust">Rust</option><option value="sql">SQL</option><option value="svg">SVG</option><option value="sass">Sass</option><option value="scala">Scala</option><option value="shell">Shell</option><option value="smalltalk">Smalltalk</option><option value="solidity">Solidity</option><option value="swift">Swift</option><option value="typescript">TypeScript</option><option value="vb">Visual Basic</option><option value="xml">XML</option><option value="yaml">YAML</option></select>
+      </label>
+      <label class="matrix-select" for="fwIndexType">
+        <span>类型</span>
+        <select id="fwIndexType"><option value="all">全部类型</option><option value="2D 游戏">2D 游戏</option><option value="API">API</option><option value="Android UI">Android UI</option><option value="Apple UI">Apple UI</option><option value="Apple 原生">Apple 原生</option><option value="CI/CD">CI/CD</option><option value="CMS">CMS</option><option value="CSS / 组件框架">CSS / 组件框架</option><option value="CSS 后处理">CSS 后处理</option><option value="CSS 框架">CSS 框架</option><option value="Less 编译器">Less 编译器</option><option value="ORM（Python）">ORM（Python）</option><option value="ORM（TypeScript）">ORM（TypeScript）</option><option value="Office 自动化">Office 自动化</option><option value="RPC">RPC</option><option value="Sass 框架（历史）">Sass 框架（历史）</option><option value="Sass 编译器">Sass 编译器</option><option value="Schema 校验">Schema 校验</option><option value="Unikernel 框架">Unikernel 框架</option><option value="Web / HTTP">Web / HTTP</option><option value="Web MVC">Web MVC</option><option value="Web UI">Web UI</option><option value="Web 全栈">Web 全栈</option><option value="Web 前端">Web 前端</option><option value="Web 后端">Web 后端</option><option value="Web 应用框架">Web 应用框架</option><option value="Web 微框架">Web 微框架</option><option value="Web 服务器">Web 服务器</option><option value="Windows 桌面">Windows 桌面</option><option value="事务处理">事务处理</option><option value="云原生">云原生</option><option value="云原生 Java">云原生 Java</option><option value="企业 Web 后端">企业 Web 后端</option><option value="企业后端">企业后端</option><option value="企业标准">企业标准</option><option value="企业组件 / 全栈">企业组件 / 全栈</option><option value="优化工具">优化工具</option><option value="全栈 / SSR">全栈 / SSR</option><option value="分布式 / Actor">分布式 / Actor</option><option value="分析工程">分析工程</option><option value="前端">前端</option><option value="原子化 CSS">原子化 CSS</option><option value="可重复报告">可重复报告</option><option value="合约库">合约库</option><option value="大数据">大数据</option><option value="实时 UI">实时 UI</option><option value="容器编排平台">容器编排平台</option><option value="层次数据库 / 事务">层次数据库 / 事务</option><option value="嵌入式 RTOS">嵌入式 RTOS</option><option value="工程 UI">工程 UI</option><option value="平台 / 游戏">平台 / 游戏</option><option value="并发 / 容错框架">并发 / 容错框架</option><option value="并行通信">并行通信</option><option value="开发环境">开发环境</option><option value="开源跨平台 GUI">开源跨平台 GUI</option><option value="微框架">微框架</option><option value="数值库">数值库</option><option value="数据 / AI（库）">数据 / AI（库）</option><option value="数据可视化">数据可视化</option><option value="数据层">数据层</option><option value="数据库 / 数据层">数据库 / 数据层</option><option value="数据应用 / Web">数据应用 / Web</option><option value="数据整理 / 可视化">数据整理 / 可视化</option><option value="文档转换">文档转换</option><option value="服务端">服务端</option><option value="服务端微框架">服务端微框架</option><option value="本地多容器">本地多容器</option><option value="机器学习">机器学习</option><option value="构建 / 包管理">构建 / 包管理</option><option value="构建工具">构建工具</option><option value="桌面 GUI">桌面 GUI</option><option value="桌面 GUI / 跨平台">桌面 GUI / 跨平台</option><option value="桌面应用">桌面应用</option><option value="模块化全栈">模块化全栈</option><option value="测试 / 部署">测试 / 部署</option><option value="测试框架">测试框架</option><option value="游戏 / 多媒体">游戏 / 多媒体</option><option value="游戏引擎">游戏引擎</option><option value="矢量动画">矢量动画</option><option value="科学数据格式">科学数据格式</option><option value="科学计算">科学计算</option><option value="移动">移动</option><option value="类型化 API">类型化 API</option><option value="系统仿真">系统仿真</option><option value="纯 CSS 框架">纯 CSS 框架</option><option value="组件 CSS">组件 CSS</option><option value="组件文档">组件文档</option><option value="组件模型">组件模型</option><option value="编译器 / 运行时">编译器 / 运行时</option><option value="网关 / 服务端">网关 / 服务端</option><option value="网络 / 服务端">网络 / 服务端</option><option value="网络库（历史）">网络库（历史）</option><option value="自动化 / 配置管理">自动化 / 配置管理</option><option value="解析标准">解析标准</option><option value="解析模型">解析模型</option><option value="跨平台 GUI">跨平台 GUI</option><option value="跨平台 UI">跨平台 UI</option><option value="转换">转换</option><option value="通用库">通用库</option><option value="部署">部署</option></select>
+      </label>
+      <span class="era-head__count" id="fwIndexCount">142 张</span>
+    </div>
+
+    <div class="fw-index-grid" id="fwIndexGrid"><a class="fw-index-card" href="c.html#gtk" data-lang="c" data-type="桌面 GUI" data-search="gtk c 桌面 gui c 语言的跨平台控件库，gnome 桌面与大量 linux 应用的界面基础。 lgpl">
+        <span class="fw-index-card__top"><span class="fw-index-card__lang">C</span><span class="fw-type">桌面 GUI</span></span>
+        <span class="fw-index-card__name">GTK</span>
+        <span class="fw-index-card__why">C 语言的跨平台控件库，GNOME 桌面与大量 Linux 应用的界面基础。</span>
+        <span class="fw-index-card__meta">学习 中 · 生态 成熟 · 许可 LGPL</span>
+      </a><a class="fw-index-card" href="c.html#sdl2" data-lang="c" data-type="游戏 / 多媒体" data-search="sdl2 c 游戏 / 多媒体 跨平台窗口、输入、音频与事件层，游戏引擎与模拟器的常用底座。 zlib">
+        <span class="fw-index-card__top"><span class="fw-index-card__lang">C</span><span class="fw-type">游戏 / 多媒体</span></span>
+        <span class="fw-index-card__name">SDL2</span>
+        <span class="fw-index-card__why">跨平台窗口、输入、音频与事件层，游戏引擎与模拟器的常用底座。</span>
+        <span class="fw-index-card__meta">学习 低 · 生态 成熟 · 许可 zlib</span>
+      </a><a class="fw-index-card" href="c.html#freertos" data-lang="c" data-type="嵌入式 RTOS" data-search="freertos c 嵌入式 rtos 面向微控制器的小型实时操作系统，提供任务、队列、信号量与内存管理。 mit">
+        <span class="fw-index-card__top"><span class="fw-index-card__lang">C</span><span class="fw-type">嵌入式 RTOS</span></span>
+        <span class="fw-index-card__name">FreeRTOS</span>
+        <span class="fw-index-card__why">面向微控制器的小型实时操作系统，提供任务、队列、信号量与内存管理。</span>
+        <span class="fw-index-card__meta">学习 中 · 生态 成熟 · 许可 MIT</span>
+      </a><a class="fw-index-card" href="csharp.html#asp-net-core" data-lang="csharp" data-type="Web 后端" data-search="asp.net core c# web 后端 跨平台、高性能的 .net web 框架：mvc、minimal api、signalr、认证。 mit">
+        <span class="fw-index-card__top"><span class="fw-index-card__lang">C#</span><span class="fw-type">Web 后端</span></span>
+        <span class="fw-index-card__name">ASP.NET Core</span>
+        <span class="fw-index-card__why">跨平台、高性能的 .NET Web 框架：MVC、Minimal API、SignalR、认证。</span>
+        <span class="fw-index-card__meta">学习 中 · 生态 成熟 · 许可 MIT</span>
+      </a><a class="fw-index-card" href="csharp.html#unity" data-lang="csharp" data-type="游戏引擎" data-search="unity c# 游戏引擎 跨平台游戏引擎，c# 脚本、组件系统与庞大资产生态。 商业">
+        <span class="fw-index-card__top"><span class="fw-index-card__lang">C#</span><span class="fw-type">游戏引擎</span></span>
+        <span class="fw-index-card__name">Unity</span>
+        <span class="fw-index-card__why">跨平台游戏引擎，C# 脚本、组件系统与庞大资产生态。</span>
+        <span class="fw-index-card__meta">学习 中 · 生态 成熟 · 许可 商业</span>
+      </a><a class="fw-index-card" href="csharp.html#wpf" data-lang="csharp" data-type="Windows 桌面" data-search="wpf c# windows 桌面 windows 的 xaml 桌面框架，数据绑定、样式、控件模板成熟。 mit">
+        <span class="fw-index-card__top"><span class="fw-index-card__lang">C#</span><span class="fw-type">Windows 桌面</span></span>
+        <span class="fw-index-card__name">WPF</span>
+        <span class="fw-index-card__why">Windows 的 XAML 桌面框架，数据绑定、样式、控件模板成熟。</span>
+        <span class="fw-index-card__meta">学习 中 · 生态 成熟 · 许可 MIT</span>
+      </a><a class="fw-index-card" href="csharp.html#blazor" data-lang="csharp" data-type="Web UI" data-search="blazor c# web ui 用 c# 与 razor 组件写 web ui，可跑在 wasm 或服务端。 mit">
+        <span class="fw-index-card__top"><span class="fw-index-card__lang">C#</span><span class="fw-type">Web UI</span></span>
+        <span class="fw-index-card__name">Blazor</span>
+        <span class="fw-index-card__why">用 C# 与 Razor 组件写 Web UI，可跑在 WASM 或服务端。</span>
+        <span class="fw-index-card__meta">学习 中 · 生态 成长 · 许可 MIT</span>
+      </a><a class="fw-index-card" href="cpp.html#qt" data-lang="cpp" data-type="桌面 GUI / 跨平台" data-search="qt c++ 桌面 gui / 跨平台 c++ 的跨平台应用框架：控件、信号槽、模型/视图与完整工具链。 lgpl / 商业">
+        <span class="fw-index-card__top"><span class="fw-index-card__lang">C++</span><span class="fw-type">桌面 GUI / 跨平台</span></span>
+        <span class="fw-index-card__name">Qt</span>
+        <span class="fw-index-card__why">C++ 的跨平台应用框架：控件、信号槽、模型/视图与完整工具链。</span>
+        <span class="fw-index-card__meta">学习 中 · 生态 成熟 · 许可 LGPL / 商业</span>
+      </a><a class="fw-index-card" href="cpp.html#unreal-engine" data-lang="cpp" data-type="游戏引擎" data-search="unreal engine c++ 游戏引擎 完整的实时 3d 引擎：渲染、动画、物理、蓝图与编辑器。 商业">
+        <span class="fw-index-card__top"><span class="fw-index-card__lang">C++</span><span class="fw-type">游戏引擎</span></span>
+        <span class="fw-index-card__name">Unreal Engine</span>
+        <span class="fw-index-card__why">完整的实时 3D 引擎：渲染、动画、物理、蓝图与编辑器。</span>
+        <span class="fw-index-card__meta">学习 高 · 生态 成熟 · 许可 商业</span>
+      </a><a class="fw-index-card" href="cpp.html#boost" data-lang="cpp" data-type="通用库" data-search="boost c++ 通用库 准标准库集合：智能指针、容器、图算法、异步 i/o、序列化等。 boost">
+        <span class="fw-index-card__top"><span class="fw-index-card__lang">C++</span><span class="fw-type">通用库</span></span>
+        <span class="fw-index-card__name">Boost</span>
+        <span class="fw-index-card__why">准标准库集合：智能指针、容器、图算法、异步 I/O、序列化等。</span>
+        <span class="fw-index-card__meta">学习 中 · 生态 成熟 · 许可 Boost</span>
+      </a><a class="fw-index-card" href="cpp.html#poco" data-lang="cpp" data-type="网络 / 服务端" data-search="poco c++ 网络 / 服务端 c++ 的网络与应用基础设施：http、线程、日志、配置、数据库。 boost">
+        <span class="fw-index-card__top"><span class="fw-index-card__lang">C++</span><span class="fw-type">网络 / 服务端</span></span>
+        <span class="fw-index-card__name">POCO</span>
+        <span class="fw-index-card__why">C++ 的网络与应用基础设施：HTTP、线程、日志、配置、数据库。</span>
+        <span class="fw-index-card__meta">学习 低 · 生态 成熟 · 许可 Boost</span>
+      </a><a class="fw-index-card" href="cobol.html#cics" data-lang="cobol" data-type="事务处理" data-search="cics cobol 事务处理 大型机在线事务处理监控器，管理终端会话、事务与资源。 商业">
+        <span class="fw-index-card__top"><span class="fw-index-card__lang">COBOL</span><span class="fw-type">事务处理</span></span>
+        <span class="fw-index-card__name">CICS</span>
+        <span class="fw-index-card__why">大型机在线事务处理监控器，管理终端会话、事务与资源。</span>
+        <span class="fw-index-card__meta">学习 高 · 生态 成熟 · 许可 商业</span>
+      </a><a class="fw-index-card" href="cobol.html#ims" data-lang="cobol" data-type="层次数据库 / 事务" data-search="ims cobol 层次数据库 / 事务 ibm 的层次数据库与事务管理器，仍运行大量核心业务。 商业">
+        <span class="fw-index-card__top"><span class="fw-index-card__lang">COBOL</span><span class="fw-type">层次数据库 / 事务</span></span>
+        <span class="fw-index-card__name">IMS</span>
+        <span class="fw-index-card__why">IBM 的层次数据库与事务管理器，仍运行大量核心业务。</span>
+        <span class="fw-index-card__meta">学习 高 · 生态 成熟 · 许可 商业</span>
+      </a><a class="fw-index-card" href="cobol.html#gnucobol" data-lang="cobol" data-type="编译器 / 运行时" data-search="gnucobol cobol 编译器 / 运行时 开源的 cobol 编译器，先把 cobol 翻译成 c，再生成原生程序。 gpl">
+        <span class="fw-index-card__top"><span class="fw-index-card__lang">COBOL</span><span class="fw-type">编译器 / 运行时</span></span>
+        <span class="fw-index-card__name">GnuCOBOL</span>
+        <span class="fw-index-card__why">开源的 COBOL 编译器，先把 COBOL 翻译成 C，再生成原生程序。</span>
+        <span class="fw-index-card__meta">学习 中 · 生态 成长 · 许可 GPL</span>
+      </a><a class="fw-index-card" href="css.html#tailwind-css" data-lang="css" data-type="原子化 CSS" data-search="tailwind css css 原子化 css 用 utility class 组合样式，配合构建工具生成最小 css。 mit">
+        <span class="fw-index-card__top"><span class="fw-index-card__lang">CSS</span><span class="fw-type">原子化 CSS</span></span>
+        <span class="fw-index-card__name">Tailwind CSS</span>
+        <span class="fw-index-card__why">用 utility class 组合样式，配合构建工具生成最小 CSS。</span>
+        <span class="fw-index-card__meta">学习 低 · 生态 成熟 · 许可 MIT</span>
+      </a><a class="fw-index-card" href="css.html#bootstrap" data-lang="css" data-type="组件 CSS" data-search="bootstrap css 组件 css 栅格、组件与主题一体的 css/js 框架。 mit">
+        <span class="fw-index-card__top"><span class="fw-index-card__lang">CSS</span><span class="fw-type">组件 CSS</span></span>
+        <span class="fw-index-card__name">Bootstrap</span>
+        <span class="fw-index-card__why">栅格、组件与主题一体的 CSS/JS 框架。</span>
+        <span class="fw-index-card__meta">学习 低 · 生态 成熟 · 许可 MIT</span>
+      </a><a class="fw-index-card" href="css.html#bulma" data-lang="css" data-type="纯 CSS 框架" data-search="bulma css 纯 css 框架 基于 flexbox 的纯 css 框架，无 javascript 依赖。 mit">
+        <span class="fw-index-card__top"><span class="fw-index-card__lang">CSS</span><span class="fw-type">纯 CSS 框架</span></span>
+        <span class="fw-index-card__name">Bulma</span>
+        <span class="fw-index-card__why">基于 Flexbox 的纯 CSS 框架，无 JavaScript 依赖。</span>
+        <span class="fw-index-card__meta">学习 低 · 生态 成熟 · 许可 MIT</span>
+      </a><a class="fw-index-card" href="clojure.html#ring-compojure" data-lang="clojure" data-type="Web 后端" data-search="ring + compojure clojure web 后端 ring 定义请求/响应中间件，compojure 提供路由；clojure web 的基础层。 mit">
+        <span class="fw-index-card__top"><span class="fw-index-card__lang">Clojure</span><span class="fw-type">Web 后端</span></span>
+        <span class="fw-index-card__name">Ring + Compojure</span>
+        <span class="fw-index-card__why">Ring 定义请求/响应中间件，Compojure 提供路由；Clojure Web 的基础层。</span>
+        <span class="fw-index-card__meta">学习 低 · 生态 成熟 · 许可 MIT</span>
+      </a><a class="fw-index-card" href="clojure.html#re-frame" data-lang="clojure" data-type="前端" data-search="re-frame clojure 前端 clojurescript 的事件驱动前端框架，用事件、订阅与不可变状态组织 ui。 mit">
+        <span class="fw-index-card__top"><span class="fw-index-card__lang">Clojure</span><span class="fw-type">前端</span></span>
+        <span class="fw-index-card__name">Re-frame</span>
+        <span class="fw-index-card__why">ClojureScript 的事件驱动前端框架，用事件、订阅与不可变状态组织 UI。</span>
+        <span class="fw-index-card__meta">学习 中 · 生态 成熟 · 许可 MIT</span>
+      </a><a class="fw-index-card" href="clojure.html#datomic" data-lang="clojure" data-type="数据库 / 数据层" data-search="datomic clojure 数据库 / 数据层 不可变、时间感知的数据库，用 datalog 查询，适合复杂领域模型。 商业">
+        <span class="fw-index-card__top"><span class="fw-index-card__lang">Clojure</span><span class="fw-type">数据库 / 数据层</span></span>
+        <span class="fw-index-card__name">Datomic</span>
+        <span class="fw-index-card__why">不可变、时间感知的数据库，用 Datalog 查询，适合复杂领域模型。</span>
+        <span class="fw-index-card__meta">学习 高 · 生态 成熟 · 许可 商业</span>
+      </a><a class="fw-index-card" href="commonlisp.html#hunchentoot" data-lang="commonlisp" data-type="Web 服务器" data-search="hunchentoot common lisp web 服务器 common lisp 的 http 服务器与 web 框架基础，稳定且可编程。 bsd">
+        <span class="fw-index-card__top"><span class="fw-index-card__lang">Common Lisp</span><span class="fw-type">Web 服务器</span></span>
+        <span class="fw-index-card__name">Hunchentoot</span>
+        <span class="fw-index-card__why">Common Lisp 的 HTTP 服务器与 Web 框架基础，稳定且可编程。</span>
+        <span class="fw-index-card__meta">学习 中 · 生态 成熟 · 许可 BSD</span>
+      </a><a class="fw-index-card" href="commonlisp.html#caveman2" data-lang="commonlisp" data-type="Web 应用框架" data-search="caveman2 common lisp web 应用框架 common lisp 的 web 应用骨架：路由、模板、会话与项目生成。 llgpl">
+        <span class="fw-index-card__top"><span class="fw-index-card__lang">Common Lisp</span><span class="fw-type">Web 应用框架</span></span>
+        <span class="fw-index-card__name">Caveman2</span>
+        <span class="fw-index-card__why">Common Lisp 的 Web 应用骨架：路由、模板、会话与项目生成。</span>
+        <span class="fw-index-card__meta">学习 中 · 生态 成长 · 许可 LLGPL</span>
+      </a><a class="fw-index-card" href="crystal.html#lucky" data-lang="crystal" data-type="Web 全栈" data-search="lucky crystal web 全栈 crystal 的全栈 web 框架，强调类型安全、可维护性与生成器。 mit">
+        <span class="fw-index-card__top"><span class="fw-index-card__lang">Crystal</span><span class="fw-type">Web 全栈</span></span>
+        <span class="fw-index-card__name">Lucky</span>
+        <span class="fw-index-card__why">Crystal 的全栈 Web 框架，强调类型安全、可维护性与生成器。</span>
+        <span class="fw-index-card__meta">学习 中 · 生态 成长 · 许可 MIT</span>
+      </a><a class="fw-index-card" href="crystal.html#kemal" data-lang="crystal" data-type="Web 微框架" data-search="kemal crystal web 微框架 crystal 的极简 web 框架，路由与中间件简洁，编译为原生代码。 mit">
+        <span class="fw-index-card__top"><span class="fw-index-card__lang">Crystal</span><span class="fw-type">Web 微框架</span></span>
+        <span class="fw-index-card__name">Kemal</span>
+        <span class="fw-index-card__why">Crystal 的极简 Web 框架，路由与中间件简洁，编译为原生代码。</span>
+        <span class="fw-index-card__meta">学习 低 · 生态 成长 · 许可 MIT</span>
+      </a><a class="fw-index-card" href="d.html#vibe-d" data-lang="d" data-type="Web 后端" data-search="vibe.d d web 后端 d 的异步 web 框架：http、websocket、模板、数据库与纤程调度。 mit">
+        <span class="fw-index-card__top"><span class="fw-index-card__lang">D</span><span class="fw-type">Web 后端</span></span>
+        <span class="fw-index-card__name">vibe.d</span>
+        <span class="fw-index-card__why">D 的异步 Web 框架：HTTP、WebSocket、模板、数据库与纤程调度。</span>
+        <span class="fw-index-card__meta">学习 中 · 生态 成长 · 许可 MIT</span>
+      </a><a class="fw-index-card" href="d.html#dub" data-lang="d" data-type="构建 / 包管理" data-search="dub d 构建 / 包管理 d 的包管理与构建工具，描述依赖、目标与测试。 mit">
+        <span class="fw-index-card__top"><span class="fw-index-card__lang">D</span><span class="fw-type">构建 / 包管理</span></span>
+        <span class="fw-index-card__name">DUB</span>
+        <span class="fw-index-card__why">D 的包管理与构建工具，描述依赖、目标与测试。</span>
+        <span class="fw-index-card__meta">学习 低 · 生态 成长 · 许可 MIT</span>
+      </a><a class="fw-index-card" href="dart.html#flutter" data-lang="dart" data-type="跨平台 UI" data-search="flutter dart 跨平台 ui 用 dart 和自绘引擎构建移动、桌面、web 的一致 ui。 bsd">
+        <span class="fw-index-card__top"><span class="fw-index-card__lang">Dart</span><span class="fw-type">跨平台 UI</span></span>
+        <span class="fw-index-card__name">Flutter</span>
+        <span class="fw-index-card__why">用 Dart 和自绘引擎构建移动、桌面、Web 的一致 UI。</span>
+        <span class="fw-index-card__meta">学习 中 · 生态 成熟 · 许可 BSD</span>
+      </a><a class="fw-index-card" href="dart.html#shelf" data-lang="dart" data-type="服务端微框架" data-search="shelf dart 服务端微框架 dart 的 http 中间件与路由基础库，类似 node 的 connect。 bsd">
+        <span class="fw-index-card__top"><span class="fw-index-card__lang">Dart</span><span class="fw-type">服务端微框架</span></span>
+        <span class="fw-index-card__name">shelf</span>
+        <span class="fw-index-card__why">Dart 的 HTTP 中间件与路由基础库，类似 Node 的 Connect。</span>
+        <span class="fw-index-card__meta">学习 低 · 生态 成长 · 许可 BSD</span>
+      </a><a class="fw-index-card" href="delphi.html#vcl" data-lang="delphi" data-type="Windows 桌面" data-search="vcl delphi windows 桌面 delphi 的原生 windows 控件库，拖拽设计、数据感知控件成熟。 商业">
+        <span class="fw-index-card__top"><span class="fw-index-card__lang">Delphi</span><span class="fw-type">Windows 桌面</span></span>
+        <span class="fw-index-card__name">VCL</span>
+        <span class="fw-index-card__why">Delphi 的原生 Windows 控件库，拖拽设计、数据感知控件成熟。</span>
+        <span class="fw-index-card__meta">学习 中 · 生态 成熟 · 许可 商业</span>
+      </a><a class="fw-index-card" href="delphi.html#firemonkey" data-lang="delphi" data-type="跨平台 GUI" data-search="firemonkey delphi 跨平台 gui delphi/c++builder 的跨平台 ui 框架，支持 windows/macos/ios/android。 商业">
+        <span class="fw-index-card__top"><span class="fw-index-card__lang">Delphi</span><span class="fw-type">跨平台 GUI</span></span>
+        <span class="fw-index-card__name">FireMonkey</span>
+        <span class="fw-index-card__why">Delphi/C++Builder 的跨平台 UI 框架，支持 Windows/macOS/iOS/Android。</span>
+        <span class="fw-index-card__meta">学习 中 · 生态 成熟 · 许可 商业</span>
+      </a><a class="fw-index-card" href="delphi.html#lazarus-lcl" data-lang="delphi" data-type="开源跨平台 GUI" data-search="lazarus lcl delphi 开源跨平台 gui free pascal 的跨平台控件库，兼容 delphi 风格，开源免费。 lgpl">
+        <span class="fw-index-card__top"><span class="fw-index-card__lang">Delphi</span><span class="fw-type">开源跨平台 GUI</span></span>
+        <span class="fw-index-card__name">Lazarus LCL</span>
+        <span class="fw-index-card__why">Free Pascal 的跨平台控件库，兼容 Delphi 风格，开源免费。</span>
+        <span class="fw-index-card__meta">学习 中 · 生态 成熟 · 许可 LGPL</span>
+      </a><a class="fw-index-card" href="elixir.html#phoenix" data-lang="elixir" data-type="Web 全栈" data-search="phoenix elixir web 全栈 beam 上的高并发 web 框架，channel、pubsub、实时能力突出。 mit">
+        <span class="fw-index-card__top"><span class="fw-index-card__lang">Elixir</span><span class="fw-type">Web 全栈</span></span>
+        <span class="fw-index-card__name">Phoenix</span>
+        <span class="fw-index-card__why">BEAM 上的高并发 Web 框架，Channel、PubSub、实时能力突出。</span>
+        <span class="fw-index-card__meta">学习 中 · 生态 成熟 · 许可 MIT</span>
+      </a><a class="fw-index-card" href="elixir.html#liveview" data-lang="elixir" data-type="实时 UI" data-search="liveview elixir 实时 ui 在服务端渲染 html，通过 websocket 推送差异，几乎不写 js。 mit">
+        <span class="fw-index-card__top"><span class="fw-index-card__lang">Elixir</span><span class="fw-type">实时 UI</span></span>
+        <span class="fw-index-card__name">LiveView</span>
+        <span class="fw-index-card__why">在服务端渲染 HTML，通过 WebSocket 推送差异，几乎不写 JS。</span>
+        <span class="fw-index-card__meta">学习 中 · 生态 成长 · 许可 MIT</span>
+      </a><a class="fw-index-card" href="elixir.html#ecto" data-lang="elixir" data-type="数据层" data-search="ecto elixir 数据层 elixir 的数据库包装与查询 dsl：schema、changeset、迁移、repo。 apache-2.0">
+        <span class="fw-index-card__top"><span class="fw-index-card__lang">Elixir</span><span class="fw-type">数据层</span></span>
+        <span class="fw-index-card__name">Ecto</span>
+        <span class="fw-index-card__why">Elixir 的数据库包装与查询 DSL：schema、changeset、迁移、Repo。</span>
+        <span class="fw-index-card__meta">学习 中 · 生态 成熟 · 许可 Apache-2.0</span>
+      </a><a class="fw-index-card" href="erlang.html#otp" data-lang="erlang" data-type="并发 / 容错框架" data-search="otp erlang 并发 / 容错框架 erlang 的标准库与设计框架：gen_server、监督树、应用、热升级。 apache-2.0">
+        <span class="fw-index-card__top"><span class="fw-index-card__lang">Erlang</span><span class="fw-type">并发 / 容错框架</span></span>
+        <span class="fw-index-card__name">OTP</span>
+        <span class="fw-index-card__why">Erlang 的标准库与设计框架：gen_server、监督树、应用、热升级。</span>
+        <span class="fw-index-card__meta">学习 高 · 生态 成熟 · 许可 Apache-2.0</span>
+      </a><a class="fw-index-card" href="erlang.html#cowboy" data-lang="erlang" data-type="Web / HTTP" data-search="cowboy erlang web / http 轻量、快速的 erlang http 服务器与 websocket 库。 isc">
+        <span class="fw-index-card__top"><span class="fw-index-card__lang">Erlang</span><span class="fw-type">Web / HTTP</span></span>
+        <span class="fw-index-card__name">Cowboy</span>
+        <span class="fw-index-card__why">轻量、快速的 Erlang HTTP 服务器与 WebSocket 库。</span>
+        <span class="fw-index-card__meta">学习 中 · 生态 成熟 · 许可 ISC</span>
+      </a><a class="fw-index-card" href="fsharp.html#giraffe" data-lang="fsharp" data-type="Web 后端" data-search="giraffe f# web 后端 基于 asp.net core 的函数式 web 框架，用组合子描述路由与处理。 apache-2.0">
+        <span class="fw-index-card__top"><span class="fw-index-card__lang">F#</span><span class="fw-type">Web 后端</span></span>
+        <span class="fw-index-card__name">Giraffe</span>
+        <span class="fw-index-card__why">基于 ASP.NET Core 的函数式 Web 框架，用组合子描述路由与处理。</span>
+        <span class="fw-index-card__meta">学习 中 · 生态 成长 · 许可 Apache-2.0</span>
+      </a><a class="fw-index-card" href="fsharp.html#saturn" data-lang="fsharp" data-type="Web 全栈" data-search="saturn f# web 全栈 在 asp.net core 上提供 mvc/路由/视图约定的 f# web 框架。 mit">
+        <span class="fw-index-card__top"><span class="fw-index-card__lang">F#</span><span class="fw-type">Web 全栈</span></span>
+        <span class="fw-index-card__name">Saturn</span>
+        <span class="fw-index-card__why">在 ASP.NET Core 上提供 MVC/路由/视图约定的 F# Web 框架。</span>
+        <span class="fw-index-card__meta">学习 中 · 生态 成长 · 许可 MIT</span>
+      </a><a class="fw-index-card" href="fsharp.html#bolero" data-lang="fsharp" data-type="Web 前端" data-search="bolero f# web 前端 用 f# 与 blazor 写 webassembly 前端，模型-视图-更新。 apache-2.0">
+        <span class="fw-index-card__top"><span class="fw-index-card__lang">F#</span><span class="fw-type">Web 前端</span></span>
+        <span class="fw-index-card__name">Bolero</span>
+        <span class="fw-index-card__why">用 F# 与 Blazor 写 WebAssembly 前端，模型-视图-更新。</span>
+        <span class="fw-index-card__meta">学习 中 · 生态 早期 · 许可 Apache-2.0</span>
+      </a><a class="fw-index-card" href="fortran.html#lapack-blas" data-lang="fortran" data-type="数值库" data-search="lapack / blas fortran 数值库 线性代数与基础向量运算的标准库，fortran 科学计算的底座。 bsd">
+        <span class="fw-index-card__top"><span class="fw-index-card__lang">FORTRAN</span><span class="fw-type">数值库</span></span>
+        <span class="fw-index-card__name">LAPACK / BLAS</span>
+        <span class="fw-index-card__why">线性代数与基础向量运算的标准库，Fortran 科学计算的底座。</span>
+        <span class="fw-index-card__meta">学习 中 · 生态 成熟 · 许可 BSD</span>
+      </a><a class="fw-index-card" href="fortran.html#mpi" data-lang="fortran" data-type="并行通信" data-search="mpi fortran 并行通信 分布式内存并行的消息传递标准，多进程/多节点科学计算的基础。 各实现">
+        <span class="fw-index-card__top"><span class="fw-index-card__lang">FORTRAN</span><span class="fw-type">并行通信</span></span>
+        <span class="fw-index-card__name">MPI</span>
+        <span class="fw-index-card__why">分布式内存并行的消息传递标准，多进程/多节点科学计算的基础。</span>
+        <span class="fw-index-card__meta">学习 中 · 生态 成熟 · 许可 各实现</span>
+      </a><a class="fw-index-card" href="fortran.html#netcdf" data-lang="fortran" data-type="科学数据格式" data-search="netcdf fortran 科学数据格式 自描述的数组文件格式与库，气象、海洋与地球科学常用。 bsd">
+        <span class="fw-index-card__top"><span class="fw-index-card__lang">FORTRAN</span><span class="fw-type">科学数据格式</span></span>
+        <span class="fw-index-card__name">NetCDF</span>
+        <span class="fw-index-card__why">自描述的数组文件格式与库，气象、海洋与地球科学常用。</span>
+        <span class="fw-index-card__meta">学习 低 · 生态 成熟 · 许可 BSD</span>
+      </a><a class="fw-index-card" href="go.html#gin" data-lang="go" data-type="Web 后端" data-search="gin go web 后端 go 里最常用的 http 框架之一：路由、中间件、参数绑定与校验。 mit">
+        <span class="fw-index-card__top"><span class="fw-index-card__lang">Go</span><span class="fw-type">Web 后端</span></span>
+        <span class="fw-index-card__name">Gin</span>
+        <span class="fw-index-card__why">Go 里最常用的 HTTP 框架之一：路由、中间件、参数绑定与校验。</span>
+        <span class="fw-index-card__meta">学习 低 · 生态 成熟 · 许可 MIT</span>
+      </a><a class="fw-index-card" href="go.html#echo" data-lang="go" data-type="Web 后端" data-search="echo go web 后端 高性能、极简的 go web 框架，api 设计与文档友好。 mit">
+        <span class="fw-index-card__top"><span class="fw-index-card__lang">Go</span><span class="fw-type">Web 后端</span></span>
+        <span class="fw-index-card__name">Echo</span>
+        <span class="fw-index-card__why">高性能、极简的 Go Web 框架，API 设计与文档友好。</span>
+        <span class="fw-index-card__meta">学习 低 · 生态 成熟 · 许可 MIT</span>
+      </a><a class="fw-index-card" href="go.html#grpc-go" data-lang="go" data-type="RPC" data-search="grpc-go go rpc 基于 http/2 与 protobuf 的 rpc 框架，支持流式与跨语言。 apache-2.0">
+        <span class="fw-index-card__top"><span class="fw-index-card__lang">Go</span><span class="fw-type">RPC</span></span>
+        <span class="fw-index-card__name">gRPC-Go</span>
+        <span class="fw-index-card__why">基于 HTTP/2 与 Protobuf 的 RPC 框架，支持流式与跨语言。</span>
+        <span class="fw-index-card__meta">学习 中 · 生态 成熟 · 许可 Apache-2.0</span>
+      </a><a class="fw-index-card" href="go.html#controller-runtime" data-lang="go" data-type="云原生" data-search="controller-runtime go 云原生 编写 kubernetes operator 与控制器的标准库，封装 informer、reconcile 与 leader election。 apache-2.0">
+        <span class="fw-index-card__top"><span class="fw-index-card__lang">Go</span><span class="fw-type">云原生</span></span>
+        <span class="fw-index-card__name">controller-runtime</span>
+        <span class="fw-index-card__why">编写 Kubernetes Operator 与控制器的标准库，封装 informer、reconcile 与 leader election。</span>
+        <span class="fw-index-card__meta">学习 中 · 生态 成熟 · 许可 Apache-2.0</span>
+      </a><a class="fw-index-card" href="groovy.html#grails" data-lang="groovy" data-type="Web 全栈" data-search="grails groovy web 全栈 基于 groovy 与 spring boot 的全栈框架，约定、gorm 与插件生态完整。 apache-2.0">
+        <span class="fw-index-card__top"><span class="fw-index-card__lang">Groovy</span><span class="fw-type">Web 全栈</span></span>
+        <span class="fw-index-card__name">Grails</span>
+        <span class="fw-index-card__why">基于 Groovy 与 Spring Boot 的全栈框架，约定、GORM 与插件生态完整。</span>
+        <span class="fw-index-card__meta">学习 中 · 生态 成熟 · 许可 Apache-2.0</span>
+      </a><a class="fw-index-card" href="groovy.html#spock" data-lang="groovy" data-type="测试框架" data-search="spock groovy 测试框架 groovy 的 bdd 测试框架，用 given/when/then 与数据表写可读测试。 apache-2.0">
+        <span class="fw-index-card__top"><span class="fw-index-card__lang">Groovy</span><span class="fw-type">测试框架</span></span>
+        <span class="fw-index-card__name">Spock</span>
+        <span class="fw-index-card__why">Groovy 的 BDD 测试框架，用 given/when/then 与数据表写可读测试。</span>
+        <span class="fw-index-card__meta">学习 低 · 生态 成熟 · 许可 Apache-2.0</span>
+      </a><a class="fw-index-card" href="groovy.html#gradle" data-lang="groovy" data-type="构建工具" data-search="gradle groovy 构建工具 以 groovy/kotlin dsl 描述构建的通用构建系统，android 与 jvm 生态的基础设施。 apache-2.0">
+        <span class="fw-index-card__top"><span class="fw-index-card__lang">Groovy</span><span class="fw-type">构建工具</span></span>
+        <span class="fw-index-card__name">Gradle</span>
+        <span class="fw-index-card__why">以 Groovy/Kotlin DSL 描述构建的通用构建系统，Android 与 JVM 生态的基础设施。</span>
+        <span class="fw-index-card__meta">学习 中 · 生态 成熟 · 许可 Apache-2.0</span>
+      </a><a class="fw-index-card" href="html.html#bootstrap" data-lang="html" data-type="CSS / 组件框架" data-search="bootstrap html css / 组件框架 现成的栅格、组件与主题，适合快速搭建一致的页面。 mit">
+        <span class="fw-index-card__top"><span class="fw-index-card__lang">HTML</span><span class="fw-type">CSS / 组件框架</span></span>
+        <span class="fw-index-card__name">Bootstrap</span>
+        <span class="fw-index-card__why">现成的栅格、组件与主题，适合快速搭建一致的页面。</span>
+        <span class="fw-index-card__meta">学习 低 · 生态 成熟 · 许可 MIT</span>
+      </a><a class="fw-index-card" href="html.html#tailwind-css" data-lang="html" data-type="CSS 框架" data-search="tailwind css html css 框架 原子化 css：用 utility class 组合样式，构建时裁剪未用类。 mit">
+        <span class="fw-index-card__top"><span class="fw-index-card__lang">HTML</span><span class="fw-type">CSS 框架</span></span>
+        <span class="fw-index-card__name">Tailwind CSS</span>
+        <span class="fw-index-card__why">原子化 CSS：用 utility class 组合样式，构建时裁剪未用类。</span>
+        <span class="fw-index-card__meta">学习 低 · 生态 成熟 · 许可 MIT</span>
+      </a><a class="fw-index-card" href="html.html#web-components" data-lang="html" data-type="组件模型" data-search="web components html 组件模型 浏览器原生的组件标准：custom elements、shadow dom、templates。 w3c">
+        <span class="fw-index-card__top"><span class="fw-index-card__lang">HTML</span><span class="fw-type">组件模型</span></span>
+        <span class="fw-index-card__name">Web Components</span>
+        <span class="fw-index-card__why">浏览器原生的组件标准：Custom Elements、Shadow DOM、Templates。</span>
+        <span class="fw-index-card__meta">学习 中 · 生态 标准 · 许可 W3C</span>
+      </a><a class="fw-index-card" href="haskell.html#yesod" data-lang="haskell" data-type="Web 全栈" data-search="yesod haskell web 全栈 haskell 的全栈 web 框架，编译期检查路由、模板与数据库。 mit">
+        <span class="fw-index-card__top"><span class="fw-index-card__lang">Haskell</span><span class="fw-type">Web 全栈</span></span>
+        <span class="fw-index-card__name">Yesod</span>
+        <span class="fw-index-card__why">Haskell 的全栈 Web 框架，编译期检查路由、模板与数据库。</span>
+        <span class="fw-index-card__meta">学习 高 · 生态 成熟 · 许可 MIT</span>
+      </a><a class="fw-index-card" href="haskell.html#servant" data-lang="haskell" data-type="类型化 API" data-search="servant haskell 类型化 api 把 api 描述成类型，服务器、客户端与文档从同一份类型生成。 bsd-3-clause">
+        <span class="fw-index-card__top"><span class="fw-index-card__lang">Haskell</span><span class="fw-type">类型化 API</span></span>
+        <span class="fw-index-card__name">Servant</span>
+        <span class="fw-index-card__why">把 API 描述成类型，服务器、客户端与文档从同一份类型生成。</span>
+        <span class="fw-index-card__meta">学习 高 · 生态 成长 · 许可 BSD-3-Clause</span>
+      </a><a class="fw-index-card" href="haskell.html#scotty" data-lang="haskell" data-type="Web 微框架" data-search="scotty haskell web 微框架 受 sinatra 启发的 haskell 微框架，路由与处理函数简洁。 bsd-3-clause">
+        <span class="fw-index-card__top"><span class="fw-index-card__lang">Haskell</span><span class="fw-type">Web 微框架</span></span>
+        <span class="fw-index-card__name">Scotty</span>
+        <span class="fw-index-card__why">受 Sinatra 启发的 Haskell 微框架，路由与处理函数简洁。</span>
+        <span class="fw-index-card__meta">学习 低 · 生态 成熟 · 许可 BSD-3-Clause</span>
+      </a><a class="fw-index-card" href="java.html#spring-boot" data-lang="java" data-type="企业 Web 后端" data-search="spring boot java 企业 web 后端 把 spring 的配置成本降到最低，内置容器、自动配置与完整生态。 apache-2.0">
+        <span class="fw-index-card__top"><span class="fw-index-card__lang">Java</span><span class="fw-type">企业 Web 后端</span></span>
+        <span class="fw-index-card__name">Spring Boot</span>
+        <span class="fw-index-card__why">把 Spring 的配置成本降到最低，内置容器、自动配置与完整生态。</span>
+        <span class="fw-index-card__meta">学习 中 · 生态 成熟 · 许可 Apache-2.0</span>
+      </a><a class="fw-index-card" href="java.html#quarkus" data-lang="java" data-type="云原生 Java" data-search="quarkus java 云原生 java 为 graalvm 与容器优化的 java 框架，启动快、内存低。 apache-2.0">
+        <span class="fw-index-card__top"><span class="fw-index-card__lang">Java</span><span class="fw-type">云原生 Java</span></span>
+        <span class="fw-index-card__name">Quarkus</span>
+        <span class="fw-index-card__why">为 GraalVM 与容器优化的 Java 框架，启动快、内存低。</span>
+        <span class="fw-index-card__meta">学习 中 · 生态 成长 · 许可 Apache-2.0</span>
+      </a><a class="fw-index-card" href="java.html#jakarta-ee" data-lang="java" data-type="企业标准" data-search="jakarta ee java 企业标准 java 企业级 api 标准：servlet、jpa、cdi、jax-rs、消息等。 epl / 各实现">
+        <span class="fw-index-card__top"><span class="fw-index-card__lang">Java</span><span class="fw-type">企业标准</span></span>
+        <span class="fw-index-card__name">Jakarta EE</span>
+        <span class="fw-index-card__why">Java 企业级 API 标准：Servlet、JPA、CDI、JAX-RS、消息等。</span>
+        <span class="fw-index-card__meta">学习 高 · 生态 成熟 · 许可 EPL / 各实现</span>
+      </a><a class="fw-index-card" href="java.html#android-sdk" data-lang="java" data-type="移动" data-search="android sdk java 移动 android 平台 api 与 jetpack 库，java/kotlin 开发原生应用。 apache-2.0">
+        <span class="fw-index-card__top"><span class="fw-index-card__lang">Java</span><span class="fw-type">移动</span></span>
+        <span class="fw-index-card__name">Android SDK</span>
+        <span class="fw-index-card__why">Android 平台 API 与 Jetpack 库，Java/Kotlin 开发原生应用。</span>
+        <span class="fw-index-card__meta">学习 中 · 生态 成熟 · 许可 Apache-2.0</span>
+      </a><a class="fw-index-card" href="javascript.html#react" data-lang="javascript" data-type="Web 前端" data-search="react javascript web 前端 以组件和状态驱动 ui 的前端库，生态与招聘市场最大。 mit">
+        <span class="fw-index-card__top"><span class="fw-index-card__lang">JavaScript</span><span class="fw-type">Web 前端</span></span>
+        <span class="fw-index-card__name">React</span>
+        <span class="fw-index-card__why">以组件和状态驱动 UI 的前端库，生态与招聘市场最大。</span>
+        <span class="fw-index-card__meta">学习 中 · 生态 成熟 · 许可 MIT</span>
+      </a><a class="fw-index-card" href="javascript.html#vue" data-lang="javascript" data-type="Web 前端" data-search="vue javascript web 前端 渐进式前端框架，模板语法直观，适合从页面增强到 spa。 mit">
+        <span class="fw-index-card__top"><span class="fw-index-card__lang">JavaScript</span><span class="fw-type">Web 前端</span></span>
+        <span class="fw-index-card__name">Vue</span>
+        <span class="fw-index-card__why">渐进式前端框架，模板语法直观，适合从页面增强到 SPA。</span>
+        <span class="fw-index-card__meta">学习 低 · 生态 成熟 · 许可 MIT</span>
+      </a><a class="fw-index-card" href="javascript.html#express" data-lang="javascript" data-type="Web 后端" data-search="express javascript web 后端 node.js 最经典的极简 web 框架：路由、中间件、请求响应。 mit">
+        <span class="fw-index-card__top"><span class="fw-index-card__lang">JavaScript</span><span class="fw-type">Web 后端</span></span>
+        <span class="fw-index-card__name">Express</span>
+        <span class="fw-index-card__why">Node.js 最经典的极简 Web 框架：路由、中间件、请求响应。</span>
+        <span class="fw-index-card__meta">学习 低 · 生态 成熟 · 许可 MIT</span>
+      </a><a class="fw-index-card" href="javascript.html#next-js" data-lang="javascript" data-type="全栈 / SSR" data-search="next.js javascript 全栈 / ssr react 的全栈框架：路由、ssr/ssg、api routes、部署约定。 mit">
+        <span class="fw-index-card__top"><span class="fw-index-card__lang">JavaScript</span><span class="fw-type">全栈 / SSR</span></span>
+        <span class="fw-index-card__name">Next.js</span>
+        <span class="fw-index-card__why">React 的全栈框架：路由、SSR/SSG、API Routes、部署约定。</span>
+        <span class="fw-index-card__meta">学习 中 · 生态 成熟 · 许可 MIT</span>
+      </a><a class="fw-index-card" href="julia.html#genie" data-lang="julia" data-type="Web 全栈" data-search="genie julia web 全栈 julia 的全栈 web 框架：路由、mvc、模板、websocket、部署。 mit">
+        <span class="fw-index-card__top"><span class="fw-index-card__lang">Julia</span><span class="fw-type">Web 全栈</span></span>
+        <span class="fw-index-card__name">Genie</span>
+        <span class="fw-index-card__why">Julia 的全栈 Web 框架：路由、MVC、模板、WebSocket、部署。</span>
+        <span class="fw-index-card__meta">学习 中 · 生态 成长 · 许可 MIT</span>
+      </a><a class="fw-index-card" href="julia.html#flux" data-lang="julia" data-type="机器学习" data-search="flux julia 机器学习 纯 julia 的深度学习框架，基于可微编程与 gpu 数组。 mit">
+        <span class="fw-index-card__top"><span class="fw-index-card__lang">Julia</span><span class="fw-type">机器学习</span></span>
+        <span class="fw-index-card__name">Flux</span>
+        <span class="fw-index-card__why">纯 Julia 的深度学习框架，基于可微编程与 GPU 数组。</span>
+        <span class="fw-index-card__meta">学习 中 · 生态 成长 · 许可 MIT</span>
+      </a><a class="fw-index-card" href="julia.html#differentialequations-jl" data-lang="julia" data-type="科学计算" data-search="differentialequations.jl julia 科学计算 统一的微分方程求解生态：ode/sde/dae/pde 与高性能求解器。 mit">
+        <span class="fw-index-card__top"><span class="fw-index-card__lang">Julia</span><span class="fw-type">科学计算</span></span>
+        <span class="fw-index-card__name">DifferentialEquations.jl</span>
+        <span class="fw-index-card__why">统一的微分方程求解生态：ODE/SDE/DAE/PDE 与高性能求解器。</span>
+        <span class="fw-index-card__meta">学习 中 · 生态 成熟 · 许可 MIT</span>
+      </a><a class="fw-index-card" href="kotlin.html#jetpack-compose" data-lang="kotlin" data-type="Android UI" data-search="jetpack compose kotlin android ui android 的声明式 ui 工具包，用 kotlin 函数描述界面与状态。 apache-2.0">
+        <span class="fw-index-card__top"><span class="fw-index-card__lang">Kotlin</span><span class="fw-type">Android UI</span></span>
+        <span class="fw-index-card__name">Jetpack Compose</span>
+        <span class="fw-index-card__why">Android 的声明式 UI 工具包，用 Kotlin 函数描述界面与状态。</span>
+        <span class="fw-index-card__meta">学习 中 · 生态 成长 · 许可 Apache-2.0</span>
+      </a><a class="fw-index-card" href="kotlin.html#ktor" data-lang="kotlin" data-type="服务端" data-search="ktor kotlin 服务端 kotlin 原生的异步 web 框架，基于协程，dsl 风格路由与客户端。 apache-2.0">
+        <span class="fw-index-card__top"><span class="fw-index-card__lang">Kotlin</span><span class="fw-type">服务端</span></span>
+        <span class="fw-index-card__name">Ktor</span>
+        <span class="fw-index-card__why">Kotlin 原生的异步 Web 框架，基于协程，DSL 风格路由与客户端。</span>
+        <span class="fw-index-card__meta">学习 低 · 生态 成长 · 许可 Apache-2.0</span>
+      </a><a class="fw-index-card" href="kotlin.html#spring-boot" data-lang="kotlin" data-type="企业后端" data-search="spring boot kotlin 企业后端 用 kotlin 写 spring：复用 java 生态、依赖注入与成熟中间件。 apache-2.0">
+        <span class="fw-index-card__top"><span class="fw-index-card__lang">Kotlin</span><span class="fw-type">企业后端</span></span>
+        <span class="fw-index-card__name">Spring Boot</span>
+        <span class="fw-index-card__why">用 Kotlin 写 Spring：复用 Java 生态、依赖注入与成熟中间件。</span>
+        <span class="fw-index-card__meta">学习 中 · 生态 成熟 · 许可 Apache-2.0</span>
+      </a><a class="fw-index-card" href="less.html#less-js" data-lang="less" data-type="Less 编译器" data-search="less.js less less 编译器 less 的官方编译器，可在 node 或浏览器中运行。 apache-2.0">
+        <span class="fw-index-card__top"><span class="fw-index-card__lang">Less</span><span class="fw-type">Less 编译器</span></span>
+        <span class="fw-index-card__name">Less.js</span>
+        <span class="fw-index-card__why">Less 的官方编译器，可在 Node 或浏览器中运行。</span>
+        <span class="fw-index-card__meta">学习 低 · 生态 维护 · 许可 Apache-2.0</span>
+      </a><a class="fw-index-card" href="less.html#postcss" data-lang="less" data-type="CSS 后处理" data-search="postcss less css 后处理 插件式 css 转换，可与 less 编译结果组合做前缀与压缩。 mit">
+        <span class="fw-index-card__top"><span class="fw-index-card__lang">Less</span><span class="fw-type">CSS 后处理</span></span>
+        <span class="fw-index-card__name">PostCSS</span>
+        <span class="fw-index-card__why">插件式 CSS 转换，可与 Less 编译结果组合做前缀与压缩。</span>
+        <span class="fw-index-card__meta">学习 低 · 生态 成熟 · 许可 MIT</span>
+      </a><a class="fw-index-card" href="lua.html#l-ve" data-lang="lua" data-type="2D 游戏" data-search="löve lua 2d 游戏 用 lua 写 2d 游戏的轻量框架：窗口、图形、音频、输入。 zlib">
+        <span class="fw-index-card__top"><span class="fw-index-card__lang">Lua</span><span class="fw-type">2D 游戏</span></span>
+        <span class="fw-index-card__name">LÖVE</span>
+        <span class="fw-index-card__why">用 Lua 写 2D 游戏的轻量框架：窗口、图形、音频、输入。</span>
+        <span class="fw-index-card__meta">学习 低 · 生态 成熟 · 许可 zlib</span>
+      </a><a class="fw-index-card" href="lua.html#openresty" data-lang="lua" data-type="网关 / 服务端" data-search="openresty lua 网关 / 服务端 nginx + luajit 的高性能 web 平台，用 lua 写网关、鉴权与流量逻辑。 bsd">
+        <span class="fw-index-card__top"><span class="fw-index-card__lang">Lua</span><span class="fw-type">网关 / 服务端</span></span>
+        <span class="fw-index-card__name">OpenResty</span>
+        <span class="fw-index-card__why">Nginx + LuaJIT 的高性能 Web 平台，用 Lua 写网关、鉴权与流量逻辑。</span>
+        <span class="fw-index-card__meta">学习 中 · 生态 成熟 · 许可 BSD</span>
+      </a><a class="fw-index-card" href="lua.html#roblox" data-lang="lua" data-type="平台 / 游戏" data-search="roblox lua 平台 / 游戏 luau 脚本 + 内置引擎 + 发布平台，面向用户生成内容。 商业">
+        <span class="fw-index-card__top"><span class="fw-index-card__lang">Lua</span><span class="fw-type">平台 / 游戏</span></span>
+        <span class="fw-index-card__name">Roblox</span>
+        <span class="fw-index-card__why">Luau 脚本 + 内置引擎 + 发布平台，面向用户生成内容。</span>
+        <span class="fw-index-card__meta">学习 低 · 生态 成熟 · 许可 商业</span>
+      </a><a class="fw-index-card" href="matlab.html#simulink" data-lang="matlab" data-type="系统仿真" data-search="simulink matlab 系统仿真 框图式建模与仿真环境，用于控制、信号处理、通信与系统级设计。 商业">
+        <span class="fw-index-card__top"><span class="fw-index-card__lang">MATLAB</span><span class="fw-type">系统仿真</span></span>
+        <span class="fw-index-card__name">Simulink</span>
+        <span class="fw-index-card__why">框图式建模与仿真环境，用于控制、信号处理、通信与系统级设计。</span>
+        <span class="fw-index-card__meta">学习 高 · 生态 成熟 · 许可 商业</span>
+      </a><a class="fw-index-card" href="matlab.html#app-designer" data-lang="matlab" data-type="工程 UI" data-search="app designer matlab 工程 ui matlab 的可视化 app 构建器，拖拽控件并绑定 matlab 回调。 商业">
+        <span class="fw-index-card__top"><span class="fw-index-card__lang">MATLAB</span><span class="fw-type">工程 UI</span></span>
+        <span class="fw-index-card__name">App Designer</span>
+        <span class="fw-index-card__why">MATLAB 的可视化 App 构建器，拖拽控件并绑定 MATLAB 回调。</span>
+        <span class="fw-index-card__meta">学习 中 · 生态 成熟 · 许可 商业</span>
+      </a><a class="fw-index-card" href="matlab.html#matlab-compiler" data-lang="matlab" data-type="部署" data-search="matlab compiler matlab 部署 把 matlab 程序打包成依赖 matlab runtime 的独立应用或组件。 商业">
+        <span class="fw-index-card__top"><span class="fw-index-card__lang">MATLAB</span><span class="fw-type">部署</span></span>
+        <span class="fw-index-card__name">MATLAB Compiler</span>
+        <span class="fw-index-card__why">把 MATLAB 程序打包成依赖 MATLAB Runtime 的独立应用或组件。</span>
+        <span class="fw-index-card__meta">学习 中 · 生态 成熟 · 许可 商业</span>
+      </a><a class="fw-index-card" href="markdown.html#commonmark" data-lang="markdown" data-type="解析标准" data-search="commonmark markdown 解析标准 统一 markdown 语法歧义的规范与参考实现。 bsd">
+        <span class="fw-index-card__top"><span class="fw-index-card__lang">Markdown</span><span class="fw-type">解析标准</span></span>
+        <span class="fw-index-card__name">CommonMark</span>
+        <span class="fw-index-card__why">统一 Markdown 语法歧义的规范与参考实现。</span>
+        <span class="fw-index-card__meta">学习 低 · 生态 标准 · 许可 BSD</span>
+      </a><a class="fw-index-card" href="markdown.html#mdx" data-lang="markdown" data-type="组件文档" data-search="mdx markdown 组件文档 在 markdown 中直接写 jsx 组件，适合组件文档与交互式教程。 mit">
+        <span class="fw-index-card__top"><span class="fw-index-card__lang">Markdown</span><span class="fw-type">组件文档</span></span>
+        <span class="fw-index-card__name">MDX</span>
+        <span class="fw-index-card__why">在 Markdown 中直接写 JSX 组件，适合组件文档与交互式教程。</span>
+        <span class="fw-index-card__meta">学习 中 · 生态 成长 · 许可 MIT</span>
+      </a><a class="fw-index-card" href="markdown.html#pandoc" data-lang="markdown" data-type="文档转换" data-search="pandoc markdown 文档转换 通用文档转换器：markdown、html、latex、docx、pdf 等互转。 gpl">
+        <span class="fw-index-card__top"><span class="fw-index-card__lang">Markdown</span><span class="fw-type">文档转换</span></span>
+        <span class="fw-index-card__name">Pandoc</span>
+        <span class="fw-index-card__why">通用文档转换器：Markdown、HTML、LaTeX、Docx、PDF 等互转。</span>
+        <span class="fw-index-card__meta">学习 中 · 生态 成熟 · 许可 GPL</span>
+      </a><a class="fw-index-card" href="nim.html#jester" data-lang="nim" data-type="Web 后端" data-search="jester nim web 后端 nim 的轻量 web 框架，用宏定义路由，语法接近 sinatra。 mit">
+        <span class="fw-index-card__top"><span class="fw-index-card__lang">Nim</span><span class="fw-type">Web 后端</span></span>
+        <span class="fw-index-card__name">Jester</span>
+        <span class="fw-index-card__why">Nim 的轻量 Web 框架，用宏定义路由，语法接近 Sinatra。</span>
+        <span class="fw-index-card__meta">学习 低 · 生态 成长 · 许可 MIT</span>
+      </a><a class="fw-index-card" href="nim.html#karax" data-lang="nim" data-type="Web 前端" data-search="karax nim web 前端 用 nim 写单页应用的框架，编译到 javascript，虚拟 dom 风格。 mit">
+        <span class="fw-index-card__top"><span class="fw-index-card__lang">Nim</span><span class="fw-type">Web 前端</span></span>
+        <span class="fw-index-card__name">Karax</span>
+        <span class="fw-index-card__why">用 Nim 写单页应用的框架，编译到 JavaScript，虚拟 DOM 风格。</span>
+        <span class="fw-index-card__meta">学习 中 · 生态 成长 · 许可 MIT</span>
+      </a><a class="fw-index-card" href="nim.html#nimble" data-lang="nim" data-type="构建 / 包管理" data-search="nimble nim 构建 / 包管理 nim 的包管理器与任务运行器，管理依赖、编译与发布。 bsd">
+        <span class="fw-index-card__top"><span class="fw-index-card__lang">Nim</span><span class="fw-type">构建 / 包管理</span></span>
+        <span class="fw-index-card__name">Nimble</span>
+        <span class="fw-index-card__why">Nim 的包管理器与任务运行器，管理依赖、编译与发布。</span>
+        <span class="fw-index-card__meta">学习 低 · 生态 成长 · 许可 BSD</span>
+      </a><a class="fw-index-card" href="ocaml.html#dream" data-lang="ocaml" data-type="Web 后端" data-search="dream ocaml web 后端 ocaml 的现代 web 框架，简洁 api、http/2、websocket 与模板。 mit">
+        <span class="fw-index-card__top"><span class="fw-index-card__lang">OCaml</span><span class="fw-type">Web 后端</span></span>
+        <span class="fw-index-card__name">Dream</span>
+        <span class="fw-index-card__why">OCaml 的现代 Web 框架，简洁 API、HTTP/2、WebSocket 与模板。</span>
+        <span class="fw-index-card__meta">学习 中 · 生态 成长 · 许可 MIT</span>
+      </a><a class="fw-index-card" href="ocaml.html#mirageos" data-lang="ocaml" data-type="Unikernel 框架" data-search="mirageos ocaml unikernel 框架 把 ocaml 程序编译成单地址空间 unikernel，直接跑在虚拟化层上。 isc">
+        <span class="fw-index-card__top"><span class="fw-index-card__lang">OCaml</span><span class="fw-type">Unikernel 框架</span></span>
+        <span class="fw-index-card__name">MirageOS</span>
+        <span class="fw-index-card__why">把 OCaml 程序编译成单地址空间 unikernel，直接跑在虚拟化层上。</span>
+        <span class="fw-index-card__meta">学习 高 · 生态 成长 · 许可 ISC</span>
+      </a><a class="fw-index-card" href="objectivec.html#cocoa-cocoa-touch" data-lang="objectivec" data-type="Apple 原生" data-search="cocoa / cocoa touch objective-c apple 原生 macos/ios 的系统框架集合：foundation、uikit/appkit、core animation。 apple sdk">
+        <span class="fw-index-card__top"><span class="fw-index-card__lang">Objective-C</span><span class="fw-type">Apple 原生</span></span>
+        <span class="fw-index-card__name">Cocoa / Cocoa Touch</span>
+        <span class="fw-index-card__why">macOS/iOS 的系统框架集合：Foundation、UIKit/AppKit、Core Animation。</span>
+        <span class="fw-index-card__meta">学习 中 · 生态 成熟 · 许可 Apple SDK</span>
+      </a><a class="fw-index-card" href="objectivec.html#afnetworking" data-lang="objectivec" data-type="网络库（历史）" data-search="afnetworking objective-c 网络库（历史） objective-c 时代最常用的网络库，封装 nsurlsession 与序列化。 mit">
+        <span class="fw-index-card__top"><span class="fw-index-card__lang">Objective-C</span><span class="fw-type">网络库（历史）</span></span>
+        <span class="fw-index-card__name">AFNetworking</span>
+        <span class="fw-index-card__why">Objective-C 时代最常用的网络库，封装 NSURLSession 与序列化。</span>
+        <span class="fw-index-card__meta">学习 低 · 生态 维护 · 许可 MIT</span>
+      </a><a class="fw-index-card" href="php.html#laravel" data-lang="php" data-type="Web 全栈" data-search="laravel php web 全栈 php 最流行的全栈框架：eloquent orm、队列、认证、blade 模板。 mit">
+        <span class="fw-index-card__top"><span class="fw-index-card__lang">PHP</span><span class="fw-type">Web 全栈</span></span>
+        <span class="fw-index-card__name">Laravel</span>
+        <span class="fw-index-card__why">PHP 最流行的全栈框架：Eloquent ORM、队列、认证、Blade 模板。</span>
+        <span class="fw-index-card__meta">学习 低 · 生态 成熟 · 许可 MIT</span>
+      </a><a class="fw-index-card" href="php.html#symfony" data-lang="php" data-type="企业组件 / 全栈" data-search="symfony php 企业组件 / 全栈 可复用组件与企业级全栈框架，长期支持与规范性强。 mit">
+        <span class="fw-index-card__top"><span class="fw-index-card__lang">PHP</span><span class="fw-type">企业组件 / 全栈</span></span>
+        <span class="fw-index-card__name">Symfony</span>
+        <span class="fw-index-card__why">可复用组件与企业级全栈框架，长期支持与规范性强。</span>
+        <span class="fw-index-card__meta">学习 中 · 生态 成熟 · 许可 MIT</span>
+      </a><a class="fw-index-card" href="php.html#wordpress" data-lang="php" data-type="CMS" data-search="wordpress php cms 以博客起家的 cms，插件与主题生态巨大，适合内容站与快速上线。 gpl">
+        <span class="fw-index-card__top"><span class="fw-index-card__lang">PHP</span><span class="fw-type">CMS</span></span>
+        <span class="fw-index-card__name">WordPress</span>
+        <span class="fw-index-card__why">以博客起家的 CMS，插件与主题生态巨大，适合内容站与快速上线。</span>
+        <span class="fw-index-card__meta">学习 低 · 生态 成熟 · 许可 GPL</span>
+      </a><a class="fw-index-card" href="perl.html#mojolicious" data-lang="perl" data-type="Web 全栈" data-search="mojolicious perl web 全栈 perl 的现代 web 框架，内置异步、websocket、模板与测试工具。 artistic-2.0">
+        <span class="fw-index-card__top"><span class="fw-index-card__lang">Perl</span><span class="fw-type">Web 全栈</span></span>
+        <span class="fw-index-card__name">Mojolicious</span>
+        <span class="fw-index-card__why">Perl 的现代 Web 框架，内置异步、WebSocket、模板与测试工具。</span>
+        <span class="fw-index-card__meta">学习 中 · 生态 成熟 · 许可 Artistic-2.0</span>
+      </a><a class="fw-index-card" href="perl.html#catalyst" data-lang="perl" data-type="Web MVC" data-search="catalyst perl web mvc perl 的老牌 mvc 框架，插件与约定丰富。 perl_5">
+        <span class="fw-index-card__top"><span class="fw-index-card__lang">Perl</span><span class="fw-type">Web MVC</span></span>
+        <span class="fw-index-card__name">Catalyst</span>
+        <span class="fw-index-card__why">Perl 的老牌 MVC 框架，插件与约定丰富。</span>
+        <span class="fw-index-card__meta">学习 中 · 生态 成熟 · 许可 Perl_5</span>
+      </a><a class="fw-index-card" href="perl.html#dancer" data-lang="perl" data-type="微框架" data-search="dancer perl 微框架 受 sinatra 启发的 perl 微框架，路由简洁。 perl_5">
+        <span class="fw-index-card__top"><span class="fw-index-card__lang">Perl</span><span class="fw-type">微框架</span></span>
+        <span class="fw-index-card__name">Dancer</span>
+        <span class="fw-index-card__why">受 Sinatra 启发的 Perl 微框架，路由简洁。</span>
+        <span class="fw-index-card__meta">学习 低 · 生态 成熟 · 许可 Perl_5</span>
+      </a><a class="fw-index-card" href="python.html#django" data-lang="python" data-type="Web 全栈" data-search="django python web 全栈 自带 orm、admin、认证与约定的全栈框架，适合内容型与后台系统。 bsd">
+        <span class="fw-index-card__top"><span class="fw-index-card__lang">Python</span><span class="fw-type">Web 全栈</span></span>
+        <span class="fw-index-card__name">Django</span>
+        <span class="fw-index-card__why">自带 ORM、Admin、认证与约定的全栈框架，适合内容型与后台系统。</span>
+        <span class="fw-index-card__meta">学习 中 · 生态 成熟 · 许可 BSD</span>
+      </a><a class="fw-index-card" href="python.html#fastapi" data-lang="python" data-type="API" data-search="fastapi python api 基于类型提示与 pydantic 的异步 api 框架，自动生成 openapi 文档。 mit">
+        <span class="fw-index-card__top"><span class="fw-index-card__lang">Python</span><span class="fw-type">API</span></span>
+        <span class="fw-index-card__name">FastAPI</span>
+        <span class="fw-index-card__why">基于类型提示与 Pydantic 的异步 API 框架，自动生成 OpenAPI 文档。</span>
+        <span class="fw-index-card__meta">学习 低 · 生态 成长 · 许可 MIT</span>
+      </a><a class="fw-index-card" href="python.html#flask" data-lang="python" data-type="微框架" data-search="flask python 微框架 极小的 web 核心，按需组合扩展，适合小服务与教学。 bsd">
+        <span class="fw-index-card__top"><span class="fw-index-card__lang">Python</span><span class="fw-type">微框架</span></span>
+        <span class="fw-index-card__name">Flask</span>
+        <span class="fw-index-card__why">极小的 Web 核心，按需组合扩展，适合小服务与教学。</span>
+        <span class="fw-index-card__meta">学习 低 · 生态 成熟 · 许可 BSD</span>
+      </a><a class="fw-index-card" href="python.html#pytorch" data-lang="python" data-type="数据 / AI（库）" data-search="pytorch python 数据 / ai（库） 张量计算与自动微分框架，深度学习研究与生产的主流选择。 bsd">
+        <span class="fw-index-card__top"><span class="fw-index-card__lang">Python</span><span class="fw-type">数据 / AI（库）</span></span>
+        <span class="fw-index-card__name">PyTorch</span>
+        <span class="fw-index-card__why">张量计算与自动微分框架，深度学习研究与生产的主流选择。</span>
+        <span class="fw-index-card__meta">学习 中 · 生态 成熟 · 许可 BSD</span>
+      </a><a class="fw-index-card" href="r.html#shiny" data-lang="r" data-type="数据应用 / Web" data-search="shiny r 数据应用 / web 用 r 直接构建交互式 web 应用与仪表盘，不用写 js。 gpl / 商业">
+        <span class="fw-index-card__top"><span class="fw-index-card__lang">R</span><span class="fw-type">数据应用 / Web</span></span>
+        <span class="fw-index-card__name">Shiny</span>
+        <span class="fw-index-card__why">用 R 直接构建交互式 Web 应用与仪表盘，不用写 JS。</span>
+        <span class="fw-index-card__meta">学习 低 · 生态 成熟 · 许可 GPL / 商业</span>
+      </a><a class="fw-index-card" href="r.html#tidyverse" data-lang="r" data-type="数据整理 / 可视化" data-search="tidyverse r 数据整理 / 可视化 一组共享设计哲学的 r 包：dplyr、tidyr、ggplot2、purrr 等。 mit">
+        <span class="fw-index-card__top"><span class="fw-index-card__lang">R</span><span class="fw-type">数据整理 / 可视化</span></span>
+        <span class="fw-index-card__name">tidyverse</span>
+        <span class="fw-index-card__why">一组共享设计哲学的 R 包：dplyr、tidyr、ggplot2、purrr 等。</span>
+        <span class="fw-index-card__meta">学习 低 · 生态 成熟 · 许可 MIT</span>
+      </a><a class="fw-index-card" href="r.html#rmarkdown" data-lang="r" data-type="可重复报告" data-search="rmarkdown r 可重复报告 把 r 代码、结果与叙述写成一份可重复生成的文档。 gpl">
+        <span class="fw-index-card__top"><span class="fw-index-card__lang">R</span><span class="fw-type">可重复报告</span></span>
+        <span class="fw-index-card__name">RMarkdown</span>
+        <span class="fw-index-card__why">把 R 代码、结果与叙述写成一份可重复生成的文档。</span>
+        <span class="fw-index-card__meta">学习 低 · 生态 成熟 · 许可 GPL</span>
+      </a><a class="fw-index-card" href="ruby.html#rails" data-lang="ruby" data-type="Web 全栈" data-search="rails ruby web 全栈 约定优于配置的全栈框架：activerecord、路由、视图、后台任务。 mit">
+        <span class="fw-index-card__top"><span class="fw-index-card__lang">Ruby</span><span class="fw-type">Web 全栈</span></span>
+        <span class="fw-index-card__name">Rails</span>
+        <span class="fw-index-card__why">约定优于配置的全栈框架：ActiveRecord、路由、视图、后台任务。</span>
+        <span class="fw-index-card__meta">学习 中 · 生态 成熟 · 许可 MIT</span>
+      </a><a class="fw-index-card" href="ruby.html#sinatra" data-lang="ruby" data-type="微框架" data-search="sinatra ruby 微框架 极小的 ruby web dsl，用几行代码定义路由。 mit">
+        <span class="fw-index-card__top"><span class="fw-index-card__lang">Ruby</span><span class="fw-type">微框架</span></span>
+        <span class="fw-index-card__name">Sinatra</span>
+        <span class="fw-index-card__why">极小的 Ruby Web DSL，用几行代码定义路由。</span>
+        <span class="fw-index-card__meta">学习 低 · 生态 成熟 · 许可 MIT</span>
+      </a><a class="fw-index-card" href="ruby.html#hanami" data-lang="ruby" data-type="模块化全栈" data-search="hanami ruby 模块化全栈 强调清晰边界、可维护性的 ruby 全栈框架。 mit">
+        <span class="fw-index-card__top"><span class="fw-index-card__lang">Ruby</span><span class="fw-type">模块化全栈</span></span>
+        <span class="fw-index-card__name">Hanami</span>
+        <span class="fw-index-card__why">强调清晰边界、可维护性的 Ruby 全栈框架。</span>
+        <span class="fw-index-card__meta">学习 中 · 生态 成长 · 许可 MIT</span>
+      </a><a class="fw-index-card" href="rust.html#axum" data-lang="rust" data-type="Web 后端" data-search="axum rust web 后端 基于 tokio 与 tower 的组合式 web 框架，类型安全、异步优先。 mit">
+        <span class="fw-index-card__top"><span class="fw-index-card__lang">Rust</span><span class="fw-type">Web 后端</span></span>
+        <span class="fw-index-card__name">Axum</span>
+        <span class="fw-index-card__why">基于 Tokio 与 Tower 的组合式 Web 框架，类型安全、异步优先。</span>
+        <span class="fw-index-card__meta">学习 中 · 生态 成长 · 许可 MIT</span>
+      </a><a class="fw-index-card" href="rust.html#actix-web" data-lang="rust" data-type="Web 后端" data-search="actix web rust web 后端 高性能异步 web 框架，成熟的提取器、中间件与 websocket 支持。 mit / apache-2.0">
+        <span class="fw-index-card__top"><span class="fw-index-card__lang">Rust</span><span class="fw-type">Web 后端</span></span>
+        <span class="fw-index-card__name">Actix Web</span>
+        <span class="fw-index-card__why">高性能异步 Web 框架，成熟的提取器、中间件与 WebSocket 支持。</span>
+        <span class="fw-index-card__meta">学习 中 · 生态 成熟 · 许可 MIT / Apache-2.0</span>
+      </a><a class="fw-index-card" href="rust.html#tauri" data-lang="rust" data-type="桌面应用" data-search="tauri rust 桌面应用 用 web 前端做界面、rust 做后端逻辑的轻量桌面框架。 mit / apache-2.0">
+        <span class="fw-index-card__top"><span class="fw-index-card__lang">Rust</span><span class="fw-type">桌面应用</span></span>
+        <span class="fw-index-card__name">Tauri</span>
+        <span class="fw-index-card__why">用 Web 前端做界面、Rust 做后端逻辑的轻量桌面框架。</span>
+        <span class="fw-index-card__meta">学习 中 · 生态 成长 · 许可 MIT / Apache-2.0</span>
+      </a><a class="fw-index-card" href="rust.html#bevy" data-lang="rust" data-type="游戏引擎" data-search="bevy rust 游戏引擎 以 ecs 为核心的数据驱动游戏引擎，rust 生态里最活跃的游戏框架。 mit / apache-2.0">
+        <span class="fw-index-card__top"><span class="fw-index-card__lang">Rust</span><span class="fw-type">游戏引擎</span></span>
+        <span class="fw-index-card__name">Bevy</span>
+        <span class="fw-index-card__why">以 ECS 为核心的数据驱动游戏引擎，Rust 生态里最活跃的游戏框架。</span>
+        <span class="fw-index-card__meta">学习 中 · 生态 早期 · 许可 MIT / Apache-2.0</span>
+      </a><a class="fw-index-card" href="sql.html#dbt" data-lang="sql" data-type="分析工程" data-search="dbt sql 分析工程 把 sql 转换组织成可版本化、可测试、可调度的模型。 apache-2.0">
+        <span class="fw-index-card__top"><span class="fw-index-card__lang">SQL</span><span class="fw-type">分析工程</span></span>
+        <span class="fw-index-card__name">dbt</span>
+        <span class="fw-index-card__why">把 SQL 转换组织成可版本化、可测试、可调度的模型。</span>
+        <span class="fw-index-card__meta">学习 中 · 生态 成熟 · 许可 Apache-2.0</span>
+      </a><a class="fw-index-card" href="sql.html#prisma" data-lang="sql" data-type="ORM（TypeScript）" data-search="prisma sql orm（typescript） 类型安全的 typescript orm：schema、迁移、客户端生成。 apache-2.0">
+        <span class="fw-index-card__top"><span class="fw-index-card__lang">SQL</span><span class="fw-type">ORM（TypeScript）</span></span>
+        <span class="fw-index-card__name">Prisma</span>
+        <span class="fw-index-card__why">类型安全的 TypeScript ORM：schema、迁移、客户端生成。</span>
+        <span class="fw-index-card__meta">学习 低 · 生态 成长 · 许可 Apache-2.0</span>
+      </a><a class="fw-index-card" href="sql.html#sqlalchemy" data-lang="sql" data-type="ORM（Python）" data-search="sqlalchemy sql orm（python） python 最成熟的 orm 与 sql 工具包，支持 core 与 orm 两层。 mit">
+        <span class="fw-index-card__top"><span class="fw-index-card__lang">SQL</span><span class="fw-type">ORM（Python）</span></span>
+        <span class="fw-index-card__name">SQLAlchemy</span>
+        <span class="fw-index-card__why">Python 最成熟的 ORM 与 SQL 工具包，支持 Core 与 ORM 两层。</span>
+        <span class="fw-index-card__meta">学习 中 · 生态 成熟 · 许可 MIT</span>
+      </a><a class="fw-index-card" href="svg.html#d3" data-lang="svg" data-type="数据可视化" data-search="d3 svg 数据可视化 用数据绑定驱动 svg/html 的可视化库，控制力极强。 isc">
+        <span class="fw-index-card__top"><span class="fw-index-card__lang">SVG</span><span class="fw-type">数据可视化</span></span>
+        <span class="fw-index-card__name">D3</span>
+        <span class="fw-index-card__why">用数据绑定驱动 SVG/HTML 的可视化库，控制力极强。</span>
+        <span class="fw-index-card__meta">学习 中 · 生态 成熟 · 许可 ISC</span>
+      </a><a class="fw-index-card" href="svg.html#snap-svg" data-lang="svg" data-type="矢量动画" data-search="snap.svg svg 矢量动画 轻量的 svg 操作与动画库，api 接近 jquery。 apache-2.0">
+        <span class="fw-index-card__top"><span class="fw-index-card__lang">SVG</span><span class="fw-type">矢量动画</span></span>
+        <span class="fw-index-card__name">Snap.svg</span>
+        <span class="fw-index-card__why">轻量的 SVG 操作与动画库，API 接近 jQuery。</span>
+        <span class="fw-index-card__meta">学习 低 · 生态 维护 · 许可 Apache-2.0</span>
+      </a><a class="fw-index-card" href="svg.html#svgo" data-lang="svg" data-type="优化工具" data-search="svgo svg 优化工具 node 端的 svg 优化器：删除冗余、合并路径、压缩体积。 mit">
+        <span class="fw-index-card__top"><span class="fw-index-card__lang">SVG</span><span class="fw-type">优化工具</span></span>
+        <span class="fw-index-card__name">SVGO</span>
+        <span class="fw-index-card__why">Node 端的 SVG 优化器：删除冗余、合并路径、压缩体积。</span>
+        <span class="fw-index-card__meta">学习 低 · 生态 成熟 · 许可 MIT</span>
+      </a><a class="fw-index-card" href="sass.html#dart-sass" data-lang="sass" data-type="Sass 编译器" data-search="dart sass sass sass 编译器 sass 的官方实现，支持 @use、模块系统与 source map。 mit">
+        <span class="fw-index-card__top"><span class="fw-index-card__lang">Sass</span><span class="fw-type">Sass 编译器</span></span>
+        <span class="fw-index-card__name">Dart Sass</span>
+        <span class="fw-index-card__why">Sass 的官方实现，支持 @use、模块系统与 source map。</span>
+        <span class="fw-index-card__meta">学习 低 · 生态 成熟 · 许可 MIT</span>
+      </a><a class="fw-index-card" href="sass.html#postcss" data-lang="sass" data-type="CSS 后处理" data-search="postcss sass css 后处理 用 js 插件转换 css：autoprefixer、嵌套、变量、压缩。 mit">
+        <span class="fw-index-card__top"><span class="fw-index-card__lang">Sass</span><span class="fw-type">CSS 后处理</span></span>
+        <span class="fw-index-card__name">PostCSS</span>
+        <span class="fw-index-card__why">用 JS 插件转换 CSS：autoprefixer、嵌套、变量、压缩。</span>
+        <span class="fw-index-card__meta">学习 低 · 生态 成熟 · 许可 MIT</span>
+      </a><a class="fw-index-card" href="sass.html#compass" data-lang="sass" data-type="Sass 框架（历史）" data-search="compass sass sass 框架（历史） 早期 sass 的框架与工具集：mixin、栅格、精灵图。 mit">
+        <span class="fw-index-card__top"><span class="fw-index-card__lang">Sass</span><span class="fw-type">Sass 框架（历史）</span></span>
+        <span class="fw-index-card__name">Compass</span>
+        <span class="fw-index-card__why">早期 Sass 的框架与工具集：mixin、栅格、精灵图。</span>
+        <span class="fw-index-card__meta">学习 中 · 生态 停止维护 · 许可 MIT</span>
+      </a><a class="fw-index-card" href="scala.html#akka" data-lang="scala" data-type="分布式 / Actor" data-search="akka scala 分布式 / actor actor 模型与集群工具包，用于高并发、分布式与流处理。 busl / 商业">
+        <span class="fw-index-card__top"><span class="fw-index-card__lang">Scala</span><span class="fw-type">分布式 / Actor</span></span>
+        <span class="fw-index-card__name">Akka</span>
+        <span class="fw-index-card__why">Actor 模型与集群工具包，用于高并发、分布式与流处理。</span>
+        <span class="fw-index-card__meta">学习 高 · 生态 成熟 · 许可 BUSL / 商业</span>
+      </a><a class="fw-index-card" href="scala.html#play" data-lang="scala" data-type="Web 全栈" data-search="play scala web 全栈 异步、无状态、全栈的 scala web 框架，模板、路由、json 一体。 apache-2.0">
+        <span class="fw-index-card__top"><span class="fw-index-card__lang">Scala</span><span class="fw-type">Web 全栈</span></span>
+        <span class="fw-index-card__name">Play</span>
+        <span class="fw-index-card__why">异步、无状态、全栈的 Scala Web 框架，模板、路由、JSON 一体。</span>
+        <span class="fw-index-card__meta">学习 中 · 生态 成熟 · 许可 Apache-2.0</span>
+      </a><a class="fw-index-card" href="scala.html#apache-spark" data-lang="scala" data-type="大数据" data-search="apache spark scala 大数据 分布式数据处理引擎，scala 是一等 api，覆盖批处理、流与 sql。 apache-2.0">
+        <span class="fw-index-card__top"><span class="fw-index-card__lang">Scala</span><span class="fw-type">大数据</span></span>
+        <span class="fw-index-card__name">Apache Spark</span>
+        <span class="fw-index-card__why">分布式数据处理引擎，Scala 是一等 API，覆盖批处理、流与 SQL。</span>
+        <span class="fw-index-card__meta">学习 中 · 生态 成熟 · 许可 Apache-2.0</span>
+      </a><a class="fw-index-card" href="shell.html#bats" data-lang="shell" data-type="测试框架" data-search="bats shell 测试框架 bash automated testing system：用 tap 风格测试 shell 脚本。 mit">
+        <span class="fw-index-card__top"><span class="fw-index-card__lang">Shell</span><span class="fw-type">测试框架</span></span>
+        <span class="fw-index-card__name">bats</span>
+        <span class="fw-index-card__why">Bash Automated Testing System：用 TAP 风格测试 shell 脚本。</span>
+        <span class="fw-index-card__meta">学习 低 · 生态 成熟 · 许可 MIT</span>
+      </a><a class="fw-index-card" href="shell.html#ansible" data-lang="shell" data-type="自动化 / 配置管理" data-search="ansible shell 自动化 / 配置管理 无 agent 的配置管理与编排工具，用 yaml playbook 描述系统状态。 gpl / 商业">
+        <span class="fw-index-card__top"><span class="fw-index-card__lang">Shell</span><span class="fw-type">自动化 / 配置管理</span></span>
+        <span class="fw-index-card__name">Ansible</span>
+        <span class="fw-index-card__why">无 agent 的配置管理与编排工具，用 YAML playbook 描述系统状态。</span>
+        <span class="fw-index-card__meta">学习 中 · 生态 成熟 · 许可 GPL / 商业</span>
+      </a><a class="fw-index-card" href="smalltalk.html#seaside" data-lang="smalltalk" data-type="Web 应用框架" data-search="seaside smalltalk web 应用框架 以组件和续延构建 web 应用的 smalltalk 框架，状态管理独特。 mit">
+        <span class="fw-index-card__top"><span class="fw-index-card__lang">Smalltalk</span><span class="fw-type">Web 应用框架</span></span>
+        <span class="fw-index-card__name">Seaside</span>
+        <span class="fw-index-card__why">以组件和续延构建 Web 应用的 Smalltalk 框架，状态管理独特。</span>
+        <span class="fw-index-card__meta">学习 高 · 生态 成熟 · 许可 MIT</span>
+      </a><a class="fw-index-card" href="smalltalk.html#glamorous-toolkit" data-lang="smalltalk" data-type="开发环境" data-search="glamorous toolkit smalltalk 开发环境 可编程的 smalltalk 开发环境与笔记本，把代码、数据和视图放在同一空间。 mit">
+        <span class="fw-index-card__top"><span class="fw-index-card__lang">Smalltalk</span><span class="fw-type">开发环境</span></span>
+        <span class="fw-index-card__name">Glamorous Toolkit</span>
+        <span class="fw-index-card__why">可编程的 Smalltalk 开发环境与笔记本，把代码、数据和视图放在同一空间。</span>
+        <span class="fw-index-card__meta">学习 中 · 生态 成长 · 许可 MIT</span>
+      </a><a class="fw-index-card" href="solidity.html#openzeppelin" data-lang="solidity" data-type="合约库" data-search="openzeppelin solidity 合约库 经过审计的 solidity 合约库：erc 标准、权限、升级、安全工具。 mit">
+        <span class="fw-index-card__top"><span class="fw-index-card__lang">Solidity</span><span class="fw-type">合约库</span></span>
+        <span class="fw-index-card__name">OpenZeppelin</span>
+        <span class="fw-index-card__why">经过审计的 Solidity 合约库：ERC 标准、权限、升级、安全工具。</span>
+        <span class="fw-index-card__meta">学习 中 · 生态 成熟 · 许可 MIT</span>
+      </a><a class="fw-index-card" href="solidity.html#hardhat" data-lang="solidity" data-type="开发环境" data-search="hardhat solidity 开发环境 javascript/typescript 的以太坊开发环境：编译、测试、部署、调试。 mit">
+        <span class="fw-index-card__top"><span class="fw-index-card__lang">Solidity</span><span class="fw-type">开发环境</span></span>
+        <span class="fw-index-card__name">Hardhat</span>
+        <span class="fw-index-card__why">JavaScript/TypeScript 的以太坊开发环境：编译、测试、部署、调试。</span>
+        <span class="fw-index-card__meta">学习 中 · 生态 成熟 · 许可 MIT</span>
+      </a><a class="fw-index-card" href="solidity.html#foundry" data-lang="solidity" data-type="测试 / 部署" data-search="foundry solidity 测试 / 部署 用 solidity 写测试与脚本的快速开发工具链：forge、cast、anvil。 mit / apache-2.0">
+        <span class="fw-index-card__top"><span class="fw-index-card__lang">Solidity</span><span class="fw-type">测试 / 部署</span></span>
+        <span class="fw-index-card__name">Foundry</span>
+        <span class="fw-index-card__why">用 Solidity 写测试与脚本的快速开发工具链：forge、cast、anvil。</span>
+        <span class="fw-index-card__meta">学习 中 · 生态 成长 · 许可 MIT / Apache-2.0</span>
+      </a><a class="fw-index-card" href="swift.html#swiftui" data-lang="swift" data-type="Apple UI" data-search="swiftui swift apple ui 声明式 ui 框架，用状态驱动视图，覆盖 ios/macos/watchos/tvos。 apple sdk">
+        <span class="fw-index-card__top"><span class="fw-index-card__lang">Swift</span><span class="fw-type">Apple UI</span></span>
+        <span class="fw-index-card__name">SwiftUI</span>
+        <span class="fw-index-card__why">声明式 UI 框架，用状态驱动视图，覆盖 iOS/macOS/watchOS/tvOS。</span>
+        <span class="fw-index-card__meta">学习 中 · 生态 成熟 · 许可 Apple SDK</span>
+      </a><a class="fw-index-card" href="swift.html#uikit" data-lang="swift" data-type="Apple UI" data-search="uikit swift apple ui ios 的经典 ui 框架：视图控制器、控件、动画、手势。 apple sdk">
+        <span class="fw-index-card__top"><span class="fw-index-card__lang">Swift</span><span class="fw-type">Apple UI</span></span>
+        <span class="fw-index-card__name">UIKit</span>
+        <span class="fw-index-card__why">iOS 的经典 UI 框架：视图控制器、控件、动画、手势。</span>
+        <span class="fw-index-card__meta">学习 中 · 生态 成熟 · 许可 Apple SDK</span>
+      </a><a class="fw-index-card" href="swift.html#vapor" data-lang="swift" data-type="服务端" data-search="vapor swift 服务端 swift 的服务端框架：路由、orm、认证、异步。 mit">
+        <span class="fw-index-card__top"><span class="fw-index-card__lang">Swift</span><span class="fw-type">服务端</span></span>
+        <span class="fw-index-card__name">Vapor</span>
+        <span class="fw-index-card__why">Swift 的服务端框架：路由、ORM、认证、异步。</span>
+        <span class="fw-index-card__meta">学习 中 · 生态 成长 · 许可 MIT</span>
+      </a><a class="fw-index-card" href="typescript.html#angular" data-lang="typescript" data-type="Web 前端" data-search="angular typescript web 前端  batteries-included 的前端框架：di、路由、表单、rxjs、cli。 mit">
+        <span class="fw-index-card__top"><span class="fw-index-card__lang">TypeScript</span><span class="fw-type">Web 前端</span></span>
+        <span class="fw-index-card__name">Angular</span>
+        <span class="fw-index-card__why"> batteries-included 的前端框架：DI、路由、表单、RxJS、CLI。</span>
+        <span class="fw-index-card__meta">学习 高 · 生态 成熟 · 许可 MIT</span>
+      </a><a class="fw-index-card" href="typescript.html#nestjs" data-lang="typescript" data-type="Web 后端" data-search="nestjs typescript web 后端 node 上的结构化后端框架，装饰器、di、模块与微服务支持。 mit">
+        <span class="fw-index-card__top"><span class="fw-index-card__lang">TypeScript</span><span class="fw-type">Web 后端</span></span>
+        <span class="fw-index-card__name">NestJS</span>
+        <span class="fw-index-card__why">Node 上的结构化后端框架，装饰器、DI、模块与微服务支持。</span>
+        <span class="fw-index-card__meta">学习 中 · 生态 成熟 · 许可 MIT</span>
+      </a><a class="fw-index-card" href="typescript.html#next-js" data-lang="typescript" data-type="全栈 / SSR" data-search="next.js typescript 全栈 / ssr typescript 友好的 react 全栈框架，路由、数据获取与部署一体。 mit">
+        <span class="fw-index-card__top"><span class="fw-index-card__lang">TypeScript</span><span class="fw-type">全栈 / SSR</span></span>
+        <span class="fw-index-card__name">Next.js</span>
+        <span class="fw-index-card__why">TypeScript 友好的 React 全栈框架，路由、数据获取与部署一体。</span>
+        <span class="fw-index-card__meta">学习 中 · 生态 成熟 · 许可 MIT</span>
+      </a><a class="fw-index-card" href="typescript.html#trpc" data-lang="typescript" data-type="类型化 API" data-search="trpc typescript 类型化 api 让前后端共享 typescript 类型，不需要手写 api schema。 mit">
+        <span class="fw-index-card__top"><span class="fw-index-card__lang">TypeScript</span><span class="fw-type">类型化 API</span></span>
+        <span class="fw-index-card__name">tRPC</span>
+        <span class="fw-index-card__why">让前后端共享 TypeScript 类型，不需要手写 API schema。</span>
+        <span class="fw-index-card__meta">学习 中 · 生态 成长 · 许可 MIT</span>
+      </a><a class="fw-index-card" href="vb.html#winforms" data-lang="vb" data-type="Windows 桌面" data-search="winforms visual basic windows 桌面 拖控件式 windows 桌面框架，开发快、兼容老系统。 mit">
+        <span class="fw-index-card__top"><span class="fw-index-card__lang">Visual Basic</span><span class="fw-type">Windows 桌面</span></span>
+        <span class="fw-index-card__name">WinForms</span>
+        <span class="fw-index-card__why">拖控件式 Windows 桌面框架，开发快、兼容老系统。</span>
+        <span class="fw-index-card__meta">学习 低 · 生态 成熟 · 许可 MIT</span>
+      </a><a class="fw-index-card" href="vb.html#wpf-vb-net" data-lang="vb" data-type="Windows 桌面" data-search="wpf（vb.net） visual basic windows 桌面 xaml 驱动的桌面框架，数据绑定、样式与控件模板成熟。 mit">
+        <span class="fw-index-card__top"><span class="fw-index-card__lang">Visual Basic</span><span class="fw-type">Windows 桌面</span></span>
+        <span class="fw-index-card__name">WPF（VB.NET）</span>
+        <span class="fw-index-card__why">XAML 驱动的桌面框架，数据绑定、样式与控件模板成熟。</span>
+        <span class="fw-index-card__meta">学习 中 · 生态 成熟 · 许可 MIT</span>
+      </a><a class="fw-index-card" href="vb.html#vba" data-lang="vb" data-type="Office 自动化" data-search="vba visual basic office 自动化 嵌入 office 的宏语言，直接操作 excel/word/outlook 对象模型。 商业">
+        <span class="fw-index-card__top"><span class="fw-index-card__lang">Visual Basic</span><span class="fw-type">Office 自动化</span></span>
+        <span class="fw-index-card__name">VBA</span>
+        <span class="fw-index-card__why">嵌入 Office 的宏语言，直接操作 Excel/Word/Outlook 对象模型。</span>
+        <span class="fw-index-card__meta">学习 低 · 生态 成熟 · 许可 商业</span>
+      </a><a class="fw-index-card" href="xml.html#xslt-xpath" data-lang="xml" data-type="转换" data-search="xslt / xpath xml 转换 用声明式模板把 xml 转成 html、xml 或文本，xpath 负责选取节点。 w3c">
+        <span class="fw-index-card__top"><span class="fw-index-card__lang">XML</span><span class="fw-type">转换</span></span>
+        <span class="fw-index-card__name">XSLT / XPath</span>
+        <span class="fw-index-card__why">用声明式模板把 XML 转成 HTML、XML 或文本，XPath 负责选取节点。</span>
+        <span class="fw-index-card__meta">学习 中 · 生态 标准 · 许可 W3C</span>
+      </a><a class="fw-index-card" href="xml.html#xsd" data-lang="xml" data-type="Schema 校验" data-search="xsd xml schema 校验 xml schema：定义元素、类型、顺序、基数与命名空间。 w3c">
+        <span class="fw-index-card__top"><span class="fw-index-card__lang">XML</span><span class="fw-type">Schema 校验</span></span>
+        <span class="fw-index-card__name">XSD</span>
+        <span class="fw-index-card__why">XML Schema：定义元素、类型、顺序、基数与命名空间。</span>
+        <span class="fw-index-card__meta">学习 中 · 生态 标准 · 许可 W3C</span>
+      </a><a class="fw-index-card" href="xml.html#dom-sax" data-lang="xml" data-type="解析模型" data-search="dom / sax xml 解析模型 两种 xml 解析方式：dom 建整树，sax 流式发事件。 w3c">
+        <span class="fw-index-card__top"><span class="fw-index-card__lang">XML</span><span class="fw-type">解析模型</span></span>
+        <span class="fw-index-card__name">DOM / SAX</span>
+        <span class="fw-index-card__why">两种 XML 解析方式：DOM 建整树，SAX 流式发事件。</span>
+        <span class="fw-index-card__meta">学习 中 · 生态 标准 · 许可 W3C</span>
+      </a><a class="fw-index-card" href="yaml.html#kubernetes" data-lang="yaml" data-type="容器编排平台" data-search="kubernetes yaml 容器编排平台 用 yaml 清单描述 pod、service、deployment 等资源，控制器负责调谐。 apache-2.0">
+        <span class="fw-index-card__top"><span class="fw-index-card__lang">YAML</span><span class="fw-type">容器编排平台</span></span>
+        <span class="fw-index-card__name">Kubernetes</span>
+        <span class="fw-index-card__why">用 YAML 清单描述 Pod、Service、Deployment 等资源，控制器负责调谐。</span>
+        <span class="fw-index-card__meta">学习 高 · 生态 成熟 · 许可 Apache-2.0</span>
+      </a><a class="fw-index-card" href="yaml.html#github-actions" data-lang="yaml" data-type="CI/CD" data-search="github actions yaml ci/cd 用 yaml 定义仓库内的 ci/cd 工作流、触发条件与作业。 商业">
+        <span class="fw-index-card__top"><span class="fw-index-card__lang">YAML</span><span class="fw-type">CI/CD</span></span>
+        <span class="fw-index-card__name">GitHub Actions</span>
+        <span class="fw-index-card__why">用 YAML 定义仓库内的 CI/CD 工作流、触发条件与作业。</span>
+        <span class="fw-index-card__meta">学习 中 · 生态 成熟 · 许可 商业</span>
+      </a><a class="fw-index-card" href="yaml.html#docker-compose" data-lang="yaml" data-type="本地多容器" data-search="docker compose yaml 本地多容器 用 yaml 描述多容器应用、网络与卷，一条命令启动本地环境。 apache-2.0">
+        <span class="fw-index-card__top"><span class="fw-index-card__lang">YAML</span><span class="fw-type">本地多容器</span></span>
+        <span class="fw-index-card__name">Docker Compose</span>
+        <span class="fw-index-card__why">用 YAML 描述多容器应用、网络与卷，一条命令启动本地环境。</span>
+        <span class="fw-index-card__meta">学习 低 · 生态 成熟 · 许可 Apache-2.0</span>
+      </a></div>
+    <p class="index-empty" id="fwIndexEmpty">没有匹配的框架。试试「Rust」「Web」「游戏」，或把筛选切回全部。</p>
+
+    <footer class="pagefoot">
+      <p class="stamp">学习 / 生态为编者判断，非官方评级；许可与事实以官方文档为准。最后核对 2026-10-30。</p>
+      <p>第 1–23 批 · 框架总览</p>
+    </footer>
+  </div>
+</main>
+<script src="../assets/font.js"></script>
+<script src="../assets/data.js"></script>
+<script src="../assets/search-index.js"></script>
+<script src="../assets/app.js"></script>
+<script src="../assets/search.js"></script>
+</body>
+</html>

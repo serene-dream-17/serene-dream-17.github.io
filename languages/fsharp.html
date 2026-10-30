@@ -1,0 +1,400 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script>
+try {
+  var r = JSON.parse(localStorage.getItem("archive-reading") || "{}");
+  var h = document.documentElement;
+  if (r.font) h.dataset.font = r.font;
+  if (r.size) h.dataset.size = r.size;
+  if (r.line) h.dataset.line = r.line;
+} catch (e) {}
+</script>
+<title>F# — 产物链档案 · 语言产物链</title>
+<meta name="description" content="F#（2005）的产物链档案：从源码、中间表示到最终产物，逐阶段给出文件内容与格式说明。">
+<link rel="stylesheet" href="../assets/style.css">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<meta name="theme-color" content="#f3ede1">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:site_name" content="语言的产物链">
+<meta property="og:title" content="F# — 产物链档案 · 语言产物链">
+<meta property="og:description" content="F#（2005）的产物链档案：从源码、中间表示到最终产物，逐阶段给出文件内容与格式说明。">
+<meta property="og:image" content="../assets/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="F# — 产物链档案 · 语言产物链">
+<meta name="twitter:description" content="F#（2005）的产物链档案：从源码、中间表示到最终产物，逐阶段给出文件内容与格式说明。">
+<meta name="twitter:image" content="../assets/og.png">
+</head>
+<body data-page="lang" data-root="../" data-prev="scala.html" data-next="clojure.html">
+<a class="skip-link" href="#main">跳到正文</a>
+<div class="progress" aria-hidden="true"><span></span></div>
+<button class="menu-toggle" type="button" aria-label="打开目录" aria-expanded="false" aria-controls="catalog"><span></span></button>
+<div class="scrim"></div>
+<button class="font-toggle" type="button" aria-label="阅读设置" aria-expanded="false" aria-controls="fontPanel">Aa</button>
+<div class="font-panel" id="fontPanel" hidden>
+  <div class="font-panel__head">
+    <strong>阅读设置</strong>
+    <button class="font-panel__close" type="button" data-font-close aria-label="关闭">×</button>
+  </div>
+  <div class="font-panel__group">
+    <span class="font-panel__label">字体</span>
+    <div class="font-panel__opts">
+      <button type="button" data-font="sans" aria-pressed="true">思源黑体</button>
+      <button type="button" data-font="serif" aria-pressed="false">思源宋体</button>
+      <button type="button" data-font="system" aria-pressed="false">系统字体</button>
+    </div>
+  </div>
+  <div class="font-panel__group">
+    <span class="font-panel__label">字号</span>
+    <div class="font-panel__opts">
+      <button type="button" data-size="s" aria-pressed="false">小</button>
+      <button type="button" data-size="m" aria-pressed="true">标准</button>
+      <button type="button" data-size="l" aria-pressed="false">大</button>
+      <button type="button" data-size="xl" aria-pressed="false">特大</button>
+    </div>
+  </div>
+  <div class="font-panel__group">
+    <span class="font-panel__label">行距</span>
+    <div class="font-panel__opts">
+      <button type="button" data-line="tight" aria-pressed="false">紧凑</button>
+      <button type="button" data-line="normal" aria-pressed="true">标准</button>
+      <button type="button" data-line="loose" aria-pressed="false">宽松</button>
+    </div>
+  </div>
+  <button class="font-panel__reset" type="button" data-font-reset>恢复默认</button>
+</div>
+<button class="cmdk-btn" type="button" data-cmdk aria-label="全站搜索">搜索全站 <kbd>⌘K</kbd></button>
+<aside class="catalog" id="catalog" aria-label="全站目录">
+  <div class="catalog__head">
+    <p class="catalog__kicker">Catalogue · 1957 — 2026</p>
+    <h2 class="catalog__title">语言产物链<span>Languages &amp; Their Artifacts</span></h2>
+    <p class="catalog__meta"><b>78</b> / 78 已开放 · 第 23 批</p>
+  </div>
+  <nav class="catalog__levels" aria-label="层级导航">
+    <a href="index.html">编程语言</a>
+    <a href="../frameworks/index.html">框架</a>
+    <a href="../stacks/index.html">技术栈</a>
+  </nav>
+  <div class="catalog__tools">
+    <label class="search" for="catalogSearch">
+      <svg class="search__icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><circle cx="7" cy="7" r="4.5"></circle><path d="M10.5 10.5 14 14"></path></svg>
+      <input id="catalogSearch" type="search" placeholder="搜索语言 / 年代 / 关键词"
+             autocomplete="off" spellcheck="false" aria-label="搜索语言">
+      <kbd>/</kbd>
+    </label>
+    <div class="filters" role="group" aria-label="按实现方式筛选"><button class="filter" type="button" data-filter="all" aria-pressed="true">全部</button><button class="filter" type="button" data-filter="compiled" aria-pressed="false">编译</button><button class="filter" type="button" data-filter="interpreted" aria-pressed="false">解释</button><button class="filter" type="button" data-filter="domain" aria-pressed="false">领域</button><button class="filter" type="button" data-filter="markup" aria-pressed="false">标记</button></div>
+  </div>
+  <div class="catalog__body">
+    <section class="catalog__group" data-era="1950s-1960s"><div class="catalog__grouphead"><span>1950s–1960s</span><em>10/10</em></div><ul class="catalog__list"><li><a class="catalog__link " href="../languages/fortran.html" data-search="fortran 公式翻译系统 1957 科学计算的起点；固定列卡片与 ibm 704 编译器 编译型 fortran 命令式 科学计算 数组" data-family="compiled" data-year="1957" data-name="FORTRAN"><span class="catalog__num">01</span><span class="catalog__name">FORTRAN</span><span class="catalog__year">1957</span></a></li><li><a class="catalog__link " href="../languages/lisp.html" data-search="lisp 表处理语言 1958 代码即数据；ai 的第一门母语 解释 / 字节码 lisp 函数式 符号计算 宏" data-family="interpreted" data-year="1958" data-name="LISP"><span class="catalog__num">02</span><span class="catalog__name">LISP</span><span class="catalog__year">1958</span></a></li><li><a class="catalog__link " href="../languages/algol60.html" data-search="algol 60 算法语言 1960 几乎所有现代语法记法的祖先 编译型 algol60 命令式 结构化 块作用域" data-family="compiled" data-year="1960" data-name="ALGOL 60"><span class="catalog__num">03</span><span class="catalog__name">ALGOL 60</span><span class="catalog__year">1960</span></a></li><li><a class="catalog__link " href="../languages/cobol.html" data-search="cobol 通用商业语言 1959 银行、保险与政府的账本语言 编译型 cobol 命令式 商业数据 记录" data-family="compiled" data-year="1959" data-name="COBOL"><span class="catalog__num">04</span><span class="catalog__name">COBOL</span><span class="catalog__year">1959</span></a></li><li><a class="catalog__link " href="../languages/basic.html" data-search="basic 初学者通用符号指令代码 1964 把编程带到个人电脑与课堂 解释 / 字节码 basic 命令式 交互式 教学" data-family="interpreted" data-year="1964" data-name="BASIC"><span class="catalog__num">05</span><span class="catalog__name">BASIC</span><span class="catalog__year">1964</span></a></li><li><a class="catalog__link " href="../languages/simula.html" data-search="simula 67 仿真语言 1967 class 与对象概念的源头 编译型 simula 面向对象 仿真 协程" data-family="compiled" data-year="1967" data-name="Simula 67"><span class="catalog__num">06</span><span class="catalog__name">Simula 67</span><span class="catalog__year">1967</span></a></li><li><a class="catalog__link " href="../languages/pli.html" data-search="pl/i 编程语言一号 1964 大型机上的「万能语言」 编译型 pli 多范式 商业数据 异常" data-family="compiled" data-year="1964" data-name="PL/I"><span class="catalog__num">07</span><span class="catalog__name">PL/I</span><span class="catalog__year">1964</span></a></li><li><a class="catalog__link " href="../languages/apl.html" data-search="apl 数组编程语言 1966 数组与符号的极简记法 解释 / 字节码 apl 数组 函数式 交互式" data-family="interpreted" data-year="1966" data-name="APL"><span class="catalog__num">08</span><span class="catalog__name">APL</span><span class="catalog__year">1966</span></a></li><li><a class="catalog__link " href="../languages/snobol.html" data-search="snobol 字符串操作语言 1962 字符串模式匹配的先驱 解释 / 字节码 snobol 模式匹配 字符串 动态类型" data-family="interpreted" data-year="1962" data-name="SNOBOL"><span class="catalog__num">09</span><span class="catalog__name">SNOBOL</span><span class="catalog__year">1962</span></a></li><li><a class="catalog__link " href="../languages/b.html" data-search="b b 语言 1969 c 的前身，unix 的第一种实现语言 编译型 b 命令式 无类型 系统编程" data-family="compiled" data-year="1969" data-name="B"><span class="catalog__num">10</span><span class="catalog__name">B</span><span class="catalog__year">1969</span></a></li></ul></section><section class="catalog__group" data-era="1970s"><div class="catalog__grouphead"><span>1970s</span><em>8/8</em></div><ul class="catalog__list"><li><a class="catalog__link " href="../languages/c.html" data-search="c c 语言 1972 unix 内核与系统软件的通用语 编译型 c 命令式 系统编程 静态类型" data-family="compiled" data-year="1972" data-name="C"><span class="catalog__num">11</span><span class="catalog__name">C</span><span class="catalog__year">1972</span></a></li><li><a class="catalog__link " href="../languages/pascal.html" data-search="pascal 帕斯卡语言 1970 结构化教学与 turbo 时代 编译型 pascal 命令式 结构化 教学" data-family="compiled" data-year="1970" data-name="Pascal"><span class="catalog__num">12</span><span class="catalog__name">Pascal</span><span class="catalog__year">1970</span></a></li><li><a class="catalog__link " href="../languages/smalltalk.html" data-search="smalltalk 面向对象环境 1972 图形界面、字节码与活的镜像 解释 / 字节码 smalltalk 面向对象 消息传递 动态类型" data-family="interpreted" data-year="1972" data-name="Smalltalk"><span class="catalog__num">13</span><span class="catalog__name">Smalltalk</span><span class="catalog__year">1972</span></a></li><li><a class="catalog__link " href="../languages/prolog.html" data-search="prolog 逻辑编程 1972 逻辑即程序，wam 即产物 解释 / 字节码 prolog 逻辑 声明式 回溯" data-family="interpreted" data-year="1972" data-name="Prolog"><span class="catalog__num">14</span><span class="catalog__name">Prolog</span><span class="catalog__year">1972</span></a></li><li><a class="catalog__link " href="../languages/ml.html" data-search="ml 元语言 1973 类型推断与函数式语言的底座 编译型 ml 函数式 类型推断 模式匹配" data-family="compiled" data-year="1973" data-name="ML"><span class="catalog__num">15</span><span class="catalog__name">ML</span><span class="catalog__year">1973</span></a></li><li><a class="catalog__link " href="../languages/scheme.html" data-search="scheme scheme 1975 极简 lisp，sicp 的课堂语言 解释 / 字节码 scheme 函数式 尾调用 续延" data-family="interpreted" data-year="1975" data-name="Scheme"><span class="catalog__num">16</span><span class="catalog__name">Scheme</span><span class="catalog__year">1975</span></a></li><li><a class="catalog__link " href="../languages/forth.html" data-search="forth forth 1970 线程码、词典与望远镜控制台 编译型 forth 栈式 元编程 嵌入式" data-family="compiled" data-year="1970" data-name="Forth"><span class="catalog__num">17</span><span class="catalog__name">Forth</span><span class="catalog__year">1970</span></a></li><li><a class="catalog__link " href="../languages/modula2.html" data-search="modula-2 模块化语言 1978 定义模块与实现模块的分离 编译型 modula2 模块化 系统编程 强类型" data-family="compiled" data-year="1978" data-name="Modula-2"><span class="catalog__num">18</span><span class="catalog__name">Modula-2</span><span class="catalog__year">1978</span></a></li></ul></section><section class="catalog__group" data-era="1980s"><div class="catalog__grouphead"><span>1980s</span><em>9/9</em></div><ul class="catalog__list"><li><a class="catalog__link " href="../languages/cpp.html" data-search="c++ c++ 1985 c 的对象化，性能与复杂度并存 编译型 cpp 面向对象 泛型 系统编程" data-family="compiled" data-year="1985" data-name="C++"><span class="catalog__num">19</span><span class="catalog__name">C++</span><span class="catalog__year">1985</span></a></li><li><a class="catalog__link " href="../languages/objectivec.html" data-search="objective-c objective-c 1984 next 与 apple 生态的底座 编译型 objectivec 面向对象 消息传递 apple 生态" data-family="compiled" data-year="1984" data-name="Objective-C"><span class="catalog__num">20</span><span class="catalog__name">Objective-C</span><span class="catalog__year">1984</span></a></li><li><a class="catalog__link " href="../languages/perl.html" data-search="perl 实用报表提取语言 1987 cgi 时代的系统胶水 解释 / 字节码 perl 脚本 文本处理 正则" data-family="interpreted" data-year="1987" data-name="Perl"><span class="catalog__num">21</span><span class="catalog__name">Perl</span><span class="catalog__year">1987</span></a></li><li><a class="catalog__link " href="../languages/erlang.html" data-search="erlang erlang 1986 电信级并发与容错 解释 / 字节码 erlang 并发 容错 函数式" data-family="interpreted" data-year="1986" data-name="Erlang"><span class="catalog__num">22</span><span class="catalog__name">Erlang</span><span class="catalog__year">1986</span></a></li><li><a class="catalog__link " href="../languages/ada.html" data-search="ada ada 1980 军工与关键系统的语言 编译型 ada 强类型 并发 实时系统" data-family="compiled" data-year="1980" data-name="Ada"><span class="catalog__num">23</span><span class="catalog__name">Ada</span><span class="catalog__year">1980</span></a></li><li><a class="catalog__link " href="../languages/eiffel.html" data-search="eiffel eiffel 1986 契约式设计 编译型 eiffel 面向对象 契约式设计 静态类型" data-family="compiled" data-year="1986" data-name="Eiffel"><span class="catalog__num">24</span><span class="catalog__name">Eiffel</span><span class="catalog__year">1986</span></a></li><li><a class="catalog__link " href="../languages/matlab.html" data-search="matlab 矩阵实验室 1984 工程仿真与矩阵计算 解释 / 字节码 matlab 数组 数值计算 交互式" data-family="interpreted" data-year="1984" data-name="MATLAB"><span class="catalog__num">25</span><span class="catalog__name">MATLAB</span><span class="catalog__year">1984</span></a></li><li><a class="catalog__link " href="../languages/commonlisp.html" data-search="common lisp 通用 lisp 1984 标准化的大型 lisp 解释 / 字节码 commonlisp 函数式 宏 clos" data-family="interpreted" data-year="1984" data-name="Common Lisp"><span class="catalog__num">26</span><span class="catalog__name">Common Lisp</span><span class="catalog__year">1984</span></a></li><li><a class="catalog__link " href="../languages/tcl.html" data-search="tcl 工具命令语言 1988 嵌入脚本与 eda 工具 解释 / 字节码 tcl 脚本 嵌入 事件驱动" data-family="interpreted" data-year="1988" data-name="Tcl"><span class="catalog__num">27</span><span class="catalog__name">Tcl</span><span class="catalog__year">1988</span></a></li></ul></section><section class="catalog__group" data-era="1990s"><div class="catalog__grouphead"><span>1990s</span><em>11/11</em></div><ul class="catalog__list"><li><a class="catalog__link " href="../languages/python.html" data-search="python python 1991 可读性优先，科学计算的默认语言 解释 / 字节码 python 命令式 动态类型 科学计算" data-family="interpreted" data-year="1991" data-name="Python"><span class="catalog__num">28</span><span class="catalog__name">Python</span><span class="catalog__year">1991</span></a></li><li><a class="catalog__link " href="../languages/java.html" data-search="java java 1995 一次编写，到处运行 解释 / 字节码 java 面向对象 字节码 企业应用" data-family="interpreted" data-year="1995" data-name="Java"><span class="catalog__num">29</span><span class="catalog__name">Java</span><span class="catalog__year">1995</span></a></li><li><a class="catalog__link " href="../languages/javascript.html" data-search="javascript javascript 1995 浏览器里的唯一通用语 解释 / 字节码 javascript 动态类型 事件驱动 原型" data-family="interpreted" data-year="1995" data-name="JavaScript"><span class="catalog__num">30</span><span class="catalog__name">JavaScript</span><span class="catalog__year">1995</span></a></li><li><a class="catalog__link " href="../languages/php.html" data-search="php php 1995 动态网站的草根语言 解释 / 字节码 php 脚本 web 动态类型" data-family="interpreted" data-year="1995" data-name="PHP"><span class="catalog__num">31</span><span class="catalog__name">PHP</span><span class="catalog__year">1995</span></a></li><li><a class="catalog__link " href="../languages/ruby.html" data-search="ruby ruby 1995 为开发者快乐而设计 解释 / 字节码 ruby 面向对象 动态类型 元编程" data-family="interpreted" data-year="1995" data-name="Ruby"><span class="catalog__num">32</span><span class="catalog__name">Ruby</span><span class="catalog__year">1995</span></a></li><li><a class="catalog__link " href="../languages/haskell.html" data-search="haskell haskell 1990 纯函数式与类型系统试验田 编译型 haskell 纯函数式 惰性 类型系统" data-family="compiled" data-year="1990" data-name="Haskell"><span class="catalog__num">33</span><span class="catalog__name">Haskell</span><span class="catalog__year">1990</span></a></li><li><a class="catalog__link " href="../languages/lua.html" data-search="lua lua 1993 游戏与嵌入式的轻量脚本 解释 / 字节码 lua 脚本 嵌入 轻量" data-family="interpreted" data-year="1993" data-name="Lua"><span class="catalog__num">34</span><span class="catalog__name">Lua</span><span class="catalog__year">1993</span></a></li><li><a class="catalog__link " href="../languages/r.html" data-search="r r 1993 统计学家的工作台 解释 / 字节码 r 统计 向量化 交互式" data-family="interpreted" data-year="1993" data-name="R"><span class="catalog__num">35</span><span class="catalog__name">R</span><span class="catalog__year">1993</span></a></li><li><a class="catalog__link " href="../languages/delphi.html" data-search="delphi object pascal 1995 windows 桌面的快速应用 编译型 delphi 面向对象 快速应用 windows" data-family="compiled" data-year="1995" data-name="Delphi"><span class="catalog__num">36</span><span class="catalog__name">Delphi</span><span class="catalog__year">1995</span></a></li><li><a class="catalog__link " href="../languages/vb.html" data-search="visual basic visual basic 1991 让业务人员也能写程序 解释 / 字节码 vb 事件驱动 快速应用 com" data-family="interpreted" data-year="1991" data-name="Visual Basic"><span class="catalog__num">37</span><span class="catalog__name">Visual Basic</span><span class="catalog__year">1991</span></a></li><li><a class="catalog__link " href="../languages/ocaml.html" data-search="ocaml ocaml 1996 类型安全的函数式系统语言 编译型 ocaml 函数式 类型推断 模块" data-family="compiled" data-year="1996" data-name="OCaml"><span class="catalog__num">38</span><span class="catalog__name">OCaml</span><span class="catalog__year">1996</span></a></li></ul></section><section class="catalog__group" data-era="2000s"><div class="catalog__grouphead"><span>2000s</span><em>8/8</em></div><ul class="catalog__list"><li><a class="catalog__link " href="../languages/csharp.html" data-search="c# c# 2000 .net 生态的主力 解释 / 字节码 csharp 面向对象 托管运行时 linq" data-family="interpreted" data-year="2000" data-name="C#"><span class="catalog__num">39</span><span class="catalog__name">C#</span><span class="catalog__year">2000</span></a></li><li><a class="catalog__link " href="../languages/scala.html" data-search="scala scala 2004 jvm 上的函数式与大数据 解释 / 字节码 scala 函数式 面向对象 jvm" data-family="interpreted" data-year="2004" data-name="Scala"><span class="catalog__num">40</span><span class="catalog__name">Scala</span><span class="catalog__year">2004</span></a></li><li><a class="catalog__link is-active" href="../languages/fsharp.html" data-search="f# f# 2005 .net 上的函数式 解释 / 字节码 fsharp 函数式 .net 类型推断" data-family="interpreted" data-year="2005" data-name="F#" aria-current="page"><span class="catalog__num">41</span><span class="catalog__name">F#</span><span class="catalog__year">2005</span></a></li><li><a class="catalog__link " href="../languages/clojure.html" data-search="clojure clojure 2007 jvm 上的 lisp 解释 / 字节码 clojure 函数式 lisp 持久化数据" data-family="interpreted" data-year="2007" data-name="Clojure"><span class="catalog__num">42</span><span class="catalog__name">Clojure</span><span class="catalog__year">2007</span></a></li><li><a class="catalog__link " href="../languages/groovy.html" data-search="groovy groovy 2003 构建脚本与 jvm 动态语言 解释 / 字节码 groovy 动态类型 jvm 脚本" data-family="interpreted" data-year="2003" data-name="Groovy"><span class="catalog__num">43</span><span class="catalog__name">Groovy</span><span class="catalog__year">2003</span></a></li><li><a class="catalog__link " href="../languages/go.html" data-search="go go 2009 云原生基础设施的语言 编译型 go 并发 静态类型 云原生" data-family="compiled" data-year="2009" data-name="Go"><span class="catalog__num">44</span><span class="catalog__name">Go</span><span class="catalog__year">2009</span></a></li><li><a class="catalog__link " href="../languages/d.html" data-search="d d 2001 c++ 的现代化尝试 编译型 d 系统编程 模板 gc" data-family="compiled" data-year="2001" data-name="D"><span class="catalog__num">45</span><span class="catalog__name">D</span><span class="catalog__year">2001</span></a></li><li><a class="catalog__link " href="../languages/actionscript.html" data-search="actionscript actionscript 1998 flash 时代的前端 解释 / 字节码 actionscript 面向对象 flash avm2" data-family="interpreted" data-year="1998" data-name="ActionScript"><span class="catalog__num">46</span><span class="catalog__name">ActionScript</span><span class="catalog__year">1998</span></a></li></ul></section><section class="catalog__group" data-era="2010s"><div class="catalog__grouphead"><span>2010s</span><em>12/12</em></div><ul class="catalog__list"><li><a class="catalog__link " href="../languages/rust.html" data-search="rust rust 2010 无 gc 的内存安全 编译型 rust 系统编程 所有权 无 gc" data-family="compiled" data-year="2010" data-name="Rust"><span class="catalog__num">47</span><span class="catalog__name">Rust</span><span class="catalog__year">2010</span></a></li><li><a class="catalog__link " href="../languages/typescript.html" data-search="typescript typescript 2012 给 javascript 加上类型 解释 / 字节码 typescript 静态类型 javascript 编译期" data-family="interpreted" data-year="2012" data-name="TypeScript"><span class="catalog__num">48</span><span class="catalog__name">TypeScript</span><span class="catalog__year">2012</span></a></li><li><a class="catalog__link " href="../languages/swift.html" data-search="swift swift 2014 apple 平台的新语言 编译型 swift 面向对象 协议 arc" data-family="compiled" data-year="2014" data-name="Swift"><span class="catalog__num">49</span><span class="catalog__name">Swift</span><span class="catalog__year">2014</span></a></li><li><a class="catalog__link " href="../languages/kotlin.html" data-search="kotlin kotlin 2011 android 的现代选择 解释 / 字节码 kotlin 面向对象 空安全 jvm" data-family="interpreted" data-year="2011" data-name="Kotlin"><span class="catalog__num">50</span><span class="catalog__name">Kotlin</span><span class="catalog__year">2011</span></a></li><li><a class="catalog__link " href="../languages/elixir.html" data-search="elixir elixir 2011 beam 上的现代函数式 解释 / 字节码 elixir 函数式 并发 beam" data-family="interpreted" data-year="2011" data-name="Elixir"><span class="catalog__num">51</span><span class="catalog__name">Elixir</span><span class="catalog__year">2011</span></a></li><li><a class="catalog__link " href="../languages/julia.html" data-search="julia julia 2012 科学计算的性能新解 解释 / 字节码 julia 多重派发 科学计算 jit" data-family="interpreted" data-year="2012" data-name="Julia"><span class="catalog__num">52</span><span class="catalog__name">Julia</span><span class="catalog__year">2012</span></a></li><li><a class="catalog__link " href="../languages/dart.html" data-search="dart dart 2011 flutter 的 ui 语言 解释 / 字节码 dart 面向对象 flutter 空安全" data-family="interpreted" data-year="2011" data-name="Dart"><span class="catalog__num">53</span><span class="catalog__name">Dart</span><span class="catalog__year">2011</span></a></li><li><a class="catalog__link " href="../languages/zig.html" data-search="zig zig 2016 c 的克制替代品 编译型 zig 系统编程 comptime 无隐藏分配" data-family="compiled" data-year="2016" data-name="Zig"><span class="catalog__num">54</span><span class="catalog__name">Zig</span><span class="catalog__year">2016</span></a></li><li><a class="catalog__link " href="../languages/nim.html" data-search="nim nim 2008 python 式语法的系统语言 编译型 nim 系统编程 宏 编译到 c" data-family="compiled" data-year="2008" data-name="Nim"><span class="catalog__num">55</span><span class="catalog__name">Nim</span><span class="catalog__year">2008</span></a></li><li><a class="catalog__link " href="../languages/crystal.html" data-search="crystal crystal 2014 ruby 语法，c 性能 编译型 crystal 静态类型 ruby 语法 llvm" data-family="compiled" data-year="2014" data-name="Crystal"><span class="catalog__num">56</span><span class="catalog__name">Crystal</span><span class="catalog__year">2014</span></a></li><li><a class="catalog__link " href="../languages/elm.html" data-search="elm elm 2012 前端的类型化架构 编译型 elm 函数式 前端 无运行时异常" data-family="compiled" data-year="2012" data-name="Elm"><span class="catalog__num">57</span><span class="catalog__name">Elm</span><span class="catalog__year">2012</span></a></li><li><a class="catalog__link " href="../languages/solidity.html" data-search="solidity solidity 2014 以太坊智能合约 领域专用 solidity 智能合约 evm 静态类型" data-family="domain" data-year="2014" data-name="Solidity"><span class="catalog__num">58</span><span class="catalog__name">Solidity</span><span class="catalog__year">2014</span></a></li></ul></section><section class="catalog__group" data-era="2020s"><div class="catalog__grouphead"><span>2020s</span><em>6/6</em></div><ul class="catalog__list"><li><a class="catalog__link " href="../languages/mojo.html" data-search="mojo mojo 2023 ai 时代的 python 超集 编译型 mojo python 语法 系统编程 mlir" data-family="compiled" data-year="2023" data-name="Mojo"><span class="catalog__num">59</span><span class="catalog__name">Mojo</span><span class="catalog__year">2023</span></a></li><li><a class="catalog__link " href="../languages/gleam.html" data-search="gleam gleam 2016 beam 上的类型化语言 解释 / 字节码 gleam 静态类型 beam 函数式" data-family="interpreted" data-year="2016" data-name="Gleam"><span class="catalog__num">60</span><span class="catalog__name">Gleam</span><span class="catalog__year">2016</span></a></li><li><a class="catalog__link " href="../languages/carbon.html" data-search="carbon carbon 2022 google 的 c++ 后继实验 编译型 carbon 系统编程 c++ 互操作 泛型" data-family="compiled" data-year="2022" data-name="Carbon"><span class="catalog__num">61</span><span class="catalog__name">Carbon</span><span class="catalog__year">2022</span></a></li><li><a class="catalog__link " href="../languages/odin.html" data-search="odin odin 2016 游戏与图形编程 编译型 odin 系统编程 数据导向 游戏" data-family="compiled" data-year="2016" data-name="Odin"><span class="catalog__num">62</span><span class="catalog__name">Odin</span><span class="catalog__year">2016</span></a></li><li><a class="catalog__link " href="../languages/roc.html" data-search="roc roc 2022 函数式与快速编译 编译型 roc 函数式 快速编译 平台" data-family="compiled" data-year="2022" data-name="Roc"><span class="catalog__num">63</span><span class="catalog__name">Roc</span><span class="catalog__year">2022</span></a></li><li><a class="catalog__link " href="../languages/v.html" data-search="v v 2019 极简快速的系统语言 编译型 v 系统编程 编译到 c 简洁" data-family="compiled" data-year="2019" data-name="V"><span class="catalog__num">64</span><span class="catalog__name">V</span><span class="catalog__year">2019</span></a></li></ul></section><section class="catalog__group" data-era="domain"><div class="catalog__grouphead"><span>领域专用</span><em>6/6</em></div><ul class="catalog__list"><li><a class="catalog__link " href="../languages/sql.html" data-search="sql 结构化查询语言 1974 关系数据库的通用查询语言 领域专用 sql 声明式 关系模型 查询" data-family="domain" data-year="1974" data-name="SQL"><span class="catalog__num">65</span><span class="catalog__name">SQL</span><span class="catalog__year">1974</span></a></li><li><a class="catalog__link " href="../languages/assembly.html" data-search="assembly 汇编语言 1949 机器码之上的第一层 领域专用 assembly 低级 机器相关 符号" data-family="domain" data-year="1949" data-name="Assembly"><span class="catalog__num">66</span><span class="catalog__name">Assembly</span><span class="catalog__year">1949</span></a></li><li><a class="catalog__link " href="../languages/shell.html" data-search="shell 命令解释器 1971 操作系统的胶水 领域专用 shell 脚本 管道 进程" data-family="domain" data-year="1971" data-name="Shell"><span class="catalog__num">67</span><span class="catalog__name">Shell</span><span class="catalog__year">1971</span></a></li><li><a class="catalog__link " href="../languages/verilog.html" data-search="verilog verilog 1984 芯片设计的硬件描述语言 领域专用 verilog 硬件描述 并发 仿真" data-family="domain" data-year="1984" data-name="Verilog"><span class="catalog__num">68</span><span class="catalog__name">Verilog</span><span class="catalog__year">1984</span></a></li><li><a class="catalog__link " href="../languages/cuda.html" data-search="cuda cuda 2007 gpu 并行计算 领域专用 cuda gpu 并行 simt" data-family="domain" data-year="2007" data-name="CUDA"><span class="catalog__num">69</span><span class="catalog__name">CUDA</span><span class="catalog__year">2007</span></a></li><li><a class="catalog__link " href="../languages/glsl.html" data-search="glsl glsl 2002 着色器与图形管线 领域专用 glsl 着色器 gpu 图形管线" data-family="domain" data-year="2002" data-name="GLSL"><span class="catalog__num">70</span><span class="catalog__name">GLSL</span><span class="catalog__year">2002</span></a></li></ul></section><section class="catalog__group" data-era="markup"><div class="catalog__grouphead"><span>标记与配置</span><em>8/8</em></div><ul class="catalog__list"><li><a class="catalog__link " href="../languages/html.html" data-search="html 超文本标记语言 1991 文档结构、dom 与渲染流水线 标记 / 配置 html 标记 文档结构 超文本" data-family="markup" data-year="1991" data-name="HTML"><span class="catalog__num">71</span><span class="catalog__name">HTML</span><span class="catalog__year">1991</span></a></li><li><a class="catalog__link " href="../languages/css.html" data-search="css 层叠样式表 1996 层叠、盒模型与布局 标记 / 配置 css 样式 层叠 声明式" data-family="markup" data-year="1996" data-name="CSS"><span class="catalog__num">72</span><span class="catalog__name">CSS</span><span class="catalog__year">1996</span></a></li><li><a class="catalog__link " href="../languages/xml.html" data-search="xml 可扩展标记语言 1998 可扩展标记与数据交换 标记 / 配置 xml 标记 数据交换 可扩展" data-family="markup" data-year="1998" data-name="XML"><span class="catalog__num">73</span><span class="catalog__name">XML</span><span class="catalog__year">1998</span></a></li><li><a class="catalog__link " href="../languages/svg.html" data-search="svg 可缩放矢量图形 2001 矢量图形、xml 与 dom 标记 / 配置 svg 矢量图形 xml 声明式" data-family="markup" data-year="2001" data-name="SVG"><span class="catalog__num">74</span><span class="catalog__name">SVG</span><span class="catalog__year">2001</span></a></li><li><a class="catalog__link " href="../languages/yaml.html" data-search="yaml yaml 2001 配置与基础设施清单 标记 / 配置 yaml 数据序列化 配置 人类可读" data-family="markup" data-year="2001" data-name="YAML"><span class="catalog__num">75</span><span class="catalog__name">YAML</span><span class="catalog__year">2001</span></a></li><li><a class="catalog__link " href="../languages/markdown.html" data-search="markdown markdown 2004 纯文本文档与静态站点 标记 / 配置 markdown 标记 纯文本 文档" data-family="markup" data-year="2004" data-name="Markdown"><span class="catalog__num">76</span><span class="catalog__name">Markdown</span><span class="catalog__year">2004</span></a></li><li><a class="catalog__link " href="../languages/sass.html" data-search="sass scss 2006 css 预处理器与设计系统 标记 / 配置 sass css 预处理 变量 嵌套" data-family="markup" data-year="2006" data-name="Sass"><span class="catalog__num">77</span><span class="catalog__name">Sass</span><span class="catalog__year">2006</span></a></li><li><a class="catalog__link " href="../languages/less.html" data-search="less less 2009 css 预处理器与遗留项目 标记 / 配置 less css 预处理 变量 混入" data-family="markup" data-year="2009" data-name="Less"><span class="catalog__num">78</span><span class="catalog__name">Less</span><span class="catalog__year">2009</span></a></li></ul></section>
+    <p class="catalog__empty" data-visible="false">没有匹配的条目。<br>试试「c」「1972」「字节码」。</p>
+  </div>
+  <div class="catalog__foot">
+    第 1–23 批 · 1950s–2020s<br>
+    <a href="../index.html">← 首页</a><br>
+    <a href="index.html">编程语言 →</a><br>
+    <a href="../frameworks/index.html">框架 →</a><br>
+    <a href="../stacks/index.html">技术栈 →</a><br>
+    <a href="../scenarios.html">开发场景 →</a><br>
+    <a href="../languages/formats.html">产物索引 →</a><br>
+    <a href="../sources.html">来源索引 →</a><br>
+    <a href="../verified.html">实测记录 →</a>
+  </div>
+</aside>
+<main class="page" id="main">
+  <div class="page__inner">
+    <nav class="plate-nav" aria-label="翻页"><a class="plate-nav__link" href="scala.html">← <span>Scala</span></a><span class="plate-nav__counter">PLATE <b>41</b> / 78</span><a class="plate-nav__link" href="clojure.html"><span>Clojure</span> →</a></nav>
+    <header class="dossier">
+    <div class="dossier__eyebrow">
+      <span>PLATE 41 / 78</span>
+      <span class="dot"></span>
+      <span class="era">2000s · 2000–2009</span>
+      <span class="dot"></span>
+      <span>解释 / 字节码</span>
+    </div>
+    <h1 class="dossier__name">F#</h1>
+    <p class="dossier__tagline">ML 的血统跑在 .NET 上：类型推断、不可变数据、管道与异步。</p>
+    <div class="dossier__meta">
+      <div class="meta-item"><span class="meta-label">设计者</span><span class="meta-value">Don Syme / Microsoft Research</span></div>
+      <div class="meta-item"><span class="meta-label">诞生地</span><span class="meta-value">英国 / 美国</span></div>
+      <div class="meta-item"><span class="meta-label">首次发布</span><span class="meta-value">2005</span></div>
+      <div class="meta-item"><span class="meta-label">类型</span><span class="meta-value">解释 / 字节码</span></div>
+    </div>
+    <div class="tags"><span class="tag">函数式</span><span class="tag">.NET</span><span class="tag">类型推断</span><span class="tag is-accent">解释 / 字节码</span><span class="tag tag--level" title="产物链样例为文档重构，不是本机实测">文档重构</span></div>
+    <a class="dossier__fwlink" href="../frameworks/fsharp.html">框架与场景 →</a>
+    <div class="lineage">
+      <div><div class="lineage__label">源自 / From</div><p class="lineage__list">ML · OCaml · Haskell（部分） · .NET</p></div>
+      <div><div class="lineage__label">影响 / To</div><p class="lineage__list">Fable（JS） · Azure 工具链 · 金融量化</p></div>
+    </div>
+  </header>
+    <section class="block reveal" id="profile">
+    <div class="block__head">
+      <span class="block__num">01</span>
+      <h2 class="block__title">语言档案<em>Dossier</em></h2>
+      <span class="block__rule"></span>
+    </div>
+    <div class="prose"><p>F# 由 Don Syme 在 Microsoft Research 主导，2005 年发布。它把 ML 的函数式核心（类型推断、模式匹配、代数数据类型）带到 .NET，同时保留与 C#、VB 的互操作。</p><p>F# 编译到 CIL，但生成的 IL 比 C# 复杂：闭包变成类，模式匹配变成分支与类型测试，<code>printfn</code> 走 FSharp.Core 的格式化类型。程序集里因此会引用 FSharp.Core。</p><p>它的特色还包括度量单位、类型提供器、计算表达式与异步工作流。Fable 还能把 F# 编译成 JavaScript，形成另一条后端。</p></div>
+  </section>
+    <section class="block reveal" id="chain">
+    <div class="block__head">
+      <span class="block__num">02</span>
+      <h2 class="block__title">产物链<em>Artifact Chain</em></h2>
+      <span class="block__rule"></span>
+    </div>
+    <div class="chain-strip" aria-label="产物阶段导航"><a class="stage-chip" href="#stage-1"><span class="stage-chip__num">01</span><span class="stage-chip__file">Hello.fs</span><span class="stage-chip__label">源码</span></a><span class="chain-arrow" aria-hidden="true">→</span><a class="stage-chip" href="#stage-2"><span class="stage-chip__num">02</span><span class="stage-chip__file">Hello.il</span><span class="stage-chip__label">CIL</span></a><span class="chain-arrow" aria-hidden="true">→</span><a class="stage-chip" href="#stage-3"><span class="stage-chip__num">03</span><span class="stage-chip__file">Hello.dll</span><span class="stage-chip__label">程序集</span></a><span class="chain-arrow" aria-hidden="true">→</span><a class="stage-chip" href="#stage-4"><span class="stage-chip__num">04</span><span class="stage-chip__file">Hello.js</span><span class="stage-chip__label">另一后端：Fable</span></a></div>
+    <article class="stage-card reveal" id="stage-1">
+      <header class="stage-card__head">
+        <span class="stage-card__no">01</span>
+        <span class="stage-card__file">Hello.fs</span>
+        <span class="stage-card__label">源码</span>
+        <span class="stage-card__cmd">$ cat Hello.fs</span>
+      </header>
+      <div class="code-wrap">
+        <div class="code-bar">
+          <span class="code-bar__dots" aria-hidden="true"><i></i><i></i><i></i></span>
+          <span class="code-bar__name">Hello.fs</span>
+          <span class="code-bar__note">示意样例</span>
+        </div>
+        <pre class="code" tabindex="0"><code>[&lt;EntryPoint&gt;]
+let main _ =
+    printfn &quot;Hello, world&quot;
+    0</code></pre>
+        <div class="code-actions">
+          <button class="code-btn" type="button" data-copy>复制</button>
+          
+          <span class="code-hint">文档重构 · 非实测输出</span>
+        </div>
+      </div>
+      <div class="format"><div class="format__row"><span class="format__key">扩展名</span><span class="format__val">.fs / .fsx</span></div><div class="format__row"><span class="format__key">入口</span><span class="format__val">[&lt;EntryPoint&gt;] 标记</span></div><div class="format__row"><span class="format__key">缩进</span><span class="format__val">空白敏感</span></div><div class="format__row"><span class="format__key">类型</span><span class="format__val">推断，默认不可变</span></div></div>
+      <p class="stage-note">F# 的 <code>main</code> 必须返回 int（退出码）。<code>printfn</code> 不是简单函数，而是一个带格式串的类型提供机制。</p>
+    </article><article class="stage-card reveal" id="stage-2">
+      <header class="stage-card__head">
+        <span class="stage-card__no">02</span>
+        <span class="stage-card__file">Hello.il</span>
+        <span class="stage-card__label">CIL</span>
+        <span class="stage-card__cmd">$ ildasm Hello.dll /out:Hello.il</span>
+      </header>
+      <div class="code-wrap">
+        <div class="code-bar">
+          <span class="code-bar__dots" aria-hidden="true"><i></i><i></i><i></i></span>
+          <span class="code-bar__name">Hello.il</span>
+          <span class="code-bar__note">示意样例</span>
+        </div>
+        <pre class="code" tabindex="0"><code>.method public static int32 main(string[] argv) cil managed
+{
+  .entrypoint
+  .maxstack 8
+  IL_0000: ldstr &quot;Hello, world&quot;
+  IL_0005: call void [FSharp.Core]Microsoft.FSharp.Core.Printf::
+             printfn@11&lt;string&gt;(class ...)
+  IL_000a: ldc.i4.0
+  IL_000b: ret
+}
+
+; 模式匹配、闭包、管道在 IL 里展开
+; FSharp.Core 提供 printfn / 列表 / 异步</code></pre>
+        <div class="code-actions">
+          <button class="code-btn" type="button" data-copy>复制</button>
+          
+          <span class="code-hint">文档重构 · 非实测输出</span>
+        </div>
+      </div>
+      <div class="format"><div class="format__row"><span class="format__key">目标</span><span class="format__val">CIL</span></div><div class="format__row"><span class="format__key">格式化</span><span class="format__val">printfn 走 FSharp.Core 的类型化格式</span></div><div class="format__row"><span class="format__key">闭包</span><span class="format__val">编译成类</span></div><div class="format__row"><span class="format__key">依赖</span><span class="format__val">FSharp.Core</span></div></div>
+      <p class="stage-note">F# 的 <code>printfn</code> 在编译期被解析成泛型调用，格式串错误能在编译期发现，而不是运行时。</p>
+    </article><article class="stage-card reveal" id="stage-3">
+      <header class="stage-card__head">
+        <span class="stage-card__no">03</span>
+        <span class="stage-card__file">Hello.dll</span>
+        <span class="stage-card__label">程序集</span>
+        <span class="stage-card__cmd">$ dotnet build &amp;&amp; file bin/Debug/net8.0/Hello.dll</span>
+      </header>
+      <div class="code-wrap">
+        <div class="code-bar">
+          <span class="code-bar__dots" aria-hidden="true"><i></i><i></i><i></i></span>
+          <span class="code-bar__name">Hello.dll</span>
+          <span class="code-bar__note">示意样例</span>
+        </div>
+        <pre class="code" tabindex="0"><code>$ file bin/Debug/net8.0/Hello.dll
+Hello.dll: PE32 executable (console) Intel 80386 Mono/.Net assembly
+
+$ monodis --assemblyref Hello.dll
+AssemblyRef Table
+1: FSharp.Core
+2: System.Runtime
+3: System.Console
+
+; 程序集 = PE + CIL + 元数据
+; F# 特有信息放在 FSharpSignature / FSharpOptimization 资源里</code></pre>
+        <div class="code-actions">
+          <button class="code-btn" type="button" data-copy>复制</button>
+          
+          <span class="code-hint">文档重构 · 非实测输出</span>
+        </div>
+      </div>
+      <div class="format"><div class="format__row"><span class="format__key">容器</span><span class="format__val">PE 程序集</span></div><div class="format__row"><span class="format__key">引用</span><span class="format__val">FSharp.Core / System.Runtime</span></div><div class="format__row"><span class="format__key">资源</span><span class="format__val">F# 签名与优化信息</span></div><div class="format__row"><span class="format__key">运行</span><span class="format__val">dotnet Hello.dll</span></div></div>
+      <p class="stage-note">F# 程序集里额外嵌入了签名资源，供 F# 编译器做跨程序集的类型检查与优化。</p>
+    </article><article class="stage-card reveal" id="stage-4">
+      <header class="stage-card__head">
+        <span class="stage-card__no">04</span>
+        <span class="stage-card__file">Hello.js</span>
+        <span class="stage-card__label">另一后端：Fable</span>
+        <span class="stage-card__cmd">$ dotnet fable . --outDir out</span>
+      </header>
+      <div class="code-wrap">
+        <div class="code-bar">
+          <span class="code-bar__dots" aria-hidden="true"><i></i><i></i><i></i></span>
+          <span class="code-bar__name">Hello.js</span>
+          <span class="code-bar__note">示意样例</span>
+        </div>
+        <pre class="code" tabindex="0"><code>$ dotnet fable . --outDir out
+$ cat out/Hello.js
+export function main(argv) {
+  console.log(&quot;Hello, world&quot;);
+  return 0;
+}
+
+; Fable：F# → JavaScript
+; 类型被擦除，函数式结构映射到 JS
+; 用于前端 / Node.js</code></pre>
+        <div class="code-actions">
+          <button class="code-btn" type="button" data-copy>复制</button>
+          
+          <span class="code-hint">文档重构 · 非实测输出</span>
+        </div>
+      </div>
+      <div class="format"><div class="format__row"><span class="format__key">后端</span><span class="format__val">Fable</span></div><div class="format__row"><span class="format__key">目标</span><span class="format__val">JavaScript</span></div><div class="format__row"><span class="format__key">用途</span><span class="format__val">前端 / Node.js</span></div><div class="format__row"><span class="format__key">代价</span><span class="format__val">运行时语义与 .NET 不完全相同</span></div></div>
+      <p class="stage-note">F# 不只属于 .NET：Fable 把它编译成 JS，说明语言的核心可以脱离 CLR 存在。</p>
+    </article>
+  </section>
+    <section class="block reveal" id="tools">
+    <div class="block__head">
+      <span class="block__num">03</span>
+      <h2 class="block__title">工具链时间表<em>Toolchain</em></h2>
+      <span class="block__rule"></span>
+    </div>
+    <div class="table-wrap">
+      <table class="tools-table">
+        <caption>编辑 → 编译 / 解释 → 构建 → 包 → 调试</caption>
+        <thead><tr>
+          <th scope="col">年代</th><th scope="col">编辑器</th>
+          <th scope="col">编译器 / 解释器</th><th scope="col">构建</th>
+          <th scope="col">包管理</th><th scope="col">调试</th>
+        </tr></thead>
+        <tbody><tr><td>2000s</td><td>Visual Studio</td><td>fsc</td><td>MSBuild</td><td>NuGet</td><td>VS 调试器</td></tr><tr><td>2010s</td><td>VS Code + Ionide</td><td>fsc</td><td>FAKE / dotnet</td><td>NuGet</td><td>Ionide</td></tr><tr><td>2020s</td><td>VS Code + Ionide / Rider</td><td>fsc</td><td>dotnet / FAKE</td><td>NuGet</td><td>Ionide / Rider</td></tr></tbody>
+      </table>
+    </div>
+    <p class="table-hint">表格可横向滑动 →</p>
+  </section>
+    <section class="block reveal" id="hello">
+    <div class="block__head">
+      <span class="block__num">04</span>
+      <h2 class="block__title">Hello World 追踪<em>Trace</em></h2>
+      <span class="block__rule"></span>
+    </div>
+    <div class="hello-grid">
+      <div class="hello-source">
+        <div class="code-bar">
+          <span class="code-bar__dots" aria-hidden="true"><i></i><i></i><i></i></span>
+          <span class="code-bar__name">Hello.fs</span>
+          <span class="code-bar__note">SOURCE</span>
+        </div>
+        <pre class="code" tabindex="0"><code>printfn &quot;Hello, world&quot;
+// 输出：Hello, world</code></pre>
+        <div class="code-actions">
+          <button class="code-btn" type="button" data-copy>复制</button>
+          <span class="code-hint">与上方产物链同源</span>
+        </div>
+      </div>
+      <div>
+        <p class="footprint__title">体积与形态 · 对数尺度示意</p>
+        <div class="footprint"><div class="footprint__row"><span class="footprint__stage">源码</span><span class="footprint__track"><span class="footprint__fill" data-w="4" style="width:4%"></span></span><span class="footprint__size">≈ 26 B</span></div><div class="footprint__row"><span class="footprint__stage">CIL</span><span class="footprint__track"><span class="footprint__fill" data-w="8" style="width:8%"></span></span><span class="footprint__size">≈ 180 B</span></div><div class="footprint__row"><span class="footprint__stage">Hello.dll</span><span class="footprint__track"><span class="footprint__fill" data-w="15" style="width:15%"></span></span><span class="footprint__size">≈ 4.5 KB</span></div><div class="footprint__row"><span class="footprint__stage">Fable JS</span><span class="footprint__track"><span class="footprint__fill" data-w="6" style="width:6%"></span></span><span class="footprint__size">≈ 120 B</span></div><div class="footprint__row"><span class="footprint__stage">+ FSharp.Core</span><span class="footprint__track"><span class="footprint__fill" data-w="70" style="width:70%"></span></span><span class="footprint__size">≈ 1.5 MB</span></div></div>
+        <ol class="why-list"><li><strong>EntryPoint</strong>：F# 用特性标记入口，main 返回退出码。</li><li><strong>printfn</strong>：格式串在编译期解析成类型化调用。</li><li><strong>FSharp.Core</strong>：列表、选项、异步、格式化都在这个运行时库里。</li><li><strong>Fable</strong>：同一门语言可以编译到 JS，产物完全换一套。</li></ol>
+      </div>
+    </div>
+    
+  </section>
+    <section class="block deep reveal" id="deep">
+    <div class="block__head">
+      <span class="block__num">05</span>
+      <h2 class="block__title">语言深读<em>Deep Dive</em><span class="block__level" title="深读字段为编者整理，非官方评级">编者整理</span></h2>
+      <span class="block__rule"></span>
+    </div>
+
+    <div class="deep-grid">
+      <div class="deep-col">
+        <h3 class="deep-sub">设计目标</h3>
+        <ul class="deep-list"><li>ML 函数式跑在 .NET</li><li>类型推断与互操作</li></ul>
+      </div>
+      <div class="deep-col">
+        <h3 class="deep-sub">关键取舍</h3>
+        <ul class="deep-list deep-list--tradeoff"><li>生态规模小于 C#</li><li>工具链体验波动</li></ul>
+      </div>
+    </div>
+
+    <h3 class="deep-sub">语言特性 <a class="cite" href="#src-1" aria-label="来源 1">1</a></h3>
+    <div class="deep-features"><div class="deep-feature"><span class="deep-feature__key">类型</span><span class="deep-feature__value">静态推断、DU/记录</span></div><div class="deep-feature"><span class="deep-feature__key">内存</span><span class="deep-feature__value">.NET GC</span></div><div class="deep-feature"><span class="deep-feature__key">并发</span><span class="deep-feature__value">async / MailboxProcessor</span></div><div class="deep-feature"><span class="deep-feature__key">元编程</span><span class="deep-feature__value">类型提供器 / 引用</span></div></div>
+
+    <h3 class="deep-sub">版本里程碑 <a class="cite" href="#src-1" aria-label="来源 1">1</a></h3>
+    <div class="deep-timeline"><span class="deep-milestone"><b>2005</b><span>F#</span></span><span class="deep-arrow" aria-hidden="true">→</span><span class="deep-milestone"><b>2010</b><span>F# 2</span></span><span class="deep-arrow" aria-hidden="true">→</span><span class="deep-milestone"><b>2017</b><span>F# 4</span></span><span class="deep-arrow" aria-hidden="true">→</span><span class="deep-milestone"><b>2020</b><span>F# 5</span></span></div>
+
+    <div class="deep-eco">
+      <div><h3 class="deep-sub">代表项目</h3><p>金融量化 · Azure 工具 · Fable 前端</p></div>
+      <div><h3 class="deep-sub">包管理 / 生态</h3><p>NuGet</p></div>
+      <div><h3 class="deep-sub">现状 <a class="cite" href="#src-1" aria-label="来源 1">1</a></h3><p>.NET 上的函数式选择；金融/数据较多</p></div>
+    </div>
+
+    <h3 class="deep-sub">与邻近语言对比</h3>
+    <div class="table-wrap">
+      <table class="deep-table">
+        <caption>F# 与邻近语言的差异</caption>
+        <thead><tr><th scope="col">语言</th><th scope="col">主要差异</th></tr></thead>
+        <tbody><tr><td>C#</td><td>更主流、面向对象</td></tr><tr><td>OCaml</td><td>更原生、Unix 生态</td></tr></tbody>
+      </table>
+    </div>
+    <p class="table-hint">表格可横向滑动 →</p>
+  </section>
+    <section class="block fw-teaser reveal" id="frameworks">
+    <div class="block__head">
+      <span class="block__num">06</span>
+      <h2 class="block__title">框架与场景<em>Frameworks</em></h2>
+      <span class="block__rule"></span>
+    </div>
+    <div class="fw-teaser__card">
+      <div class="fw-teaser__body">
+        <p class="fw-teaser__summary">F# 的框架层围绕函数式 Web、.NET 全栈与 Fable 前端。</p>
+        <div class="fw-chips"><span class="fw-chip">Giraffe</span><span class="fw-chip">Saturn</span><span class="fw-chip">Bolero</span></div>
+      </div>
+      <a class="fw-teaser__link" href="../frameworks/fsharp.html">查看框架与场景 →</a>
+    </div>
+  </section>
+    
+    <section class="sources" id="sources" aria-label="参考来源">
+    <h3 class="sources__title">参考来源 <span>References</span></h3>
+    <ol class="sources__list">
+      <li id="src-1"><a href="https://learn.microsoft.com/en-us/dotnet/fsharp/" target="_blank" rel="noopener noreferrer">F# 文档 ↗</a>
+        <span class="sources__kind">官方文档 / 规范</span></li>
+      <li id="src-2"><a href="../AUDIT.md">本站审计与方法说明</a>
+        <span class="sources__kind">内容口径与已知限制</span></li>
+    </ol>
+    <p class="sources__note">最后核对 2026-10-27。产物样例为示意内容；年份、许可与生态以来源文档为准。</p>
+  </section>
+    <a class="next-card" href="clojure.html">
+    <span><span class="next-card__label">下一门 / Next</span>
+      <span class="next-card__title">Clojure · 2007</span></span>
+    <span class="next-card__arrow" aria-hidden="true">→</span>
+  </a>
+    <footer class="pagefoot">
+      <p class="stamp">本页所有文件样例为依据公开规范与文档重构的示意内容；具体地址、偏移与字节数为示例值，不代表任何特定编译器版本的实测输出。</p>
+      <p>第 1–23 批 · PLATE 41 / 78</p>
+    </footer>
+  </div>
+</main>
+<script src="../assets/font.js"></script>
+<script src="../assets/data.js"></script>
+<script src="../assets/search-index.js"></script>
+<script src="../assets/app.js"></script>
+<script src="../assets/search.js"></script>
+</body>
+</html>
