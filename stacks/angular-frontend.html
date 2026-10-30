@@ -92,7 +92,7 @@ try {
     <p class="catalog__empty" data-visible="false">没有匹配的条目。<br>试试「c」「1972」「字节码」。</p>
   </div>
   <div class="catalog__foot">
-    第 1–23 批 · 1950s–2020s<br>
+    第 1–25 批 · 1950s–2020s<br>
     <a href="../index.html">← 首页</a><br>
     <a href="../languages/index.html">编程语言 →</a><br>
     <a href="../frameworks/index.html">框架 →</a><br>
@@ -158,13 +158,13 @@ try {
 
     <section class="block reveal" id="depth">
       <div class="block__head"><span class="block__num">05</span><h2 class="block__title">工程化深度<em>Engineering</em></h2><span class="block__rule"></span></div>
-      <p class="prose">版本是策展建议线（LTS 或当前稳定线），具体小版本与可用性以官方文档为准。</p>
-      <div class="stack-depth"><article class="depth-block"><h3 class="depth-block__title">版本基线<em>Baseline</em></h3><ul class="fw-list"><li>TypeScript 5.x</li><li>Angular 19 稳定线</li><li>RxJS 7.8</li><li>Node.js 22 LTS</li></ul></article><article class="depth-block"><h3 class="depth-block__title">测试与 CI<em>Testing</em></h3><ul class="fw-list"><li>单元：Jasmine / Vitest</li><li>端到端：Playwright</li><li>CI：lint + 测试 + 构建</li></ul></article><article class="depth-block"><h3 class="depth-block__title">部署与运维<em>Operations</em></h3><ul class="fw-list"><li>构建：静态资源</li><li>部署：CDN / 容器</li><li>监控：错误上报 + Web Vitals</li></ul></article><article class="depth-block"><h3 class="depth-block__title">团队与成本<em>Team</em></h3><ul class="fw-list"><li>4–15 人</li><li>TS + 框架约定 + 表单</li><li>成本：中</li></ul></article></div>
+      <p class="prose">版本是策展建议线（LTS 或当前稳定线）；链路、容量与 SLO 为示意口径，具体数值需按实测与官方文档校准。</p>
+      <div class="stack-depth"><article class="depth-block"><h3 class="depth-block__title">版本基线<em>Baseline</em></h3><ul class="fw-list"><li>TypeScript 5.x</li><li>Angular 19 稳定线</li><li>RxJS 7.8</li><li>Node.js 22 LTS</li></ul></article><article class="depth-block"><h3 class="depth-block__title">测试与 CI<em>Testing</em></h3><ul class="fw-list"><li>单元：Jasmine / Vitest</li><li>端到端：Playwright</li><li>CI：lint + 测试 + 构建</li></ul></article><article class="depth-block"><h3 class="depth-block__title">部署与运维<em>Operations</em></h3><ul class="fw-list"><li>构建：静态资源</li><li>部署：CDN / 容器</li><li>监控：错误上报 + Web Vitals</li></ul></article><article class="depth-block"><h3 class="depth-block__title">团队与成本<em>Team</em></h3><ul class="fw-list"><li>4–15 人</li><li>TS + 框架约定 + 表单</li><li>成本：中</li></ul></article><article class="depth-block"><h3 class="depth-block__title">数据与请求链路<em>Flow</em></h3><ul class="fw-list"><li>启动：main.ts → 独立组件 → 路由</li><li>数据：Service → HttpClient → API</li><li>守卫：路由守卫先鉴权再加载</li></ul></article><article class="depth-block"><h3 class="depth-block__title">性能与容量<em>Capacity</em></h3><ul class="fw-list"><li>构建：AOT + 按路由拆包</li><li>瓶颈：变更检测与大型表单</li><li>扩容：静态托管 + CDN</li></ul></article><article class="depth-block"><h3 class="depth-block__title">可观测性与 SLO<em>Observability</em></h3><ul class="fw-list"><li>指标：导航耗时、错误率</li><li>日志：全局 ErrorHandler 上报</li><li>告警：发布后的错误峰值</li></ul></article><article class="depth-block"><h3 class="depth-block__title">安全与合规<em>Security</em></h3><ul class="fw-list"><li>认证：HttpInterceptor 注入令牌</li><li>XSS：模板转义 + 严格 CSP</li><li>依赖：npm audit 门禁</li></ul></article></div>
     </section>
 
     <footer class="pagefoot">
       <p class="stamp">技术栈为策展组合；组件版本、许可与默认配置以官方文档为准。</p>
-      <p>第 1–23 批 · 技术栈 · Angular 企业前端</p>
+      <p>第 1–25 批 · 技术栈 · Angular 企业前端</p>
     </footer>
   </div>
 </main>

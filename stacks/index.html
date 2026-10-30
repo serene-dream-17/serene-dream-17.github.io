@@ -92,7 +92,7 @@ try {
     <p class="catalog__empty" data-visible="false">没有匹配的条目。<br>试试「c」「1972」「字节码」。</p>
   </div>
   <div class="catalog__foot">
-    第 1–23 批 · 1950s–2020s<br>
+    第 1–25 批 · 1950s–2020s<br>
     <a href="../index.html">← 首页</a><br>
     <a href="../languages/index.html">编程语言 →</a><br>
     <a href="../frameworks/index.html">框架 →</a><br>
@@ -106,7 +106,7 @@ try {
   <div class="page__inner">
     <nav class="plate-nav" aria-label="技术栈导航">
       <a class="plate-nav__link" href="../index.html">← <span>首页</span></a>
-      <span class="plate-nav__counter">STACKS · 42</span>
+      <span class="plate-nav__counter">STACKS · 56</span>
       <a class="plate-nav__link" href="../languages/index.html"><span>编程语言</span> →</a>
     </nav>
     <header class="hero">
@@ -114,9 +114,9 @@ try {
       <h1 class="hero__title">技术<br><em>栈</em></h1>
       <p class="hero__sub">栈是「能直接开工的组合」：语言、框架、数据库、运行环境与交付方式。同一个框架可以出现在不同栈里，取舍写在每一页。</p>
       <div class="hero__meta">
-        <div class="stat"><span class="stat__num">42</span><span class="stat__label">个技术栈</span></div>
+        <div class="stat"><span class="stat__num">56</span><span class="stat__label">个技术栈</span></div>
         <div class="stat"><span class="stat__num">12</span><span class="stat__label">个领域</span></div>
-        <div class="stat"><span class="stat__num">24</span><span class="stat__label">门语言</span></div>
+        <div class="stat"><span class="stat__num">25</span><span class="stat__label">门语言</span></div>
         <div class="stat"><span class="stat__num">48</span><span class="stat__label">个框架页</span></div>
       </div>
     </header>
@@ -130,7 +130,7 @@ try {
         <span>领域</span>
         <select id="stackDomain"><option value="all">全部领域</option><option value="web-frontend">Web 前端</option><option value="web-backend">Web 后端</option><option value="services">服务化 / 云原生</option><option value="mobile">移动</option><option value="desktop">桌面</option><option value="game">游戏</option><option value="data">数据</option><option value="ai">AI / 机器学习</option><option value="embedded">嵌入式</option><option value="security">安全</option><option value="blockchain">区块链</option><option value="science">科学计算</option></select>
       </label>
-      <span class="era-head__count" id="stackCount">42 个栈</span>
+      <span class="era-head__count" id="stackCount">56 个栈</span>
     </div>
 
     <div class="matrix-grid" id="stackSections"><section class="dev-section matrix-section" id="domain-web-frontend" data-domain="web-frontend">
@@ -257,7 +257,7 @@ try {
     </section><section class="dev-section matrix-section" id="domain-mobile" data-domain="mobile">
       <div class="era-head">
         <h2 class="era-head__title">移动</h2>
-        <span class="era-head__range">3 个栈</span>
+        <span class="era-head__range">4 个栈</span>
         <span class="era-head__count">平台优先级决定原生还是跨端，离线与推送要提前设计。</span>
       </div>
       <div class="stack-grid"><a class="stack-card stack-entry" href="flutter-cross.html" data-search="flutter 跨端 一套 dart 代码覆盖 ios、android 与桌面；自绘渲染带来一致性，也带来包体与原生集成的取舍。 移动 dart · flutter 多端一致的 ui 小团队覆盖双平台 重交互的移动产品" data-domain="mobile">
@@ -275,11 +275,16 @@ try {
         <span class="stack-fw">Android 原生</span>
         <span class="stack-why">Kotlin 与 Jetpack Compose 的官方路线，系统能力、后台限制与分发策略都按平台规则走。</span>
         <span class="stack-meta">Kotlin · Jetpack Compose · Android SDK</span>
+      </a><a class="stack-card stack-entry" href="react-native-cross.html" data-search="react native 跨端 用 typescript 与 react 复用双端业务逻辑，原生模块处理平台能力，适合团队已有前端积累的产品。 移动 typescript · react 双端复用业务逻辑 团队已有 react 经验 需要快速发版" data-domain="mobile">
+        <span class="stack-top"><span class="stack-lang">移动</span><span class="stack-type">技术栈</span></span>
+        <span class="stack-fw">React Native 跨端</span>
+        <span class="stack-why">用 TypeScript 与 React 复用双端业务逻辑，原生模块处理平台能力，适合团队已有前端积累的产品。</span>
+        <span class="stack-meta">TypeScript · React</span>
       </a></div>
     </section><section class="dev-section matrix-section" id="domain-desktop" data-domain="desktop">
       <div class="era-head">
         <h2 class="era-head__title">桌面</h2>
-        <span class="era-head__range">3 个栈</span>
+        <span class="era-head__range">4 个栈</span>
         <span class="era-head__count">系统集成深度与分发方式决定原生、跨平台或 Web 外壳。</span>
       </div>
       <div class="stack-grid"><a class="stack-card stack-entry" href="qt-desktop.html" data-search="qt 桌面 成熟的跨平台原生控件与工具链，适合需要系统集成、长生命周期的桌面软件。 桌面 c++ · qt 跨平台桌面工具 工业与专业软件 需要原生性能" data-domain="desktop">
@@ -297,6 +302,11 @@ try {
         <span class="stack-fw">WPF 企业桌面</span>
         <span class="stack-why">Windows 原生桌面与数据绑定成熟，适合企业内部工具与长期维护的客户端。</span>
         <span class="stack-meta">C# · WPF</span>
+      </a><a class="stack-card stack-entry" href="electron-desktop.html" data-search="electron 桌面 以 chromium + node.js 承载 web 技术栈，复用前端团队与组件库，换取较大的安装包体积。 桌面 typescript · react 跨平台桌面工具 复用 web 组件库 需要本地文件与系统集成" data-domain="desktop">
+        <span class="stack-top"><span class="stack-lang">桌面</span><span class="stack-type">技术栈</span></span>
+        <span class="stack-fw">Electron 桌面</span>
+        <span class="stack-why">以 Chromium + Node.js 承载 Web 技术栈，复用前端团队与组件库，换取较大的安装包体积。</span>
+        <span class="stack-meta">TypeScript · React</span>
       </a></div>
     </section><section class="dev-section matrix-section" id="domain-game" data-domain="game">
       <div class="era-head">
@@ -328,7 +338,7 @@ try {
     </section><section class="dev-section matrix-section" id="domain-data" data-domain="data">
       <div class="era-head">
         <h2 class="era-head__title">数据</h2>
-        <span class="era-head__range">3 个栈</span>
+        <span class="era-head__range">4 个栈</span>
         <span class="era-head__count">批流模型与数据契约优先，可重跑与血缘是硬要求。</span>
       </div>
       <div class="stack-grid"><a class="stack-card stack-entry" href="dbt-warehouse.html" data-search="dbt 数仓转换 以 sql 为中心做数仓建模与测试，版本化、可重跑，适合分析工程团队。 数据 sql · dbt 数仓分层建模 需要测试与文档 分析工程协作" data-domain="data">
@@ -346,11 +356,16 @@ try {
         <span class="stack-fw">R Shiny 数据应用</span>
         <span class="stack-why">用 R 直接把分析变成可交互应用，适合统计团队与内部数据产品。</span>
         <span class="stack-meta">R · Shiny · tidyverse</span>
+      </a><a class="stack-card stack-entry" href="kafka-flink-stream.html" data-search="kafka + flink 实时流 事件经 kafka 缓冲、flink 做有状态计算，适合秒级实时指标与需要精确一次的流式链路。 数据 java 秒级实时指标 事件驱动架构 需要精确一次语义" data-domain="data">
+        <span class="stack-top"><span class="stack-lang">数据</span><span class="stack-type">技术栈</span></span>
+        <span class="stack-fw">Kafka + Flink 实时流</span>
+        <span class="stack-why">事件经 Kafka 缓冲、Flink 做有状态计算，适合秒级实时指标与需要精确一次的流式链路。</span>
+        <span class="stack-meta">Java</span>
       </a></div>
     </section><section class="dev-section matrix-section" id="domain-ai" data-domain="ai">
       <div class="era-head">
         <h2 class="era-head__title">AI / 机器学习</h2>
-        <span class="era-head__range">3 个栈</span>
+        <span class="era-head__range">4 个栈</span>
         <span class="era-head__count">训练、服务与实验是三套环境，先定延迟与迭代方式。</span>
       </div>
       <div class="stack-grid"><a class="stack-card stack-entry" href="ml-serving.html" data-search="模型服务 把训练好的模型封装成低延迟 api，关注并发、版本回滚与监控。 ai / 机器学习 python · pytorch · fastapi 在线推理 api 模型版本管理 gpu 资源调度" data-domain="ai">
@@ -368,11 +383,16 @@ try {
         <span class="stack-fw">Julia 机器学习</span>
         <span class="stack-why">面向数值与可微编程的 Julia 栈，适合科学机器学习与需要自定义梯度的研究。</span>
         <span class="stack-meta">Julia · Flux · DifferentialEquations.jl</span>
+      </a><a class="stack-card stack-entry" href="llm-rag-app.html" data-search="llm rag 应用 私有知识切分入库、检索后拼接提示词交给大模型，适合需要引用溯源的企业问答与助手。 ai / 机器学习 python · fastapi 企业知识问答 需要引用与溯源 私有数据不出域" data-domain="ai">
+        <span class="stack-top"><span class="stack-lang">AI / 机器学习</span><span class="stack-type">技术栈</span></span>
+        <span class="stack-fw">LLM RAG 应用</span>
+        <span class="stack-why">私有知识切分入库、检索后拼接提示词交给大模型，适合需要引用溯源的企业问答与助手。</span>
+        <span class="stack-meta">Python · FastAPI</span>
       </a></div>
     </section><section class="dev-section matrix-section" id="domain-embedded" data-domain="embedded">
       <div class="era-head">
         <h2 class="era-head__title">嵌入式</h2>
-        <span class="era-head__range">1 个栈</span>
+        <span class="era-head__range">4 个栈</span>
         <span class="era-head__count">资源、实时性与工具链成熟度优先于语言偏好。</span>
       </div>
       <div class="stack-grid"><a class="stack-card stack-entry" href="rtos-firmware.html" data-search="rtos 固件 c 与实时内核构成的固件栈：任务优先级、中断延迟与资源上限是设计约束。 嵌入式 c · freertos mcu 实时控制 资源受限设备 长生命周期产品" data-domain="embedded">
@@ -380,11 +400,26 @@ try {
         <span class="stack-fw">RTOS 固件</span>
         <span class="stack-why">C 与实时内核构成的固件栈：任务优先级、中断延迟与资源上限是设计约束。</span>
         <span class="stack-meta">C · FreeRTOS</span>
+      </a><a class="stack-card stack-entry" href="zephyr-rtos.html" data-search="zephyr rtos 固件 跨厂商板卡复用的实时操作系统，内置蓝牙与网络协议栈，适合需要长期维护的多硬件产品线。 嵌入式 c 多硬件共用固件 长期维护的产品线 需要成熟协议栈" data-domain="embedded">
+        <span class="stack-top"><span class="stack-lang">嵌入式</span><span class="stack-type">技术栈</span></span>
+        <span class="stack-fw">Zephyr RTOS 固件</span>
+        <span class="stack-why">跨厂商板卡复用的实时操作系统，内置蓝牙与网络协议栈，适合需要长期维护的多硬件产品线。</span>
+        <span class="stack-meta">C</span>
+      </a><a class="stack-card stack-entry" href="esp-idf-iot.html" data-search="esp-idf iot 固件 esp32 系列官方框架，wi-fi / ble 与 ota 开箱可用，适合快速从原型走到量产的联网设备。 嵌入式 c wi-fi / ble 联网设备 原型到量产 需要 ota" data-domain="embedded">
+        <span class="stack-top"><span class="stack-lang">嵌入式</span><span class="stack-type">技术栈</span></span>
+        <span class="stack-fw">ESP-IDF IoT 固件</span>
+        <span class="stack-why">ESP32 系列官方框架，Wi-Fi / BLE 与 OTA 开箱可用，适合快速从原型走到量产的联网设备。</span>
+        <span class="stack-meta">C</span>
+      </a><a class="stack-card stack-entry" href="arduino-prototype.html" data-search="arduino 原型 用统一核心库快速驱动传感器与执行器，适合教学、创客与概念验证，不作为量产基线。 嵌入式 c++ 教学与快速验证 单板小项目 创客原型" data-domain="embedded">
+        <span class="stack-top"><span class="stack-lang">嵌入式</span><span class="stack-type">技术栈</span></span>
+        <span class="stack-fw">Arduino 原型</span>
+        <span class="stack-why">用统一核心库快速驱动传感器与执行器，适合教学、创客与概念验证，不作为量产基线。</span>
+        <span class="stack-meta">C++</span>
       </a></div>
     </section><section class="dev-section matrix-section" id="domain-security" data-domain="security">
       <div class="era-head">
         <h2 class="era-head__title">安全</h2>
-        <span class="era-head__range">3 个栈</span>
+        <span class="era-head__range">4 个栈</span>
         <span class="era-head__count">默认安全与合规基线优先，安全能力尽量做成平台能力。</span>
       </div>
       <div class="stack-grid"><a class="stack-card stack-entry" href="web-pentest.html" data-search="web 渗透测试 以 burp 为中心的手工测试 + sqlmap / nuclei 的自动化验证，输出可复现证据与修复建议。 安全  web / api 授权测试 漏洞验证与复测 安全基线检查" data-domain="security">
@@ -402,11 +437,16 @@ try {
         <span class="stack-fw">漏洞挖掘与逆向</span>
         <span class="stack-why">C/C++ 目标上的 Fuzz + 消毒器 + 反汇编分析，把崩溃变成可复现的漏洞报告。</span>
         <span class="stack-meta">C · C++</span>
+      </a><a class="stack-card stack-entry" href="soc-forensics.html" data-search="安全运营与取证 终端采集、主机取证与规则检测组合成响应链路，用于授权范围内的事件调查与合规审计。 安全 python 事件响应与取证 主机狩猎 合规审计留痕" data-domain="security">
+        <span class="stack-top"><span class="stack-lang">安全</span><span class="stack-type">技术栈</span></span>
+        <span class="stack-fw">安全运营与取证</span>
+        <span class="stack-why">终端采集、主机取证与规则检测组合成响应链路，用于授权范围内的事件调查与合规审计。</span>
+        <span class="stack-meta">Python</span>
       </a></div>
     </section><section class="dev-section matrix-section" id="domain-blockchain" data-domain="blockchain">
       <div class="era-head">
         <h2 class="era-head__title">区块链</h2>
-        <span class="era-head__range">1 个栈</span>
+        <span class="era-head__range">4 个栈</span>
         <span class="era-head__count">合约不可轻易修改，审计与升级路径要在设计阶段确定。</span>
       </div>
       <div class="stack-grid"><a class="stack-card stack-entry" href="evm-contracts.html" data-search="evm 合约 solidity 合约加审计过的标准库与脚本化测试；主网前必须独立审计。 区块链 solidity · foundry · hardhat 代币与协议合约 需要可测试的部署流程 审计驱动的开发" data-domain="blockchain">
@@ -414,11 +454,26 @@ try {
         <span class="stack-fw">EVM 合约</span>
         <span class="stack-why">Solidity 合约加审计过的标准库与脚本化测试；主网前必须独立审计。</span>
         <span class="stack-meta">Solidity · Foundry · Hardhat</span>
+      </a><a class="stack-card stack-entry" href="solana-programs.html" data-search="solana 程序 rust 编写链上程序、anchor 提供账户与指令框架，适合高吞吐低费用的链上应用。 区块链 rust 高吞吐链上应用 低费用交易 rust 团队" data-domain="blockchain">
+        <span class="stack-top"><span class="stack-lang">区块链</span><span class="stack-type">技术栈</span></span>
+        <span class="stack-fw">Solana 程序</span>
+        <span class="stack-why">Rust 编写链上程序、Anchor 提供账户与指令框架，适合高吞吐低费用的链上应用。</span>
+        <span class="stack-meta">Rust</span>
+      </a><a class="stack-card stack-entry" href="fabric-consortium.html" data-search="hyperledger fabric 联盟链 以准入身份与通道隔离为核心的企业联盟链，适合多方协作但要求数据可见性边界的场景。 区块链 go 企业联盟链 需要准入与通道隔离 与既有系统集成" data-domain="blockchain">
+        <span class="stack-top"><span class="stack-lang">区块链</span><span class="stack-type">技术栈</span></span>
+        <span class="stack-fw">Hyperledger Fabric 联盟链</span>
+        <span class="stack-why">以准入身份与通道隔离为核心的企业联盟链，适合多方协作但要求数据可见性边界的场景。</span>
+        <span class="stack-meta">Go</span>
+      </a><a class="stack-card stack-entry" href="contract-audit.html" data-search="合约审计工具链 静态分析、模糊测试与不变式测试组合成上线前门禁，只用于自有或已获书面授权的合约。 区块链 solidity · foundry 合约上线前审计 ci 安全门禁 漏洞复现与修复验证" data-domain="blockchain">
+        <span class="stack-top"><span class="stack-lang">区块链</span><span class="stack-type">技术栈</span></span>
+        <span class="stack-fw">合约审计工具链</span>
+        <span class="stack-why">静态分析、模糊测试与不变式测试组合成上线前门禁，只用于自有或已获书面授权的合约。</span>
+        <span class="stack-meta">Solidity · Foundry</span>
       </a></div>
     </section><section class="dev-section matrix-section" id="domain-science" data-domain="science">
       <div class="era-head">
         <h2 class="era-head__title">科学计算</h2>
-        <span class="era-head__range">1 个栈</span>
+        <span class="era-head__range">4 个栈</span>
         <span class="era-head__count">数值库、并行通信与数据格式往往比框架更重要。</span>
       </div>
       <div class="stack-grid"><a class="stack-card stack-entry" href="hpc-numerics.html" data-search="hpc 数值计算 fortran 数值内核 + mpi 并行 + 标准科学数据格式，适合集群上的长时间计算。 科学计算 fortran · mpi · lapack / blas 集群数值模拟 大规模线性代数 气象与工程计算" data-domain="science">
@@ -426,13 +481,28 @@ try {
         <span class="stack-fw">HPC 数值计算</span>
         <span class="stack-why">Fortran 数值内核 + MPI 并行 + 标准科学数据格式，适合集群上的长时间计算。</span>
         <span class="stack-meta">FORTRAN · MPI · LAPACK / BLAS</span>
+      </a><a class="stack-card stack-entry" href="python-scientific.html" data-search="python 科学计算 以 numpy / scipy 为核心、numba 加速关键循环，兼顾可读性与数值性能，并可直接衔接 ai 生态。 科学计算 python 数据分析与建模 教学科研 与 ai 生态衔接" data-domain="science">
+        <span class="stack-top"><span class="stack-lang">科学计算</span><span class="stack-type">技术栈</span></span>
+        <span class="stack-fw">Python 科学计算</span>
+        <span class="stack-why">以 NumPy / SciPy 为核心、Numba 加速关键循环，兼顾可读性与数值性能，并可直接衔接 AI 生态。</span>
+        <span class="stack-meta">Python</span>
+      </a><a class="stack-card stack-entry" href="r-statistics.html" data-search="r 统计分析 tidyverse 处理数据、专门包完成统计建模、rmarkdown 输出可重复报告，适合统计与临床研究。 科学计算 r · tidyverse · rmarkdown 统计分析 临床试验与流行病学 可重复报告" data-domain="science">
+        <span class="stack-top"><span class="stack-lang">科学计算</span><span class="stack-type">技术栈</span></span>
+        <span class="stack-fw">R 统计分析</span>
+        <span class="stack-why">tidyverse 处理数据、专门包完成统计建模、RMarkdown 输出可重复报告，适合统计与临床研究。</span>
+        <span class="stack-meta">R · tidyverse · RMarkdown</span>
+      </a><a class="stack-card stack-entry" href="matlab-engineering.html" data-search="matlab 工程计算 以 simulink 建模与工具箱覆盖控制系统、信号处理，适合有许可预算的工程仿真与验证。 科学计算 matlab 控制系统设计 信号处理 工程仿真与验证" data-domain="science">
+        <span class="stack-top"><span class="stack-lang">科学计算</span><span class="stack-type">技术栈</span></span>
+        <span class="stack-fw">MATLAB 工程计算</span>
+        <span class="stack-why">以 Simulink 建模与工具箱覆盖控制系统、信号处理，适合有许可预算的工程仿真与验证。</span>
+        <span class="stack-meta">MATLAB</span>
       </a></div>
     </section></div>
     <p class="index-empty" id="stackEmpty">没有匹配的技术栈。试试「Web」「Rust」「数据」，或把领域切回全部。</p>
 
     <footer class="pagefoot">
       <p class="stamp">技术栈是策展组合，不是官方认证；组件版本与许可以官方文档为准。最后核对 2026-10-30。</p>
-      <p>第 1–23 批 · 技术栈</p>
+      <p>第 1–25 批 · 技术栈</p>
     </footer>
   </div>
 </main>

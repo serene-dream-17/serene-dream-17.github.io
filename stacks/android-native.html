@@ -92,7 +92,7 @@ try {
     <p class="catalog__empty" data-visible="false">没有匹配的条目。<br>试试「c」「1972」「字节码」。</p>
   </div>
   <div class="catalog__foot">
-    第 1–23 批 · 1950s–2020s<br>
+    第 1–25 批 · 1950s–2020s<br>
     <a href="../index.html">← 首页</a><br>
     <a href="../languages/index.html">编程语言 →</a><br>
     <a href="../frameworks/index.html">框架 →</a><br>
@@ -158,13 +158,13 @@ try {
 
     <section class="block reveal" id="depth">
       <div class="block__head"><span class="block__num">05</span><h2 class="block__title">工程化深度<em>Engineering</em></h2><span class="block__rule"></span></div>
-      <p class="prose">版本是策展建议线（LTS 或当前稳定线），具体小版本与可用性以官方文档为准。</p>
-      <div class="stack-depth"><article class="depth-block"><h3 class="depth-block__title">版本基线<em>Baseline</em></h3><ul class="fw-list"><li>Kotlin 2.1</li><li>Android SDK 35</li><li>Jetpack Compose 1.7</li><li>Gradle 8.10</li></ul></article><article class="depth-block"><h3 class="depth-block__title">测试与 CI<em>Testing</em></h3><ul class="fw-list"><li>单元：JUnit + Robolectric</li><li>UI：Compose UI Test</li><li>CI：lint + 测试 + AAB</li></ul></article><article class="depth-block"><h3 class="depth-block__title">部署与运维<em>Operations</em></h3><ul class="fw-list"><li>构建：AAB</li><li>发布：Play Console 分阶段</li><li>监控：Crashlytics / Play Vitals</li></ul></article><article class="depth-block"><h3 class="depth-block__title">团队与成本<em>Team</em></h3><ul class="fw-list"><li>2–5 人</li><li>Kotlin + Android 平台</li><li>成本：中低</li></ul></article></div>
+      <p class="prose">版本是策展建议线（LTS 或当前稳定线）；链路、容量与 SLO 为示意口径，具体数值需按实测与官方文档校准。</p>
+      <div class="stack-depth"><article class="depth-block"><h3 class="depth-block__title">版本基线<em>Baseline</em></h3><ul class="fw-list"><li>Kotlin 2.1</li><li>Android SDK 35</li><li>Jetpack Compose 1.7</li><li>Gradle 8.10</li></ul></article><article class="depth-block"><h3 class="depth-block__title">测试与 CI<em>Testing</em></h3><ul class="fw-list"><li>单元：JUnit + Robolectric</li><li>UI：Compose UI Test</li><li>CI：lint + 测试 + AAB</li></ul></article><article class="depth-block"><h3 class="depth-block__title">部署与运维<em>Operations</em></h3><ul class="fw-list"><li>构建：AAB</li><li>发布：Play Console 分阶段</li><li>监控：Crashlytics / Play Vitals</li></ul></article><article class="depth-block"><h3 class="depth-block__title">团队与成本<em>Team</em></h3><ul class="fw-list"><li>2–5 人</li><li>Kotlin + Android 平台</li><li>成本：中低</li></ul></article><article class="depth-block"><h3 class="depth-block__title">数据与请求链路<em>Flow</em></h3><ul class="fw-list"><li>启动：Application → Activity → Compose 树</li><li>数据：Repository → Retrofit/Room</li><li>后台：WorkManager 处理同步</li></ul></article><article class="depth-block"><h3 class="depth-block__title">性能与容量<em>Capacity</em></h3><ul class="fw-list"><li>启动：冷启动与首帧</li><li>瓶颈：主线程 IO 与重组</li><li>扩容：动态特性模块</li></ul></article><article class="depth-block"><h3 class="depth-block__title">可观测性与 SLO<em>Observability</em></h3><ul class="fw-list"><li>指标：启动、ANR、崩溃</li><li>日志：Logcat + 崩溃平台</li><li>告警：ANR 率</li></ul></article><article class="depth-block"><h3 class="depth-block__title">安全与合规<em>Security</em></h3><ul class="fw-list"><li>认证：Keystore 存储令牌</li><li>传输：网络安全配置 + 证书固定</li><li>发布：Play 签名与完整性校验</li></ul></article></div>
     </section>
 
     <footer class="pagefoot">
       <p class="stamp">技术栈为策展组合；组件版本、许可与默认配置以官方文档为准。</p>
-      <p>第 1–23 批 · 技术栈 · Android 原生</p>
+      <p>第 1–25 批 · 技术栈 · Android 原生</p>
     </footer>
   </div>
 </main>

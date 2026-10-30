@@ -92,7 +92,7 @@ try {
     <p class="catalog__empty" data-visible="false">没有匹配的条目。<br>试试「c」「1972」「字节码」。</p>
   </div>
   <div class="catalog__foot">
-    第 1–23 批 · 1950s–2020s<br>
+    第 1–25 批 · 1950s–2020s<br>
     <a href="../index.html">← 首页</a><br>
     <a href="../languages/index.html">编程语言 →</a><br>
     <a href="../frameworks/index.html">框架 →</a><br>
@@ -158,13 +158,13 @@ try {
 
     <section class="block reveal" id="depth">
       <div class="block__head"><span class="block__num">05</span><h2 class="block__title">工程化深度<em>Engineering</em></h2><span class="block__rule"></span></div>
-      <p class="prose">版本是策展建议线（LTS 或当前稳定线），具体小版本与可用性以官方文档为准。</p>
-      <div class="stack-depth"><article class="depth-block"><h3 class="depth-block__title">版本基线<em>Baseline</em></h3><ul class="fw-list"><li>C11</li><li>FreeRTOS 11</li><li>ARM GCC 13</li><li>OpenOCD</li></ul></article><article class="depth-block"><h3 class="depth-block__title">测试与 CI<em>Testing</em></h3><ul class="fw-list"><li>单元：Unity / CMock</li><li>硬件：HIL 冒烟</li><li>CI：交叉编译 + 静态检查</li></ul></article><article class="depth-block"><h3 class="depth-block__title">部署与运维<em>Operations</em></h3><ul class="fw-list"><li>构建：交叉编译产物</li><li>烧录：JTAG / SWD</li><li>监控：串口日志 + 看门狗</li></ul></article><article class="depth-block"><h3 class="depth-block__title">团队与成本<em>Team</em></h3><ul class="fw-list"><li>2–6 人</li><li>C + 硬件基础 + 实时约束</li><li>成本：中（硬件与调试器）</li></ul></article></div>
+      <p class="prose">版本是策展建议线（LTS 或当前稳定线）；链路、容量与 SLO 为示意口径，具体数值需按实测与官方文档校准。</p>
+      <div class="stack-depth"><article class="depth-block"><h3 class="depth-block__title">版本基线<em>Baseline</em></h3><ul class="fw-list"><li>C11</li><li>FreeRTOS 11</li><li>ARM GCC 13</li><li>OpenOCD</li></ul></article><article class="depth-block"><h3 class="depth-block__title">测试与 CI<em>Testing</em></h3><ul class="fw-list"><li>单元：Unity / CMock</li><li>硬件：HIL 冒烟</li><li>CI：交叉编译 + 静态检查</li></ul></article><article class="depth-block"><h3 class="depth-block__title">部署与运维<em>Operations</em></h3><ul class="fw-list"><li>构建：交叉编译产物</li><li>烧录：JTAG / SWD</li><li>监控：串口日志 + 看门狗</li></ul></article><article class="depth-block"><h3 class="depth-block__title">团队与成本<em>Team</em></h3><ul class="fw-list"><li>2–6 人</li><li>C + 硬件基础 + 实时约束</li><li>成本：中（硬件与调试器）</li></ul></article><article class="depth-block"><h3 class="depth-block__title">数据与请求链路<em>Flow</em></h3><ul class="fw-list"><li>上电：bootloader → 内核 → 任务</li><li>外设：中断 → 驱动 → 队列 → 任务</li><li>升级：双分区 OTA 校验</li></ul></article><article class="depth-block"><h3 class="depth-block__title">性能与容量<em>Capacity</em></h3><ul class="fw-list"><li>中断延迟：微秒级</li><li>资源：RAM/Flash 硬预算</li><li>调优：裁剪与静态分配</li></ul></article><article class="depth-block"><h3 class="depth-block__title">可观测性与 SLO<em>Observability</em></h3><ul class="fw-list"><li>日志：串口环形缓冲</li><li>指标：栈水位、任务占用</li><li>告警：看门狗复位</li></ul></article><article class="depth-block"><h3 class="depth-block__title">安全与合规<em>Security</em></h3><ul class="fw-list"><li>启动：安全启动与镜像签名</li><li>密钥：安全区存储</li><li>调试：量产关闭调试口</li></ul></article></div>
     </section>
 
     <footer class="pagefoot">
       <p class="stamp">技术栈为策展组合；组件版本、许可与默认配置以官方文档为准。</p>
-      <p>第 1–23 批 · 技术栈 · RTOS 固件</p>
+      <p>第 1–25 批 · 技术栈 · RTOS 固件</p>
     </footer>
   </div>
 </main>

@@ -92,7 +92,7 @@ try {
     <p class="catalog__empty" data-visible="false">没有匹配的条目。<br>试试「c」「1972」「字节码」。</p>
   </div>
   <div class="catalog__foot">
-    第 1–23 批 · 1950s–2020s<br>
+    第 1–25 批 · 1950s–2020s<br>
     <a href="../index.html">← 首页</a><br>
     <a href="../languages/index.html">编程语言 →</a><br>
     <a href="../frameworks/index.html">框架 →</a><br>
@@ -158,13 +158,13 @@ try {
 
     <section class="block reveal" id="depth">
       <div class="block__head"><span class="block__num">05</span><h2 class="block__title">工程化深度<em>Engineering</em></h2><span class="block__rule"></span></div>
-      <p class="prose">版本是策展建议线（LTS 或当前稳定线），具体小版本与可用性以官方文档为准。</p>
-      <div class="stack-depth"><article class="depth-block"><h3 class="depth-block__title">版本基线<em>Baseline</em></h3><ul class="fw-list"><li>Elixir 1.18</li><li>Phoenix 1.7 稳定线</li><li>PostgreSQL 16</li><li>Ecto 3.12</li></ul></article><article class="depth-block"><h3 class="depth-block__title">测试与 CI<em>Testing</em></h3><ul class="fw-list"><li>单元：ExUnit</li><li>集成：Phoenix.ConnTest + LiveViewTest</li><li>CI：测试 + 格式检查</li></ul></article><article class="depth-block"><h3 class="depth-block__title">部署与运维<em>Operations</em></h3><ul class="fw-list"><li>构建：release 包</li><li>部署：容器或裸机集群</li><li>监控：Telemetry + Prometheus</li></ul></article><article class="depth-block"><h3 class="depth-block__title">团队与成本<em>Team</em></h3><ul class="fw-list"><li>2–6 人</li><li>Elixir + OTP + SQL</li><li>成本：中低（单机并发高）</li></ul></article></div>
+      <p class="prose">版本是策展建议线（LTS 或当前稳定线）；链路、容量与 SLO 为示意口径，具体数值需按实测与官方文档校准。</p>
+      <div class="stack-depth"><article class="depth-block"><h3 class="depth-block__title">版本基线<em>Baseline</em></h3><ul class="fw-list"><li>Elixir 1.18</li><li>Phoenix 1.7 稳定线</li><li>PostgreSQL 16</li><li>Ecto 3.12</li></ul></article><article class="depth-block"><h3 class="depth-block__title">测试与 CI<em>Testing</em></h3><ul class="fw-list"><li>单元：ExUnit</li><li>集成：Phoenix.ConnTest + LiveViewTest</li><li>CI：测试 + 格式检查</li></ul></article><article class="depth-block"><h3 class="depth-block__title">部署与运维<em>Operations</em></h3><ul class="fw-list"><li>构建：release 包</li><li>部署：容器或裸机集群</li><li>监控：Telemetry + Prometheus</li></ul></article><article class="depth-block"><h3 class="depth-block__title">团队与成本<em>Team</em></h3><ul class="fw-list"><li>2–6 人</li><li>Elixir + OTP + SQL</li><li>成本：中低（单机并发高）</li></ul></article><article class="depth-block"><h3 class="depth-block__title">数据与请求链路<em>Flow</em></h3><ul class="fw-list"><li>请求：Endpoint → Router → Channel/LiveView</li><li>实时：Phoenix Channel 广播</li><li>数据：Ecto → PostgreSQL</li></ul></article><article class="depth-block"><h3 class="depth-block__title">性能与容量<em>Capacity</em></h3><ul class="fw-list"><li>瓶颈：消息扇出与数据库写入</li><li>扩容：BEAM 分布式节点</li><li>调优：进程池与背压</li></ul></article><article class="depth-block"><h3 class="depth-block__title">可观测性与 SLO<em>Observability</em></h3><ul class="fw-list"><li>指标：连接数、消息延迟</li><li>追踪：Telemetry 事件</li><li>告警：连接掉线与慢查询</li></ul></article><article class="depth-block"><h3 class="depth-block__title">安全与合规<em>Security</em></h3><ul class="fw-list"><li>认证：Guardian/JWT + Channel 鉴权</li><li>输入：Ecto changeset 校验</li><li>传输：WSS + 速率限制</li></ul></article></div>
     </section>
 
     <footer class="pagefoot">
       <p class="stamp">技术栈为策展组合；组件版本、许可与默认配置以官方文档为准。</p>
-      <p>第 1–23 批 · 技术栈 · Phoenix 实时应用</p>
+      <p>第 1–25 批 · 技术栈 · Phoenix 实时应用</p>
     </footer>
   </div>
 </main>

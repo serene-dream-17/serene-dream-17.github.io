@@ -92,7 +92,7 @@ try {
     <p class="catalog__empty" data-visible="false">没有匹配的条目。<br>试试「c」「1972」「字节码」。</p>
   </div>
   <div class="catalog__foot">
-    第 1–23 批 · 1950s–2020s<br>
+    第 1–25 批 · 1950s–2020s<br>
     <a href="../index.html">← 首页</a><br>
     <a href="../languages/index.html">编程语言 →</a><br>
     <a href="../frameworks/index.html">框架 →</a><br>
@@ -158,13 +158,13 @@ try {
 
     <section class="block reveal" id="depth">
       <div class="block__head"><span class="block__num">05</span><h2 class="block__title">工程化深度<em>Engineering</em></h2><span class="block__rule"></span></div>
-      <p class="prose">版本是策展建议线（LTS 或当前稳定线），具体小版本与可用性以官方文档为准。</p>
-      <div class="stack-depth"><article class="depth-block"><h3 class="depth-block__title">版本基线<em>Baseline</em></h3><ul class="fw-list"><li>C11 / C++20</li><li>AFL++ 4.x</li><li>Clang 18（ASan/UBSan）</li><li>Ghidra 11</li></ul></article><article class="depth-block"><h3 class="depth-block__title">测试与 CI<em>Testing</em></h3><ul class="fw-list"><li>种子语料回归</li><li>崩溃去重与最小化</li><li>修复后回归</li></ul></article><article class="depth-block"><h3 class="depth-block__title">部署与运维<em>Operations</em></h3><ul class="fw-list"><li>容器化 Fuzz 环境</li><li>崩溃样本归档</li><li>研究披露流程</li></ul></article><article class="depth-block"><h3 class="depth-block__title">团队与成本<em>Team</em></h3><ul class="fw-list"><li>2–5 人</li><li>C/C++ + 二进制分析</li><li>成本：中（算力）</li></ul></article></div>
+      <p class="prose">版本是策展建议线（LTS 或当前稳定线）；链路、容量与 SLO 为示意口径，具体数值需按实测与官方文档校准。</p>
+      <div class="stack-depth"><article class="depth-block"><h3 class="depth-block__title">版本基线<em>Baseline</em></h3><ul class="fw-list"><li>C11 / C++20</li><li>AFL++ 4.x</li><li>Clang 18（ASan/UBSan）</li><li>Ghidra 11</li></ul></article><article class="depth-block"><h3 class="depth-block__title">测试与 CI<em>Testing</em></h3><ul class="fw-list"><li>种子语料回归</li><li>崩溃去重与最小化</li><li>修复后回归</li></ul></article><article class="depth-block"><h3 class="depth-block__title">部署与运维<em>Operations</em></h3><ul class="fw-list"><li>容器化 Fuzz 环境</li><li>崩溃样本归档</li><li>研究披露流程</li></ul></article><article class="depth-block"><h3 class="depth-block__title">团队与成本<em>Team</em></h3><ul class="fw-list"><li>2–5 人</li><li>C/C++ + 二进制分析</li><li>成本：中（算力）</li></ul></article><article class="depth-block"><h3 class="depth-block__title">数据与请求链路<em>Flow</em></h3><ul class="fw-list"><li>样本：授权目标/样本 → 隔离环境</li><li>分析：静态 → 动态 → 复现</li><li>留痕：崩溃样本与最小复现</li></ul></article><article class="depth-block"><h3 class="depth-block__title">性能与容量<em>Capacity</em></h3><ul class="fw-list"><li>模糊：按算力预算并行</li><li>瓶颈：插桩开销</li><li>扩容：集群与语料去重</li></ul></article><article class="depth-block"><h3 class="depth-block__title">可观测性与 SLO<em>Observability</em></h3><ul class="fw-list"><li>指标：覆盖率、崩溃数、去重率</li><li>日志：运行记录与栈回溯</li><li>告警：样本逃逸与资源异常</li></ul></article><article class="depth-block"><h3 class="depth-block__title">安全与合规<em>Security</em></h3><ul class="fw-list"><li>隔离：沙箱/网络断开</li><li>授权：仅限自有或授权目标</li><li>披露：协调披露与最小留存</li></ul></article></div>
     </section>
 
     <footer class="pagefoot">
       <p class="stamp">技术栈为策展组合；组件版本、许可与默认配置以官方文档为准。</p>
-      <p>第 1–23 批 · 技术栈 · 漏洞挖掘与逆向</p>
+      <p>第 1–25 批 · 技术栈 · 漏洞挖掘与逆向</p>
     </footer>
   </div>
 </main>
