@@ -52,12 +52,10 @@ def main():
         print("找不到 Chrome：", CHROME)
         return 2
 
-    pages = [ROOT / "index.html", ROOT / "frameworks.html",
-             ROOT / "sources.html", ROOT / "formats.html",
-             ROOT / "lineage.html", ROOT / "compare.html", ROOT / "verified.html",
-             ROOT / "security.html", ROOT / "scenarios.html",
-             ROOT / "404.html"]
-    pages += sorted((ROOT / "langs").glob("*.html"))
+    pages = [ROOT / "index.html", ROOT / "sources.html", ROOT / "verified.html",
+             ROOT / "scenarios.html", ROOT / "404.html"]
+    for name in ("languages", "frameworks", "stacks"):
+        pages += sorted((ROOT / name).glob("*.html"))
 
     with sync_playwright() as p:
         browser = p.chromium.launch(executable_path=CHROME)
@@ -70,14 +68,14 @@ def main():
 
         if not args.quick:
             check("页面扫描（%d 页）" % len(pages), lambda: sweep(page, pages, errors))
-        check("首页搜索与 URL", lambda: index_test(page))
-        check("矩阵筛选与 URL", lambda: matrix_test(page))
+        check("首页三级入口", lambda: home_test(page))
+        check("语言总览搜索与 URL", lambda: index_test(page))
+        check("框架总览筛选与 URL", lambda: frameworks_index_test(page))
+        check("技术栈总览与详情", lambda: stacks_test(page))
+        check("旧链接跳转", lambda: redirect_test(page))
         check("开发场景筛选与 URL", lambda: scenarios_test(page))
-        check("安全工具筛选与 URL", lambda: security_test(page))
         check("来源搜索", lambda: sources_test(page))
-        check("格式搜索", lambda: formats_test(page))
-        check("对比器预设与恢复", lambda: compare_test(page))
-        check("谱系筛选与悬停", lambda: lineage_test(page))
+        check("产物索引与阶段总表", lambda: formats_test(page))
         check("实测覆盖表", lambda: verified_test(page))
         check("字体控制器持久化", lambda: font_test(page))
         check("命令面板键盘", lambda: cmdk_test(page))
@@ -118,13 +116,13 @@ def sweep(page, pages, errors):
         if "data-cmdk" not in page.content():
             raise AssertionError(f"{rel} 缺少全站搜索按钮")
 
-        if path.parent.name == "langs" and not path.stem.endswith("-frameworks"):
+        if path.parent.name == "languages" and path.name not in ("index.html", "formats.html"):
             assert_(page.locator(".deep-feature").count() == 4, f"{rel} 深读特性不足")
             assert_(page.locator(".tag--verified").count()
                     + page.locator(".tag--level").count() >= 1,
                     f"{rel} 缺少内容等级")
             assert_(page.locator(".sources").count() == 1, f"{rel} 缺少参考来源")
-        elif path.parent.name == "langs" and path.stem.endswith("-frameworks"):
+        elif path.parent.name == "frameworks" and path.name != "index.html":
             cards = page.locator(".fw-card").count()
             if cards:
                 assert_(page.locator(".fw-source").count() == cards,
@@ -135,8 +133,63 @@ def sweep(page, pages, errors):
                     f"{rel} 缺少编者判断标签")
 
 
-def index_test(page):
+def home_test(page):
     page.goto((ROOT / "index.html").as_uri())
+    page.wait_for_timeout(120)
+    assert_(page.locator(".home-door").count() == 3, "首页不是三个入口")
+    hrefs = page.eval_on_selector_all(
+        ".home-door", "els => els.map(e => e.getAttribute('href'))"
+    )
+    for target in ("languages/index.html", "frameworks/index.html", "stacks/index.html"):
+        assert_(target in hrefs, f"首页缺少入口 {target}")
+    assert_(page.locator(".topic-link").count() == 4, "首页专题入口不是 4 个")
+    assert_(page.is_visible(".cmdk-btn"), "首页缺少搜索按钮")
+
+
+def frameworks_index_test(page):
+    page.goto((ROOT / "frameworks" / "index.html").as_uri())
+    page.wait_for_timeout(150)
+    assert_(page.locator(".fw-index-card").count() == 142, "框架总览不是 142 张卡")
+    page.select_option("#fwIndexLang", "python")
+    page.wait_for_timeout(150)
+    shown = page.locator(".fw-index-card:not([hidden])").count()
+    assert_(shown == 4, f"Python 框架卡应为 4 张，实际 {shown}")
+    assert_("l=python" in page.url, "框架语言筛选未写入 URL")
+    page.select_option("#fwIndexLang", "all")
+    page.fill("#fwIndexSearch", "游戏")
+    page.wait_for_timeout(150)
+    assert_(page.locator(".fw-index-card:not([hidden])").count() >= 2, "框架搜索无结果")
+
+
+def stacks_test(page):
+    page.goto((ROOT / "stacks" / "index.html").as_uri())
+    page.wait_for_timeout(150)
+    assert_(page.locator(".stack-entry").count() == 40, "技术栈不是 40 个")
+    page.select_option("#stackDomain", "mobile")
+    page.wait_for_timeout(150)
+    assert_(page.locator(".stack-entry:not([hidden])").count() == 3, "移动领域栈不是 3 个")
+    assert_("d=mobile" in page.url, "技术栈领域筛选未写入 URL")
+    page.goto((ROOT / "stacks" / "flutter-cross.html").as_uri())
+    page.wait_for_timeout(150)
+    assert_("Flutter" in page.inner_text("h1"), "栈详情标题异常")
+    rows = page.locator(".stack-table tbody tr").count()
+    assert_(rows == 4, f"栈构成表应为 4 层，实际 {rows}")
+    assert_(page.locator('a[href="../frameworks/dart.html#flutter"]').count() == 1,
+            "栈页缺少框架链接")
+    assert_(page.locator(".depth-block").count() == 4, "栈页深度段不是 4 个")
+
+
+def redirect_test(page):
+    page.goto((ROOT / "langs" / "python.html").as_uri())
+    page.wait_for_timeout(400)
+    assert_("languages/python.html" in page.url, f"旧语言页未跳转：{page.url}")
+    page.goto((ROOT / "formats.html").as_uri())
+    page.wait_for_timeout(400)
+    assert_("languages/formats.html" in page.url, f"旧产物索引未跳转：{page.url}")
+
+
+def index_test(page):
+    page.goto((ROOT / "languages" / "index.html").as_uri())
     page.wait_for_timeout(120)
     page.fill("#indexSearch", "rust")
     page.wait_for_timeout(120)
@@ -150,40 +203,15 @@ def index_test(page):
     page.wait_for_timeout(100)
 
 
-def matrix_test(page):
-    page.goto((ROOT / "frameworks.html").as_uri())
-    page.wait_for_timeout(120)
-    page.fill("#matrixSearch", "rust")
-    page.select_option("#matrixScenario", "game")
-    page.wait_for_timeout(150)
-    assert_("q=rust" in page.url and "s=game" in page.url, "矩阵 URL 状态缺失")
-    shown = page.locator(".stack-card:not([hidden])").count()
-    assert_(shown >= 1, "矩阵未显示结果")
-    page.fill("#matrixSearch", "")
-    page.select_option("#matrixScenario", "security")
-    page.wait_for_timeout(120)
-    sec_cards = page.locator('#security .stack-card:not([hidden])').count()
-    assert_(sec_cards >= 10, f"安全场景条目不足 {sec_cards}")
-    href = page.get_attribute('#security .stack-card', "href")
-    assert_(href.startswith("security.html#"), f"安全场景链接异常 {href}")
-    hrefs = page.eval_on_selector_all(
-        "#security .stack-card", "els => els.map(e => e.getAttribute('href'))"
-    )
-    for anchor in ("security.html#slither", "security.html#gnutls", "security.html#age",
-                   "security.html#metasploit", "security.html#ghidra", "security.html#kube-bench"):
-        assert_(anchor in hrefs, f"矩阵缺少新增安全工具链接 {anchor}")
-
-
 def scenarios_test(page):
     page.goto((ROOT / "scenarios.html").as_uri())
     page.wait_for_timeout(150)
-    assert_(page.locator(".dev-section").count() == 12, "开发场景不是 12 个")
+    assert_(page.locator(".dev-section").count() == 11, "开发场景不是 11 个")
     assert_(page.locator(".dev-card").count() >= 100, "开发场景推荐组不足")
     patterns = page.locator("#devArch option").count()
     assert_(patterns == 13, f"统一模式选项不是 12 + 全部（{patterns}）")
     assert_(page.locator(".dev-legend__item").count() == 12, "架构模式图例不是 12 项")
-    assert_(page.locator(".dev-arch__pattern").count() == 37, "架构分组模式徽标不是 37 个")
-    assert_(page.locator("#dev-security .dev-arch").count() == 4, "安全场景不是 4 个分组")
+    assert_(page.locator(".dev-arch__pattern").count() == 33, "架构分组模式徽标不是 33 个")
     page.fill("#devSearch", "微服务")
     page.select_option("#devScenario", "backend")
     page.wait_for_timeout(150)
@@ -200,46 +228,21 @@ def scenarios_test(page):
     page.select_option("#devArch", "pipeline")
     page.wait_for_timeout(150)
     shown = page.locator(".dev-card:not([hidden])").count()
-    assert_(shown == 31, f"管线 / 批流模式应为 31 组，实际 {shown}")
+    assert_(shown == 20, f"管线 / 批流模式应为 20 组，实际 {shown}")
     assert_("a=pipeline" in page.url, "模式筛选未写入 URL")
     page.reload()
     page.wait_for_timeout(180)
     assert_(page.input_value("#devArch") == "pipeline", "模式筛选刷新后未恢复")
-    assert_(page.locator(".dev-card:not([hidden])").count() == 31, "刷新后模式筛选结果不一致")
+    assert_(page.locator(".dev-card:not([hidden])").count() == 20, "刷新后模式筛选结果不一致")
 
-    page.select_option("#devScenario", "security")
+    page.select_option("#devScenario", "embedded")
     page.select_option("#devArch", "native")
     page.wait_for_timeout(180)
-    assert_("s=security" in page.url and "a=native" in page.url, "场景 + 模式 URL 状态缺失")
-    assert_(page.locator(".dev-card:not([hidden])").count() == 5,
-            "安全场景 + 原生模式应为 5 组")
-    assert_(page.locator("#dev-security .dev-arch:not([hidden])").count() == 1,
-            "安全场景 + 原生模式应只剩 1 个分组")
-
-
-def security_test(page):
-    page.goto((ROOT / "security.html").as_uri())
-    page.wait_for_timeout(150)
-    assert_(page.locator(".sec-tool").count() == 41, "安全工具不是 41 个")
-    page.fill("#secSearch", "tls")
-    page.wait_for_timeout(150)
-    assert_("q=tls" in page.url, "安全搜索未写入 URL")
-    assert_(page.locator(".sec-tool:not([hidden])").count() >= 1, "安全搜索无结果")
-    page.fill("#secSearch", "")
-    for term in ("slither", "gnutls", "age"):
-        page.fill("#secSearch", term)
-        page.wait_for_timeout(120)
-        assert_(page.locator(f"#{term}:not([hidden])").count() == 1,
-                f"安全搜索未命中 {term}")
-    page.fill("#secSearch", "")
-    page.wait_for_timeout(120)
-    page.select_option("#secDirection", "pentest")
-    page.wait_for_timeout(150)
-    assert_("d=pentest" in page.url, "安全方向未写入 URL")
-    assert_(page.locator(".sec-tool:not([hidden])").count() == 7, "渗透测试方向条目不是 7")
-    page.select_option("#secDirection", "incident")
-    page.wait_for_timeout(150)
-    assert_(page.locator(".sec-tool:not([hidden])").count() == 2, "应急取证方向条目不是 2")
+    assert_("s=embedded" in page.url and "a=native" in page.url, "场景 + 模式 URL 状态缺失")
+    assert_(page.locator(".dev-card:not([hidden])").count() == 3,
+            "嵌入式场景 + 原生模式应为 3 组")
+    assert_(page.locator("#dev-embedded .dev-arch:not([hidden])").count() == 1,
+            "嵌入式场景 + 原生模式应只剩 1 个分组")
 
 
 def sources_test(page):
@@ -252,43 +255,16 @@ def sources_test(page):
 
 
 def formats_test(page):
-    page.goto((ROOT / "formats.html").as_uri())
-    page.wait_for_timeout(120)
+    page.goto((ROOT / "languages" / "formats.html").as_uri())
+    page.wait_for_timeout(150)
     total = page.locator(".fmt-card").count()
     assert_(total >= 40, f"格式数异常 {total}")
+    assert_(page.locator(".stage-details").count() == 78, "阶段总表不是 78 组")
+    assert_(page.locator("#unclassified").count() == 1, "缺少未归类阶段")
     page.fill("#fmtSearch", "elf")
     page.wait_for_timeout(120)
     assert_(page.locator(".fmt-card:not([hidden])").count() == 1, "ELF 过滤异常")
     assert_("q=elf" in page.url, "格式搜索未写入 URL")
-
-
-def compare_test(page):
-    page.goto((ROOT / "compare.html").as_uri())
-    page.wait_for_timeout(180)
-    page.click('[data-preset="mobile"]')
-    page.wait_for_timeout(180)
-    assert_(page.input_value("#cmp1") == "swift|SwiftUI", "移动预设未生效")
-    assert_("m=framework" in page.url, "对比模式未写入 URL")
-    url = page.url
-    page.goto(url)
-    page.wait_for_timeout(180)
-    assert_(page.input_value("#cmp1") == "swift|SwiftUI", "刷新后预设未恢复")
-    page.click('[data-preset="science"]')
-    page.wait_for_timeout(150)
-    assert_(page.input_value("#cmp1") == "fortran", "科学计算预设未生效")
-
-
-def lineage_test(page):
-    page.goto((ROOT / "lineage.html").as_uri())
-    page.wait_for_timeout(220)
-    assert_(page.locator(".lineage-node").count() == 78, "谱系节点不是 78")
-    page.click('[data-lineage-filter="markup"]')
-    page.wait_for_timeout(150)
-    assert_("f=markup" in page.url, "谱系筛选未写入 URL")
-    page.click('[data-lineage-filter="all"]')
-    page.hover('.lineage-node[data-slug="c"] .lineage-hit')
-    page.wait_for_timeout(120)
-    assert_(page.is_visible("#lineageTip"), "悬停提示未出现")
 
 
 def verified_test(page):
@@ -302,7 +278,7 @@ def verified_test(page):
 
 
 def font_test(page):
-    page.goto((ROOT / "langs" / "python.html").as_uri())
+    page.goto((ROOT / "languages" / "python.html").as_uri())
     page.wait_for_timeout(120)
     page.click(".font-toggle")
     page.click('[data-font="serif"]')
@@ -328,16 +304,11 @@ def cmdk_test(page):
     page.wait_for_timeout(120)
     page.keyboard.press("Enter")
     page.wait_for_timeout(350)
-    assert_("python-frameworks.html#django" in page.url, "回车跳转异常")
+    assert_("frameworks/python.html#django" in page.url, "回车跳转异常")
     page.goto((ROOT / "index.html").as_uri())
     page.wait_for_timeout(120)
     page.keyboard.press("Control+k")
     page.wait_for_timeout(120)
-    page.fill("#cmdkInput", "slither")
-    page.wait_for_timeout(120)
-    page.keyboard.press("Enter")
-    page.wait_for_timeout(350)
-    assert_("security.html#slither" in page.url, "安全工具搜索跳转异常")
     page.goto((ROOT / "index.html").as_uri())
     page.wait_for_timeout(120)
     page.keyboard.press("Control+k")
@@ -348,6 +319,15 @@ def cmdk_test(page):
     assert_(page.locator(".cmdk__item").count() >= 1, "模式关键词未命中任何索引")
     page.keyboard.press("Escape")
     page.wait_for_timeout(100)
+    page.goto((ROOT / "languages" / "python.html").as_uri())
+    page.wait_for_timeout(120)
+    page.keyboard.press("Control+k")
+    page.wait_for_timeout(120)
+    page.fill("#cmdkInput", "django")
+    page.wait_for_timeout(120)
+    page.keyboard.press("Enter")
+    page.wait_for_timeout(350)
+    assert_("frameworks/python.html#django" in page.url, "语言页 ⌘K 跳转路径错误")
     page.goto((ROOT / "index.html").as_uri())
     page.keyboard.press("Control+k")
     page.wait_for_timeout(100)
@@ -357,18 +337,18 @@ def cmdk_test(page):
 
 
 def print_test(page):
-    page.goto((ROOT / "compare.html").as_uri())
+    page.goto((ROOT / "scenarios.html").as_uri())
     page.wait_for_timeout(120)
     page.emulate_media(media="print")
     assert_(page.eval_on_selector(".catalog", "e=>getComputedStyle(e).display") == "none",
             "打印未隐藏侧栏")
-    assert_(page.eval_on_selector(".cmp-table", "e=>getComputedStyle(e).minWidth") == "0px",
-            "打印对比表仍被撑宽")
-    page.goto((ROOT / "lineage.html").as_uri())
+    page.goto((ROOT / "stacks" / "flutter-cross.html").as_uri())
     page.wait_for_timeout(120)
     page.emulate_media(media="print")
-    assert_(page.eval_on_selector(".lineage-wrap", "e=>getComputedStyle(e).display") == "none",
-            "打印未隐藏谱系图")
+    assert_(page.eval_on_selector(".catalog", "e=>getComputedStyle(e).display") == "none",
+            "栈页打印未隐藏侧栏")
+    assert_(page.eval_on_selector(".table-hint", "e=>getComputedStyle(e).display") == "none",
+            "打印未隐藏表格提示")
     page.emulate_media(media="screen")
 
 
