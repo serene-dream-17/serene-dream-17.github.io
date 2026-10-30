@@ -99,8 +99,8 @@ try {
       <p class="hero__sub">先选开发场景，再看架构模式，最后落到语言与框架。场景不是语言分类，而是「你要做什么」；同一个框架可以出现在多个场景里，但取舍不同。每个场景的架构分组都归入 12 种统一模式，便于跨场景比较。</p>
       <div class="hero__meta">
         <div class="stat"><span class="stat__num">12</span><span class="stat__label">个开发场景</span></div>
-        <div class="stat"><span class="stat__num">36</span><span class="stat__label">个架构组合</span></div>
-        <div class="stat"><span class="stat__num">119</span><span class="stat__label">组推荐</span></div>
+        <div class="stat"><span class="stat__num">37</span><span class="stat__label">个架构组合</span></div>
+        <div class="stat"><span class="stat__num">123</span><span class="stat__label">组推荐</span></div>
         <div class="stat"><span class="stat__num">35</span><span class="stat__label">门语言</span></div>
       </div>
     </header>
@@ -123,7 +123,7 @@ try {
         <span>架构</span>
         <select id="devArch"><option value="all">全部架构</option><option value="layered">分层 / MVC</option><option value="microservices">微服务 / 服务化</option><option value="event-driven">事件驱动 / Actor</option><option value="component">组件化 / 响应式 UI</option><option value="ssr">同构渲染 / SSR</option><option value="gateway">网关 / BFF</option><option value="native">原生 / 平台绑定</option><option value="cross-platform">跨平台 / Web 外壳</option><option value="plugin">微内核 / 插件化</option><option value="ecs">ECS / 数据导向</option><option value="pipeline">管线 / 批流</option><option value="control-plane">控制面 / 编排</option></select>
       </label>
-      <span class="era-head__count" id="devCount">119 组</span>
+      <span class="era-head__count" id="devCount">123 组</span>
     </div>
 
     <div class="matrix-grid" id="devSections"><section class="dev-section matrix-section" id="dev-backend" data-scenario="backend">
@@ -711,9 +711,9 @@ try {
         <span class="era-head__num">09</span>
         <h2 class="era-head__title">安全</h2>
         <span class="era-head__range">Security</span>
-        <span class="era-head__count">3 种架构</span>
+        <span class="era-head__count">4 种架构</span>
       </div>
-      <p class="matrix-desc">安全贯穿应用、密码学与供应链；工具选型优先看默认安全、维护状态与合规要求。</p>
+      <p class="matrix-desc">安全贯穿应用、密码学、攻防与供应链；工具选型优先看默认安全、授权边界与合规要求。</p>
       <div class="dev-arch" data-pattern="layered">
         <div class="dev-arch__head">
           <h3 class="dev-arch__title">应用安全</h3>
@@ -761,6 +761,30 @@ try {
         <span class="stack-top"><span class="stack-lang">Go</span><span class="stack-type">密码学 / TLS</span></span>
         <span class="stack-fw">age</span>
         <span class="stack-why">现代文件加密工具与格式</span>
+      </a></div>
+      </div><div class="dev-arch" data-pattern="pipeline">
+        <div class="dev-arch__head">
+          <h3 class="dev-arch__title">攻防与渗透</h3>
+          <span class="dev-arch__pattern" title="分阶段转换与批流处理，强调可重跑、可测试与可观测。">模式 · 管线 / 批流</span>
+          <span class="dev-arch__desc">侦察、验证、逆向与漏洞挖掘；只在自有资产或书面授权范围内使用。</span>
+          <span class="era-head__count">4 组</span>
+        </div>
+        <div class="stack-grid"><a class="stack-card dev-card" href="security.html#metasploit" data-search="ruby ruby metasploit framework 授权渗透的漏洞验证框架 安全 攻防与渗透 管线 / 批流 攻防与渗透" data-scenario="security" data-arch="pipeline">
+        <span class="stack-top"><span class="stack-lang">Ruby</span><span class="stack-type">攻防与渗透</span></span>
+        <span class="stack-fw">Metasploit Framework</span>
+        <span class="stack-why">授权渗透的漏洞验证框架</span>
+      </a><a class="stack-card dev-card" href="security.html#burp-suite" data-search="java java burp suite web / api 渗透测试工作台 安全 攻防与渗透 管线 / 批流 攻防与渗透" data-scenario="security" data-arch="pipeline">
+        <span class="stack-top"><span class="stack-lang">Java</span><span class="stack-type">攻防与渗透</span></span>
+        <span class="stack-fw">Burp Suite</span>
+        <span class="stack-why">Web / API 渗透测试工作台</span>
+      </a><a class="stack-card dev-card" href="security.html#ghidra" data-search="java java ghidra 二进制与固件反编译 安全 攻防与渗透 管线 / 批流 攻防与渗透" data-scenario="security" data-arch="pipeline">
+        <span class="stack-top"><span class="stack-lang">Java</span><span class="stack-type">攻防与渗透</span></span>
+        <span class="stack-fw">Ghidra</span>
+        <span class="stack-why">二进制与固件反编译</span>
+      </a><a class="stack-card dev-card" href="security.html#aflplusplus" data-search="c c afl++ 覆盖率引导的漏洞挖掘 安全 攻防与渗透 管线 / 批流 攻防与渗透" data-scenario="security" data-arch="pipeline">
+        <span class="stack-top"><span class="stack-lang">C</span><span class="stack-type">攻防与渗透</span></span>
+        <span class="stack-fw">AFL++</span>
+        <span class="stack-why">覆盖率引导的漏洞挖掘</span>
       </a></div>
       </div><div class="dev-arch" data-pattern="pipeline">
         <div class="dev-arch__head">
